@@ -1,0 +1,701 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4A0501CE295CB51600E17386 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 4A0501CD295CB51600E17386 /* Moya */; };
+		4A0501D1295CB53000E17386 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 4A0501D0295CB53000E17386 /* SnapKit */; };
+		4A0501D4295CB54900E17386 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = 4A0501D3295CB54900E17386 /* Then */; };
+		4A0501D7295CB56800E17386 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 4A0501D6295CB56800E17386 /* RxCocoa */; };
+		4A0501D9295CB56800E17386 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 4A0501D8295CB56800E17386 /* RxRelay */; };
+		4A0501DB295CB56800E17386 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 4A0501DA295CB56800E17386 /* RxSwift */; };
+		4A0501DE295CB78500E17386 /* KakaoSDKAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 4A0501DD295CB78500E17386 /* KakaoSDKAuth */; };
+		4A0501E0295CB78500E17386 /* KakaoSDKCommon in Frameworks */ = {isa = PBXBuildFile; productRef = 4A0501DF295CB78500E17386 /* KakaoSDKCommon */; };
+		4A0501E2295CB78500E17386 /* KakaoSDKUser in Frameworks */ = {isa = PBXBuildFile; productRef = 4A0501E1295CB78500E17386 /* KakaoSDKUser */; };
+		4A0501F0295CBADD00E17386 /* DesignSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0501EF295CBADD00E17386 /* DesignSystem.swift */; };
+		4A0501F2295CBAE300E17386 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0501F1295CBAE300E17386 /* Constant.swift */; };
+		4A0501F4295CBD4100E17386 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A0501F3295CBD4100E17386 /* Colors.xcassets */; };
+		4A0501FA295CBDB700E17386 /* GeneralResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0501F9295CBDB700E17386 /* GeneralResponse.swift */; };
+		4A0501FC295CBDD900E17386 /* MoyaLoggingPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0501FB295CBDD900E17386 /* MoyaLoggingPlugin.swift */; };
+		4A0501FE295CBDED00E17386 /* NetworkConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0501FD295CBDED00E17386 /* NetworkConstant.swift */; };
+		4A050200295CBE0A00E17386 /* URLConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0501FF295CBE0A00E17386 /* URLConstant.swift */; };
+		4A050202295CBE1D00E17386 /* BaseTargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A050201295CBE1D00E17386 /* BaseTargetType.swift */; };
+		4A050204295CBE6000E17386 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A050203295CBE6000E17386 /* API.swift */; };
+		4A050206295CBE6400E17386 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A050205295CBE6400E17386 /* Service.swift */; };
+		4A050208295CBE6800E17386 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A050207295CBE6800E17386 /* DataModel.swift */; };
+		4A05020A295CBEE100E17386 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A050209295CBEE100E17386 /* UIView+.swift */; };
+		4A05020C295CBF2900E17386 /* UIFont+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A05020B295CBF2900E17386 /* UIFont+.swift */; };
+		4A05020E295CBF2F00E17386 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A05020D295CBF2F00E17386 /* UIColor+.swift */; };
+		4A050210295CBF5200E17386 /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A05020F295CBF5200E17386 /* UIViewController+.swift */; };
+		4A050212295CBF9800E17386 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A050211295CBF9800E17386 /* Font.swift */; };
+		4A4CB70E295CAD7700F170CC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4CB70D295CAD7700F170CC /* AppDelegate.swift */; };
+		4A4CB710295CAD7700F170CC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4CB70F295CAD7700F170CC /* SceneDelegate.swift */; };
+		4A4CB712295CAD7700F170CC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4CB711295CAD7700F170CC /* ViewController.swift */; };
+		4A4CB717295CAD7800F170CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A4CB716295CAD7800F170CC /* Assets.xcassets */; };
+		4A4CB71A295CAD7800F170CC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4A4CB718295CAD7800F170CC /* LaunchScreen.storyboard */; };
+		4A795D25296151EC007043C0 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 4A795D24296151EC007043C0 /* .swiftlint.yml */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		4A0501EF295CBADD00E17386 /* DesignSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignSystem.swift; sourceTree = "<group>"; };
+		4A0501F1295CBAE300E17386 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		4A0501F3295CBD4100E17386 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		4A0501F9295CBDB700E17386 /* GeneralResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralResponse.swift; sourceTree = "<group>"; };
+		4A0501FB295CBDD900E17386 /* MoyaLoggingPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyaLoggingPlugin.swift; sourceTree = "<group>"; };
+		4A0501FD295CBDED00E17386 /* NetworkConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConstant.swift; sourceTree = "<group>"; };
+		4A0501FF295CBE0A00E17386 /* URLConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLConstant.swift; sourceTree = "<group>"; };
+		4A050201295CBE1D00E17386 /* BaseTargetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTargetType.swift; sourceTree = "<group>"; };
+		4A050203295CBE6000E17386 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		4A050205295CBE6400E17386 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		4A050207295CBE6800E17386 /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
+		4A050209295CBEE100E17386 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
+		4A05020B295CBF2900E17386 /* UIFont+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+.swift"; sourceTree = "<group>"; };
+		4A05020D295CBF2F00E17386 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
+		4A05020F295CBF5200E17386 /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
+		4A050211295CBF9800E17386 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
+		4A4CB70A295CAD7700F170CC /* Smeme-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Smeme-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4A4CB70D295CAD7700F170CC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		4A4CB70F295CAD7700F170CC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		4A4CB711295CAD7700F170CC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		4A4CB716295CAD7800F170CC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4A4CB719295CAD7800F170CC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		4A4CB71B295CAD7800F170CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4A795D24296151EC007043C0 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4A4CB707295CAD7700F170CC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4A0501E0295CB78500E17386 /* KakaoSDKCommon in Frameworks */,
+				4A0501DE295CB78500E17386 /* KakaoSDKAuth in Frameworks */,
+				4A0501DB295CB56800E17386 /* RxSwift in Frameworks */,
+				4A0501D9295CB56800E17386 /* RxRelay in Frameworks */,
+				4A0501CE295CB51600E17386 /* Moya in Frameworks */,
+				4A0501D4295CB54900E17386 /* Then in Frameworks */,
+				4A0501D7295CB56800E17386 /* RxCocoa in Frameworks */,
+				4A0501D1295CB53000E17386 /* SnapKit in Frameworks */,
+				4A0501E2295CB78500E17386 /* KakaoSDKUser in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4A0501E3295CB86C00E17386 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				4A0501E6295CB8D800E17386 /* Network */,
+				4A0501E5295CB8C500E17386 /* Screen */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		4A0501E4295CB88E00E17386 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				4A0501E8295CB9EC00E17386 /* DesignSystem */,
+				4A0501E7295CB8ED00E17386 /* Extension */,
+				4A0501E9295CB9F700E17386 /* Constant */,
+				4A0501EA295CBA5D00E17386 /* Support */,
+				4A0501EE295CBA7700E17386 /* Color */,
+				4A0501ED295CBA6F00E17386 /* Font */,
+				4A0501EC295CBA6C00E17386 /* Asset */,
+				4A0501EB295CBA6300E17386 /* Storyboard */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		4A0501E5295CB8C500E17386 /* Screen */ = {
+			isa = PBXGroup;
+			children = (
+				4A4CB711295CAD7700F170CC /* ViewController.swift */,
+			);
+			path = Screen;
+			sourceTree = "<group>";
+		};
+		4A0501E6295CB8D800E17386 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				4A0501F8295CBD9700E17386 /* Base */,
+				4A0501F7295CBD8C00E17386 /* API */,
+				4A0501F6295CBD8700E17386 /* Service */,
+				4A0501F5295CBD6F00E17386 /* DataModel */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		4A0501E7295CB8ED00E17386 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				4A050209295CBEE100E17386 /* UIView+.swift */,
+				4A05020B295CBF2900E17386 /* UIFont+.swift */,
+				4A05020D295CBF2F00E17386 /* UIColor+.swift */,
+				4A05020F295CBF5200E17386 /* UIViewController+.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		4A0501E8295CB9EC00E17386 /* DesignSystem */ = {
+			isa = PBXGroup;
+			children = (
+				4A0501EF295CBADD00E17386 /* DesignSystem.swift */,
+			);
+			path = DesignSystem;
+			sourceTree = "<group>";
+		};
+		4A0501E9295CB9F700E17386 /* Constant */ = {
+			isa = PBXGroup;
+			children = (
+				4A0501F1295CBAE300E17386 /* Constant.swift */,
+			);
+			path = Constant;
+			sourceTree = "<group>";
+		};
+		4A0501EA295CBA5D00E17386 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				4A4CB71B295CAD7800F170CC /* Info.plist */,
+				4A4CB70D295CAD7700F170CC /* AppDelegate.swift */,
+				4A4CB70F295CAD7700F170CC /* SceneDelegate.swift */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
+		4A0501EB295CBA6300E17386 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				4A4CB718295CAD7800F170CC /* LaunchScreen.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		4A0501EC295CBA6C00E17386 /* Asset */ = {
+			isa = PBXGroup;
+			children = (
+				4A4CB716295CAD7800F170CC /* Assets.xcassets */,
+			);
+			path = Asset;
+			sourceTree = "<group>";
+		};
+		4A0501ED295CBA6F00E17386 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				4A050211295CBF9800E17386 /* Font.swift */,
+			);
+			path = Font;
+			sourceTree = "<group>";
+		};
+		4A0501EE295CBA7700E17386 /* Color */ = {
+			isa = PBXGroup;
+			children = (
+				4A0501F3295CBD4100E17386 /* Colors.xcassets */,
+			);
+			path = Color;
+			sourceTree = "<group>";
+		};
+		4A0501F5295CBD6F00E17386 /* DataModel */ = {
+			isa = PBXGroup;
+			children = (
+				4A050207295CBE6800E17386 /* DataModel.swift */,
+			);
+			path = DataModel;
+			sourceTree = "<group>";
+		};
+		4A0501F6295CBD8700E17386 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				4A050205295CBE6400E17386 /* Service.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		4A0501F7295CBD8C00E17386 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				4A050203295CBE6000E17386 /* API.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		4A0501F8295CBD9700E17386 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				4A0501F9295CBDB700E17386 /* GeneralResponse.swift */,
+				4A0501FB295CBDD900E17386 /* MoyaLoggingPlugin.swift */,
+				4A0501FD295CBDED00E17386 /* NetworkConstant.swift */,
+				4A0501FF295CBE0A00E17386 /* URLConstant.swift */,
+				4A050201295CBE1D00E17386 /* BaseTargetType.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		4A4CB701295CAD7700F170CC = {
+			isa = PBXGroup;
+			children = (
+				4A795D24296151EC007043C0 /* .swiftlint.yml */,
+				4A4CB70C295CAD7700F170CC /* Smeme-iOS */,
+				4A4CB70B295CAD7700F170CC /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		4A4CB70B295CAD7700F170CC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4A4CB70A295CAD7700F170CC /* Smeme-iOS.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4A4CB70C295CAD7700F170CC /* Smeme-iOS */ = {
+			isa = PBXGroup;
+			children = (
+				4A0501E4295CB88E00E17386 /* Resources */,
+				4A0501E3295CB86C00E17386 /* Sources */,
+			);
+			path = "Smeme-iOS";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		4A4CB709295CAD7700F170CC /* Smeme-iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4A4CB71E295CAD7800F170CC /* Build configuration list for PBXNativeTarget "Smeme-iOS" */;
+			buildPhases = (
+				4A795D2129615175007043C0 /* SwiftLint Script */,
+				4A4CB706295CAD7700F170CC /* Sources */,
+				4A4CB707295CAD7700F170CC /* Frameworks */,
+				4A4CB708295CAD7700F170CC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Smeme-iOS";
+			packageProductDependencies = (
+				4A0501CD295CB51600E17386 /* Moya */,
+				4A0501D0295CB53000E17386 /* SnapKit */,
+				4A0501D3295CB54900E17386 /* Then */,
+				4A0501D6295CB56800E17386 /* RxCocoa */,
+				4A0501D8295CB56800E17386 /* RxRelay */,
+				4A0501DA295CB56800E17386 /* RxSwift */,
+				4A0501DD295CB78500E17386 /* KakaoSDKAuth */,
+				4A0501DF295CB78500E17386 /* KakaoSDKCommon */,
+				4A0501E1295CB78500E17386 /* KakaoSDKUser */,
+			);
+			productName = "Smeme-iOS";
+			productReference = 4A4CB70A295CAD7700F170CC /* Smeme-iOS.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		4A4CB702295CAD7700F170CC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1420;
+				LastUpgradeCheck = 1420;
+				TargetAttributes = {
+					4A4CB709295CAD7700F170CC = {
+						CreatedOnToolsVersion = 14.2;
+					};
+				};
+			};
+			buildConfigurationList = 4A4CB705295CAD7700F170CC /* Build configuration list for PBXProject "Smeme-iOS" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 4A4CB701295CAD7700F170CC;
+			packageReferences = (
+				4A0501CC295CB51600E17386 /* XCRemoteSwiftPackageReference "Moya" */,
+				4A0501CF295CB53000E17386 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				4A0501D2295CB54900E17386 /* XCRemoteSwiftPackageReference "Then" */,
+				4A0501D5295CB56800E17386 /* XCRemoteSwiftPackageReference "RxSwift" */,
+				4A0501DC295CB78500E17386 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */,
+			);
+			productRefGroup = 4A4CB70B295CAD7700F170CC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4A4CB709295CAD7700F170CC /* Smeme-iOS */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		4A4CB708295CAD7700F170CC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4A795D25296151EC007043C0 /* .swiftlint.yml in Resources */,
+				4A0501F4295CBD4100E17386 /* Colors.xcassets in Resources */,
+				4A4CB71A295CAD7800F170CC /* LaunchScreen.storyboard in Resources */,
+				4A4CB717295CAD7800F170CC /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4A795D2129615175007043C0 /* SwiftLint Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "SwiftLint Script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export PATH=\"$PATH:/opt/homebrew/bin\"\nif which swiftlint > /dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4A4CB706295CAD7700F170CC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4A050204295CBE6000E17386 /* API.swift in Sources */,
+				4A05020E295CBF2F00E17386 /* UIColor+.swift in Sources */,
+				4A0501F0295CBADD00E17386 /* DesignSystem.swift in Sources */,
+				4A05020A295CBEE100E17386 /* UIView+.swift in Sources */,
+				4A0501FA295CBDB700E17386 /* GeneralResponse.swift in Sources */,
+				4A4CB712295CAD7700F170CC /* ViewController.swift in Sources */,
+				4A050210295CBF5200E17386 /* UIViewController+.swift in Sources */,
+				4A0501F2295CBAE300E17386 /* Constant.swift in Sources */,
+				4A050206295CBE6400E17386 /* Service.swift in Sources */,
+				4A05020C295CBF2900E17386 /* UIFont+.swift in Sources */,
+				4A050208295CBE6800E17386 /* DataModel.swift in Sources */,
+				4A0501FE295CBDED00E17386 /* NetworkConstant.swift in Sources */,
+				4A050202295CBE1D00E17386 /* BaseTargetType.swift in Sources */,
+				4A4CB70E295CAD7700F170CC /* AppDelegate.swift in Sources */,
+				4A050212295CBF9800E17386 /* Font.swift in Sources */,
+				4A0501FC295CBDD900E17386 /* MoyaLoggingPlugin.swift in Sources */,
+				4A4CB710295CAD7700F170CC /* SceneDelegate.swift in Sources */,
+				4A050200295CBE0A00E17386 /* URLConstant.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		4A4CB718295CAD7800F170CC /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4A4CB719295CAD7800F170CC /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		4A4CB71C295CAD7800F170CC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		4A4CB71D295CAD7800F170CC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		4A4CB71F295CAD7800F170CC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Smeme-iOS/Resources/Support/Info.plist";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "cchanmi.Smeme-iOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		4A4CB720295CAD7800F170CC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Smeme-iOS/Resources/Support/Info.plist";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "cchanmi.Smeme-iOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4A4CB705295CAD7700F170CC /* Build configuration list for PBXProject "Smeme-iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4A4CB71C295CAD7800F170CC /* Debug */,
+				4A4CB71D295CAD7800F170CC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4A4CB71E295CAD7800F170CC /* Build configuration list for PBXNativeTarget "Smeme-iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4A4CB71F295CAD7800F170CC /* Debug */,
+				4A4CB720295CAD7800F170CC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		4A0501CC295CB51600E17386 /* XCRemoteSwiftPackageReference "Moya" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Moya/Moya.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		4A0501CF295CB53000E17386 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				branch = develop;
+				kind = branch;
+			};
+		};
+		4A0501D2295CB54900E17386 /* XCRemoteSwiftPackageReference "Then" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/devxoul/Then";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		4A0501D5295CB56800E17386 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+		4A0501DC295CB78500E17386 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kakao/kakao-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		4A0501CD295CB51600E17386 /* Moya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4A0501CC295CB51600E17386 /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = Moya;
+		};
+		4A0501D0295CB53000E17386 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4A0501CF295CB53000E17386 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		4A0501D3295CB54900E17386 /* Then */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4A0501D2295CB54900E17386 /* XCRemoteSwiftPackageReference "Then" */;
+			productName = Then;
+		};
+		4A0501D6295CB56800E17386 /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4A0501D5295CB56800E17386 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		4A0501D8295CB56800E17386 /* RxRelay */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4A0501D5295CB56800E17386 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxRelay;
+		};
+		4A0501DA295CB56800E17386 /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4A0501D5295CB56800E17386 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
+		4A0501DD295CB78500E17386 /* KakaoSDKAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4A0501DC295CB78500E17386 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
+			productName = KakaoSDKAuth;
+		};
+		4A0501DF295CB78500E17386 /* KakaoSDKCommon */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4A0501DC295CB78500E17386 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
+			productName = KakaoSDKCommon;
+		};
+		4A0501E1295CB78500E17386 /* KakaoSDKUser */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4A0501DC295CB78500E17386 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
+			productName = KakaoSDKUser;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 4A4CB702295CAD7700F170CC /* Project object */;
+}

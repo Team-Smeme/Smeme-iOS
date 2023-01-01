@@ -1,0 +1,13 @@
+disabled_rules:
+- line_length
+- shorthand_operator
+- trailing_whitespace
+- type_name
+- identifier_name
+
+excluded:
+  # AppDelegate, SceneDelegate file 무시
+  - Smeme-iOS/Resources/Support/AppDelegate.swift
+  - Smeme-iOS/Resources/Support/SceneDelegate.swift
+
+force_cast: warning
