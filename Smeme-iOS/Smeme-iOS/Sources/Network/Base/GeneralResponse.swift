@@ -53,4 +53,3 @@ struct GeneralArrayResponse<T: Decodable>: Decodable {
 
 /// status, message, success 이외에 정보를 사용하지 않는 경우에 VoidType를 설정해주면 됩니다!
 struct VoidType: Decodable {}
-
