@@ -13,7 +13,7 @@
 
 |황찬미|원종화|백준|임주민|
 |:------:|:---:|:---:|:-----:|
-|![KakaoTalk_Photo_2023-01-04-04-18-16](https://user-images.githubusercontent.com/86944161/210426110-082abcde-f8f2-4d7a-b437-4c6c3fca9792.png)|![KakaoTalk_Photo_2023-01-04-04-19-45](https://user-images.githubusercontent.com/86944161/210426306-3bb00033-54f5-413f-84b9-a5728f274800.png)|![KakaoTalk_Photo_2023-01-04-04-20-22](https://user-images.githubusercontent.com/86944161/210426409-2faa6c69-fe42-42d0-8b98-8a413f0c117d.png)|![KakaoTalk_Photo_2023-01-04-04-23-27](https://user-images.githubusercontent.com/86944161/210426983-4c04e865-4c25-41f0-9500-373e2b591c2a.png)|
+|![KakaoTalk_Photo_2023-01-04-04-18-16](https://user-images.githubusercontent.com/86944161/210426110-082abcde-f8f2-4d7a-b437-4c6c3fca9792.png)|![KakaoTalk_Photo_2023-01-04-04-19-45](https://user-images.githubusercontent.com/86944161/210426306-3bb00033-54f5-413f-84b9-a5728f274800.png)|![KakaoTalk_Photo_2023-01-04-23-17-04](https://user-images.githubusercontent.com/86944161/210574669-30a1eef6-a318-47f1-97c3-7ee8b693a010.png)|![KakaoTalk_Photo_2023-01-04-04-23-27](https://user-images.githubusercontent.com/86944161/210426983-4c04e865-4c25-41f0-9500-373e2b591c2a.png)|
 |불꽃 카리스마 리드|군필 공주님|터키 출신 개발자|미성년자|
 
 <br>
@@ -108,6 +108,8 @@ Pull Request는 `기능`별로 올리며, 나머지 `팀원의 한 명 이상의
 <div markdown="1">
 
     - 🗂️ Resources
+
+      - Protocol : 중복되는 코드들을 Protocol로 구현 후 관리
     
       - DesignSystem : Button, TextField 등의 UI Component를 관리하는 디자인 시스템
     
