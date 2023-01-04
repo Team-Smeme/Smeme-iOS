@@ -42,8 +42,8 @@ final class ScrapStashViewController: UIViewController {
         super.viewDidLoad()
         
         setBackgroundColor()
-        setShadow()
         setLayout()
+        setShadow()
     }
     
     // MARK: - @objc
@@ -51,8 +51,11 @@ final class ScrapStashViewController: UIViewController {
     // MARK: - Custom Method
 
     private func setShadow() {
-        headerCornerView.layer.shadowOffset = CGSize(width: 0, height: 42)
-        headerCornerView.layer.shadowOpacity = 0.9
+        headerCornerView.layer.shadowColor = UIColor.black.cgColor
+        headerCornerView.layer.shadowRadius = 18
+        headerCornerView.layer.shadowOpacity = 0.04
+        headerCornerView.layer.shadowOffset = CGSize(width: 0, height: 2)
+        headerCornerView.layer.masksToBounds = false
     }
     
     private func setBackgroundColor() {
@@ -63,7 +66,6 @@ final class ScrapStashViewController: UIViewController {
     }
     
     private func setLayout() {
-        
         view.addSubviews([overHeaderView, headerView, headerCornerView])
         
         headerView.addSubviews([titleLabel, profileButton])
@@ -90,9 +92,9 @@ final class ScrapStashViewController: UIViewController {
         }
         
         headerCornerView.snp.makeConstraints {
-            $0.top.equalTo(headerView.snp.bottom)
+            $0.top.equalToSuperview()
             $0.leading.trailing.equalToSuperview()
-            $0.height.equalTo(42)
+            $0.height.equalTo(convertByHeightRatio(152))
         }
     }
 }
