@@ -32,6 +32,28 @@ final class ScrapStashViewController: UIViewController {
         $0.setImage(Constant.Image.icnProfile, for: .normal)
     }
     
+    private let scrappedStackView = UIStackView().then {
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.axis = .vertical
+        $0.spacing = 8
+    }
+    
+    private let scrappedLabel = UILabel().then {
+        $0.text = "스크랩한 표현"
+        $0.textColor = .primary
+        $0.font = .subtitle2
+    }
+    
+    private let selectedUnderline = UIView().then {
+        $0.backgroundColor = .primary
+    }
+    
+    private let likedDiaryLabel = UILabel().then {
+        $0.text = "추천한 일기"
+        $0.textColor = .gray400
+        $0.font = .subtitle2
+    }
+    
     // MARK: - Life Cycle
     
     override func viewDidLoad() {
@@ -62,7 +84,9 @@ final class ScrapStashViewController: UIViewController {
     private func setLayout() {
         view.addSubviews([headerView])
         
-        headerView.addSubviews([titleLabel, profileButton])
+        headerView.addSubviews([titleLabel, profileButton, scrappedStackView, likedDiaryLabel])
+        
+        scrappedStackView.addSubviews([scrappedLabel, selectedUnderline])
         
         titleLabel.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide).offset(20)
@@ -79,6 +103,27 @@ final class ScrapStashViewController: UIViewController {
             $0.top.equalToSuperview()
             $0.leading.trailing.equalToSuperview()
             $0.height.equalTo(convertByHeightRatio(152))
+        }
+        
+        scrappedStackView.snp.makeConstraints {
+            $0.bottom.equalTo(headerView.snp.bottom)
+            $0.height.equalTo(29)
+            $0.leading.equalToSuperview().offset(30)
+            $0.width.equalTo(87)
+        }
+        
+        scrappedLabel.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+        }
+        
+        selectedUnderline.snp.makeConstraints {
+            $0.width.bottom.equalToSuperview()
+            $0.height.equalTo(2)
+        }
+        
+        likedDiaryLabel.snp.makeConstraints {
+            $0.leading.equalTo(scrappedStackView.snp.trailing).offset(20)
+            $0.centerY.equalTo(scrappedLabel)
         }
     }
 }
