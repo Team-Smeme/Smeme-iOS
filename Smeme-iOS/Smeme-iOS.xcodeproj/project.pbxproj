@@ -31,13 +31,15 @@
 		4A05020C295CBF2900E17386 /* UIFont+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A05020B295CBF2900E17386 /* UIFont+.swift */; };
 		4A05020E295CBF2F00E17386 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A05020D295CBF2F00E17386 /* UIColor+.swift */; };
 		4A050210295CBF5200E17386 /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A05020F295CBF5200E17386 /* UIViewController+.swift */; };
-		4A050212295CBF9800E17386 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A050211295CBF9800E17386 /* Font.swift */; };
 		4A4CB70E295CAD7700F170CC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4CB70D295CAD7700F170CC /* AppDelegate.swift */; };
 		4A4CB710295CAD7700F170CC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4CB70F295CAD7700F170CC /* SceneDelegate.swift */; };
 		4A4CB712295CAD7700F170CC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4CB711295CAD7700F170CC /* ViewController.swift */; };
 		4A4CB717295CAD7800F170CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A4CB716295CAD7800F170CC /* Assets.xcassets */; };
 		4A4CB71A295CAD7800F170CC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4A4CB718295CAD7800F170CC /* LaunchScreen.storyboard */; };
 		4A795D25296151EC007043C0 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 4A795D24296151EC007043C0 /* .swiftlint.yml */; };
+		4AD78B9E2965505100EEE509 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD78B9D2965505100EEE509 /* Image.swift */; };
+		4AD78BA92965611B00EEE509 /* Pretendard-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4AD78BA72965611B00EEE509 /* Pretendard-Bold.otf */; };
+		4AD78BAA2965611B00EEE509 /* Pretendard-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4AD78BA82965611B00EEE509 /* Pretendard-Regular.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,7 +58,6 @@
 		4A05020B295CBF2900E17386 /* UIFont+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+.swift"; sourceTree = "<group>"; };
 		4A05020D295CBF2F00E17386 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		4A05020F295CBF5200E17386 /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
-		4A050211295CBF9800E17386 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		4A4CB70A295CAD7700F170CC /* Smeme-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Smeme-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A4CB70D295CAD7700F170CC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4A4CB70F295CAD7700F170CC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -65,6 +66,9 @@
 		4A4CB719295CAD7800F170CC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4A4CB71B295CAD7800F170CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4A795D24296151EC007043C0 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		4AD78B9D2965505100EEE509 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
+		4AD78BA72965611B00EEE509 /* Pretendard-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Bold.otf"; sourceTree = "<group>"; };
+		4AD78BA82965611B00EEE509 /* Pretendard-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Regular.otf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +157,7 @@
 			isa = PBXGroup;
 			children = (
 				4A0501F1295CBAE300E17386 /* Constant.swift */,
+				4AD78B9D2965505100EEE509 /* Image.swift */,
 			);
 			path = Constant;
 			sourceTree = "<group>";
@@ -186,7 +191,8 @@
 		4A0501ED295CBA6F00E17386 /* Font */ = {
 			isa = PBXGroup;
 			children = (
-				4A050211295CBF9800E17386 /* Font.swift */,
+				4AD78BA72965611B00EEE509 /* Pretendard-Bold.otf */,
+				4AD78BA82965611B00EEE509 /* Pretendard-Regular.otf */,
 			);
 			path = Font;
 			sourceTree = "<group>";
@@ -339,6 +345,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				4A795D25296151EC007043C0 /* .swiftlint.yml in Resources */,
+				4AD78BAA2965611B00EEE509 /* Pretendard-Regular.otf in Resources */,
+				4AD78BA92965611B00EEE509 /* Pretendard-Bold.otf in Resources */,
 				4A0501F4295CBD4100E17386 /* Colors.xcassets in Resources */,
 				4A4CB71A295CAD7800F170CC /* LaunchScreen.storyboard in Resources */,
 				4A4CB717295CAD7800F170CC /* Assets.xcassets in Resources */,
@@ -387,8 +395,8 @@
 				4A050208295CBE6800E17386 /* DataModel.swift in Sources */,
 				4A0501FE295CBDED00E17386 /* NetworkConstant.swift in Sources */,
 				4A050202295CBE1D00E17386 /* BaseTargetType.swift in Sources */,
+				4AD78B9E2965505100EEE509 /* Image.swift in Sources */,
 				4A4CB70E295CAD7700F170CC /* AppDelegate.swift in Sources */,
-				4A050212295CBF9800E17386 /* Font.swift in Sources */,
 				4A0501FC295CBDD900E17386 /* MoyaLoggingPlugin.swift in Sources */,
 				4A4CB710295CAD7700F170CC /* SceneDelegate.swift in Sources */,
 				4A050200295CBE0A00E17386 /* URLConstant.swift in Sources */,

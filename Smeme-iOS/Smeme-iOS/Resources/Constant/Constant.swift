@@ -6,3 +6,7 @@
 //
 
 import Foundation
+
+struct Constant {
+    // extension 해서 사용
+}
