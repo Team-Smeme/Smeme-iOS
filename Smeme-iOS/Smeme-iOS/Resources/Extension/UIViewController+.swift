@@ -14,6 +14,7 @@ extension UIViewController {
     
     func getDeviceHeight() -> CGFloat {
         return UIScreen.main.bounds.height
+
     }
     
     /// 아이폰 13 미니(width 375)를 기준으로 레이아웃을 잡고, 기기의 width 사이즈를 곱해 대응 값을 구할 때 사용

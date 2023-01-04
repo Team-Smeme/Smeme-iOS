@@ -33,13 +33,18 @@
 		4A050210295CBF5200E17386 /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A05020F295CBF5200E17386 /* UIViewController+.swift */; };
 		4A4CB70E295CAD7700F170CC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4CB70D295CAD7700F170CC /* AppDelegate.swift */; };
 		4A4CB710295CAD7700F170CC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4CB70F295CAD7700F170CC /* SceneDelegate.swift */; };
-		4A4CB712295CAD7700F170CC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4CB711295CAD7700F170CC /* ViewController.swift */; };
 		4A4CB717295CAD7800F170CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A4CB716295CAD7800F170CC /* Assets.xcassets */; };
 		4A4CB71A295CAD7800F170CC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4A4CB718295CAD7800F170CC /* LaunchScreen.storyboard */; };
 		4A795D25296151EC007043C0 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 4A795D24296151EC007043C0 /* .swiftlint.yml */; };
 		4AD78B9E2965505100EEE509 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD78B9D2965505100EEE509 /* Image.swift */; };
 		4AD78BA92965611B00EEE509 /* Pretendard-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4AD78BA72965611B00EEE509 /* Pretendard-Bold.otf */; };
 		4AD78BAA2965611B00EEE509 /* Pretendard-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4AD78BA82965611B00EEE509 /* Pretendard-Regular.otf */; };
+		4AD78BAD296574F000EEE509 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD78BAC296574F000EEE509 /* TabBarController.swift */; };
+		4AD78BAF2965756800EEE509 /* MyDiaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD78BAE2965756800EEE509 /* MyDiaryViewController.swift */; };
+		4AD78BB12965757500EEE509 /* OpenDiaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD78BB02965757500EEE509 /* OpenDiaryViewController.swift */; };
+		4AD78BB32965758100EEE509 /* ScrapStashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD78BB22965758100EEE509 /* ScrapStashViewController.swift */; };
+		4AD78BB6296577A700EEE509 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 4AD78BB5296577A700EEE509 /* Lottie */; };
+		4AD78BBC2965993F00EEE509 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD78BBB2965993F00EEE509 /* ViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,7 +66,6 @@
 		4A4CB70A295CAD7700F170CC /* Smeme-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Smeme-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A4CB70D295CAD7700F170CC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4A4CB70F295CAD7700F170CC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		4A4CB711295CAD7700F170CC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		4A4CB716295CAD7800F170CC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4A4CB719295CAD7800F170CC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4A4CB71B295CAD7800F170CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -69,6 +73,11 @@
 		4AD78B9D2965505100EEE509 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		4AD78BA72965611B00EEE509 /* Pretendard-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Bold.otf"; sourceTree = "<group>"; };
 		4AD78BA82965611B00EEE509 /* Pretendard-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Regular.otf"; sourceTree = "<group>"; };
+		4AD78BAC296574F000EEE509 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		4AD78BAE2965756800EEE509 /* MyDiaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDiaryViewController.swift; sourceTree = "<group>"; };
+		4AD78BB02965757500EEE509 /* OpenDiaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenDiaryViewController.swift; sourceTree = "<group>"; };
+		4AD78BB22965758100EEE509 /* ScrapStashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapStashViewController.swift; sourceTree = "<group>"; };
+		4AD78BBB2965993F00EEE509 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +90,7 @@
 				4A0501DB295CB56800E17386 /* RxSwift in Frameworks */,
 				4A0501D9295CB56800E17386 /* RxRelay in Frameworks */,
 				4A0501CE295CB51600E17386 /* Moya in Frameworks */,
+				4AD78BB6296577A700EEE509 /* Lottie in Frameworks */,
 				4A0501D4295CB54900E17386 /* Then in Frameworks */,
 				4A0501D7295CB56800E17386 /* RxCocoa in Frameworks */,
 				4A0501D1295CB53000E17386 /* SnapKit in Frameworks */,
@@ -103,6 +113,7 @@
 		4A0501E4295CB88E00E17386 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				4AD78BBA2965993500EEE509 /* Protocol */,
 				4A0501E8295CB9EC00E17386 /* DesignSystem */,
 				4A0501E7295CB8ED00E17386 /* Extension */,
 				4A0501E9295CB9F700E17386 /* Constant */,
@@ -118,7 +129,10 @@
 		4A0501E5295CB8C500E17386 /* Screen */ = {
 			isa = PBXGroup;
 			children = (
-				4A4CB711295CAD7700F170CC /* ViewController.swift */,
+				4AD78BB9296597A000EEE509 /* ScrapStash */,
+				4AD78BB82965979B00EEE509 /* OpenDiary */,
+				4AD78BB72965979600EEE509 /* MyDiary */,
+				4AD78BAB2965746700EEE509 /* TabBar */,
 			);
 			path = Screen;
 			sourceTree = "<group>";
@@ -267,6 +281,46 @@
 			path = "Smeme-iOS";
 			sourceTree = "<group>";
 		};
+		4AD78BAB2965746700EEE509 /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				4AD78BAC296574F000EEE509 /* TabBarController.swift */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
+		4AD78BB72965979600EEE509 /* MyDiary */ = {
+			isa = PBXGroup;
+			children = (
+				4AD78BAE2965756800EEE509 /* MyDiaryViewController.swift */,
+			);
+			path = MyDiary;
+			sourceTree = "<group>";
+		};
+		4AD78BB82965979B00EEE509 /* OpenDiary */ = {
+			isa = PBXGroup;
+			children = (
+				4AD78BB02965757500EEE509 /* OpenDiaryViewController.swift */,
+			);
+			path = OpenDiary;
+			sourceTree = "<group>";
+		};
+		4AD78BB9296597A000EEE509 /* ScrapStash */ = {
+			isa = PBXGroup;
+			children = (
+				4AD78BB22965758100EEE509 /* ScrapStashViewController.swift */,
+			);
+			path = ScrapStash;
+			sourceTree = "<group>";
+		};
+		4AD78BBA2965993500EEE509 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				4AD78BBB2965993F00EEE509 /* ViewModel.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -294,6 +348,7 @@
 				4A0501DD295CB78500E17386 /* KakaoSDKAuth */,
 				4A0501DF295CB78500E17386 /* KakaoSDKCommon */,
 				4A0501E1295CB78500E17386 /* KakaoSDKUser */,
+				4AD78BB5296577A700EEE509 /* Lottie */,
 			);
 			productName = "Smeme-iOS";
 			productReference = 4A4CB70A295CAD7700F170CC /* Smeme-iOS.app */;
@@ -329,6 +384,7 @@
 				4A0501D2295CB54900E17386 /* XCRemoteSwiftPackageReference "Then" */,
 				4A0501D5295CB56800E17386 /* XCRemoteSwiftPackageReference "RxSwift" */,
 				4A0501DC295CB78500E17386 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */,
+				4AD78BB4296577A700EEE509 /* XCRemoteSwiftPackageReference "lottie-ios" */,
 			);
 			productRefGroup = 4A4CB70B295CAD7700F170CC /* Products */;
 			projectDirPath = "";
@@ -382,21 +438,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4AD78BB32965758100EEE509 /* ScrapStashViewController.swift in Sources */,
+				4AD78BAF2965756800EEE509 /* MyDiaryViewController.swift in Sources */,
 				4A050204295CBE6000E17386 /* API.swift in Sources */,
 				4A05020E295CBF2F00E17386 /* UIColor+.swift in Sources */,
 				4A0501F0295CBADD00E17386 /* DesignSystem.swift in Sources */,
 				4A05020A295CBEE100E17386 /* UIView+.swift in Sources */,
 				4A0501FA295CBDB700E17386 /* GeneralResponse.swift in Sources */,
-				4A4CB712295CAD7700F170CC /* ViewController.swift in Sources */,
 				4A050210295CBF5200E17386 /* UIViewController+.swift in Sources */,
 				4A0501F2295CBAE300E17386 /* Constant.swift in Sources */,
 				4A050206295CBE6400E17386 /* Service.swift in Sources */,
 				4A05020C295CBF2900E17386 /* UIFont+.swift in Sources */,
+				4AD78BAD296574F000EEE509 /* TabBarController.swift in Sources */,
 				4A050208295CBE6800E17386 /* DataModel.swift in Sources */,
 				4A0501FE295CBDED00E17386 /* NetworkConstant.swift in Sources */,
+				4AD78BBC2965993F00EEE509 /* ViewModel.swift in Sources */,
 				4A050202295CBE1D00E17386 /* BaseTargetType.swift in Sources */,
 				4AD78B9E2965505100EEE509 /* Image.swift in Sources */,
 				4A4CB70E295CAD7700F170CC /* AppDelegate.swift in Sources */,
+				4AD78BB12965757500EEE509 /* OpenDiaryViewController.swift in Sources */,
 				4A0501FC295CBDD900E17386 /* MoyaLoggingPlugin.swift in Sources */,
 				4A4CB710295CAD7700F170CC /* SceneDelegate.swift in Sources */,
 				4A050200295CBE0A00E17386 /* URLConstant.swift in Sources */,
@@ -655,6 +715,14 @@
 				minimumVersion = 2.0.0;
 			};
 		};
+		4AD78BB4296577A700EEE509 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -702,6 +770,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 4A0501DC295CB78500E17386 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
 			productName = KakaoSDKUser;
+		};
+		4AD78BB5296577A700EEE509 /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4AD78BB4296577A700EEE509 /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
