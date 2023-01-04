@@ -40,6 +40,10 @@
 		4AD78B9E2965505100EEE509 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD78B9D2965505100EEE509 /* Image.swift */; };
 		4AD78BA92965611B00EEE509 /* Pretendard-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4AD78BA72965611B00EEE509 /* Pretendard-Bold.otf */; };
 		4AD78BAA2965611B00EEE509 /* Pretendard-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4AD78BA82965611B00EEE509 /* Pretendard-Regular.otf */; };
+		4AD78BAD296574F000EEE509 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD78BAC296574F000EEE509 /* TabBarController.swift */; };
+		4AD78BAF2965756800EEE509 /* MyDiaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD78BAE2965756800EEE509 /* MyDiaryViewController.swift */; };
+		4AD78BB12965757500EEE509 /* OpenDiaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD78BB02965757500EEE509 /* OpenDiaryViewController.swift */; };
+		4AD78BB32965758100EEE509 /* ScrapStashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD78BB22965758100EEE509 /* ScrapStashViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -69,6 +73,10 @@
 		4AD78B9D2965505100EEE509 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		4AD78BA72965611B00EEE509 /* Pretendard-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Bold.otf"; sourceTree = "<group>"; };
 		4AD78BA82965611B00EEE509 /* Pretendard-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Regular.otf"; sourceTree = "<group>"; };
+		4AD78BAC296574F000EEE509 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		4AD78BAE2965756800EEE509 /* MyDiaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDiaryViewController.swift; sourceTree = "<group>"; };
+		4AD78BB02965757500EEE509 /* OpenDiaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenDiaryViewController.swift; sourceTree = "<group>"; };
+		4AD78BB22965758100EEE509 /* ScrapStashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapStashViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,7 +126,11 @@
 		4A0501E5295CB8C500E17386 /* Screen */ = {
 			isa = PBXGroup;
 			children = (
+				4AD78BAB2965746700EEE509 /* TabBar */,
 				4A4CB711295CAD7700F170CC /* ViewController.swift */,
+				4AD78BAE2965756800EEE509 /* MyDiaryViewController.swift */,
+				4AD78BB02965757500EEE509 /* OpenDiaryViewController.swift */,
+				4AD78BB22965758100EEE509 /* ScrapStashViewController.swift */,
 			);
 			path = Screen;
 			sourceTree = "<group>";
@@ -267,6 +279,14 @@
 			path = "Smeme-iOS";
 			sourceTree = "<group>";
 		};
+		4AD78BAB2965746700EEE509 /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				4AD78BAC296574F000EEE509 /* TabBarController.swift */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -382,6 +402,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4AD78BB32965758100EEE509 /* ScrapStashViewController.swift in Sources */,
+				4AD78BAF2965756800EEE509 /* MyDiaryViewController.swift in Sources */,
 				4A050204295CBE6000E17386 /* API.swift in Sources */,
 				4A05020E295CBF2F00E17386 /* UIColor+.swift in Sources */,
 				4A0501F0295CBADD00E17386 /* DesignSystem.swift in Sources */,
@@ -392,11 +414,13 @@
 				4A0501F2295CBAE300E17386 /* Constant.swift in Sources */,
 				4A050206295CBE6400E17386 /* Service.swift in Sources */,
 				4A05020C295CBF2900E17386 /* UIFont+.swift in Sources */,
+				4AD78BAD296574F000EEE509 /* TabBarController.swift in Sources */,
 				4A050208295CBE6800E17386 /* DataModel.swift in Sources */,
 				4A0501FE295CBDED00E17386 /* NetworkConstant.swift in Sources */,
 				4A050202295CBE1D00E17386 /* BaseTargetType.swift in Sources */,
 				4AD78B9E2965505100EEE509 /* Image.swift in Sources */,
 				4A4CB70E295CAD7700F170CC /* AppDelegate.swift in Sources */,
+				4AD78BB12965757500EEE509 /* OpenDiaryViewController.swift in Sources */,
 				4A0501FC295CBDD900E17386 /* MoyaLoggingPlugin.swift in Sources */,
 				4A4CB710295CAD7700F170CC /* SceneDelegate.swift in Sources */,
 				4A050200295CBE0A00E17386 /* URLConstant.swift in Sources */,
