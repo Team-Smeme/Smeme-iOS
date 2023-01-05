@@ -7,6 +7,8 @@
 
 import UIKit
 
+import SnapKit
+import Then
 import KakaoSDKUser
 
 final class LoginViewController: UIViewController {
@@ -15,10 +17,32 @@ final class LoginViewController: UIViewController {
     
     // MARK: - UI Property
     
-    let button: UIButton = {
+    private let smemeLogo = UIImageView().then {
+        $0.image = Constant.Image.logoSmeme
+    }
+    
+    private let smemeServiceLable = UILabel().then {
+        $0.text = """
+                  일상에 스미는
+                  외국어 일기
+                  """
+        $0.numberOfLines = 0
+        $0.font = .headline2
+        $0.textColor = .black
+        $0.setTextWithLineHeight(lineHeight: 32)
+    }
+    
+    private let smemeNameLabel = UILabel().then {
+        $0.text = "스밈"
+        $0.font = .headline1
+        $0.textColor = .black
+        $0.setTextWithLineHeight(lineHeight: 32)
+    }
+    
+    private lazy var kakaoLoginButton: UIButton = {
         let button = UIButton()
-        button.backgroundColor = .blue
-//        button.addTarget(self, action: #selector(token), for: .touchUpInside)
+        button.setImage(Constant.Image.btnKakaoLogin, for: .normal)
+//        button.addTarget(self, action: #selector(kakaoLoginApi), for: .touchUpInside)
         return button
     }()
     
@@ -27,18 +51,13 @@ final class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .white
-        view.addSubview(button)
-        
-        button.snp.makeConstraints {
-            $0.centerX.centerY.equalToSuperview()
-            $0.width.height.equalTo(100)
-        }
+        setbackgroundColor()
+        setLayout()
     }
     
     // MARK: - @objc
-    
-//    @objc func token() {
+//
+//    @objc func kakaoLoginApi() {
 //        UserApi.shared.loginWithKakaoAccount {(oauthToken, error) in
 //                if let error = error {
 //                    print(error)
@@ -54,5 +73,32 @@ final class LoginViewController: UIViewController {
 //    }
     
     // MARK: - Custom Method
-
+    
+    private func setbackgroundColor() {
+        view.backgroundColor = .background
+    }
+    
+    private func setLayout() {
+        view.addSubviews([smemeLogo, smemeServiceLable, smemeNameLabel, kakaoLoginButton])
+        
+        smemeLogo.snp.makeConstraints {
+            $0.top.equalToSuperview().inset(163)
+            $0.leading.equalToSuperview().inset(39)
+        }
+        
+        smemeServiceLable.snp.makeConstraints {
+            $0.top.equalTo(smemeLogo.snp.bottom).offset(24)
+            $0.leading.equalToSuperview().inset(37)
+        }
+        
+        smemeNameLabel.snp.makeConstraints {
+            $0.leading.equalTo(smemeServiceLable.snp.trailing).inset(16)
+            $0.bottom.equalTo(smemeServiceLable.snp.bottom)
+        }
+        
+        kakaoLoginButton.snp.makeConstraints {
+            $0.bottom.equalToSuperview().inset(158)
+            $0.centerX.equalToSuperview()
+        }
+    }
 }
