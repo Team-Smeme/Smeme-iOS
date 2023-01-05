@@ -41,7 +41,8 @@ final class DiaryForiegnViewController: UIViewController {
         $0.text = "English"
     }
     
-    let languageIcon = Constant.Image.icnArrowUnder
+    let languageIcon = UIImageView(image: Constant.Image.icnArrowUnder)
+    
     
     // MARK: - Life Cycle
     
@@ -79,7 +80,7 @@ extension DiaryForiegnViewController {
         }
         
         languageView.snp.makeConstraints {
-            $0.centerY.equalToSuperview()
+            $0.center.equalToSuperview()
             $0.top.bottom.equalToSuperview()
             $0.leading.equalToSuperview().offset(158)
         }
@@ -92,6 +93,11 @@ extension DiaryForiegnViewController {
         languageLabel.snp.makeConstraints {
             $0.centerY.equalToSuperview()
             $0.leading.equalToSuperview()
+        }
+        
+        languageIcon.snp.makeConstraints {
+            $0.centerY.equalToSuperview()
+            $0.leading.equalTo(languageLabel.snp.trailing).offset(6)
         }
         
         languageButton.snp.makeConstraints {
