@@ -45,6 +45,7 @@
 		4AD78BB32965758100EEE509 /* ScrapStashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD78BB22965758100EEE509 /* ScrapStashViewController.swift */; };
 		4AD78BB6296577A700EEE509 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 4AD78BB5296577A700EEE509 /* Lottie */; };
 		4AD78BBC2965993F00EEE509 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD78BBB2965993F00EEE509 /* ViewModel.swift */; };
+		4AD78BCC2966A93100EEE509 /* UILabel+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD78BCB2966A93100EEE509 /* UILabel+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -78,6 +79,7 @@
 		4AD78BB02965757500EEE509 /* OpenDiaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenDiaryViewController.swift; sourceTree = "<group>"; };
 		4AD78BB22965758100EEE509 /* ScrapStashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapStashViewController.swift; sourceTree = "<group>"; };
 		4AD78BBB2965993F00EEE509 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		4AD78BCB2966A93100EEE509 /* UILabel+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +157,7 @@
 				4A05020B295CBF2900E17386 /* UIFont+.swift */,
 				4A05020D295CBF2F00E17386 /* UIColor+.swift */,
 				4A05020F295CBF5200E17386 /* UIViewController+.swift */,
+				4AD78BCB2966A93100EEE509 /* UILabel+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -449,6 +452,7 @@
 				4A0501F2295CBAE300E17386 /* Constant.swift in Sources */,
 				4A050206295CBE6400E17386 /* Service.swift in Sources */,
 				4A05020C295CBF2900E17386 /* UIFont+.swift in Sources */,
+				4AD78BCC2966A93100EEE509 /* UILabel+.swift in Sources */,
 				4AD78BAD296574F000EEE509 /* TabBarController.swift in Sources */,
 				4A050208295CBE6800E17386 /* DataModel.swift in Sources */,
 				4A0501FE295CBDED00E17386 /* NetworkConstant.swift in Sources */,
