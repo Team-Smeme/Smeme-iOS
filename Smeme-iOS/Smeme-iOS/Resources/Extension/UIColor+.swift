@@ -11,7 +11,9 @@ import UIKit
 
 extension UIColor {
     
-    class var white: UIColor? { return UIColor(named: "white") }
+    class var smemeBlack: UIColor? { return UIColor(named: "black") }
+    
+    class var smemeWhite: UIColor? { return UIColor(named: "white") }
     
     class var gray100: UIColor? { return UIColor(named: "gray100") }
     
