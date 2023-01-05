@@ -143,11 +143,11 @@
 		4A0501E5295CB8C500E17386 /* Screen */ = {
 			isa = PBXGroup;
 			children = (
+				4AD78BAB2965746700EEE509 /* TabBar */,
 				37D9E4942965A2980083A43F /* DiaryForiegn */,
 				4AD78BB9296597A000EEE509 /* ScrapStash */,
 				4AD78BB82965979B00EEE509 /* OpenDiary */,
 				4AD78BB72965979600EEE509 /* MyDiary */,
-				4AD78BAB2965746700EEE509 /* TabBar */,
 			);
 			path = Screen;
 			sourceTree = "<group>";
