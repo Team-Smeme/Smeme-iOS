@@ -5,6 +5,21 @@
 //  Created by 임주민 on 2023/01/04.
 //
 
+/* <적용법>
+ 1. RandomSubjectView UI Property를 선언해주기
+ - x, y값으로 위치 조정해주기
+ private var randomSubjectView = RandomSubjectView(frame: CGRect(x: 0, y: 120, width: UIScreen.main.bounds.width, height: 91))
+ 
+ 2. addSubView 해주기
+ view.addSubview(randomSubjectView)
+ 
+ 3. configure 설정해주기
+ - contentText에 글 내용 넣어주기
+ - 새로고침 버튼 유무에 따라 isHiddenRefreshButton값 넣어주기
+ randomSubjectView = randomSubjectView.then {
+     $0.configure(with: RandomSubjectViewModel(contentText: "오늘부터 딱 일주일 후! 설레는 크리스마스네요. 일주일 전부터 세워보는 나의 크리스마스 계획은?", isHiddenRefreshButton: false))
+ }
+ */
 import UIKit
 
 import SnapKit
@@ -53,7 +68,7 @@ final class RandomSubjectView: UIView {
     }
     
     func configure(with viewModel: RandomSubjectViewModel) {
-        contentLabel.text = viewModel.contentText
+        contentLabel.text = "     " + viewModel.contentText
         refreshButton.isHidden = viewModel.isHiddenRefreshButton
     }
     
