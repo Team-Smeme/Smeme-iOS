@@ -97,7 +97,7 @@ final class LoginViewController: UIViewController {
         }
         
         kakaoLoginButton.snp.makeConstraints {
-            $0.bottom.equalToSuperview().inset(158)
+            $0.bottom.equalToSuperview().inset(constraintByNotch(158, 120))
             $0.centerX.equalToSuperview()
         }
     }
