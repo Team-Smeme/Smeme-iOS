@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 import Then
 
-final class DiaryForiegnViewController: UIViewController {
+final class DiaryForeignViewController: UIViewController {
     
     // MARK: - Property
     
@@ -44,9 +44,28 @@ final class DiaryForiegnViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setLayout()
+        
+        hideKeyboard()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+//        showKeyboard()
+        keyboardAddObserver()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        keyboardRemoveObserver()
     }
     
     // MARK: - @objc
+    
+    @objc func keyboardWillShow(_ notification: Notification) {
+//        handleKeyboardChanged(notification: notification, customView: bottomView, isActive: true)
+    }
+    
+    @objc func keyboardWillHide(_ notification: Notification) {
+//        handleKeyboardChanged(notification: notification, customView: bottomView, isActive: false)
+    }
     
     // MARK: - Custom Method
     private func setLayout() {
@@ -86,5 +105,17 @@ final class DiaryForiegnViewController: UIViewController {
             $0.leading.equalTo(languageLabel.snp.trailing).offset(6)
         }
     }
+    
+    private func keyboardAddObserver() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow),
+                                               name: UIResponder.keyboardWillShowNotification, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide),
+                                               name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    private func keyboardRemoveObserver() {
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
 }
-
