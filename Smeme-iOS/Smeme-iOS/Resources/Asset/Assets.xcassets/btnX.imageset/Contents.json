@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "Property 1=tabBarDiary.png",
+      "filename" : "btnX.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "Property 1=tabBarDiary@2x.png",
+      "filename" : "btnX@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "Property 1=tabBarDiary@3x.png",
+      "filename" : "btnX@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
