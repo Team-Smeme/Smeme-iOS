@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		37D9E4962965A3160083A43F /* DiaryForiegnViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D9E4952965A3160083A43F /* DiaryForiegnViewController.swift */; };
 		4A0501CE295CB51600E17386 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 4A0501CD295CB51600E17386 /* Moya */; };
 		4A0501D1295CB53000E17386 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 4A0501D0295CB53000E17386 /* SnapKit */; };
 		4A0501D4295CB54900E17386 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = 4A0501D3295CB54900E17386 /* Then */; };
@@ -46,9 +47,11 @@
 		4AD78BB6296577A700EEE509 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 4AD78BB5296577A700EEE509 /* Lottie */; };
 		4AD78BBC2965993F00EEE509 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD78BBB2965993F00EEE509 /* ViewModel.swift */; };
 		4AD78BC42966888B00EEE509 /* UIScreen+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD78BC32966888B00EEE509 /* UIScreen+.swift */; };
+		4AD78BCC2966A93100EEE509 /* UILabel+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD78BCB2966A93100EEE509 /* UILabel+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		37D9E4952965A3160083A43F /* DiaryForiegnViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryForiegnViewController.swift; sourceTree = "<group>"; };
 		4A0501EF295CBADD00E17386 /* DesignSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignSystem.swift; sourceTree = "<group>"; };
 		4A0501F1295CBAE300E17386 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		4A0501F3295CBD4100E17386 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
@@ -80,6 +83,7 @@
 		4AD78BB22965758100EEE509 /* ScrapStashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapStashViewController.swift; sourceTree = "<group>"; };
 		4AD78BBB2965993F00EEE509 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		4AD78BC32966888B00EEE509 /* UIScreen+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScreen+.swift"; sourceTree = "<group>"; };
+		4AD78BCB2966A93100EEE509 /* UILabel+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +107,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		37D9E4942965A2980083A43F /* DiaryForiegn */ = {
+			isa = PBXGroup;
+			children = (
+				37D9E4952965A3160083A43F /* DiaryForiegnViewController.swift */,
+			);
+			path = DiaryForiegn;
+			sourceTree = "<group>";
+		};
 		4A0501E3295CB86C00E17386 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
@@ -131,6 +143,7 @@
 		4A0501E5295CB8C500E17386 /* Screen */ = {
 			isa = PBXGroup;
 			children = (
+				37D9E4942965A2980083A43F /* DiaryForiegn */,
 				4AD78BB9296597A000EEE509 /* ScrapStash */,
 				4AD78BB82965979B00EEE509 /* OpenDiary */,
 				4AD78BB72965979600EEE509 /* MyDiary */,
@@ -158,6 +171,7 @@
 				4A05020D295CBF2F00E17386 /* UIColor+.swift */,
 				4A05020F295CBF5200E17386 /* UIViewController+.swift */,
 				4AD78BC32966888B00EEE509 /* UIScreen+.swift */,
+				4AD78BCB2966A93100EEE509 /* UILabel+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -452,7 +466,9 @@
 				4A0501F2295CBAE300E17386 /* Constant.swift in Sources */,
 				4A050206295CBE6400E17386 /* Service.swift in Sources */,
 				4A05020C295CBF2900E17386 /* UIFont+.swift in Sources */,
+				4AD78BCC2966A93100EEE509 /* UILabel+.swift in Sources */,
 				4AD78BAD296574F000EEE509 /* TabBarController.swift in Sources */,
+				37D9E4962965A3160083A43F /* DiaryForiegnViewController.swift in Sources */,
 				4A050208295CBE6800E17386 /* DataModel.swift in Sources */,
 				4A0501FE295CBDED00E17386 /* NetworkConstant.swift in Sources */,
 				4AD78BBC2965993F00EEE509 /* ViewModel.swift in Sources */,
