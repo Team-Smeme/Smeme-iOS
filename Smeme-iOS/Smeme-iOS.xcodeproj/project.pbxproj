@@ -46,6 +46,7 @@
 		4AD78BB6296577A700EEE509 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 4AD78BB5296577A700EEE509 /* Lottie */; };
 		4AD78BBC2965993F00EEE509 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD78BBB2965993F00EEE509 /* ViewModel.swift */; };
 		4AD78BCC2966A93100EEE509 /* UILabel+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD78BCB2966A93100EEE509 /* UILabel+.swift */; };
+		A32753292966FE81004BB8A0 /* ScrapedExpressionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32753282966FE81004BB8A0 /* ScrapedExpressionModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -80,6 +81,7 @@
 		4AD78BB22965758100EEE509 /* ScrapStashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapStashViewController.swift; sourceTree = "<group>"; };
 		4AD78BBB2965993F00EEE509 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		4AD78BCB2966A93100EEE509 /* UILabel+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+.swift"; sourceTree = "<group>"; };
+		A32753282966FE81004BB8A0 /* ScrapedExpressionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapedExpressionModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -225,6 +227,7 @@
 		4A0501F5295CBD6F00E17386 /* DataModel */ = {
 			isa = PBXGroup;
 			children = (
+				A32753282966FE81004BB8A0 /* ScrapedExpressionModel.swift */,
 				4A050207295CBE6800E17386 /* DataModel.swift */,
 			);
 			path = DataModel;
@@ -451,6 +454,7 @@
 				4A050210295CBF5200E17386 /* UIViewController+.swift in Sources */,
 				4A0501F2295CBAE300E17386 /* Constant.swift in Sources */,
 				4A050206295CBE6400E17386 /* Service.swift in Sources */,
+				A32753292966FE81004BB8A0 /* ScrapedExpressionModel.swift in Sources */,
 				4A05020C295CBF2900E17386 /* UIFont+.swift in Sources */,
 				4AD78BCC2966A93100EEE509 /* UILabel+.swift in Sources */,
 				4AD78BAD296574F000EEE509 /* TabBarController.swift in Sources */,

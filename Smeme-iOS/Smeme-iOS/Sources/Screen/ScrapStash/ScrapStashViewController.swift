@@ -36,14 +36,14 @@ final class ScrapStashViewController: UIViewController {
         $0.setImage(Constant.Image.icnProfile, for: .normal)
     }
     
-    private let scrappedStackView = UIStackView().then {
+    private let scrapedStackView = UIStackView().then {
         $0.axis = .vertical
         $0.spacing = 8
         $0.alignment = .center
         $0.distribution = .fill
     }
     
-    private let scrappedLabel = UILabel().then {
+    private let scrapedLabel = UILabel().then {
         $0.text = "스크랩한 표현"
         $0.textColor = .primary
         $0.font = .subtitle2
@@ -57,6 +57,16 @@ final class ScrapStashViewController: UIViewController {
         $0.text = "추천한 일기"
         $0.textColor = .gray400
         $0.font = .subtitle2
+    }
+    
+    private lazy var scrapedListCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .vertical
+        
+        $0.backgroundColor = .clear
+        $0.collectionViewLayout = layout
+        $0.isScrollEnabled = true
+        $0.showsVerticalScrollIndicator = false
     }
     
     // MARK: - Life Cycle
@@ -78,12 +88,12 @@ final class ScrapStashViewController: UIViewController {
     }
     
     private func setLayout() {
-        view.addSubviews([headerView])
+        view.addSubviews([headerView, scrapedListCollectionView])
         
-        headerView.addSubviews([titleLabel, profileButton, scrappedStackView, likedDiaryLabel])
+        headerView.addSubviews([titleLabel, profileButton, scrapedStackView, likedDiaryLabel])
         
-        scrappedStackView.addArrangedSubview(scrappedLabel)
-        scrappedStackView.addArrangedSubview(selectedUnderline)
+        scrapedStackView.addArrangedSubview(scrapedLabel)
+        scrapedStackView.addArrangedSubview(selectedUnderline)
                 
         titleLabel.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide).offset(20)
@@ -101,7 +111,7 @@ final class ScrapStashViewController: UIViewController {
             $0.height.equalTo(convertByHeightRatio(152))
         }
         
-        scrappedStackView.snp.makeConstraints {
+        scrapedStackView.snp.makeConstraints {
             $0.bottom.equalTo(headerView)
             $0.leading.equalToSuperview().offset(30)
         }
@@ -112,8 +122,13 @@ final class ScrapStashViewController: UIViewController {
         }
         
         likedDiaryLabel.snp.makeConstraints {
-            $0.leading.equalTo(scrappedStackView.snp.trailing).offset(20)
-            $0.top.equalTo(scrappedStackView)
+            $0.leading.equalTo(scrapedStackView.snp.trailing).offset(20)
+            $0.top.equalTo(scrapedStackView)
+        }
+        
+        scrapedListCollectionView.snp.makeConstraints {
+            $0.top.equalTo(headerView.snp.bottom)
+            $0.leading.trailing.bottom.equalToSuperview()
         }
     }
 }
