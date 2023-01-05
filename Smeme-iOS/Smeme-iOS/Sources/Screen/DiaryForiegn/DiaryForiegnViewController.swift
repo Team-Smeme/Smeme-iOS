@@ -12,13 +12,13 @@ import SnapKit
 import Then
 
 final class DiaryForiegnViewController: UIViewController {
-
+    
     // MARK: - Property
-
+    
     
     
     // MARK: - UI Property
-
+    
     let naviView = UIView()
     let languageView = UIView()
     
@@ -48,21 +48,15 @@ final class DiaryForiegnViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        layout()
-
-    // MARK: - @objc
-        
-        
-        
-    // MARK: - Custom Method
-
-        
+        setLayout()
     }
-}
-
-//MARK: - Extensions
-extension DiaryForiegnViewController {
-    private func layout() {
+    
+    // MARK: - @objc
+    
+    
+    
+    // MARK: - Custom Method
+    private func setLayout() {
         view.backgroundColor = UIColor.background
         view.addSubviews([naviView])
         
@@ -103,5 +97,7 @@ extension DiaryForiegnViewController {
         languageButton.snp.makeConstraints {
             $0.edges.equalTo(self.languageView)
         }
+        
     }
 }
+
