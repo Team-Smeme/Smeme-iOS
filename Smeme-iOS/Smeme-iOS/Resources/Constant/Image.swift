@@ -42,9 +42,24 @@ extension Constant {
         static let icnPageRight = UIImage(named: "icnPageRight")!
         static let icnPageRightDisabled = UIImage(named: "icnPageRightDisabled")!
         
+        static let btnPlus = UIImage(named: "btnPlus")!
+        static let btnX = UIImage(named: "btnX")!
+        
         // MARK: - DiaryPost
         
         static let icnRefresh = UIImage(named: "icnRefresh")!
+        
+        static let btnPublicCheckBox = UIImage(named: "btnPublicCheckBox")!
+        static let btnPublicCheckBoxDisabled = UIImage(named: "btnPublicCheckBoxDisabled")!
+        static let btnPublicCheckBoxSelected = UIImage(named: "btnPublicCheckBoxSelected")!
+        static let btnPublicCheckBoxSelectedDisabled = UIImage(named: "btnPublicCheckBoxSelectedDisabled")!
+        static let btnRandomTopicCheckBox = UIImage(named: "btnRandomTopicCheckBox")!
+        static let btnRandomTopicCheckBoxDisabled = UIImage(named: "btnRandomTopicCheckBoxDisabled")!
+        static let btnRandomTopicCheckBoxSelected = UIImage(named: "btnRandomTopicCheckBoxSelected")!
+        static let btnRandomTopicCheckBoxSelectedDisable = UIImage(named: "btnRandomTopicCheckBoxSelectedDisable")!
+        
+        static let toggleTranslatteOff = UIImage(named: "toggleTranslatteOff")!
+        static let toggleTranslatteOn = UIImage(named: "toggleTranslatteOn")!
         
         // MARK: - BottomSheet
         
