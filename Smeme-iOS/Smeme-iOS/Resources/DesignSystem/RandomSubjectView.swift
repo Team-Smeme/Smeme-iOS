@@ -31,7 +31,7 @@ final class RandomSubjectView: UIView {
     private let contentLabel = UILabel().then {
         $0.textAlignment = .left
         $0.font = .body4
-        $0.textColor = .black
+        $0.textColor = .smemeBlack
         $0.numberOfLines = 0
         $0.lineBreakMode = .byWordWrapping
     }
