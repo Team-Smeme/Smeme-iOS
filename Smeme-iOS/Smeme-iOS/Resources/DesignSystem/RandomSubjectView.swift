@@ -12,6 +12,7 @@ import Then
 
 struct RandomSubjectViewModel {
     var contentText: String
+    var isHiddenRefreshButton: Bool
 }
 
 final class RandomSubjectView: UIView {
@@ -53,7 +54,7 @@ final class RandomSubjectView: UIView {
     
     func configure(with viewModel: RandomSubjectViewModel) {
         contentLabel.text = viewModel.contentText
-        
+        refreshButton.isHidden = viewModel.isHiddenRefreshButton
     }
     
     override func layoutSubviews() {
