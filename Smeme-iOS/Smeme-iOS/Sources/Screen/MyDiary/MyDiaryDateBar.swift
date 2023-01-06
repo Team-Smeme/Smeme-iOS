@@ -1,5 +1,5 @@
 //
-//  MyDiaryDateView.swift
+//  MyDiaryDateBar.swift
 //  Smeme-iOS
 //
 //  Created by 임주민 on 2023/01/07.
@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 import Then
 
-class UpperBar: UIView {
+class MyDiaryDateBar: UIView {
     
     // MARK: - Property
     var increaseDate: (() -> Void)?
@@ -22,7 +22,7 @@ class UpperBar: UIView {
     }
     
     override var intrinsicContentSize: CGSize {
-        return CGSize(width: UIScreen.main.bounds.width, height: 175)
+        return CGSize(width: UIScreen.main.bounds.width, height: 65)
     }
     
     // MARK: - UI Property
@@ -40,18 +40,18 @@ class UpperBar: UIView {
     }
     
     private lazy var afterButton = UIButton().then {
-        $0.setImage(Constant.Image.icnPageRight, for: .normal)
+        $0.setImage(Constant.Image.icnPageRightDisabled, for: .normal)
         $0.addTarget(self, action: #selector(touchRightButton(_:)), for: .touchUpInside)
     }
     
     // MARK: - @objc
     
     @objc func touchLeftButton(_ sender: UIButton) {
-        print("touchBeforeButton")
+        increaseDate?()
     }
     
     @objc func touchRightButton(_ sender: UIButton) {
-        print("touchAfterButton")
+        decreaseDate?()
     }
     
     // MARK: - Custom Method
@@ -75,17 +75,19 @@ class UpperBar: UIView {
         }
         
         beforeButton.snp.makeConstraints {
-            $0.centerY.equalTo(self.dateLabel)
-            $0.leading.equalToSuperview().inset(30)
-            $0.height.equalTo(24)
-            $0.width.equalTo(24)
+            $0.leading.equalToSuperview().inset(20)
         }
         
         afterButton.snp.makeConstraints {
-            $0.centerY.equalTo(self.dateLabel)
-            $0.trailing.equalToSuperview().inset(30)
-            $0.height.equalTo(24)
-            $0.width.equalTo(24)
+            $0.trailing.equalToSuperview().inset(20)
+        }
+        
+        [beforeButton, afterButton].forEach {
+            $0.snp.makeConstraints {
+                $0.centerY.equalTo(self.dateLabel)
+                $0.height.equalTo(45)
+                $0.width.equalTo(45)
+            }
         }
     }
     

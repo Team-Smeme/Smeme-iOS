@@ -52,7 +52,7 @@
 		4AD78BCC2966A93100EEE509 /* UILabel+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD78BCB2966A93100EEE509 /* UILabel+.swift */; };
 		6F33F1F82965C8CA002A2FBA /* RandomSubjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F33F1F72965C8C9002A2FBA /* RandomSubjectView.swift */; };
 		6F33F1FA2968162E002A2FBA /* MyDiaryNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F33F1F92968162E002A2FBA /* MyDiaryNavigationBar.swift */; };
-		6FBAA7CD2968754B00A4190D /* MyDiaryDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FBAA7CC2968754B00A4190D /* MyDiaryDateView.swift */; };
+		6FBAA7CD2968754B00A4190D /* MyDiaryDateBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FBAA7CC2968754B00A4190D /* MyDiaryDateBar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -93,7 +93,7 @@
 		4AD78BCB2966A93100EEE509 /* UILabel+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+.swift"; sourceTree = "<group>"; };
 		6F33F1F72965C8C9002A2FBA /* RandomSubjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomSubjectView.swift; sourceTree = "<group>"; };
 		6F33F1F92968162E002A2FBA /* MyDiaryNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDiaryNavigationBar.swift; sourceTree = "<group>"; };
-		6FBAA7CC2968754B00A4190D /* MyDiaryDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDiaryDateView.swift; sourceTree = "<group>"; };
+		6FBAA7CC2968754B00A4190D /* MyDiaryDateBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDiaryDateBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -332,7 +332,7 @@
 			children = (
 				4AD78BAE2965756800EEE509 /* MyDiaryViewController.swift */,
 				6F33F1F92968162E002A2FBA /* MyDiaryNavigationBar.swift */,
-				6FBAA7CC2968754B00A4190D /* MyDiaryDateView.swift */,
+				6FBAA7CC2968754B00A4190D /* MyDiaryDateBar.swift */,
 			);
 			path = MyDiary;
 			sourceTree = "<group>";
@@ -504,7 +504,7 @@
 				4A4CB70E295CAD7700F170CC /* AppDelegate.swift in Sources */,
 				4AD78BB12965757500EEE509 /* OpenDiaryViewController.swift in Sources */,
 				4A0501FC295CBDD900E17386 /* MoyaLoggingPlugin.swift in Sources */,
-				6FBAA7CD2968754B00A4190D /* MyDiaryDateView.swift in Sources */,
+				6FBAA7CD2968754B00A4190D /* MyDiaryDateBar.swift in Sources */,
 				4A4CB710295CAD7700F170CC /* SceneDelegate.swift in Sources */,
 				4A39E74C29670CAB00C48097 /* LoginViewController.swift in Sources */,
 				4A050200295CBE0A00E17386 /* URLConstant.swift in Sources */,
