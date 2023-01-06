@@ -14,7 +14,20 @@ final class OpenDiaryViewController: UIViewController {
     
     // MARK: - Property
     
+    let categoryList = ["전체", "일상", "기념일", "취향", "자기계발"]
+    
     // MARK: - UI Property
+    
+    private lazy var categoryCollectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.showsHorizontalScrollIndicator = false
+        collectionView.isScrollEnabled = false
+        collectionView.backgroundColor = .clear
+        
+        return collectionView
+    }()
     
     private let headerView = UIView().then {
         $0.backgroundColor = .white
@@ -56,7 +69,7 @@ final class OpenDiaryViewController: UIViewController {
     
     private func setLayout() {
         view.addSubviews([headerView])
-        headerView.addSubview(containerView)
+        headerView.addSubviews([categoryCollectionView, containerView])
         containerView.addSubviews([titleLable, myProfileButon])
         
         headerView.snp.makeConstraints {
@@ -79,6 +92,11 @@ final class OpenDiaryViewController: UIViewController {
             $0.centerY.equalToSuperview()
             $0.trailing.equalToSuperview().inset(18)
         }
+        
+        categoryCollectionView.snp.makeConstraints {
+            $0.top.equalTo(containerView.snp.bottom)
+            $0.leading.trailing.equalToSuperview().inset(30)
+            $0.bottom.equalToSuperview().inset(16)
+        }
     }
-
 }
