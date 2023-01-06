@@ -5,35 +5,6 @@
 //  Created by 임주민 on 2023/01/04.
 //
 
-/* <적용법>
- 1. RandomSubjectView UI Property를 선언해주기
- private var randomSubjectView =  RandomSubjectView()
- 
- 2. addSubView 해주기
- view.addSubview(randomSubjectView)
- 
- 3. 레이아웃 잡아주기 (하단 예시 참고) width와 height 안잡아줘도 되용
- randomSubjectView.snp.makeConstraints {
-     $0.top.equalToSuperview().inset(163)
-     $0.leading.equalToSuperView()
- }
- 
- 4. configure 설정해주기
- - 1) contentText에 글 내용 넣어주기
- - 2) 새로고침 버튼 유무에 따라 isHiddenRefreshButton값 넣어주기
- randomSubjectView = randomSubjectView.then {
-     $0.configure(with: RandomSubjectViewModel(contentText: "오늘부터 딱 일주일 후! 설레는 크리스마스네요. 일주일 전부터 세워보는 나의 크리스마스 계획은?", isHiddenRefreshButton: false))
- }
- 
- 5. (새로고침 버튼 있는 경우에만) 버튼 액션 추가
- randomSubjectView = randomSubjectView.then {
-    $0.refreshSubjectContent = {
-        // 로직 작성
-        print("새로고침")
-    }
- }
- */
-
 import UIKit
 
 import SnapKit
@@ -44,6 +15,45 @@ struct RandomSubjectViewModel {
     var isHiddenRefreshButton: Bool
 }
 
+/**
+ 랜덤주제뷰를 보여주는 custom UIView
+ 사용법:
+1.RandomSubjectView UI Property를 선언해주기
+    ~~~
+    private var randomSubjectView =  RandomSubjectView()
+    ~~~
+
+2.addSubView 해주기
+    ~~~
+    view.addSubview(randomSubjectView)
+    ~~~
+
+3.레이아웃 잡아주기 (top과 leading만 지정해줘도 됨)
+    ~~~
+    randomSubjectView.snp.makeConstraints {
+        $0.top.equalToSuperview().inset(163)
+        $0.leading.equalToSuperView()
+    }
+    ~~~
+
+4.configure 설정해주기
+ - contentText에 글 내용 넣어주기
+ - 새로고침 버튼 유무에 따라 isHiddenRefreshButton값 넣어주기
+~~~
+randomSubjectView = randomSubjectView.then {
+    $0.configure(with: RandomSubjectViewModel(contentText: "오늘부터 딱 일주일 후! 설레는 크리스마스네요. 일주일 전부터 세워보는 나의 크리스마스 계획은?", isHiddenRefreshButton: false))
+}
+~~~
+
+5.(새로고침 버튼 있는 경우에만) 버튼 액션 추가
+    ~~~
+    randomSubjectView = randomSubjectView.then {
+        $0.refreshSubjectContent = {
+        // 로직 작성
+        }
+    }
+    ~~~
+ */
 final class RandomSubjectView: UIView {
     
     // MARK: - Property
@@ -89,22 +99,13 @@ final class RandomSubjectView: UIView {
     func configure(with viewModel: RandomSubjectViewModel) {
         contentLabel.text = "     " + viewModel.contentText
         refreshButton.isHidden = viewModel.isHiddenRefreshButton
-    }
-    
-    func calculateContentHeight(setLabel: UILabel) -> CGFloat {
-        let widthSizeminus: CGFloat = UIScreen.main.bounds.width - 315
-        let CGSizeMakeConstant = UIScreen.main.bounds.width - widthSizeminus
-        let maxLabelSize: CGSize = CGSizeMake(CGSizeMakeConstant, CGFloat(9999))
-        let options: NSStringDrawingOptions = [.usesLineFragmentOrigin, .usesFontLeading]
-        let contentNSString = setLabel.text! as NSString
-        let expectedLabelSize = contentNSString.boundingRect(with: maxLabelSize, options: options, attributes: [NSAttributedString.Key.font: UIFont.body4], context: nil)
-        
-        return expectedLabelSize.size.height
+        contentLabel.setTextWithLineHeight(lineHeight: 21)
     }
     
     override var intrinsicContentSize: CGSize {
         let heightPadding: CGFloat = refreshButton.isHidden ? 28 : 49
-        return CGSize(width: UIScreen.main.bounds.width, height: calculateContentHeight(setLabel: contentLabel) + heightPadding)
+        
+        return CGSize(width: UIScreen.main.bounds.width, height: contentLabel.frame.height + heightPadding)
     }
     
     override func layoutSubviews() {
@@ -117,11 +118,13 @@ final class RandomSubjectView: UIView {
         contentLabel.frame = CGRect(x: (UIScreen.main.bounds.width - 315) / 2,
                                     y: 14,
                                     width: 315,
-                                    height: calculateContentHeight(setLabel: contentLabel))
+                                    height: contentLabel.calculateContentHeight(lineHeight: 21))
         refreshButton.frame = CGRect(x: (UIScreen.main.bounds.width - 315) / 2 + 315 - 22,
                                      y: 14 + contentLabel.frame.size.height + 3,
                                      width: 22,
                                      height: 22)
+        
+        invalidateIntrinsicContentSize()
     }
     
     // MARK: - Init
@@ -130,7 +133,6 @@ final class RandomSubjectView: UIView {
         super.init(frame: frame)
         
         setAttribute()
-        invalidateIntrinsicContentSize()
     }
     
     required init?(coder: NSCoder) {
