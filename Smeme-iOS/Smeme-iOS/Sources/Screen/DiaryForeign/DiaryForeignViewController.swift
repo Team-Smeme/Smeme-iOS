@@ -18,6 +18,7 @@ final class DiaryForeignViewController: UIViewController {
     
     private let naviView = UIView()
     private let languageView = UIView()
+    
     private let bottomView = UIView().then {
         $0.backgroundColor = .white
         $0.addShadow(shadowColor: .black, shadowOpacity: 0.04, shadowRadius: 16, offset: CGSize(width: 0, height: -4.0))
@@ -74,10 +75,10 @@ final class DiaryForeignViewController: UIViewController {
     }
     
     // MARK: - Custom Method
+    
     private func setLayout() {
         view.backgroundColor = .white
         view.addSubviews([naviView, bottomView])
-//        view.addSubview(naviView)
         
         naviView.addSubviews([cancelButton, languageView, completeButton])
         languageView.addSubviews([languageLabel, languageIcon])
