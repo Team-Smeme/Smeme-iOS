@@ -18,9 +18,7 @@ final class ScrapStashViewController: UIViewController {
         
     private let headerView = UIView().then {
         $0.layer.cornerRadius = 30
-        $0.layer.masksToBounds = false
         $0.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
-        $0.layer.shadowColor = UIColor.black.cgColor
         $0.layer.shadowRadius = 18
         $0.layer.shadowOpacity = 0.04
         $0.layer.shadowOffset = CGSize(width: 0, height: 2)
