@@ -128,7 +128,11 @@ extension OpenDiaryViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: OpenDiaryCollectionViewCell.identifier, for: indexPath) as? OpenDiaryCollectionViewCell else { return UICollectionViewCell() }
         cell.setData(categoryList[indexPath.row])
-        cell.backgroundColor = .gray100
+        
+        if indexPath.item == 0 {
+            cell.isSelected = true
+            collectionView.selectItem(at: indexPath, animated: false, scrollPosition: .init())
+        }
         return cell
     }
 }

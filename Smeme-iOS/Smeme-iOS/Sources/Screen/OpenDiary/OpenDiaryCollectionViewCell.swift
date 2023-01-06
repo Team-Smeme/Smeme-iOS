@@ -16,10 +16,21 @@ final class OpenDiaryCollectionViewCell: UICollectionViewCell {
     
     static let identifier = "OpenDiaryCollectionViewCell"
     
+    override var isSelected: Bool {
+        didSet {
+            if isSelected {
+                backgroundColor = .primary
+                categoryLabel.textColor = .smemeWhite
+            } else {
+                backgroundColor = .gray100
+                categoryLabel.textColor = .gray700
+            }
+        }
+    }
+    
     // MARK: - UI Property
     
     let categoryLabel = UILabel().then {
-        $0.font = .body1
         $0.textColor = .gray700
     }
     
@@ -29,6 +40,7 @@ final class OpenDiaryCollectionViewCell: UICollectionViewCell {
         super.init(frame: frame)
         
         setLayout()
+        setBackgroundColor()
     }
     
     required init?(coder: NSCoder) {
@@ -43,6 +55,10 @@ final class OpenDiaryCollectionViewCell: UICollectionViewCell {
         categoryLabel.snp.makeConstraints {
             $0.center.equalToSuperview()
         }
+    }
+    
+    private func setBackgroundColor() {
+        backgroundColor = .gray100
     }
     
     func setData(_ model: String) {
