@@ -12,6 +12,8 @@ import Then
 
 final class OpenDiaryCollectionViewCell: UICollectionViewCell {
     
+    static let identifier = "OpenDiaryCollectionViewCell"
+    
     // MARK: - UI Property
     
     private let categoryLabel = UILabel()
