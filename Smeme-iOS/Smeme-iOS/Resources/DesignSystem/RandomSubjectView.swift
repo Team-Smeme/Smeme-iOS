@@ -76,7 +76,7 @@ final class RandomSubjectView: UIView {
         $0.lineBreakMode = .byCharWrapping
     }
     
-    private let refreshButton = UIButton().then {
+    private lazy var refreshButton = UIButton().then {
         $0.setImage(Constant.Image.icnRefresh, for: .normal)
         $0.addTarget(self, action: #selector(touchRefreshButton(_:)), for: .touchUpInside)
     }
