@@ -12,6 +12,7 @@ extension UIView {
         views.forEach { self.addSubview($0) }
     }
     
+    /// 그림자 추가해 주는 메서드
     func addShadow(shadowColor: UIColor, shadowOpacity: Float, shadowRadius: Float, offset: CGSize) {
         self.layer.shadowColor = shadowColor.cgColor
         self.layer.shadowOffset = offset
