@@ -17,10 +17,16 @@ final class OpenDiaryViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setBackgroundColor()
     }
     
     // MARK: - @objc
     
     // MARK: - Custom Method
+    
+    private func setBackgroundColor() {
+        view.backgroundColor = .background
+    }
 
 }
