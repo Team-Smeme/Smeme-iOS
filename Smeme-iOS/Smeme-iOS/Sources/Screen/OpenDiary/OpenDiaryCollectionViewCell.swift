@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 import Then
 
-class OpenDiaryCollectionViewCell: UICollectionViewCell {
+final class OpenDiaryCollectionViewCell: UICollectionViewCell {
     
     // MARK: - UI Property
     
