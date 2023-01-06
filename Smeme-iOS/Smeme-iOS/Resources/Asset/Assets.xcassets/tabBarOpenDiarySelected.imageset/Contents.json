@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "tabBarExploreSelected.png",
+      "filename" : "Property 1=tabBarExploreSelected.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "tabBarExploreSelected@2x.png",
+      "filename" : "Property 1=tabBarExploreSelected@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "tabBarExploreSelected@3x.png",
+      "filename" : "Property 1=tabBarExploreSelected@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
