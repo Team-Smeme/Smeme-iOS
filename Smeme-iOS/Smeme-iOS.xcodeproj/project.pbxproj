@@ -39,6 +39,7 @@
 		4A4CB71A295CAD7800F170CC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4A4CB718295CAD7800F170CC /* LaunchScreen.storyboard */; };
 		4A795D25296151EC007043C0 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 4A795D24296151EC007043C0 /* .swiftlint.yml */; };
 		4A92F62729672DD300D34B55 /* UITextView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A92F62629672DD300D34B55 /* UITextView+.swift */; };
+		4AD357B129681D2D002D25E4 /* OpenDiaryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD357B029681D2D002D25E4 /* OpenDiaryCollectionViewCell.swift */; };
 		4AD78B9E2965505100EEE509 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD78B9D2965505100EEE509 /* Image.swift */; };
 		4AD78BA92965611B00EEE509 /* Pretendard-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4AD78BA72965611B00EEE509 /* Pretendard-Bold.otf */; };
 		4AD78BAA2965611B00EEE509 /* Pretendard-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4AD78BA82965611B00EEE509 /* Pretendard-Regular.otf */; };
@@ -78,6 +79,7 @@
 		4A4CB71B295CAD7800F170CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4A795D24296151EC007043C0 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		4A92F62629672DD300D34B55 /* UITextView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+.swift"; sourceTree = "<group>"; };
+		4AD357B029681D2D002D25E4 /* OpenDiaryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenDiaryCollectionViewCell.swift; sourceTree = "<group>"; };
 		4AD78B9D2965505100EEE509 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		4AD78BA72965611B00EEE509 /* Pretendard-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Bold.otf"; sourceTree = "<group>"; };
 		4AD78BA82965611B00EEE509 /* Pretendard-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Regular.otf"; sourceTree = "<group>"; };
@@ -332,6 +334,7 @@
 			isa = PBXGroup;
 			children = (
 				4AD78BB02965757500EEE509 /* OpenDiaryViewController.swift */,
+				4AD357B029681D2D002D25E4 /* OpenDiaryCollectionViewCell.swift */,
 			);
 			path = OpenDiary;
 			sourceTree = "<group>";
@@ -479,6 +482,7 @@
 				4A050210295CBF5200E17386 /* UIViewController+.swift in Sources */,
 				4A0501F2295CBAE300E17386 /* Constant.swift in Sources */,
 				4A050206295CBE6400E17386 /* Service.swift in Sources */,
+				4AD357B129681D2D002D25E4 /* OpenDiaryCollectionViewCell.swift in Sources */,
 				4A05020C295CBF2900E17386 /* UIFont+.swift in Sources */,
 				4AD78BCC2966A93100EEE509 /* UILabel+.swift in Sources */,
 				4AD78BAD296574F000EEE509 /* TabBarController.swift in Sources */,
