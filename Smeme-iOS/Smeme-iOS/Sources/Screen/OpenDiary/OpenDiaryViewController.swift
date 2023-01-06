@@ -7,11 +7,19 @@
 
 import UIKit
 
+import SnapKit
+import Then
+
 final class OpenDiaryViewController: UIViewController {
     
     // MARK: - Property
     
     // MARK: - UI Property
+    
+    private let headerView = UIView().then {
+        $0.backgroundColor = .white
+        $0.roundCorners(cornerRadius: 30, maskedCorners: [.layerMinXMaxYCorner, .layerMaxXMaxYCorner])
+    }
     
     // MARK: - Life Cycle
     
@@ -19,6 +27,7 @@ final class OpenDiaryViewController: UIViewController {
         super.viewDidLoad()
         
         setBackgroundColor()
+        setLayout()
     }
     
     // MARK: - @objc
@@ -27,6 +36,16 @@ final class OpenDiaryViewController: UIViewController {
     
     private func setBackgroundColor() {
         view.backgroundColor = .background
+    }
+    
+    private func setLayout() {
+        view.addSubview(headerView)
+        
+        headerView.snp.makeConstraints {
+            $0.top.leading.trailing.equalToSuperview()
+            $0.height.equalTo(198)
+        }
+        
     }
 
 }
