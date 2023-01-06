@@ -33,7 +33,7 @@ extension TabBarController {
     }
     
     private func setTabBar() {
-        let myDiary = makeTabBar(viewController: MyDiaryViewController(),
+        let myDiary = makeTabBar(viewController: MyDiaryFloatingButtonViewController(),
                                    title: "",
                                  tabBarImg: Constant.Image.tabBarMyDiary,
                                    tabBarSelectedImg: Constant.Image.tabBarMyDiarySelected,
