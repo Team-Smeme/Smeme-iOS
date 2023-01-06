@@ -47,11 +47,11 @@ class MyDiaryDateBar: UIView {
     // MARK: - @objc
     
     @objc func touchLeftButton(_ sender: UIButton) {
-        increaseDate?()
+        decreaseDate?()
     }
     
     @objc func touchRightButton(_ sender: UIButton) {
-        decreaseDate?()
+        increaseDate?()
     }
     
     // MARK: - Custom Method
@@ -100,7 +100,6 @@ class MyDiaryDateBar: UIView {
         setAttribute()
         setLayout()
         invalidateIntrinsicContentSize()
-
     }
     
     required init?(coder: NSCoder) {
