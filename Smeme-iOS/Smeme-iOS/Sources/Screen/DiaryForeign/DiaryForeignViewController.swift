@@ -114,18 +114,17 @@ final class DiaryForeignViewController: UIViewController {
         }
         
         bottomView.snp.makeConstraints {
-            $0.bottom.equalTo(view.safeAreaLayoutGuide)
-            $0.leading.trailing.equalToSuperview()
-            $0.height.equalTo(convertByHeightRatio(53))
+            $0.bottom.leading.trailing.equalToSuperview()
+            $0.height.equalTo(convertByHeightRatio(53 + 34))
         }
         
         publicButton.snp.makeConstraints {
-            $0.centerY.equalToSuperview()
+            $0.top.equalToSuperview().offset(18)
             $0.trailing.equalToSuperview().offset(-30)
         }
 
         randomTopicButton.snp.makeConstraints {
-            $0.centerY.equalToSuperview()
+            $0.centerY.equalTo(publicButton)
             $0.trailing.equalTo(publicButton.snp.leading).offset(-16)
         }
     }
