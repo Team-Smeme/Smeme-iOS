@@ -15,6 +15,7 @@ final class ScrapStashViewController: UIViewController {
     // MARK: - Property
     
     final let scrapedInset: UIEdgeInsets = UIEdgeInsets(top: 18, left: 31, bottom: 18, right: 30)
+    
     final let scrapedLineSpacing: CGFloat = 12
     
     // MARK: - UI Property
@@ -29,7 +30,7 @@ final class ScrapStashViewController: UIViewController {
     
     private let titleLabel = UILabel().then {
         $0.text = "보관함"
-        $0.textColor = .black
+        $0.textColor = .smemeBlack
         $0.font = .headline3
     }
     
@@ -68,6 +69,8 @@ final class ScrapStashViewController: UIViewController {
         $0.collectionViewLayout = layout
         $0.isScrollEnabled = true
         $0.showsVerticalScrollIndicator = false
+        $0.delegate = self
+        $0.dataSource = self
     }
     
     // MARK: - Life Cycle
@@ -77,6 +80,7 @@ final class ScrapStashViewController: UIViewController {
         
         setBackgroundColor()
         setLayout()
+        register()
     }
     
     // MARK: - @objc
@@ -129,13 +133,60 @@ final class ScrapStashViewController: UIViewController {
         
         scrapedListCollectionView.snp.makeConstraints {
             $0.top.equalTo(headerView.snp.bottom)
-            $0.leading.trailing.equalToSuperview()
+            $0.leading.trailing.bottom.equalToSuperview()
         }
     }
     
-    var scrapedExpression: [ScrapedExpressionModel] = [
+    var scrapedExpressionList: [ScrapedExpressionModel] = [
         ScrapedExpressionModel(scrapedExpression: "component"),
         ScrapedExpressionModel(scrapedExpression: "The Merge Wireframing Kit is another simple solution"),
         ScrapedExpressionModel(scrapedExpression: "The Merge Wireframing Kit is another simple solutionThe Merge Wireframing Kit is another simple solution")
     ]
+    
+    private func register() {
+        scrapedListCollectionView.register(ScrapedListCollectionViewCell.self, forCellWithReuseIdentifier: ScrapedListCollectionViewCell.identifier)
+    }
+}
+
+// MARK: - UICollectionViewDelegateFlowLayout
+
+extension ScrapStashViewController: UICollectionViewDelegateFlowLayout {
+   
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+//        let cellSize = CGSize(width: scrapedExpressionList[indexPath.item], height: <#T##Double#>)
+        let width = convertByWidthRatio(314)
+        let height: CGFloat = 111
+        return CGSize(width: width, height: height)
+    }
+    
+//    private func calculateCellHeight() -> CGFloat {
+//        let height = scrapedExpLabel.calculateContentHeight(lineHeight: 21)
+//        print("height? \(height)")
+//        return scrapedExpLabel.calculateContentHeight(lineHeight: 21)
+//    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return scrapedInset
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return scrapedLineSpacing
+    }
+}
+
+// MARK: - UICollectionViewDataSource
+
+extension ScrapStashViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return scrapedExpressionList.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let listCell = collectionView.dequeueReusableCell(withReuseIdentifier: ScrapedListCollectionViewCell.identifier, for: indexPath)
+                as? ScrapedListCollectionViewCell else {return UICollectionViewCell() }
+        listCell.dataBind(model: scrapedExpressionList[indexPath.item])
+        return listCell
+    }
+    
 }
