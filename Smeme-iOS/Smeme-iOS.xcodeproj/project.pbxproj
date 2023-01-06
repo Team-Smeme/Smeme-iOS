@@ -48,6 +48,7 @@
 		4AD78BB32965758100EEE509 /* ScrapStashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD78BB22965758100EEE509 /* ScrapStashViewController.swift */; };
 		4AD78BB6296577A700EEE509 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 4AD78BB5296577A700EEE509 /* Lottie */; };
 		4AD78BBC2965993F00EEE509 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD78BBB2965993F00EEE509 /* ViewModel.swift */; };
+		6F33F1F82965C8CA002A2FBA /* RandomSubjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F33F1F72965C8C9002A2FBA /* RandomSubjectView.swift */; };
 		4AD78BC42966888B00EEE509 /* UIScreen+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD78BC32966888B00EEE509 /* UIScreen+.swift */; };
 		4AD78BCC2966A93100EEE509 /* UILabel+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD78BCB2966A93100EEE509 /* UILabel+.swift */; };
 /* End PBXBuildFile section */
@@ -86,6 +87,7 @@
 		4AD78BB02965757500EEE509 /* OpenDiaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenDiaryViewController.swift; sourceTree = "<group>"; };
 		4AD78BB22965758100EEE509 /* ScrapStashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapStashViewController.swift; sourceTree = "<group>"; };
 		4AD78BBB2965993F00EEE509 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		6F33F1F72965C8C9002A2FBA /* RandomSubjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomSubjectView.swift; sourceTree = "<group>"; };
 		4AD78BC32966888B00EEE509 /* UIScreen+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScreen+.swift"; sourceTree = "<group>"; };
 		4AD78BCB2966A93100EEE509 /* UILabel+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -186,6 +188,7 @@
 			isa = PBXGroup;
 			children = (
 				4A0501EF295CBADD00E17386 /* DesignSystem.swift */,
+				6F33F1F72965C8C9002A2FBA /* RandomSubjectView.swift */,
 			);
 			path = DesignSystem;
 			sourceTree = "<group>";
@@ -476,6 +479,7 @@
 				4A0501F0295CBADD00E17386 /* DesignSystem.swift in Sources */,
 				4A05020A295CBEE100E17386 /* UIView+.swift in Sources */,
 				4A0501FA295CBDB700E17386 /* GeneralResponse.swift in Sources */,
+				6F33F1F82965C8CA002A2FBA /* RandomSubjectView.swift in Sources */,
 				4A050210295CBF5200E17386 /* UIViewController+.swift in Sources */,
 				4A0501F2295CBAE300E17386 /* Constant.swift in Sources */,
 				4A050206295CBE6400E17386 /* Service.swift in Sources */,
