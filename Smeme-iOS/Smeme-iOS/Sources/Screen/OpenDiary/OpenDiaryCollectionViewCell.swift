@@ -12,6 +12,8 @@ import Then
 
 final class OpenDiaryCollectionViewCell: UICollectionViewCell {
     
+    // MARK: - Property
+    
     static let identifier = "OpenDiaryCollectionViewCell"
     
     // MARK: - UI Property
