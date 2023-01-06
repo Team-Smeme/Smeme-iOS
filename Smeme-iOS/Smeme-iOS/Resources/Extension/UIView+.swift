@@ -22,8 +22,13 @@ extension UIView {
         return UIScreen.main.hasNotch ? 44 : 10
     }
     
-    func roundCorners(cornerRadius: CGFloat, maskedCorners: CACornerMask) {
+    func makeSelectedRoundCorners(cornerRadius: CGFloat, maskedCorners: CACornerMask) {
         layer.cornerRadius = cornerRadius
         layer.maskedCorners = CACornerMask(arrayLiteral: maskedCorners)
+    }
+    
+    func makeRoundCorner(cornerRadius: CGFloat = 4) {
+        layer.cornerRadius = cornerRadius
+        clipsToBounds = true
     }
 }

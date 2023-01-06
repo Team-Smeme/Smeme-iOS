@@ -41,6 +41,7 @@ final class OpenDiaryCollectionViewCell: UICollectionViewCell {
         
         setLayout()
         setBackgroundColor()
+        makeRoundCorner(cornerRadius: 10)
     }
     
     required init?(coder: NSCoder) {

@@ -31,7 +31,7 @@ final class OpenDiaryViewController: UIViewController {
     
     private let headerView = UIView().then {
         $0.backgroundColor = .white
-        $0.roundCorners(cornerRadius: 30, maskedCorners: [.layerMinXMaxYCorner, .layerMaxXMaxYCorner])
+        $0.makeSelectedRoundCorners(cornerRadius: 30, maskedCorners: [.layerMinXMaxYCorner, .layerMaxXMaxYCorner])
     }
     
     private let containerView = UIView().then {
