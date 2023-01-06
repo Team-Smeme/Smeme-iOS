@@ -77,6 +77,7 @@ final class DiaryForeignViewController: UIViewController {
     private func setLayout() {
         view.backgroundColor = .white
         view.addSubviews([naviView, bottomView])
+//        view.addSubview(naviView)
         
         naviView.addSubviews([cancelButton, languageView, completeButton])
         languageView.addSubviews([languageLabel, languageIcon])
@@ -89,11 +90,12 @@ final class DiaryForeignViewController: UIViewController {
         }
         
         cancelButton.snp.makeConstraints {
-            $0.centerY.leading.equalToSuperview().offset(30)
+            $0.centerY.equalToSuperview()
+            $0.leading.equalToSuperview().offset(30)
         }
         
         languageView.snp.makeConstraints {
-            $0.center.equalToSuperview()
+            $0.centerX.equalToSuperview()
             $0.top.bottom.equalTo(cancelButton)
             $0.leading.equalTo(languageLabel)
             $0.trailing.equalTo(languageIcon)
@@ -117,7 +119,7 @@ final class DiaryForeignViewController: UIViewController {
             $0.bottom.leading.trailing.equalToSuperview()
             $0.height.equalTo(convertByHeightRatio(53 + 34))
         }
-        
+
         publicButton.snp.makeConstraints {
             $0.top.equalToSuperview().offset(18)
             $0.trailing.equalToSuperview().offset(-30)
