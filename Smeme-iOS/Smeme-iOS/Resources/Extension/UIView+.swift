@@ -16,4 +16,9 @@ extension UIView {
     func constraintByNotch(_ hasNotch: CGFloat, _ noNotch: CGFloat) -> CGFloat {
         return UIScreen.main.hasNotch ? hasNotch : noNotch
     }
+    
+    /// 노치 유무에 따른 상단 Status Bar 부분 크기에 따른 높이
+    func heightByNotch(_ height: CGFloat) -> CGFloat {
+        return UIScreen.main.hasNotch ? 44 : 10
+    }
 }

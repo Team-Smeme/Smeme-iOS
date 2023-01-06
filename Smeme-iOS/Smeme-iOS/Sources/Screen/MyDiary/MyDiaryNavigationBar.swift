@@ -47,10 +47,8 @@ final class MyDiaryNavigationBar: UIView {
     private func setLayout() {
         addSubviews( [logoImage, profileButton] )
         
-        let topPadding = constraintByNotch(44, 10)
-        
         logoImage.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(23 + topPadding)
+            $0.top.equalToSuperview().inset(heightByNotch(23))
             $0.leading.equalToSuperview().inset(24)
             $0.height.equalTo(21)
             $0.width.equalTo(98)
@@ -59,8 +57,6 @@ final class MyDiaryNavigationBar: UIView {
         profileButton.snp.makeConstraints {
             $0.centerY.equalTo(self.logoImage)
             $0.trailing.equalToSuperview().inset(18)
-            $0.height.equalTo(40)
-            $0.width.equalTo(40)
         }
     }
     
