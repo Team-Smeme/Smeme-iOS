@@ -19,6 +19,15 @@ final class MyDiaryViewController: UIViewController {
         }
     }
     
+    private let dateBar = MyDiaryDateBar().then {
+        $0.increaseDate = {
+            print("날짜 증가")
+        }
+        $0.decreaseDate = {
+            print("날짜 감소")
+        }
+    }
+    
     // MARK: - Life Cycle
     
     override func viewDidLoad() {
@@ -37,10 +46,15 @@ final class MyDiaryViewController: UIViewController {
     }
     
     private func setLayout() {
-        view.addSubviews([navigationBar])
+        view.addSubviews([navigationBar, dateBar])
         
         navigationBar.snp.makeConstraints {
             $0.top.equalToSuperview()
+            $0.centerX.equalToSuperview()
+        }
+        
+        dateBar.snp.makeConstraints {
+            $0.top.equalTo(navigationBar.snp.bottom)
             $0.centerX.equalToSuperview()
         }
     }
