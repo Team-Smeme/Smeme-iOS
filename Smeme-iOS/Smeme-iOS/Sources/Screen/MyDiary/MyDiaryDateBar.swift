@@ -10,9 +10,10 @@ import UIKit
 import SnapKit
 import Then
 
-class MyDiaryDateBar: UIView {
+final class MyDiaryDateBar: UIView {
     
     // MARK: - Property
+    
     var increaseDate: (() -> Void)?
     var decreaseDate: (() -> Void)?
     private var nowDate = Date()
@@ -80,19 +81,13 @@ class MyDiaryDateBar: UIView {
         }
         
         beforeButton.snp.makeConstraints {
+            $0.centerY.equalTo(self.dateLabel)
             $0.leading.equalToSuperview().inset(20)
         }
         
         afterButton.snp.makeConstraints {
+            $0.centerY.equalTo(self.dateLabel)
             $0.trailing.equalToSuperview().inset(20)
-        }
-        
-        [beforeButton, afterButton].forEach {
-            $0.snp.makeConstraints {
-                $0.centerY.equalTo(self.dateLabel)
-                $0.height.equalTo(45)
-                $0.width.equalTo(45)
-            }
         }
     }
     
