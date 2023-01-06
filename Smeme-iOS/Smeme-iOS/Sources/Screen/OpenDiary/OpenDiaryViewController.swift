@@ -60,7 +60,7 @@ final class OpenDiaryViewController: UIViewController {
     private let languageLabel = UILabel().then {
         $0.text = "영어"
         $0.font = .body2
-        $0.textColor = .black
+        $0.textColor = .gray500
         $0.setTextWithLineHeight(lineHeight: 17)
     }
     
@@ -78,7 +78,7 @@ final class OpenDiaryViewController: UIViewController {
     private let sortLabel = UILabel().then {
         $0.text = "최신순"
         $0.font = .body2
-        $0.textColor = .black
+        $0.textColor = .gray500
         $0.setTextWithLineHeight(lineHeight: 17)
     }
     
@@ -155,9 +155,7 @@ final class OpenDiaryViewController: UIViewController {
 
 // MARK: - UICollectionViewDelegate
 
-extension OpenDiaryViewController: UICollectionViewDelegate {
-    
-}
+extension OpenDiaryViewController: UICollectionViewDelegate {}
 
 // MARK: - UICollectionViewDataSource
 
