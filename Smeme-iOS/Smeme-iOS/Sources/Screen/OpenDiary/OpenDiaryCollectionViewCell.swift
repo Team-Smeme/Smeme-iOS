@@ -12,8 +12,6 @@ import Then
 
 class OpenDiaryCollectionViewCell: UICollectionViewCell {
     
-    // MARK: - Property
-    
     // MARK: - UI Property
     
     private let categoryLabel = UILabel()
@@ -29,8 +27,6 @@ class OpenDiaryCollectionViewCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    // MARK: - @objc
     
     // MARK: - Custom Method
     
