@@ -141,6 +141,16 @@ final class OpenDiaryViewController: UIViewController {
             $0.leading.trailing.equalToSuperview().inset(30)
             $0.bottom.equalToSuperview().inset(16)
         }
+        
+        sortStackView.snp.makeConstraints {
+            $0.top.equalTo(categoryCollectionView.snp.bottom).offset(constraintByNotch(-18, -18))
+            $0.trailing.equalToSuperview().inset(30)
+        }
+        
+        languageStackView.snp.makeConstraints {
+            $0.centerY.equalTo(sortStackView)
+            $0.trailing.equalTo(sortStackView.snp.leading).offset(-14)
+        }
     }
     
     private func registerCell() {
