@@ -16,28 +16,34 @@ final class DiaryForeignViewController: UIViewController {
     
     // MARK: - UI Property
     
-    let naviView = UIView()
-    let languageView = UIView()
+    private let naviView = UIView()
+    private let languageView = UIView()
+    private let bottomView = UIView().then {
+        $0.backgroundColor = .white
+        $0.addShadow(shadowColor: .black, shadowOpacity: 0.04, shadowRadius: 16, offset: CGSize(width: 0, height: -4.0))
+    }
     
-    let cancelButton = UIButton().then {
+    private let cancelButton = UIButton().then {
         $0.titleLabel?.font = .body1
         $0.setTitleColor(.black, for: .normal)
         $0.setTitle("취소", for: .normal)
     }
     
-    let completeButton = UIButton().then {
+    private let completeButton = UIButton().then {
         $0.titleLabel?.font = .body1
         $0.setTitleColor(.black, for: .normal)
         $0.setTitle("완료", for: .normal)
     }
     
-    let languageLabel = UILabel().then {
+    private let languageLabel = UILabel().then {
         $0.font = .subtitle2
         $0.textColor = .black
         $0.text = "English"
     }
     
-    let languageIcon = UIImageView(image: Constant.Image.icnArrowUnder)
+    private let languageIcon = UIImageView(image: Constant.Image.icnArrowUnder)
+    private let randomTopicButton = UIImageView(image: Constant.Image.btnRandomTopicCheckBoxDisabled)
+    private let publicButton = UIImageView(image: Constant.Image.btnPublicCheckBoxSelected)
     
     // MARK: - Life Cycle
     
@@ -70,14 +76,16 @@ final class DiaryForeignViewController: UIViewController {
     // MARK: - Custom Method
     private func setLayout() {
         view.backgroundColor = .white
-        view.addSubviews([naviView])
+        view.addSubviews([naviView, bottomView])
         
         naviView.addSubviews([cancelButton, languageView, completeButton])
         languageView.addSubviews([languageLabel, languageIcon])
         
+        bottomView.addSubviews([randomTopicButton, publicButton])
+        
         naviView.snp.makeConstraints {
             $0.top.leading.trailing.equalTo(view.safeAreaLayoutGuide)
-            $0.height.equalTo(convertByWidthRatio(66))
+            $0.height.equalTo(convertByHeightRatio(66))
         }
         
         cancelButton.snp.makeConstraints {
@@ -103,6 +111,22 @@ final class DiaryForeignViewController: UIViewController {
         languageIcon.snp.makeConstraints {
             $0.centerY.equalToSuperview()
             $0.leading.equalTo(languageLabel.snp.trailing).offset(6)
+        }
+        
+        bottomView.snp.makeConstraints {
+            $0.bottom.equalTo(view.safeAreaLayoutGuide)
+            $0.leading.trailing.equalToSuperview()
+            $0.height.equalTo(convertByHeightRatio(53))
+        }
+        
+        publicButton.snp.makeConstraints {
+            $0.centerY.equalToSuperview()
+            $0.trailing.equalToSuperview().offset(-30)
+        }
+
+        randomTopicButton.snp.makeConstraints {
+            $0.centerY.equalToSuperview()
+            $0.trailing.equalTo(publicButton.snp.leading).offset(-16)
         }
     }
     
