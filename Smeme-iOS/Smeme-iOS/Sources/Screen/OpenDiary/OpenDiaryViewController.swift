@@ -50,6 +50,42 @@ final class OpenDiaryViewController: UIViewController {
 //        $0.addTarget(self, action: #selector(myProfileButtonDidTap), for: .touchUpInside)
     }
     
+    private lazy var languageStackView = UIStackView().then {
+        $0.axis = .horizontal
+        $0.alignment = .center
+        $0.distribution = .fill
+        $0.spacing = 4
+    }
+    
+    private let languageLabel = UILabel().then {
+        $0.text = "영어"
+        $0.font = .body2
+        $0.textColor = .black
+        $0.setTextWithLineHeight(lineHeight: 17)
+    }
+    
+    private let languageButton = UIButton().then {
+        $0.setImage(Constant.Image.icnArrowUnder, for: .normal)
+    }
+    
+    private lazy var sortStackView = UIStackView().then {
+        $0.axis = .horizontal
+        $0.alignment = .center
+        $0.distribution = .fill
+        $0.spacing = 4
+    }
+    
+    private let sortLabel = UILabel().then {
+        $0.text = "최신순"
+        $0.font = .body2
+        $0.textColor = .black
+        $0.setTextWithLineHeight(lineHeight: 17)
+    }
+    
+    private let sortButton = UIButton().then {
+        $0.setImage(Constant.Image.icnArrowUnder, for: .normal)
+    }
+    
     // MARK: - Life Cycle
     
     override func viewDidLoad() {
@@ -71,12 +107,17 @@ final class OpenDiaryViewController: UIViewController {
     
     private func setLayout() {
         view.addSubviews([headerView])
-        headerView.addSubviews([categoryCollectionView, containerView])
+        headerView.addSubviews([categoryCollectionView, containerView,
+                               languageStackView, sortStackView])
+        languageStackView.addArrangedSubview(languageLabel)
+        languageStackView.addArrangedSubview(languageButton)
+        sortStackView.addArrangedSubview(sortLabel)
+        sortStackView.addArrangedSubview(sortButton)
         containerView.addSubviews([titleLable, myProfileButon])
         
         headerView.snp.makeConstraints {
             $0.top.leading.trailing.equalToSuperview()
-            $0.height.equalTo(198)
+            $0.height.equalTo(constraintByNotch(198, 167))
         }
         
         containerView.snp.makeConstraints {
