@@ -32,11 +32,13 @@
 		4A05020C295CBF2900E17386 /* UIFont+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A05020B295CBF2900E17386 /* UIFont+.swift */; };
 		4A05020E295CBF2F00E17386 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A05020D295CBF2F00E17386 /* UIColor+.swift */; };
 		4A050210295CBF5200E17386 /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A05020F295CBF5200E17386 /* UIViewController+.swift */; };
+		4A39E74C29670CAB00C48097 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A39E74B29670CAB00C48097 /* LoginViewController.swift */; };
 		4A4CB70E295CAD7700F170CC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4CB70D295CAD7700F170CC /* AppDelegate.swift */; };
 		4A4CB710295CAD7700F170CC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4CB70F295CAD7700F170CC /* SceneDelegate.swift */; };
 		4A4CB717295CAD7800F170CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A4CB716295CAD7800F170CC /* Assets.xcassets */; };
 		4A4CB71A295CAD7800F170CC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4A4CB718295CAD7800F170CC /* LaunchScreen.storyboard */; };
 		4A795D25296151EC007043C0 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 4A795D24296151EC007043C0 /* .swiftlint.yml */; };
+		4A92F62729672DD300D34B55 /* UITextView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A92F62629672DD300D34B55 /* UITextView+.swift */; };
 		4AD78B9E2965505100EEE509 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD78B9D2965505100EEE509 /* Image.swift */; };
 		4AD78BA92965611B00EEE509 /* Pretendard-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4AD78BA72965611B00EEE509 /* Pretendard-Bold.otf */; };
 		4AD78BAA2965611B00EEE509 /* Pretendard-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4AD78BA82965611B00EEE509 /* Pretendard-Regular.otf */; };
@@ -67,6 +69,7 @@
 		4A05020B295CBF2900E17386 /* UIFont+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+.swift"; sourceTree = "<group>"; };
 		4A05020D295CBF2F00E17386 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		4A05020F295CBF5200E17386 /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
+		4A39E74B29670CAB00C48097 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		4A4CB70A295CAD7700F170CC /* Smeme-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Smeme-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A4CB70D295CAD7700F170CC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4A4CB70F295CAD7700F170CC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -74,6 +77,7 @@
 		4A4CB719295CAD7800F170CC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4A4CB71B295CAD7800F170CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4A795D24296151EC007043C0 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		4A92F62629672DD300D34B55 /* UITextView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+.swift"; sourceTree = "<group>"; };
 		4AD78B9D2965505100EEE509 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		4AD78BA72965611B00EEE509 /* Pretendard-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Bold.otf"; sourceTree = "<group>"; };
 		4AD78BA82965611B00EEE509 /* Pretendard-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Regular.otf"; sourceTree = "<group>"; };
@@ -145,6 +149,7 @@
 			children = (
 				4AD78BAB2965746700EEE509 /* TabBar */,
 				37D9E4942965A2980083A43F /* DiaryForeign */,
+				4A39E74A29670C9400C48097 /* Login */,
 				4AD78BB9296597A000EEE509 /* ScrapStash */,
 				4AD78BB82965979B00EEE509 /* OpenDiary */,
 				4AD78BB72965979600EEE509 /* MyDiary */,
@@ -172,6 +177,7 @@
 				4A05020F295CBF5200E17386 /* UIViewController+.swift */,
 				4AD78BC32966888B00EEE509 /* UIScreen+.swift */,
 				4AD78BCB2966A93100EEE509 /* UILabel+.swift */,
+				4A92F62629672DD300D34B55 /* UITextView+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -270,6 +276,14 @@
 				4A050201295CBE1D00E17386 /* BaseTargetType.swift */,
 			);
 			path = Base;
+			sourceTree = "<group>";
+		};
+		4A39E74A29670C9400C48097 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				4A39E74B29670CAB00C48097 /* LoginViewController.swift */,
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 		4A4CB701295CAD7700F170CC = {
@@ -468,6 +482,7 @@
 				4A05020C295CBF2900E17386 /* UIFont+.swift in Sources */,
 				4AD78BCC2966A93100EEE509 /* UILabel+.swift in Sources */,
 				4AD78BAD296574F000EEE509 /* TabBarController.swift in Sources */,
+				4A92F62729672DD300D34B55 /* UITextView+.swift in Sources */,
 				37D9E4962965A3160083A43F /* DiaryForeignViewController.swift in Sources */,
 				4A050208295CBE6800E17386 /* DataModel.swift in Sources */,
 				4A0501FE295CBDED00E17386 /* NetworkConstant.swift in Sources */,
@@ -479,6 +494,7 @@
 				4AD78BB12965757500EEE509 /* OpenDiaryViewController.swift in Sources */,
 				4A0501FC295CBDD900E17386 /* MoyaLoggingPlugin.swift in Sources */,
 				4A4CB710295CAD7700F170CC /* SceneDelegate.swift in Sources */,
+				4A39E74C29670CAB00C48097 /* LoginViewController.swift in Sources */,
 				4A050200295CBE0A00E17386 /* URLConstant.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -618,7 +634,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = J5UBGNBDYX;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Smeme-iOS/Resources/Support/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -648,7 +664,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = J5UBGNBDYX;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Smeme-iOS/Resources/Support/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
