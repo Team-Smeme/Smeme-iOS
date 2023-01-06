@@ -109,7 +109,6 @@ final class RandomSubjectView: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-   //     contentLabel.sizeToFit()
         
         questionLabel.frame = CGRect(x: (UIScreen.main.bounds.width - 315) / 2,
                                      y: 16,
@@ -119,7 +118,6 @@ final class RandomSubjectView: UIView {
                                     y: 14,
                                     width: 315,
                                     height: calculateContentHeight(setLabel: contentLabel))
-        
         refreshButton.frame = CGRect(x: (UIScreen.main.bounds.width - 315) / 2 + 315 - 22,
                                      y: 14 + contentLabel.frame.size.height + 3,
                                      width: 22,
