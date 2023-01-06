@@ -18,7 +18,10 @@ final class OpenDiaryCollectionViewCell: UICollectionViewCell {
     
     // MARK: - UI Property
     
-    private let categoryLabel = UILabel()
+    let categoryLabel = UILabel().then {
+        $0.font = .body1
+        $0.textColor = .gray700
+    }
     
     // MARK: - Life Cycle
     
@@ -40,5 +43,9 @@ final class OpenDiaryCollectionViewCell: UICollectionViewCell {
         categoryLabel.snp.makeConstraints {
             $0.center.equalToSuperview()
         }
+    }
+    
+    func setData(_ model: String) {
+        categoryLabel.text = model
     }
 }

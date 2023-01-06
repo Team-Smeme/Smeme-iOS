@@ -57,6 +57,8 @@ final class OpenDiaryViewController: UIViewController {
         
         setBackgroundColor()
         setLayout()
+        registerCell()
+        setDelegate()
     }
     
     // MARK: - @objc
@@ -98,5 +100,48 @@ final class OpenDiaryViewController: UIViewController {
             $0.leading.trailing.equalToSuperview().inset(30)
             $0.bottom.equalToSuperview().inset(16)
         }
+    }
+    
+    private func registerCell() {
+        categoryCollectionView.register(OpenDiaryCollectionViewCell.self, forCellWithReuseIdentifier: OpenDiaryCollectionViewCell.identifier)
+    }
+    
+    private func setDelegate() {
+        categoryCollectionView.delegate = self
+        categoryCollectionView.dataSource = self
+    }
+}
+
+// MARK: - UICollectionViewDelegate
+
+extension OpenDiaryViewController: UICollectionViewDelegate {
+    
+}
+
+// MARK: - UICollectionViewDataSource
+
+extension OpenDiaryViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return categoryList.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: OpenDiaryCollectionViewCell.identifier, for: indexPath) as? OpenDiaryCollectionViewCell else { return UICollectionViewCell() }
+        cell.setData(categoryList[indexPath.row])
+        cell.backgroundColor = .gray100
+        return cell
+    }
+}
+
+// MARK: - UICollectionViewDelegateFlowLayout
+
+extension OpenDiaryViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let cellSize = CGSize(width: categoryList[indexPath.item].size(withAttributes: [NSAttributedString.Key.font: UIFont.subtitle2]).width + 24, height: 33)
+        return cellSize
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 3
     }
 }
