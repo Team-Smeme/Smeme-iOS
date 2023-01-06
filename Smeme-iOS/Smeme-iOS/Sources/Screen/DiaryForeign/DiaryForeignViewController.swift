@@ -117,7 +117,7 @@ final class DiaryForeignViewController: UIViewController {
         
         bottomView.snp.makeConstraints {
             $0.bottom.leading.trailing.equalToSuperview()
-            $0.height.equalTo(convertByHeightRatio(53 + 34))
+            $0.height.equalTo(constraintByNotch(87, 53))
         }
 
         publicButton.snp.makeConstraints {
