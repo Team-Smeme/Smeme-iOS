@@ -14,6 +14,9 @@ final class ScrapStashViewController: UIViewController {
     
     // MARK: - Property
     
+    final let scrapedInset: UIEdgeInsets = UIEdgeInsets(top: 18, left: 31, bottom: 18, right: 30)
+    final let scrapedLineSpacing: CGFloat = 12
+    
     // MARK: - UI Property
         
     private let headerView = UIView().then {
@@ -126,7 +129,13 @@ final class ScrapStashViewController: UIViewController {
         
         scrapedListCollectionView.snp.makeConstraints {
             $0.top.equalTo(headerView.snp.bottom)
-            $0.leading.trailing.bottom.equalToSuperview()
+            $0.leading.trailing.equalToSuperview()
         }
     }
+    
+    var scrapedExpression: [ScrapedExpressionModel] = [
+        ScrapedExpressionModel(scrapedExpression: "component"),
+        ScrapedExpressionModel(scrapedExpression: "The Merge Wireframing Kit is another simple solution"),
+        ScrapedExpressionModel(scrapedExpression: "The Merge Wireframing Kit is another simple solutionThe Merge Wireframing Kit is another simple solution")
+    ]
 }

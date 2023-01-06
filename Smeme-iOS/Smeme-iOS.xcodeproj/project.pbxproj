@@ -47,6 +47,7 @@
 		4AD78BBC2965993F00EEE509 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD78BBB2965993F00EEE509 /* ViewModel.swift */; };
 		4AD78BCC2966A93100EEE509 /* UILabel+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD78BCB2966A93100EEE509 /* UILabel+.swift */; };
 		A32753292966FE81004BB8A0 /* ScrapedExpressionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32753282966FE81004BB8A0 /* ScrapedExpressionModel.swift */; };
+		A327532B2967F961004BB8A0 /* ScrapedListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A327532A2967F961004BB8A0 /* ScrapedListCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -82,6 +83,7 @@
 		4AD78BBB2965993F00EEE509 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		4AD78BCB2966A93100EEE509 /* UILabel+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+.swift"; sourceTree = "<group>"; };
 		A32753282966FE81004BB8A0 /* ScrapedExpressionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapedExpressionModel.swift; sourceTree = "<group>"; };
+		A327532A2967F961004BB8A0 /* ScrapedListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapedListCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -315,6 +317,7 @@
 			isa = PBXGroup;
 			children = (
 				4AD78BB22965758100EEE509 /* ScrapStashViewController.swift */,
+				A327532A2967F961004BB8A0 /* ScrapedListCollectionViewCell.swift */,
 			);
 			path = ScrapStash;
 			sourceTree = "<group>";
@@ -460,6 +463,7 @@
 				4AD78BAD296574F000EEE509 /* TabBarController.swift in Sources */,
 				4A050208295CBE6800E17386 /* DataModel.swift in Sources */,
 				4A0501FE295CBDED00E17386 /* NetworkConstant.swift in Sources */,
+				A327532B2967F961004BB8A0 /* ScrapedListCollectionViewCell.swift in Sources */,
 				4AD78BBC2965993F00EEE509 /* ViewModel.swift in Sources */,
 				4A050202295CBE1D00E17386 /* BaseTargetType.swift in Sources */,
 				4AD78B9E2965505100EEE509 /* Image.swift in Sources */,
