@@ -62,8 +62,7 @@ final class MyDiaryDateBar: UIView {
     }
     
     private func setAttribute() {
-        clipsToBounds = true
-        layer.cornerRadius = 30
+        makeRoundCorner(cornerRadius: 30)
         layer.maskedCorners = CACornerMask(arrayLiteral: .layerMinXMaxYCorner, .layerMaxXMaxYCorner)
         addShadow(shadowColor: .black, shadowOpacity: 0.06, shadowRadius: 26, offset: CGSize(width: 0, height: 4))
     }
