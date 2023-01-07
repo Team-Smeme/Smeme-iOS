@@ -19,6 +19,16 @@ final class DiaryForeignViewController: UIViewController {
     private let naviView = UIView()
     private let languageView = UIView()
     
+    private lazy var textView: UITextView = {
+        let textView = UITextView().then {
+            $0.font = .body1
+            $0.text = "최소 10자이상의 외국어를 작성해주세요"
+            $0.textColor = .gray400
+            $0.delegate = self
+        }
+        return textView
+    }()
+    
     private let bottomView = UIView().then {
         $0.backgroundColor = .white
         $0.addShadow(shadowColor: .black, shadowOpacity: 0.04, shadowRadius: 16, offset: CGSize(width: 0, height: -4.0))
@@ -56,7 +66,7 @@ final class DiaryForeignViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-//        showKeyboard()
+        //        showKeyboard()
         keyboardAddObserver()
     }
     
@@ -67,18 +77,18 @@ final class DiaryForeignViewController: UIViewController {
     // MARK: - @objc
     
     @objc func keyboardWillShow(_ notification: Notification) {
-//        handleKeyboardChanged(notification: notification, customView: bottomView, isActive: true)
+        //        handleKeyboardChanged(notification: notification, customView: bottomView, isActive: true)
     }
     
     @objc func keyboardWillHide(_ notification: Notification) {
-//        handleKeyboardChanged(notification: notification, customView: bottomView, isActive: false)
+        //        handleKeyboardChanged(notification: notification, customView: bottomView, isActive: false)
     }
     
     // MARK: - Custom Method
     
     private func setLayout() {
         view.backgroundColor = .white
-        view.addSubviews([naviView, bottomView])
+        view.addSubviews([naviView, textView, bottomView])
         
         naviView.addSubviews([cancelButton, languageView, completeButton])
         languageView.addSubviews([languageLabel, languageIcon])
@@ -116,20 +126,31 @@ final class DiaryForeignViewController: UIViewController {
             $0.leading.equalTo(languageLabel.snp.trailing).offset(6)
         }
         
+        textView.snp.makeConstraints {
+            $0.top.equalTo(naviView.snp.bottom).offset(9)
+            $0.leading.trailing.equalTo(view.safeAreaLayoutGuide).offset(30)
+            $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-30)
+            $0.bottom.equalTo(bottomView.snp.top)
+        }
+        
         bottomView.snp.makeConstraints {
             $0.bottom.leading.trailing.equalToSuperview()
             $0.height.equalTo(constraintByNotch(87, 53))
         }
-
+        
         publicButton.snp.makeConstraints {
             $0.top.equalToSuperview().offset(18)
             $0.trailing.equalToSuperview().offset(-30)
         }
-
+        
         randomTopicButton.snp.makeConstraints {
             $0.centerY.equalTo(publicButton)
             $0.trailing.equalTo(publicButton.snp.leading).offset(-16)
         }
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.textView.resignFirstResponder()
     }
     
     private func keyboardAddObserver() {
@@ -143,5 +164,24 @@ final class DiaryForeignViewController: UIViewController {
     private func keyboardRemoveObserver() {
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+}
+
+// MARK: - Extensions
+
+extension DiaryForeignViewController: UITextViewDelegate {
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.textColor == .gray400 {
+            textView.text = nil
+            textView.textColor = .smemeBlack
+        }
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text.isEmpty {
+            textView.text = "최소 10자이상의 외국어를 작성해주세요"
+            textView.textColor = .gray400
+        }
     }
 }
