@@ -14,7 +14,7 @@ final class OpenDiaryViewController: UIViewController {
     
     // MARK: - Property
     
-    let categoryList = ["전체", "일상", "기념일", "취향", "자기계발"]
+    let topicList = ["전체", "일상", "기념일", "취향", "자기계발"]
     
     // MARK: - UI Property
     
