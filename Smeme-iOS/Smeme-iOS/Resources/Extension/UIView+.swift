@@ -18,7 +18,6 @@ extension UIView {
         self.layer.shadowOffset = offset
         self.layer.shadowOpacity = shadowOpacity
         self.layer.shadowRadius = CGFloat(shadowRadius)
-        self.clipsToBounds = false
     }
     /// Constraint 설정 시 노치 유무로 기기를 대응하는 상황에서 사용
     func constraintByNotch(_ hasNotch: CGFloat, _ noNotch: CGFloat) -> CGFloat {
