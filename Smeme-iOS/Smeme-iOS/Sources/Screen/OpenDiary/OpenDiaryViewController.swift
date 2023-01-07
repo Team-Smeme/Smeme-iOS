@@ -168,11 +168,14 @@ final class OpenDiaryViewController: UIViewController {
     
     private func registerCell() {
         topicCollectionView.register(TopicCollectionViewCell.self, forCellWithReuseIdentifier: TopicCollectionViewCell.identifier)
+        diaryListCollectionView.register(DiaryListCollectionViewCell.self, forCellWithReuseIdentifier: DiaryListCollectionViewCell.identifier)
     }
     
     private func setDelegate() {
         topicCollectionView.delegate = self
         topicCollectionView.dataSource = self
+        diaryListCollectionView.delegate = self
+        diaryListCollectionView.dataSource = self
     }
 }
 
@@ -188,14 +191,20 @@ extension OpenDiaryViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TopicCollectionViewCell.identifier, for: indexPath) as? TopicCollectionViewCell else { return UICollectionViewCell() }
-        cell.setData(categoryList[indexPath.row])
-        
-        if indexPath.item == 0 {
-            cell.isSelected = true
-            collectionView.selectItem(at: indexPath, animated: false, scrollPosition: .init())
+        if collectionView == topicCollectionView {
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TopicCollectionViewCell.identifier, for: indexPath) as? TopicCollectionViewCell else { return UICollectionViewCell() }
+            cell.setData(categoryList[indexPath.row])
+            
+            if indexPath.item == 0 {
+                cell.isSelected = true
+                collectionView.selectItem(at: indexPath, animated: false, scrollPosition: .init())
+            }
+            return cell
+        } else if collectionView == diaryListCollectionView {
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DiaryListCollectionViewCell.identifier, for: indexPath) as? DiaryListCollectionViewCell else { return UICollectionViewCell() }
+            return cell
         }
-        return cell
+        return UICollectionViewCell()
     }
 }
 
@@ -203,11 +212,35 @@ extension OpenDiaryViewController: UICollectionViewDataSource {
 
 extension OpenDiaryViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let cellSize = CGSize(width: categoryList[indexPath.item].size(withAttributes: [NSAttributedString.Key.font: UIFont.subtitle2]).width + 24, height: 33)
-        return cellSize
+        if collectionView == topicCollectionView {
+            let cellSize = CGSize(width: categoryList[indexPath.item].size(withAttributes: [NSAttributedString.Key.font: UIFont.subtitle2]).width + 24, height: 33)
+            return cellSize
+        } else if collectionView == diaryListCollectionView {
+            let cellWidth = convertByWidthRatio(315)
+            let cellHeight: CGFloat = 161
+            return CGSize(width: cellWidth, height: cellHeight)
+        }
+        return CGSize()
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 3
+        if collectionView == topicCollectionView {
+            return 3
+        }
+        return CGFloat()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        if collectionView == diaryListCollectionView {
+            return 12
+        }
+        return CGFloat()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        if collectionView == diaryListCollectionView {
+            return UIEdgeInsets(top: 18, left: 30, bottom: 18, right: 30)
+        }
+        return UIEdgeInsets()
     }
 }
