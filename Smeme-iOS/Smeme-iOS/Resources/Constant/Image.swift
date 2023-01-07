@@ -24,12 +24,16 @@ extension Constant {
         static let icnArrowUnder = UIImage(named: "icnArrowUnder")!
         
         // MARK: - BottomView
-        
-        static let icnLike = UIImage(named: "icnLike")!
+    
         static let icnCheckBox = UIImage(named: "icnCheckBox")!
         static let icnCheckBoxDisabled = UIImage(named: "icnCheckBoxDisabled")!
         static let icnCheckBoxSelected = UIImage(named: "icnCheckBoxSelected")!
-        static let icnCheckBoxSelectedDisabled = UIImage(named: "icnCheckBoxSelectedDisabled")
+        static let icnCheckBoxSelectedDisabled = UIImage(named: "icnCheckBoxSelectedDisabled")!
+        static let icnLike = UIImage(named: "icnLike")!
+        static let icnLikeSelected = UIImage(named: "icnLikeSelected")!
+        
+        static let btnTranslate = UIImage(named: "btnTranslate")!
+        static let btnTranslateSelected = UIImage(named: "btnTranslateSelected")!
         
         // MARK: - Tabbar
         
@@ -68,10 +72,6 @@ extension Constant {
         // MARK: - BottomSheet
         
         static let icnCheckSelected = UIImage(named: "icnCheckSelected")!
-        
-        // MARK: - OpenDiary
-        
-        static let icnLikeSmall = UIImage(named: "icnLikeSmall")!
         
         // MARK: - ScrapStash
         
