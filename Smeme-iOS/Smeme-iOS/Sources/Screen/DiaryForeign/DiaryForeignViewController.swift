@@ -48,7 +48,7 @@ final class DiaryForeignViewController: UIViewController {
     
     private let languageLabel = UILabel().then {
         $0.font = .subtitle2
-        $0.textColor = .black
+        $0.textColor = .gray500
         $0.text = "English"
     }
     
