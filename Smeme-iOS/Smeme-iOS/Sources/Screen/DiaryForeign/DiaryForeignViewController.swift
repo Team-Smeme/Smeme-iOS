@@ -60,8 +60,9 @@ final class DiaryForeignViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setLayout()
         
+        setBackgoundColor()
+        setLayout()
         hideKeyboard()
     }
     
@@ -86,8 +87,11 @@ final class DiaryForeignViewController: UIViewController {
     
     // MARK: - Custom Method
     
-    private func setLayout() {
+    private func setBackgoundColor() {
         view.backgroundColor = .white
+    }
+    
+    private func setLayout() {
         view.addSubviews([naviView, textView, bottomView])
         
         naviView.addSubviews([cancelButton, languageView, completeButton])
