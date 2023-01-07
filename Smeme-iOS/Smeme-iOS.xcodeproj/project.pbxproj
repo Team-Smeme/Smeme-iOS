@@ -117,12 +117,12 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		37D9E4942965A2980083A43F /* DiaryForiegn */ = {
+		37D9E4942965A2980083A43F /* DiaryForeign */ = {
 			isa = PBXGroup;
 			children = (
 				37D9E4952965A3160083A43F /* DiaryForeignViewController.swift */,
 			);
-			path = DiaryForiegn;
+			path = DiaryForeign;
 			sourceTree = "<group>";
 		};
 		4A0501E3295CB86C00E17386 /* Sources */ = {
@@ -154,8 +154,8 @@
 			isa = PBXGroup;
 			children = (
 				4AD78BAB2965746700EEE509 /* TabBar */,
+				37D9E4942965A2980083A43F /* DiaryForeign */,
 				4A39E74A29670C9400C48097 /* Login */,
-				37D9E4942965A2980083A43F /* DiaryForiegn */,
 				4AD78BB9296597A000EEE509 /* ScrapStash */,
 				4AD78BB82965979B00EEE509 /* OpenDiary */,
 				4AD78BB72965979600EEE509 /* MyDiary */,
