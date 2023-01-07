@@ -18,7 +18,7 @@ final class OpenDiaryViewController: UIViewController {
     
     // MARK: - UI Property
     
-    private lazy var categoryCollectionView: UICollectionView = {
+    private lazy var topicCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.showsHorizontalScrollIndicator = false
@@ -54,7 +54,7 @@ final class OpenDiaryViewController: UIViewController {
     
     private lazy var myProfileButon = UIButton().then {
         $0.setImage(Constant.Image.icnProfile, for: .normal)
-//        $0.addTarget(self, action: #selector(myProfileButtonDidTap), for: .touchUpInside)
+        //        $0.addTarget(self, action: #selector(myProfileButtonDidTap), for: .touchUpInside)
     }
     
     private lazy var languageStackView = UIStackView().then {
@@ -114,8 +114,8 @@ final class OpenDiaryViewController: UIViewController {
     
     private func setLayout() {
         view.addSubviews([headerView, diaryListCollectionView])
-        headerView.addSubviews([categoryCollectionView, containerView,
-                               languageStackView, sortStackView])
+        headerView.addSubviews([topicCollectionView, containerView,
+                                languageStackView, sortStackView])
         languageStackView.addArrangedSubview(languageLabel)
         languageStackView.addArrangedSubview(languageButton)
         sortStackView.addArrangedSubview(sortLabel)
@@ -143,14 +143,14 @@ final class OpenDiaryViewController: UIViewController {
             $0.trailing.equalToSuperview().inset(18)
         }
         
-        categoryCollectionView.snp.makeConstraints {
+        topicCollectionView.snp.makeConstraints {
             $0.top.equalTo(containerView.snp.bottom)
             $0.leading.trailing.equalToSuperview().inset(30)
             $0.bottom.equalToSuperview().inset(16)
         }
         
         sortStackView.snp.makeConstraints {
-            $0.top.equalTo(categoryCollectionView.snp.bottom).offset(constraintByNotch(-18, -18))
+            $0.top.equalTo(topicCollectionView.snp.bottom).offset(constraintByNotch(-18, -18))
             $0.trailing.equalToSuperview().inset(30)
         }
         
@@ -163,16 +163,16 @@ final class OpenDiaryViewController: UIViewController {
             $0.top.equalTo(headerView.snp.bottom)
             $0.leading.trailing.bottom.equalToSuperview()
         }
-
+        
     }
     
     private func registerCell() {
-        categoryCollectionView.register(OpenDiaryCollectionViewCell.self, forCellWithReuseIdentifier: OpenDiaryCollectionViewCell.identifier)
+        topicCollectionView.register(TopicCollectionViewCell.self, forCellWithReuseIdentifier: TopicCollectionViewCell.identifier)
     }
     
     private func setDelegate() {
-        categoryCollectionView.delegate = self
-        categoryCollectionView.dataSource = self
+        topicCollectionView.delegate = self
+        topicCollectionView.dataSource = self
     }
 }
 
@@ -188,7 +188,7 @@ extension OpenDiaryViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: OpenDiaryCollectionViewCell.identifier, for: indexPath) as? OpenDiaryCollectionViewCell else { return UICollectionViewCell() }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TopicCollectionViewCell.identifier, for: indexPath) as? TopicCollectionViewCell else { return UICollectionViewCell() }
         cell.setData(categoryList[indexPath.row])
         
         if indexPath.item == 0 {
