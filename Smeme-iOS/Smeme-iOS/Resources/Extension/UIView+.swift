@@ -12,6 +12,14 @@ extension UIView {
         views.forEach { self.addSubview($0) }
     }
     
+    /// 그림자 추가해 주는 메서드
+    func addShadow(shadowColor: UIColor, shadowOpacity: Float, shadowRadius: Float, offset: CGSize) {
+        self.layer.shadowColor = shadowColor.cgColor
+        self.layer.shadowOffset = offset
+        self.layer.shadowOpacity = shadowOpacity
+        self.layer.shadowRadius = CGFloat(shadowRadius)
+        self.clipsToBounds = false
+    }
     /// Constraint 설정 시 노치 유무로 기기를 대응하는 상황에서 사용
     func constraintByNotch(_ hasNotch: CGFloat, _ noNotch: CGFloat) -> CGFloat {
         return UIScreen.main.hasNotch ? hasNotch : noNotch
@@ -20,5 +28,15 @@ extension UIView {
     /// 노치 유무에 따른 상단 Status Bar 부분 크기에 따른 높이
     func heightByNotch(_ height: CGFloat) -> CGFloat {
         return UIScreen.main.hasNotch ? 44 : 10
+    }
+    
+    func makeSelectedRoundCorners(cornerRadius: CGFloat, maskedCorners: CACornerMask) {
+        layer.cornerRadius = cornerRadius
+        layer.maskedCorners = CACornerMask(arrayLiteral: maskedCorners)
+    }
+    
+    func makeRoundCorner(cornerRadius: CGFloat = 4) {
+        layer.cornerRadius = cornerRadius
+        clipsToBounds = true
     }
 }

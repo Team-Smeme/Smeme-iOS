@@ -61,12 +61,12 @@ final class LoginViewController: UIViewController {
 //        UserApi.shared.loginWithKakaoAccount {(oauthToken, error) in
 //                if let error = error {
 //                    print(error)
-//                }
+//                  }
 //                else {
 //                    print("loginWithKakaoAccount() success.")
 //                    print("토큰 : \(oauthToken?.accessToken)")
 //
-//                    //do something
+//                    // do something
 //                    _ = oauthToken
 //                }
 //            }
