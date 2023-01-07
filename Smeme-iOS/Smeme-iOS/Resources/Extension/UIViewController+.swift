@@ -30,6 +30,11 @@ extension UIViewController {
     func convertByHeightRatio(_ convert: CGFloat) -> CGFloat {
         return (convert / 812) * getDeviceHeight()
     }
+    
+    /// 노치 유무에 따른 하단 부분 크기에 따른 높이
+    func bottomHeightByNotch(_ height: CGFloat) -> CGFloat {
+        return (UIScreen.main.hasNotch ? 34 : 0) + height
+    }
 
     /// 키보드의 높이에 따라 해당 customView 위치를 변경해 주는 메서드(SE 기기대응 포함)
     func handleKeyboardChanged(notification: Notification, customView: UIView, isActive: Bool) {
