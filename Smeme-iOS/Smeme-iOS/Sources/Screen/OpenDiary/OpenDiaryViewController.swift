@@ -20,12 +20,19 @@ final class OpenDiaryViewController: UIViewController {
     
     private lazy var categoryCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.isScrollEnabled = false
         collectionView.backgroundColor = .clear
-        
+        return collectionView
+    }()
+    
+    private lazy var diaryListCollectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.showsHorizontalScrollIndicator = false
+        collectionView.isScrollEnabled = false
+        collectionView.backgroundColor = .clear
         return collectionView
     }()
     
@@ -106,7 +113,7 @@ final class OpenDiaryViewController: UIViewController {
     }
     
     private func setLayout() {
-        view.addSubviews([headerView])
+        view.addSubviews([headerView, diaryListCollectionView])
         headerView.addSubviews([categoryCollectionView, containerView,
                                languageStackView, sortStackView])
         languageStackView.addArrangedSubview(languageLabel)
@@ -151,6 +158,12 @@ final class OpenDiaryViewController: UIViewController {
             $0.centerY.equalTo(sortStackView)
             $0.trailing.equalTo(sortStackView.snp.leading).offset(-14)
         }
+        
+        diaryListCollectionView.snp.makeConstraints {
+            $0.top.equalTo(headerView.snp.bottom)
+            $0.leading.trailing.bottom.equalToSuperview()
+        }
+
     }
     
     private func registerCell() {
