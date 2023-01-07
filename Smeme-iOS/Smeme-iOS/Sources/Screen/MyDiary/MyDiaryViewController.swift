@@ -28,6 +28,12 @@ final class MyDiaryViewController: UIViewController {
         }
     }
     
+    private lazy var floatingButton = UIButton().then {
+        $0.setImage(Constant.Image.btnPlus, for: .normal)
+        $0.addTarget(self, action: #selector(floatingButtonClicked(_:)), for: .touchUpInside)
+        $0.addShadow(shadowColor: .black, shadowOpacity: 0.08, shadowRadius: 20, offset: CGSize(width: 0, height: 0))
+    }
+    
     // MARK: - Life Cycle
     
     override func viewDidLoad() {
@@ -39,6 +45,13 @@ final class MyDiaryViewController: UIViewController {
     
     // MARK: - @objc
     
+    @objc func floatingButtonClicked(_ sender: UIButton) {
+        let newVC = MyDiaryFloatingButtonViewController()
+            newVC.modalTransitionStyle = .crossDissolve
+            newVC.modalPresentationStyle = .overFullScreen
+            self.present(newVC, animated: true, completion: nil)
+    }
+    
     // MARK: - Custom Method
     
     private func setBackgroundColor() {
@@ -46,7 +59,7 @@ final class MyDiaryViewController: UIViewController {
     }
     
     private func setLayout() {
-        view.addSubviews([navigationBar, dateBar])
+        view.addSubviews([navigationBar, dateBar, floatingButton])
         
         navigationBar.snp.makeConstraints {
             $0.top.equalToSuperview()
@@ -56,6 +69,11 @@ final class MyDiaryViewController: UIViewController {
         dateBar.snp.makeConstraints {
             $0.top.equalTo(navigationBar.snp.bottom)
             $0.centerX.equalToSuperview()
+        }
+        
+        floatingButton.snp.makeConstraints {
+            $0.bottom.equalToSuperview().inset(136)
+            $0.trailing.equalToSuperview().inset(18)
         }
     }
 }
