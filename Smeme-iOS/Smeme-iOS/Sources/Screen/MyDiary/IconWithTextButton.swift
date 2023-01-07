@@ -56,8 +56,8 @@ final class IconWithTextButton: UIButton {
         }
         
         label.snp.makeConstraints {
-            $0.centerX.equalTo(iconImageView)
-            $0.leading.equalTo(iconImageView).offset(6)
+            $0.centerY.equalTo(iconImageView)
+            $0.leading.equalTo(iconImageView.snp.trailing).offset(6)
         }
     }
     

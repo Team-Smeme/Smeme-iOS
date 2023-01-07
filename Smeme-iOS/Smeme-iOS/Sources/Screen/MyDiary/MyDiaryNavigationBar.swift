@@ -17,8 +17,7 @@ final class MyDiaryNavigationBar: UIView {
     var goMyProfileView: (() -> Void)?
     
     override var intrinsicContentSize: CGSize {
-        let heightStatusBar = constraintByNotch(44, 10)
-        return CGSize(width: UIScreen.main.bounds.width, height: 66 + heightStatusBar)
+        return CGSize(width: UIScreen.main.bounds.width, height: heightByNotch(66))
     }
     
     // MARK: - UI Property
