@@ -28,4 +28,14 @@ extension UIView {
     func heightByNotch(_ height: CGFloat) -> CGFloat {
         return UIScreen.main.hasNotch ? 44 : 10
     }
+    
+    func makeSelectedRoundCorners(cornerRadius: CGFloat, maskedCorners: CACornerMask) {
+        layer.cornerRadius = cornerRadius
+        layer.maskedCorners = CACornerMask(arrayLiteral: maskedCorners)
+    }
+    
+    func makeRoundCorner(cornerRadius: CGFloat = 4) {
+        layer.cornerRadius = cornerRadius
+        clipsToBounds = true
+    }
 }
