@@ -11,6 +11,8 @@ final class MyDiaryViewController: UIViewController {
     
     // MARK: - Property
     
+    let diaryList = ["The issue that requires the phone call we have to solve it in person but sometimes some violence is needed. I was just the part of the process not The issue that requires the phone call we have to solve it in person but sometimes some violence is needed...The issue that requires the phone call we have to solve it in person but sometimes some violence is needed. I was just the part of the process not The issue that requires the phone call we have to solve it in person but sometimes some violence is needed... I was just the part of the process not The issue that requires the phone call", "The issue that requires the phone call we have to solve it in person but sometimes some violence is needed. I was just the part of the process not The issue that requires the phone call we have to solve it in person but sometimes some violence is needed...The issue that requires the phone call we have to solve it in person but sometimes some violence is needed. I was jus", "The issue that requires the phone call we have to solve it in person but sometimes some violence is needed. I was just the part of the process not The issue that requires the phone call we have to solve it in person but"]
+    
     // MARK: - UI Property
     
     private let navigationBar = MyDiaryNavigationBar().then {
