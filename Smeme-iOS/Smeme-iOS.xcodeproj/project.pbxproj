@@ -56,6 +56,7 @@
 		6FBAA7CD2968754B00A4190D /* MyDiaryDateBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FBAA7CC2968754B00A4190D /* MyDiaryDateBar.swift */; };
 		6FBAA7D12968830000A4190D /* IconWithTextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FBAA7D02968830000A4190D /* IconWithTextButton.swift */; };
 		6FBAA7D3296894F600A4190D /* MyDiaryFloatingButtonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FBAA7D2296894F600A4190D /* MyDiaryFloatingButtonViewController.swift */; };
+		6FD3986F29699E9C00C16B79 /* MyDiaryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FD3986E29699E9C00C16B79 /* MyDiaryCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -100,6 +101,7 @@
 		6FBAA7CC2968754B00A4190D /* MyDiaryDateBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDiaryDateBar.swift; sourceTree = "<group>"; };
 		6FBAA7D02968830000A4190D /* IconWithTextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconWithTextButton.swift; sourceTree = "<group>"; };
 		6FBAA7D2296894F600A4190D /* MyDiaryFloatingButtonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDiaryFloatingButtonViewController.swift; sourceTree = "<group>"; };
+		6FD3986E29699E9C00C16B79 /* MyDiaryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDiaryCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -341,6 +343,7 @@
 				6FBAA7CC2968754B00A4190D /* MyDiaryDateBar.swift */,
 				6FBAA7D2296894F600A4190D /* MyDiaryFloatingButtonViewController.swift */,
 				6FBAA7D02968830000A4190D /* IconWithTextButton.swift */,
+				6FD3986E29699E9C00C16B79 /* MyDiaryCollectionViewCell.swift */,
 			);
 			path = MyDiary;
 			sourceTree = "<group>";
@@ -487,6 +490,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6FD3986F29699E9C00C16B79 /* MyDiaryCollectionViewCell.swift in Sources */,
 				4AD78BB32965758100EEE509 /* ScrapStashViewController.swift in Sources */,
 				4AD78BAF2965756800EEE509 /* MyDiaryViewController.swift in Sources */,
 				4A050204295CBE6000E17386 /* API.swift in Sources */,
