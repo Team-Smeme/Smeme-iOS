@@ -11,34 +11,32 @@ final class DetailMyDiaryViewController: UIViewController {
     
     // MARK: - Property
     
-    var myDiaryDetail = MyDiaryDetail(content: "", category: "기념일", topic: "", isPublic: false, createdAt: "00:00", likeCnt: 0)
+    var myDiaryDetail = MyDiaryDetailResponse(content: "", category: "기념일", topic: "", isPublic: false, createdAt: "00:00", likeCnt: 0)
     
     // MARK: - UI Property
     
     private let contentView = UIView()
     private let contentScrollView = UIScrollView()
     
-    private lazy var beforeButton = UIButton().then {
+    private lazy var backButton = UIButton().then {
         $0.setImage(Constant.Image.icnPageLeft, for: .normal)
-        $0.addTarget(self, action: #selector(touchBeforeButton(_:)), for: .touchUpInside)
+        $0.addTarget(self, action: #selector(backButtonDidTap(_:)), for: .touchUpInside)
     }
     
-    private lazy var dotsButton = UIButton().then {
+    private lazy var optionButton = UIButton().then {
         $0.setImage(Constant.Image.icnSetting, for: .normal)
-        $0.addTarget(self, action: #selector(touchDotsButton(_:)), for: .touchUpInside)
+        $0.addTarget(self, action: #selector(optionButtonDidTap(_:)), for: .touchUpInside)
     }
     
     private let categoryLabel = UILabel().then {
         $0.textColor = .smemeWhite
         $0.font = .body2
         $0.sizeToFit()
-        $0.setTextWithLineHeight(lineHeight: 17)
     }
     
     private let publicLabel = UILabel().then {
         $0.textColor = .gray500
         $0.font = .body2
-        $0.setTextWithLineHeight(lineHeight: 17)
         $0.text = "공개"
     }
     
@@ -52,13 +50,11 @@ final class DetailMyDiaryViewController: UIViewController {
         $0.textColor = .smemeBlack
         $0.font = .body1
         $0.numberOfLines = 0
-        $0.setTextWithLineHeight(lineHeight: 21)
     }
     
     private let dateLabel = UILabel().then {
         $0.textColor = .gray500
         $0.font = .body2
-        $0.setTextWithLineHeight(lineHeight: 17)
     }
     
     // MARK: - Life Cycle
@@ -91,7 +87,7 @@ final class DetailMyDiaryViewController: UIViewController {
     }
     
     private func setLayout() {
-        view.addSubviews([contentScrollView, beforeButton, dotsButton])
+        view.addSubviews([contentScrollView, backButton, optionButton])
         contentScrollView.addSubview(contentView)
         contentView.addSubviews([categoryBackgroundView, categoryLabel, publicLabel, contentLabel, dateLabel])
         
@@ -107,13 +103,13 @@ final class DetailMyDiaryViewController: UIViewController {
             $0.height.greaterThanOrEqualTo(view.snp.height).priority(.low)
         }
         
-        beforeButton.snp.makeConstraints {
+        backButton.snp.makeConstraints {
             $0.top.equalToSuperview().inset(headerHeightByNotch(10))
             $0.leading.equalToSuperview().inset(convertByWidthRatio(18))
         }
         
-        dotsButton.snp.makeConstraints {
-            $0.centerY.equalTo(beforeButton)
+        optionButton.snp.makeConstraints {
+            $0.centerY.equalTo(backButton)
             $0.trailing.equalToSuperview().inset(convertByWidthRatio(29))
         }
     
@@ -135,8 +131,7 @@ final class DetailMyDiaryViewController: UIViewController {
         
         contentLabel.snp.makeConstraints {
             $0.top.equalTo(categoryBackgroundView.snp.bottom).offset(convertByHeightRatio(20))
-            $0.leading.equalTo(contentView).inset(convertByWidthRatio(30))
-            $0.trailing.equalTo(contentView).inset(convertByWidthRatio(30))
+            $0.leading.trailing.equalTo(contentView).inset(convertByWidthRatio(30))
         }
         
         dateLabel.snp.makeConstraints {
@@ -147,12 +142,12 @@ final class DetailMyDiaryViewController: UIViewController {
     
     // MARK: - objc
     
-    @objc func touchBeforeButton(_ sender: UIButton) {
+    @objc func backButtonDidTap(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
         self.tabBarController?.tabBar.isHidden = false
     }
     
-    @objc func touchDotsButton(_ sender: UIButton) {
+    @objc func optionButtonDidTap(_ sender: UIButton) {
         
     }
 }
