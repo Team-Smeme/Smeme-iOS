@@ -45,7 +45,7 @@ final class DetailMyDiaryViewController: UIViewController {
     private let categoryBackgroundView = UIView().then {
         $0.backgroundColor = .primary
         $0.sizeToFit()
-        $0.makeRoundCorner(cornerRadius: 10)
+        $0.makeRoundCorner(cornerRadius: 4)
     }
     
     private let contentLabel = UILabel().then {
