@@ -68,7 +68,7 @@ final class ScrapStashViewController: UIViewController {
         $0.backgroundColor = .clear
         $0.collectionViewLayout = layout
         $0.isScrollEnabled = true
-        $0.showsVerticalScrollIndicator = false
+        $0.showsVerticalScrollIndicator = true
         $0.delegate = self
         $0.dataSource = self
     }
