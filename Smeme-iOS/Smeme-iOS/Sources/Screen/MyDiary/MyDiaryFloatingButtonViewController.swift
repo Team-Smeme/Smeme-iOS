@@ -15,6 +15,7 @@ final class MyDiaryFloatingButtonViewController: UIViewController {
     // MARK: - Property
     
     // MARK: - UI Property
+    
     private let koreanDiaryButton = IconWithTextButton().then {
         $0.configure(with: IconWithTextButtonViewModel(
             image: Constant.Image.icnKorean,
@@ -38,6 +39,7 @@ final class MyDiaryFloatingButtonViewController: UIViewController {
     }
     
     // MARK: - Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -59,22 +61,23 @@ final class MyDiaryFloatingButtonViewController: UIViewController {
         }
         
         floatingButton.snp.makeConstraints {
-            $0.bottom.equalToSuperview().inset(136)
+            $0.bottom.equalToSuperview().inset(bottomHeightByNotch(102))
             $0.trailing.equalToSuperview().inset(18)
         }
         
         koreanDiaryButton.snp.makeConstraints {
-            $0.bottom.equalToSuperview().inset(90+118)
+            $0.bottom.equalToSuperview().inset(bottomHeightByNotch(174))
             $0.trailing.equalToSuperview().inset(24)
         }
         
         foreignDiaryButton.snp.makeConstraints {
-            $0.bottom.equalToSuperview().inset(140+118)
+            $0.bottom.equalToSuperview().inset(bottomHeightByNotch(224))
             $0.trailing.equalToSuperview().inset(24)
         }
     }
     
     // MARK: - @objc
+    
     @objc func floatingButtonClicked(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
     }

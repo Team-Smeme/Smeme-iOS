@@ -37,7 +37,7 @@ final class IconWithTextButton: UIButton {
     }
     
     private func setAttribute() {
-        layer.cornerRadius = 8
+        makeRoundCorner(cornerRadius: 8)
     }
     
     func configure(with viewModel: IconWithTextButtonViewModel) {

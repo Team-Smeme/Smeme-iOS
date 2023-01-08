@@ -89,7 +89,7 @@ final class MyDiaryViewController: UIViewController {
         }
         
         floatingButton.snp.makeConstraints {
-            $0.bottom.equalToSuperview().inset(136)
+            $0.bottom.equalToSuperview().inset(bottomHeightByNotch(102))
             $0.trailing.equalToSuperview().inset(18)
         }
         
