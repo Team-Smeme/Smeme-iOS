@@ -11,6 +11,8 @@ final class DetailMyDiaryViewController: UIViewController {
     
     // MARK: - Property
     
+    var myDiaryDetail = MyDiaryDetail(content: "", category: "기념일", topic: "", isPublic: false, createdAt: "00:00", likeCnt: 0)
+    
     // MARK: - UI Property
     
     private let contentView = UIView()
