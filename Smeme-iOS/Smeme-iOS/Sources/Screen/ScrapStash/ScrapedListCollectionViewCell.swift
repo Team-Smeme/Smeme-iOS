@@ -11,12 +11,15 @@ import SnapKit
 import Then
 
 class ScrapedListCollectionViewCell: UICollectionViewCell {
-    // MARK: - Identifier
+    
+    // MARK: - Property
     
     static let identifier = "UICollectionViewCell"
     
     // MARK: - UI Property
         
+    private let divideLineView = UIView()
+
     private let scrapedExpLabel = UILabel().then {
         $0.textColor = .smemeBlack
         $0.font = .body1
@@ -24,9 +27,7 @@ class ScrapedListCollectionViewCell: UICollectionViewCell {
         $0.textAlignment = .left
         $0.setTextWithLineHeight(lineHeight: 21)
     }
-    
-    private let divideLineView = UIView()
-    
+        
     private let icnStackView = UIStackView().then {
         $0.axis = .horizontal
         $0.spacing = 16

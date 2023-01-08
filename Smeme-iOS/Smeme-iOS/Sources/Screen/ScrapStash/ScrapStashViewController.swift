@@ -80,7 +80,7 @@ final class ScrapStashViewController: UIViewController {
         
         setBackgroundColor()
         setLayout()
-        register()
+        registerCell()
     }
     
     // MARK: - @objc
@@ -144,11 +144,11 @@ final class ScrapStashViewController: UIViewController {
         ScrapedExpressionModel(scrapedExpression: "The Merge Wireframing Kit is another simple solution The Merge Wireframing Kit is another simple solutionThe Merge Wireframing Kit is another simple solution, The Merge Wireframing Kit is another simple solution The Merge Wireframing Kit is another simple solutionThe Merge Wireframing Kit is another simple solution")
     ]
     
-    private func register() {
+    private func registerCell() {
         scrapedListCollectionView.register(ScrapedListCollectionViewCell.self, forCellWithReuseIdentifier: ScrapedListCollectionViewCell.identifier)
     }
     
-    func setDummyLabel(_ text: String) -> CGFloat {
+    private func setDummyLabel(_ text: String) -> CGFloat {
         var dummyLabel = UILabel().then {
             $0.text = text
             $0.font = .body1
