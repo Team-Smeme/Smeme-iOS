@@ -35,6 +35,25 @@ final class MySmemeViewController: UIViewController {
         $0.setTextWithLineHeight(lineHeight: 19)
     }
     
+    private let userIdLabel = UILabel().then {
+        $0.text = "주지스님"
+        $0.font = .headline3
+        $0.textColor = .smemeBlack
+        $0.setTextWithLineHeight(lineHeight: 26)
+    }
+    
+    private let userIntroLabel = UILabel().then {
+        $0.text = "미국 거주 4년차 일기 챌린저입니다."
+        $0.font = .subtitle3
+        $0.textColor = .smemeBlack
+        $0.textAlignment = .left
+        $0.setTextWithLineHeight(lineHeight: 19)
+    }
+    
+    private let nextButton = UIButton().then {
+        $0.setImage(Constant.Image.icnPageRightDisabled, for: .normal)
+    }
+    
     // MARK: - Life Cycle
     
     override func viewDidLoad() {
@@ -49,9 +68,13 @@ final class MySmemeViewController: UIViewController {
     
     private func setLayout() {
         
-        view.addSubviews([headerContainerView, setUserInfoContainerView, setMainLanguageContainerView, divideLine1])
+        view.addSubviews([headerContainerView,
+                          setUserInfoContainerView,
+                          setMainLanguageContainerView,
+                          divideLine1])
         
         headerContainerView.addSubviews([previousButton, headerLabel])
+        setUserInfoContainerView.addSubviews([userIdLabel, userIntroLabel, nextButton])
         
         headerContainerView.snp.makeConstraints {
             $0.top.leading.trailing.equalTo(view.safeAreaLayoutGuide)
@@ -74,6 +97,22 @@ final class MySmemeViewController: UIViewController {
             $0.height.equalTo(convertByHeightRatio(83))
         }
         
+        userIdLabel.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(convertByHeightRatio(14))
+            $0.leading.equalToSuperview().offset(30)
+        }
+        
+        userIntroLabel.snp.makeConstraints {
+            $0.top.equalTo(userIdLabel.snp.bottom).offset(10)
+            $0.leading.equalTo(userIdLabel)
+        }
+        
+        nextButton.snp.makeConstraints {
+            $0.centerY.equalTo(setUserInfoContainerView)
+            $0.trailing.equalToSuperview().inset(20)
+            $0.height.width.equalTo(45)
+        }
+        
         setMainLanguageContainerView.snp.makeConstraints {
             $0.top.equalTo(setUserInfoContainerView.snp.bottom).offset(12)
             $0.leading.trailing.equalTo(view.safeAreaLayoutGuide)
@@ -89,7 +128,6 @@ final class MySmemeViewController: UIViewController {
     
     private func setBackgroundColor() {
         view.backgroundColor = .smemeWhite
-        setUserInfoContainerView.backgroundColor = .red
         setMainLanguageContainerView.backgroundColor = .gray
     }
 }
