@@ -20,7 +20,7 @@ final class MySmemeViewController: UIViewController {
     private let setUserInfoContainerView = UIView()
     private let setMainLanguageContainerView = UIView()
     
-    private let divideLine1 = UIView().then {
+    private let divideLineFirst = UIView().then {
         $0.backgroundColor = .gray100
     }
     
@@ -54,6 +54,22 @@ final class MySmemeViewController: UIViewController {
         $0.setImage(Constant.Image.icnPageRightDisabled, for: .normal)
     }
     
+    private let setLanguageTitleLabel = UILabel().then {
+        $0.text = "주 사용 언어"
+        $0.font = .subtitle3
+        $0.textColor = .smemeBlack
+        $0.textAlignment = .left
+        $0.setTextWithLineHeight(lineHeight: 19)
+    }
+    
+    private let languageTypeLabel = UILabel().then {
+        $0.text = "English"
+        $0.font = .subtitle3
+        $0.textColor = .primary
+        $0.textAlignment = .left
+        $0.setTextWithLineHeight(lineHeight: 19)
+    }
+    
     // MARK: - Life Cycle
     
     override func viewDidLoad() {
@@ -71,10 +87,11 @@ final class MySmemeViewController: UIViewController {
         view.addSubviews([headerContainerView,
                           setUserInfoContainerView,
                           setMainLanguageContainerView,
-                          divideLine1])
+                          divideLineFirst])
         
         headerContainerView.addSubviews([previousButton, headerLabel])
         setUserInfoContainerView.addSubviews([userIdLabel, userIntroLabel, nextButton])
+        setMainLanguageContainerView.addSubviews([setLanguageTitleLabel, languageTypeLabel])
         
         headerContainerView.snp.makeConstraints {
             $0.top.leading.trailing.equalTo(view.safeAreaLayoutGuide)
@@ -119,7 +136,17 @@ final class MySmemeViewController: UIViewController {
             $0.height.equalTo(convertByHeightRatio(47))
         }
         
-        divideLine1.snp.makeConstraints {
+        setLanguageTitleLabel.snp.makeConstraints {
+            $0.centerY.equalToSuperview()
+            $0.leading.equalToSuperview().offset(30)
+        }
+        
+        languageTypeLabel.snp.makeConstraints {
+            $0.centerY.equalToSuperview()
+            $0.trailing.equalToSuperview().inset(30)
+        }
+        
+        divideLineFirst.snp.makeConstraints {
             $0.top.equalTo(setMainLanguageContainerView.snp.bottom).offset(14)
             $0.height.equalTo(1)
             $0.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(18)
@@ -128,6 +155,5 @@ final class MySmemeViewController: UIViewController {
     
     private func setBackgroundColor() {
         view.backgroundColor = .smemeWhite
-        setMainLanguageContainerView.backgroundColor = .gray
     }
 }
