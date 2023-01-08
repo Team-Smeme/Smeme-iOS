@@ -10,5 +10,5 @@ import Foundation
 // MARK: - Environment
 
 struct Environment {
-    static let nativeAppKey = (Bundle.main.infoDictionary?["NATIVE_APP_KEY"] as! String).replacingOccurrences(of: " ", with: "")
+    static let nativeAppKey = Bundle.main.infoDictionary?["NATIVE_APP_KEY"] as? String ?? "nil"
 }
