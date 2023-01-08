@@ -17,6 +17,8 @@ final class DetailOpenDiaryViewController: UIViewController {
     // MARK: - UI Property
     
     private let headerView = UIView()
+    private let diaryContentScrollView = UIScrollView()
+    private let contentView = UIView()
 
     private lazy var backButton = UIButton().then {
         $0.setImage(Constant.Image.icnPageLeft, for: .normal)
@@ -60,8 +62,9 @@ final class DetailOpenDiaryViewController: UIViewController {
     }
     
     private func setLayout() {
-        view.addSubviews([headerView, bottomView])
+        view.addSubviews([headerView, diaryContentScrollView, bottomView])
         headerView.addSubview(backButton)
+        diaryContentScrollView.addSubview(contentView)
         bottomView.addSubviews([likeButton, likeCountLabel, translateButton])
         
         headerView.snp.makeConstraints {
@@ -72,6 +75,18 @@ final class DetailOpenDiaryViewController: UIViewController {
         backButton.snp.makeConstraints {
             $0.centerY.equalToSuperview()
             $0.leading.equalToSuperview().inset(18)
+        }
+        
+        diaryContentScrollView.snp.makeConstraints {
+            $0.top.equalTo(headerView.snp.bottom)
+            $0.leading.trailing.equalToSuperview()
+            $0.bottom.equalTo(bottomView.snp.top)
+        }
+        
+        contentView.snp.makeConstraints {
+            $0.edges.equalTo(diaryContentScrollView.contentLayoutGuide)
+            $0.width.equalTo(diaryContentScrollView.snp.width)
+            $0.height.greaterThanOrEqualTo(diaryContentScrollView.snp.height).priority(.low)
         }
         
         bottomView.snp.makeConstraints {
