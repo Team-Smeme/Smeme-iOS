@@ -81,7 +81,6 @@ class ScrapedListCollectionViewCell: UICollectionViewCell {
         scrapedExpLabel.snp.makeConstraints {
             $0.top.equalToSuperview().offset(14)
             $0.leading.trailing.equalToSuperview().inset(15)
-//            $0.bottom.equalToSuperview().inset(20)
         }
         
         divideLineView.snp.makeConstraints {
@@ -99,6 +98,5 @@ class ScrapedListCollectionViewCell: UICollectionViewCell {
     
     func dataBind(model: ScrapedExpressionModel) {
         scrapedExpLabel.text = model.scrapedExpression
-        setLayout()
     }
 }

@@ -161,8 +161,8 @@ final class ScrapStashViewController: UIViewController {
                                   y: 0,
                                   width: convertByWidthRatio(284),
                                   height: dummyLabel.calculateContentHeight(lineHeight: 21))
-        return dummyLabel.calculateContentHeight(lineHeight: 21)
         
+        return dummyLabel.calculateContentHeight(lineHeight: 21)
     }
 }
 
@@ -177,13 +177,7 @@ extension ScrapStashViewController: UICollectionViewDelegateFlowLayout {
         
         return CGSize(width: width, height: height)
     }
-    
-//    private func calculateCellHeight() -> CGFloat {
-//        let height = scrapedExpLabel.calculateContentHeight(lineHeight: 21)
-//        print("height? \(height)")
-//        return scrapedExpLabel.calculateContentHeight(lineHeight: 21)
-//    }
-    
+        
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return scrapedInset
     }
@@ -206,5 +200,4 @@ extension ScrapStashViewController: UICollectionViewDataSource {
         listCell.dataBind(model: scrapedExpressionList[indexPath.item])
         return listCell
     }
-    
 }
