@@ -16,16 +16,13 @@ class ScrapedListCollectionViewCell: UICollectionViewCell {
     static let identifier = "UICollectionViewCell"
     
     // MARK: - UI Property
-    
-    private let cellContainerView = UIView().then {
-        $0.layer.cornerRadius = 10
-        $0.backgroundColor = .white
-    }
-    
+        
     private let scrapedExpLabel = UILabel().then {
         $0.textColor = .smemeBlack
         $0.font = .body1
         $0.numberOfLines = 0
+        $0.textAlignment = .left
+        $0.setTextWithLineHeight(lineHeight: 21)
     }
     
     private let divideLineView = UIView()
@@ -57,6 +54,7 @@ class ScrapedListCollectionViewCell: UICollectionViewCell {
         super.init(frame: frame)
         setLayout()
         setBackgroundColor()
+        makeRoundCorner(cornerRadius: 10)
     }
     
     required init?(coder: NSCoder) {
@@ -73,17 +71,17 @@ class ScrapedListCollectionViewCell: UICollectionViewCell {
     }
     
     private func setLayout() {
-        
         addSubviews([scrapedExpLabel, divideLineView, icnStackView])
         
         icnStackView.addArrangedSubview(openBrowserButton)
         icnStackView.addArrangedSubview(copyButton)
         icnStackView.addArrangedSubview(translateButton)
         icnStackView.addArrangedSubview(deleteButton)
-        
+                
         scrapedExpLabel.snp.makeConstraints {
             $0.top.equalToSuperview().offset(14)
             $0.leading.trailing.equalToSuperview().inset(15)
+//            $0.bottom.equalToSuperview().inset(20)
         }
         
         divideLineView.snp.makeConstraints {
@@ -101,5 +99,6 @@ class ScrapedListCollectionViewCell: UICollectionViewCell {
     
     func dataBind(model: ScrapedExpressionModel) {
         scrapedExpLabel.text = model.scrapedExpression
+        setLayout()
     }
 }

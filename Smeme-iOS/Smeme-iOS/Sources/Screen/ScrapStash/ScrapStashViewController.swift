@@ -92,7 +92,7 @@ final class ScrapStashViewController: UIViewController {
         headerView.backgroundColor = .white
     }
     
-    private func setLayout() {
+    private func setLayout() {        
         view.addSubviews([headerView, scrapedListCollectionView])
         
         headerView.addSubviews([titleLabel, profileButton, scrapedStackView, likedDiaryLabel])
@@ -140,11 +140,29 @@ final class ScrapStashViewController: UIViewController {
     var scrapedExpressionList: [ScrapedExpressionModel] = [
         ScrapedExpressionModel(scrapedExpression: "component"),
         ScrapedExpressionModel(scrapedExpression: "The Merge Wireframing Kit is another simple solution"),
-        ScrapedExpressionModel(scrapedExpression: "The Merge Wireframing Kit is another simple solutionThe Merge Wireframing Kit is another simple solution")
+        ScrapedExpressionModel(scrapedExpression: "The Merge Wireframing Kit is another simple solution The Merge Wireframing Kit is another simple solutionThe Merge Wireframing Kit is another simple solution"),
+        ScrapedExpressionModel(scrapedExpression: "The Merge Wireframing Kit is another simple solution The Merge Wireframing Kit is another simple solutionThe Merge Wireframing Kit is another simple solution, The Merge Wireframing Kit is another simple solution The Merge Wireframing Kit is another simple solutionThe Merge Wireframing Kit is another simple solution")
     ]
     
     private func register() {
         scrapedListCollectionView.register(ScrapedListCollectionViewCell.self, forCellWithReuseIdentifier: ScrapedListCollectionViewCell.identifier)
+    }
+    
+    func setDummyLabel(_ text: String) -> CGFloat {
+        var dummyLabel = UILabel().then {
+            $0.text = text
+            $0.font = .body1
+            $0.numberOfLines = 0
+            $0.sizeToFit()
+            $0.setTextWithLineHeight(lineHeight: 21)
+        }
+        
+        dummyLabel.frame = CGRect(x: 0,
+                                  y: 0,
+                                  width: convertByWidthRatio(284),
+                                  height: dummyLabel.calculateContentHeight(lineHeight: 21))
+        return dummyLabel.calculateContentHeight(lineHeight: 21)
+        
     }
 }
 
@@ -154,9 +172,9 @@ extension ScrapStashViewController: UICollectionViewDelegateFlowLayout {
    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-//        let cellSize = CGSize(width: scrapedExpressionList[indexPath.item], height: <#T##Double#>)
         let width = convertByWidthRatio(314)
-        let height: CGFloat = 111
+        let height: CGFloat = setDummyLabel(scrapedExpressionList[indexPath.item].scrapedExpression) + 90
+        
         return CGSize(width: width, height: height)
     }
     
