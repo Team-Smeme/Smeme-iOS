@@ -27,6 +27,10 @@ final class MySmemeViewController: UIViewController {
         $0.backgroundColor = .gray100
     }
     
+    private let divideLineSecond = UIView().then {
+        $0.backgroundColor = .gray100
+    }
+    
     private let previousButton = UIButton().then {
         $0.setImage(Constant.Image.icnPageLeft, for: .normal)
     }
@@ -138,13 +142,74 @@ final class MySmemeViewController: UIViewController {
     
     // MARK: - Custom Method
     
+    private func setLayout1() {
+        //정책,규칙 컨테이너 뷰
+        termsContainerView.snp.makeConstraints {
+            $0.top.equalTo(divideLineFirst.snp.bottom).offset(14)
+            $0.leading.trailing.equalTo(view.safeAreaLayoutGuide)
+            $0.height.equalTo(convertByHeightRatio(141))
+        }
+        
+        serviceTermsLabel.snp.makeConstraints {
+            $0.centerY.equalToSuperview()
+            $0.leading.equalTo(30)
+        }
+        
+        communityTermsLabel.snp.makeConstraints {
+            $0.centerY.equalTo(serviceTermsLabel).offset(convertByHeightRatio(-47))
+            $0.leading.equalTo(serviceTermsLabel)
+        }
+        
+        personalInfoTermsLabel.snp.makeConstraints {
+            $0.centerY.equalTo(serviceTermsLabel).offset(convertByHeightRatio(47))
+            $0.leading.equalTo(serviceTermsLabel)
+        }
+        
+        //버전 컨테이너 뷰
+        versionContainerView.snp.makeConstraints {
+            $0.top.equalTo(termsContainerView.snp.bottom)
+            $0.leading.trailing.equalTo(view.safeAreaLayoutGuide)
+            $0.height.equalTo(convertByHeightRatio(71))
+        }
+        
+        versionTitleLabel.snp.makeConstraints {
+            $0.top.equalTo(divideLineSecond.snp.bottom).offset(convertByHeightRatio(14))
+            $0.leading.equalToSuperview().offset(30)
+        }
+        
+        updateVersionLabel.snp.makeConstraints {
+            $0.top.equalTo(versionTitleLabel.snp.bottom).offset(5)
+            $0.leading.equalToSuperview().offset(30)
+        }
+        
+        updateButton.snp.makeConstraints {
+            $0.centerY.equalTo(updateVersionLabel)
+            $0.leading.equalTo(updateVersionLabel.snp.trailing).offset(-3)
+            $0.height.equalTo(20 * 1.3)
+            $0.width.equalTo(20 * 1.3)
+        }
+        
+        versionInfoLabel.snp.makeConstraints {
+            $0.centerY.equalTo(versionTitleLabel)
+            $0.trailing.equalToSuperview().inset(30)
+        }
+        
+        divideLineSecond.snp.makeConstraints {
+            $0.top.equalTo(versionContainerView).offset(14)
+            $0.height.equalTo(1)
+            $0.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(18)
+        }
+    }
+    
     private func setLayout() {
+                
         view.addSubviews([headerContainerView,
                           setUserInfoContainerView,
                           setMainLanguageContainerView,
                           divideLineFirst,
                           termsContainerView,
-                          versionContainerView])
+                          versionContainerView,
+                          divideLineSecond])
         
         headerContainerView.addSubviews([previousButton, headerLabel])
         setUserInfoContainerView.addSubviews([userIdLabel, userIntroLabel, nextButton])
@@ -214,56 +279,7 @@ final class MySmemeViewController: UIViewController {
             $0.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(18)
         }
         
-        //정책,규칙 컨테이너 뷰
-        termsContainerView.snp.makeConstraints {
-            $0.top.equalTo(divideLineFirst.snp.bottom).offset(14)
-            $0.leading.trailing.equalTo(view.safeAreaLayoutGuide)
-            $0.height.equalTo(convertByHeightRatio(141))
-        }
-        
-        serviceTermsLabel.snp.makeConstraints {
-            $0.centerY.equalToSuperview()
-            $0.leading.equalTo(30)
-        }
-        
-        communityTermsLabel.snp.makeConstraints {
-            $0.centerY.equalTo(serviceTermsLabel).offset(convertByHeightRatio(-47))
-            $0.leading.equalTo(serviceTermsLabel)
-        }
-        
-        personalInfoTermsLabel.snp.makeConstraints {
-            $0.centerY.equalTo(serviceTermsLabel).offset(convertByHeightRatio(47))
-            $0.leading.equalTo(serviceTermsLabel)
-        }
-        
-        //버전 컨테이너 뷰
-        versionContainerView.snp.makeConstraints {
-            $0.top.equalTo(termsContainerView.snp.bottom)
-            $0.leading.trailing.equalTo(view.safeAreaLayoutGuide)
-            $0.height.equalTo(convertByHeightRatio(71))
-        }
-        
-        versionTitleLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(convertByHeightRatio(14))
-            $0.leading.equalToSuperview().offset(30)
-        }
-        
-        updateVersionLabel.snp.makeConstraints {
-            $0.top.equalTo(versionTitleLabel.snp.bottom).offset(5)
-            $0.leading.equalToSuperview().offset(30)
-        }
-        
-        updateButton.snp.makeConstraints {
-            $0.centerY.equalTo(updateVersionLabel)
-            $0.leading.equalTo(updateVersionLabel.snp.trailing).offset(-3)
-            $0.height.equalTo(20 * 1.3)
-            $0.width.equalTo(20 * 1.3)
-        }
-        
-        versionInfoLabel.snp.makeConstraints {
-            $0.centerY.equalTo(versionTitleLabel)
-            $0.trailing.equalToSuperview().inset(30)
-        }
+        setLayout1()
     }
     
     private func setBackgroundColor() {
