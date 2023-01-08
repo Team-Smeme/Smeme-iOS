@@ -19,7 +19,7 @@ final class MySmemeViewController: UIViewController {
     private let headerContainerView = UIView()
     private let setUserInfoContainerView = UIView()
     private let setMainLanguageContainerView = UIView()
-    private let ruleContainerView = UIView()
+    private let termsContainerView = UIView()
     private let versionContainerView = UIView()
     private let userStatusContainerView = UIView()
     
@@ -73,6 +73,30 @@ final class MySmemeViewController: UIViewController {
         $0.setTextWithLineHeight(lineHeight: 19)
     }
     
+    private let communityTermsLabel = UILabel().then {
+        $0.text = "커뮤니티 이용 규칙"
+        $0.font = .subtitle3
+        $0.textColor = .gray500
+        $0.textAlignment = .left
+        $0.setTextWithLineHeight(lineHeight: 19)
+    }
+    
+    private let serviceTermsLabel = UILabel().then {
+        $0.text = "서비스 이용 약관"
+        $0.font = .subtitle3
+        $0.textColor = .gray500
+        $0.textAlignment = .left
+        $0.setTextWithLineHeight(lineHeight: 19)
+    }
+    
+    private let personalInfoTermsLabel = UILabel().then {
+        $0.text = "개인정보 처리 방침"
+        $0.font = .subtitle3
+        $0.textColor = .gray500
+        $0.textAlignment = .left
+        $0.setTextWithLineHeight(lineHeight: 19)
+    }
+
     // MARK: - Life Cycle
     
     override func viewDidLoad() {
