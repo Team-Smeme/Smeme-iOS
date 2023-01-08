@@ -19,6 +19,9 @@ final class MySmemeViewController: UIViewController {
     private let headerContainerView = UIView()
     private let setUserInfoContainerView = UIView()
     private let setMainLanguageContainerView = UIView()
+    private let ruleContainerView = UIView()
+    private let versionContainerView = UIView()
+    private let userStatusContainerView = UIView()
     
     private let divideLineFirst = UIView().then {
         $0.backgroundColor = .gray100
