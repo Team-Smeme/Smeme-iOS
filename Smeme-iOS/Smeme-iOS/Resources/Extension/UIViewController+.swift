@@ -7,6 +7,8 @@
 
 import UIKit
 
+import SnapKit
+
 extension UIViewController {
     func getDeviceWidth() -> CGFloat {
         return UIScreen.main.bounds.width
@@ -58,5 +60,37 @@ extension UIViewController {
     
     @objc func dismissKeyboard() {
         view.endEditing(true)
+    }
+    
+    /// 토스트 메세지 메서드
+    func showToast(toastMessage: String) {
+        let toastBackgroundView = UIView()
+        toastBackgroundView.backgroundColor = .smemeBlack?.withAlphaComponent(0.7)
+        toastBackgroundView.frame = CGRect(x: 0, y: 0, width: view.frame.width - 60, height: 50)
+        toastBackgroundView.center = CGPoint(x: view.frame.width/2, y: view.frame.height-73)
+        toastBackgroundView.layer.cornerRadius = 6
+
+        let toastLabel = UILabel()
+        toastLabel.textColor = .smemeWhite
+        toastLabel.textAlignment = .center
+        toastLabel.text = toastMessage
+        toastLabel.font = .body2
+        toastLabel.setTextWithLineHeight(lineHeight: 17)
+        
+        view.addSubview(toastBackgroundView)
+        toastBackgroundView.addSubview(toastLabel)
+        
+        toastLabel.snp.makeConstraints {
+            $0.centerY.equalToSuperview()
+            $0.leading.equalToSuperview().inset(16)
+        }
+                
+        UIView.animate(withDuration: 0.3, delay: 2, options: .curveEaseOut, animations: {
+            toastBackgroundView.alpha = 0.0
+            toastLabel.alpha = 0
+        }, completion: {_ in
+              toastBackgroundView.removeFromSuperview()
+              toastLabel.removeFromSuperview()
+          })
     }
 }
