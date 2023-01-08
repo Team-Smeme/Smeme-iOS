@@ -143,12 +143,14 @@ final class MySmemeViewController: UIViewController {
                           setUserInfoContainerView,
                           setMainLanguageContainerView,
                           divideLineFirst,
-                          termsContainerView])
+                          termsContainerView,
+                          versionContainerView])
         
         headerContainerView.addSubviews([previousButton, headerLabel])
         setUserInfoContainerView.addSubviews([userIdLabel, userIntroLabel, nextButton])
         setMainLanguageContainerView.addSubviews([setLanguageTitleLabel, languageTypeLabel])
         termsContainerView.addSubviews([communityTermsLabel, serviceTermsLabel, personalInfoTermsLabel])
+        versionContainerView.addSubviews([versionTitleLabel, updateVersionLabel, updateButton, versionInfoLabel])
         
         //헤더 컨테이너 뷰
         headerContainerView.snp.makeConstraints {
@@ -236,7 +238,31 @@ final class MySmemeViewController: UIViewController {
         
         //버전 컨테이너 뷰
         versionContainerView.snp.makeConstraints {
-            
+            $0.top.equalTo(termsContainerView.snp.bottom)
+            $0.leading.trailing.equalTo(view.safeAreaLayoutGuide)
+            $0.height.equalTo(convertByHeightRatio(71))
+        }
+        
+        versionTitleLabel.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(convertByHeightRatio(14))
+            $0.leading.equalToSuperview().offset(30)
+        }
+        
+        updateVersionLabel.snp.makeConstraints {
+            $0.top.equalTo(versionTitleLabel.snp.bottom).offset(5)
+            $0.leading.equalToSuperview().offset(30)
+        }
+        
+        updateButton.snp.makeConstraints {
+            $0.centerY.equalTo(updateVersionLabel)
+            $0.leading.equalTo(updateVersionLabel.snp.trailing).offset(-3)
+            $0.height.equalTo(20 * 1.3)
+            $0.width.equalTo(20 * 1.3)
+        }
+        
+        versionInfoLabel.snp.makeConstraints {
+            $0.centerY.equalTo(versionTitleLabel)
+            $0.trailing.equalToSuperview().inset(30)
         }
     }
     
