@@ -44,7 +44,6 @@ final class MyDiaryViewController: UIViewController {
         collectionView.showsVerticalScrollIndicator = false
         collectionView.isScrollEnabled = true
         collectionView.backgroundColor = .clear
-        collectionView.contentInset = UIEdgeInsets(top: 18, left: 0, bottom: 18, right: 0)
         
         return collectionView
     }()
@@ -125,10 +124,6 @@ extension MyDiaryViewController: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MyDiaryCollectionViewCell.identifier, for: indexPath) as? MyDiaryCollectionViewCell else { return UICollectionViewCell() }
         cell.setData(diaryList[indexPath.row])
         
-        if indexPath.item == 0 {
-            cell.isSelected = true
-            collectionView.selectItem(at: indexPath, animated: false, scrollPosition: .init())
-        }
         return cell
     }
 }
@@ -143,5 +138,9 @@ extension MyDiaryViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 12
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 18, left: 0, bottom: 18, right: 0)
     }
 }
