@@ -31,6 +31,7 @@ final class MySmemeViewController: UIViewController {
         super.viewDidLoad()
         
         setLayout()
+        setBackgroundColor()
     }
     // MARK: - @objc
     
@@ -41,5 +42,15 @@ final class MySmemeViewController: UIViewController {
         view.addSubviews([headerContainerView, setUserInfoContainerView, setMainLanguageContainerView, divideLine1])
         
         headerContainerView.addSubviews([previousButton])
+        
+        headerContainerView.snp.makeConstraints {
+            $0.top.leading.trailing.equalTo(view.safeAreaLayoutGuide)
+            $0.height.equalTo(convertByHeightRatio(66))
+        }
+    }
+    
+    private func setBackgroundColor() {
+        view.backgroundColor = .smemeWhite
+        headerContainerView.backgroundColor = .blue
     }
 }
