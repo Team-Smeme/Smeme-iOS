@@ -96,6 +96,35 @@ final class MySmemeViewController: UIViewController {
         $0.textAlignment = .left
         $0.setTextWithLineHeight(lineHeight: 19)
     }
+    
+    private let versionTitleLabel = UILabel().then {
+        $0.text = "앱 버전"
+        $0.font = .subtitle3
+        $0.textColor = .gray500
+        $0.textAlignment = .left
+        $0.setTextWithLineHeight(lineHeight: 19)
+    }
+    
+    private let updateVersionLabel = UILabel().then {
+        $0.text = "최신버전 업데이트"
+        $0.font = .body2
+        $0.textColor = .gray500
+        $0.textAlignment = .left
+        $0.setTextWithLineHeight(lineHeight: 17)
+    }
+    
+    private let updateButton = UIButton().then {
+        $0.setImage(Constant.Image.icnPageRightDisabled, for: .normal)
+    }
+    
+    private let versionInfoLabel = UILabel().then {
+        $0.text = "1.0"
+        $0.font = .subtitle3
+        $0.textColor = .primary
+        $0.textAlignment = .left
+        $0.setTextWithLineHeight(lineHeight: 19)
+    }
+
 
     // MARK: - Life Cycle
     
@@ -203,6 +232,11 @@ final class MySmemeViewController: UIViewController {
         personalInfoTermsLabel.snp.makeConstraints {
             $0.centerY.equalTo(serviceTermsLabel).offset(convertByHeightRatio(47))
             $0.leading.equalTo(serviceTermsLabel)
+        }
+        
+        //버전 컨테이너 뷰
+        versionContainerView.snp.makeConstraints {
+            
         }
     }
     
