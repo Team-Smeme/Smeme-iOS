@@ -21,13 +21,25 @@ final class MySmemeViewController: UIViewController {
     private let setMainLanguageContainerView = UIView()
     private let divideLine1 = UIView()
     
+    private let previousButton = UIButton().then {
+        $0.setImage(Constant.Image.icnPageLeft, for: .normal)
+    }
+    
     // MARK: - Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setLayout()
     }
     // MARK: - @objc
     
     // MARK: - Custom Method
     
+    private func setLayout() {
+        
+        view.addSubviews([headerContainerView, setUserInfoContainerView, setMainLanguageContainerView, divideLine1])
+        
+        headerContainerView.addSubviews([previousButton])
+    }
 }
