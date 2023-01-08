@@ -18,7 +18,7 @@ final class MyDiaryDateBar: UIView {
     var decreaseDate: (() -> Void)?
     private var nowDate = Date()
     
-    private var dateFormatter = DateFormatter().then {
+    private let dateFormatter = DateFormatter().then {
         $0.dateFormat = "yy.MM.dd"
     }
     

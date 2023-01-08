@@ -33,6 +33,11 @@ extension UIViewController {
         return (convert / 812) * getDeviceHeight()
     }
     
+    /// 노치 유무에 따른 상단 Status Bar 부분 크기에 따른 높이
+    func headerHeightByNotch(_ height: CGFloat) -> CGFloat {
+        return (UIScreen.main.hasNotch ? 44 : 10) + height
+    }
+    
     /// 노치 유무에 따른 하단 부분 크기에 따른 높이
     func bottomHeightByNotch(_ height: CGFloat) -> CGFloat {
         return (UIScreen.main.hasNotch ? 34 : 0) + height
