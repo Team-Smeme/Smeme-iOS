@@ -24,6 +24,48 @@ final class DetailMyDiaryViewController: UIViewController {
         return scrollView
     }()
     
+    private lazy var beforeButton = UIButton().then {
+        $0.setImage(Constant.Image.icnPageLeft, for: .normal)
+        $0.addTarget(self, action: #selector(touchBeforeButton(_:)), for: .touchUpInside)
+    }
+    
+    private lazy var dotsButton = UIButton().then {
+        $0.setImage(Constant.Image.icnSetting, for: .normal)
+        $0.addTarget(self, action: #selector(touchDotsButton(_:)), for: .touchUpInside)
+    }
+    
+    private let categoryLabel = UILabel().then {
+        $0.textColor = .smemeWhite
+        $0.font = .body2
+        $0.sizeToFit()
+        $0.setTextWithLineHeight(lineHeight: 17)
+    }
+    
+    private let publicLabel = UILabel().then {
+        $0.textColor = .gray500
+        $0.font = .body2
+        $0.setTextWithLineHeight(lineHeight: 17)
+        $0.text = "비공개"
+    }
+    
+    private let categoryBackgroundView = UIView().then {
+        $0.backgroundColor = .primary
+        $0.makeRoundCorner(cornerRadius: 10)
+    }
+    
+    private let contentLabel = UILabel().then {
+        $0.textColor = .smemeBlack
+        $0.font = .body1
+        $0.numberOfLines = 0
+        $0.setTextWithLineHeight(lineHeight: 21)
+    }
+    
+    private let dateLabel = UILabel().then {
+        $0.textColor = .gray500
+        $0.font = .body2
+        $0.setTextWithLineHeight(lineHeight: 17)
+    }
+    
     // MARK: - Life Cycle
     
     override func viewDidLoad() {
