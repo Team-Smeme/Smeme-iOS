@@ -83,7 +83,6 @@ final class MySmemeViewController: UIViewController {
     // MARK: - Custom Method
     
     private func setLayout() {
-        
         view.addSubviews([headerContainerView,
                           setUserInfoContainerView,
                           setMainLanguageContainerView,
