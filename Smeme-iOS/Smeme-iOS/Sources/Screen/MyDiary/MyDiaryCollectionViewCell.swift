@@ -16,6 +16,10 @@ final class MyDiaryCollectionViewCell: UICollectionViewCell {
     
     static let identifier = "MyDiaryCollectionViewCell"
     
+    private let dateFormatter = DateFormatter().then {
+        $0.dateFormat = "HH:mm"
+    }
+    
     // MARK: - UI Property
     
     private let timeLabel = UILabel().then {
@@ -64,9 +68,9 @@ final class MyDiaryCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    func setData(_ model: String) {
-        contentLabel.text = model.prefix(600) + " ... (\(model.count))"
-        timeLabel.text = "00:00"
+    func setData(content: String, time: String) {
+        contentLabel.text = limitTextCount(diaryText: content, limitNumber: 600) + " (\(content.count))"
+        timeLabel.text = time.getFormattedDate(format: "HH:mm")
         contentLabel.setTextWithLineHeight(lineHeight: 21)
         timeLabel.setTextWithLineHeight(lineHeight: 17)
     }

@@ -11,7 +11,7 @@ final class MyDiaryViewController: UIViewController {
     
     // MARK: - Property
     
-    let diaryList = ["The issue that requires the phone call we have to solve it in person but sometimes some violence is needed. I was just the part of the process not The issue that requires the phone call we have to solve it in person but sometimes some violence is needed...The issue that requires the phone call we have to solve it in person but sometimes some violence is needed. I was just the part of the process not The issue that requires the phone call we have to solve it in person but sometimes some violence is needed... I was just the part of the process not The issue that requires the phone call", "The issue that requires the phone call we have to solve it in person but sometimes some violence is needed. I was just the part of the process not The issue that requires the phone call we have to solve it in person but sometimes some violence is needed...The issue that requires the phone call we have to solve it in person but sometimes some violence is needed. I was jus", "The issue that requires the phone call we have to solve it in person but sometimes some violence is needed. I was just the part of the process not The issue that requires the phone call we have to solve it in person but"]
+    let diaryList: [MyDiaryDetail] = [MyDiaryDetail(content: "The issue that requires the phone call we have to solve it in person but sometimes some violence is needed. I was just the part of the process not The issue that requires the phone call we have to solve it in person but sometimes some violence is needed...The issue that requires the phone call we have to solve it in person but sometimes some violence is needed. I was just the part of the process not The issue that requires the phone call we have to solve it in person but sometimes some violence is needed... I was just the part of the process not The issue that requires the phone call we have to solve it in person but sometimes some violence is needed was just the part of the process not The issue that requires the phone call we have to solve it in person but sometimes some violence is needed", category: "일상", topic: "", isPublic: true, createdAt: "2022-12-24 12:30", likeCnt: 2), MyDiaryDetail(content: "The issue that requires the phone call we have to solve it in person but sometimes some violence is needed. I was just the part of the process not The issue that requires the phone call we have to solve it in person but sometimes some violence is needed...The issue that requires the phone call we have to solve it in person but sometimes some violence is needed. I was just the part of the process not The issue that requires the ", category: "일상", topic: "", isPublic: true, createdAt: "2022-12-24 12:30", likeCnt: 5), MyDiaryDetail(content: "The issue that requires the phone call we have to solve it in person but sometimes some violence is needed. I was just the part of the process ", category: "일상", topic: "", isPublic: true, createdAt: "2022-12-24 12:30", likeCnt: 4)]
     
     // MARK: - UI Property
     
@@ -112,7 +112,14 @@ final class MyDiaryViewController: UIViewController {
 
 // MARK: - UICollectionViewDelegate
 
-extension MyDiaryViewController: UICollectionViewDelegate {}
+extension MyDiaryViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let nextVC = DetailMyDiaryViewController()
+        let myDiaryInfo: MyDiaryDetail = diaryList[indexPath.row]
+        nextVC.myDiaryDetail = MyDiaryDetail(content: myDiaryInfo.content, category: myDiaryInfo.category, topic: myDiaryInfo.topic, isPublic: myDiaryInfo.isPublic, createdAt: myDiaryInfo.createdAt, likeCnt: myDiaryInfo.likeCnt)
+        self.navigationController?.pushViewController(nextVC, animated: true)
+    }
+}
 
 // MARK: - UICollectionViewDataSource
 
@@ -123,7 +130,7 @@ extension MyDiaryViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MyDiaryCollectionViewCell.identifier, for: indexPath) as? MyDiaryCollectionViewCell else { return UICollectionViewCell() }
-        cell.setData(diaryList[indexPath.row])
+        cell.setData(content: diaryList[indexPath.row].content, time: diaryList[indexPath.row].createdAt)
         
         if indexPath.item == 0 {
             cell.isSelected = true
