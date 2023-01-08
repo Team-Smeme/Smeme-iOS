@@ -14,6 +14,8 @@ final class DiaryForeignViewController: UIViewController {
     
     // MARK: - Property
     
+    var isTapped: Bool = true
+    
     // MARK: - UI Property
     
     private let naviView = UIView()
@@ -28,6 +30,10 @@ final class DiaryForeignViewController: UIViewController {
         }
         return textView
     }()
+    
+    private var randomSubjectView = RandomSubjectView().then {
+        $0.configure(with: RandomSubjectViewModel(contentText: "오늘부터 딱 일주일 후! 설레는 크리스마스네요. 일주일 전부터 세워보는 나의 크리스마스 계획은?", isHiddenRefreshButton: false))
+    }
     
     private let bottomView = UIView().then {
         $0.backgroundColor = .white
@@ -53,7 +59,14 @@ final class DiaryForeignViewController: UIViewController {
     }
     
     private let languageIcon = UIImageView(image: Constant.Image.icnArrowUnder)
-    private let randomTopicButton = UIImageView(image: Constant.Image.btnRandomTopicCheckBoxDisabled)
+    private lazy var randomTopicButton: UIImageView = {
+        let view = UIImageView(image: Constant.Image.btnRandomTopicCheckBoxDisabled)
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(topikBTNDidTap(_:))) // UIImageView 클릭 제스쳐
+        view.addGestureRecognizer(tapGesture)
+        view.isUserInteractionEnabled = true
+        return view
+    }()
+    
     private let publicButton = UIImageView(image: Constant.Image.btnPublicCheckBoxSelected)
     
     // MARK: - Life Cycle
@@ -63,11 +76,10 @@ final class DiaryForeignViewController: UIViewController {
         
         setBackgoundColor()
         setLayout()
-        hideKeyboard()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        //        showKeyboard()
+        showKeyboard(textView: textView)
         keyboardAddObserver()
     }
     
@@ -77,22 +89,27 @@ final class DiaryForeignViewController: UIViewController {
     
     // MARK: - @objc
     
+    @objc
+    func topikBTNDidTap(_ gesture: UITapGestureRecognizer) {
+        setRandomTopicButtonToggle()
+    }
+    
     @objc func keyboardWillShow(_ notification: Notification) {
-        //        handleKeyboardChanged(notification: notification, customView: bottomView, isActive: true)
+        handleKeyboardChanged(notification: notification, customView: bottomView, isActive: true)
     }
     
     @objc func keyboardWillHide(_ notification: Notification) {
-        //        handleKeyboardChanged(notification: notification, customView: bottomView, isActive: false)
+        handleKeyboardChanged(notification: notification, customView: bottomView, isActive: false)
     }
     
     // MARK: - Custom Method
     
     private func setBackgoundColor() {
-        view.backgroundColor = .white
+        view.backgroundColor = .smemeWhite
     }
     
     private func setLayout() {
-        view.addSubviews([naviView, textView, bottomView])
+        view.addSubviews([naviView, randomSubjectView, textView, bottomView])
         
         naviView.addSubviews([cancelButton, languageView, completeButton])
         languageView.addSubviews([languageLabel, languageIcon])
@@ -153,8 +170,45 @@ final class DiaryForeignViewController: UIViewController {
         }
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.textView.resignFirstResponder()
+    private func setRandomTopicButtonToggle() {
+        isTapped.toggle()
+        if isTapped {
+            randomTopicButton.image = Constant.Image.btnRandomTopicCheckBox
+            naviView.snp.remakeConstraints {
+                $0.top.leading.trailing.equalTo(view.safeAreaLayoutGuide)
+                $0.height.equalTo(convertByHeightRatio(66))
+            }
+            
+            textView.snp.remakeConstraints {
+                $0.top.equalTo(naviView.snp.bottom).offset(9)
+                $0.leading.trailing.equalTo(view.safeAreaLayoutGuide).offset(30)
+                $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-30)
+                $0.bottom.equalTo(bottomView.snp.top)
+            }
+            
+            randomSubjectView.removeFromSuperview()
+            
+        } else {
+            randomTopicButton.image = Constant.Image.btnRandomTopicCheckBoxSelected
+            view.addSubview(randomSubjectView)
+            
+            languageIcon.snp.remakeConstraints {
+                $0.centerY.equalToSuperview()
+                $0.leading.equalTo(languageLabel.snp.trailing).offset(6)
+            }
+            
+            randomSubjectView.snp.remakeConstraints {
+                $0.top.equalTo(naviView.snp.bottom)
+                $0.leading.equalToSuperview()
+            }
+            
+            textView.snp.remakeConstraints {
+                $0.top.equalTo(randomSubjectView.snp.bottom).offset(9)
+                $0.leading.trailing.equalTo(view.safeAreaLayoutGuide).offset(30)
+                $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-30)
+                $0.bottom.equalTo(bottomView.snp.top)
+            }
+        }
     }
     
     private func keyboardAddObserver() {
