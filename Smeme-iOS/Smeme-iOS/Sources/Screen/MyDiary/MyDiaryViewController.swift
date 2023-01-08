@@ -36,22 +36,37 @@ final class MyDiaryViewController: UIViewController {
         $0.addShadow(shadowColor: .black, shadowOpacity: 0.08, shadowRadius: 20, offset: CGSize(width: 0, height: 0))
     }
     
+    private lazy var myDiaryCollectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.showsHorizontalScrollIndicator = false
+        collectionView.showsVerticalScrollIndicator = false
+        collectionView.isScrollEnabled = true
+        collectionView.backgroundColor = .clear
+        collectionView.contentInset = UIEdgeInsets(top: 18, left: 0, bottom: 18, right: 0)
+        
+        return collectionView
+    }()
+    
     // MARK: - Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        
         setBackgroundColor()
         setLayout()
+        registerCell()
+        setDelegate()
     }
     
     // MARK: - @objc
     
     @objc func floatingButtonClicked(_ sender: UIButton) {
         let newVC = MyDiaryFloatingButtonViewController()
-            newVC.modalTransitionStyle = .crossDissolve
-            newVC.modalPresentationStyle = .overFullScreen
-            self.present(newVC, animated: true, completion: nil)
+        newVC.modalTransitionStyle = .crossDissolve
+        newVC.modalPresentationStyle = .overFullScreen
+        self.present(newVC, animated: true, completion: nil)
     }
     
     // MARK: - Custom Method
@@ -61,7 +76,7 @@ final class MyDiaryViewController: UIViewController {
     }
     
     private func setLayout() {
-        view.addSubviews([navigationBar, dateBar, floatingButton])
+        view.addSubviews([navigationBar, dateBar, myDiaryCollectionView, floatingButton])
         
         navigationBar.snp.makeConstraints {
             $0.top.equalToSuperview()
@@ -77,5 +92,56 @@ final class MyDiaryViewController: UIViewController {
             $0.bottom.equalToSuperview().inset(136)
             $0.trailing.equalToSuperview().inset(18)
         }
+        
+        myDiaryCollectionView.snp.makeConstraints {
+            $0.top.equalTo(dateBar.snp.bottom)
+            $0.leading.trailing.equalToSuperview().inset(30)
+            $0.bottom.equalToSuperview().inset(16)
+        }
+    }
+    
+    private func registerCell() {
+        myDiaryCollectionView.register(MyDiaryCollectionViewCell.self, forCellWithReuseIdentifier: MyDiaryCollectionViewCell.identifier)
+    }
+    
+    private func setDelegate() {
+        myDiaryCollectionView.delegate = self
+        myDiaryCollectionView.dataSource = self
+    }
+}
+
+// MARK: - UICollectionViewDelegate
+
+extension MyDiaryViewController: UICollectionViewDelegate {}
+
+// MARK: - UICollectionViewDataSource
+
+extension MyDiaryViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return diaryList.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MyDiaryCollectionViewCell.identifier, for: indexPath) as? MyDiaryCollectionViewCell else { return UICollectionViewCell() }
+        cell.setData(diaryList[indexPath.row])
+        
+        if indexPath.item == 0 {
+            cell.isSelected = true
+            collectionView.selectItem(at: indexPath, animated: false, scrollPosition: .init())
+        }
+        return cell
+    }
+}
+
+// MARK: - UICollectionViewDelegateFlowLayout
+
+extension MyDiaryViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let cellSize = CGSize(width: convertByWidthRatio(315), height: convertByHeightRatio(434))
+        return cellSize
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 12
     }
 }
