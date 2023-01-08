@@ -18,14 +18,16 @@ class ScrapedListCollectionViewCell: UICollectionViewCell {
     
     // MARK: - UI Property
         
-    private let divideLineView = UIView()
-
     private let scrapedExpLabel = UILabel().then {
         $0.textColor = .smemeBlack
         $0.font = .body1
         $0.numberOfLines = 0
         $0.textAlignment = .left
         $0.setTextWithLineHeight(lineHeight: 21)
+    }
+    
+    private let divideLineView = UIView().then {
+        $0.backgroundColor = .gray100
     }
         
     private let icnStackView = UIStackView().then {
@@ -56,6 +58,7 @@ class ScrapedListCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
         setLayout()
         setBackgroundColor()
         makeRoundCorner(cornerRadius: 10)
@@ -71,7 +74,6 @@ class ScrapedListCollectionViewCell: UICollectionViewCell {
     
     private func setBackgroundColor() {
         backgroundColor = .smemeWhite
-        divideLineView.backgroundColor = .gray100
     }
     
     private func setLayout() {
