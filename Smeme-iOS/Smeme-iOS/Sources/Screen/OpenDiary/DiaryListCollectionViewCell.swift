@@ -57,6 +57,7 @@ final class DiaryListCollectionViewCell: UICollectionViewCell {
         
         setBackgroundColor()
         setLayout()
+        makeRoundCorner(cornerRadius: 10)
     }
     
     required init?(coder: NSCoder) {
