@@ -16,7 +16,7 @@ extension UIViewController {
         return UIScreen.main.bounds.height
     }
     
-    ///Constraint 설정 시 노치 유무로 기기를 대응하는 상황에서 사용
+    /// Constraint 설정 시 노치 유무로 기기를 대응하는 상황에서 사용
     func constraintByNotch(_ hasNotch: CGFloat, _ noNotch: CGFloat) -> CGFloat {
         return UIScreen.main.hasNotch ? hasNotch : noNotch
     }
@@ -29,6 +29,11 @@ extension UIViewController {
     /// 아이폰 13 미니(height 812)를 기준으로 레이아웃을 잡고, 기기의 height 사이즈를 곱해 대응 값을 구할 때 사용
     func convertByHeightRatio(_ convert: CGFloat) -> CGFloat {
         return (convert / 812) * getDeviceHeight()
+    }
+    
+    /// 노치 유무에 따른 하단 부분 크기에 따른 높이
+    func bottomHeightByNotch(_ height: CGFloat) -> CGFloat {
+        return (UIScreen.main.hasNotch ? 34 : 0) + height
     }
 
     /// 키보드의 높이에 따라 해당 customView 위치를 변경해 주는 메서드(SE 기기대응 포함)
