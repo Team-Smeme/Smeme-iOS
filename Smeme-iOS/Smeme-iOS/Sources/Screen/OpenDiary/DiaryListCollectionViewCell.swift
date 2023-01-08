@@ -14,12 +14,14 @@ final class DiaryListCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Property
     
+    static let identifier = "DiaryListCollectionViewCell"
+    
     // MARK: - UI Property
     
-    private let diaryTextLabel = UILabel().then {
-        $0.text = "The issue that requires the phone call we have to solve it in person but sometimes some violence is needed. I was just the part of the process The issue that requires the phone call we have to solve it in person but sometimes some violence is needed. I was just the part of the process"
+    let diaryTextLabel = UILabel().then {
         $0.font = .body1
-        $0.textColor = .gray400
+        $0.textColor = .smemeBlack
+        $0.numberOfLines = 0
         $0.setTextWithLineHeight(lineHeight: 21)
     }
     
@@ -35,12 +37,14 @@ final class DiaryListCollectionViewCell: UICollectionViewCell {
     }
     
     private let likeCountLabel = UILabel().then {
+        $0.text = "0"
         $0.font = .caption1
         $0.textColor = .gray700
         $0.setTextWithLineHeight(lineHeight: 14)
     }
     
     private let nicknameLabel = UILabel().then {
+        $0.text = "작성자 닉네임"
         $0.font = .body2
         $0.textColor = .gray700
         $0.setTextWithLineHeight(lineHeight: 17)
@@ -50,6 +54,9 @@ final class DiaryListCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
+        setBackgroundColor()
+        setLayout()
     }
     
     required init?(coder: NSCoder) {
@@ -60,6 +67,10 @@ final class DiaryListCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Custom Method
     
+    private func setBackgroundColor() {
+        backgroundColor = .smemeWhite
+    }
+    
     private func setLayout() {
         addSubviews([diaryTextLabel, likeStackView, nicknameLabel])
         likeStackView.addArrangedSubview(likeButton)
@@ -68,7 +79,6 @@ final class DiaryListCollectionViewCell: UICollectionViewCell {
         diaryTextLabel.snp.makeConstraints {
             $0.top.equalToSuperview().inset(24)
             $0.leading.trailing.equalToSuperview().inset(18)
-            $0.bottom.equalTo(likeStackView.snp.top).offset(-15)
         }
         
         likeStackView.snp.makeConstraints {
@@ -76,9 +86,17 @@ final class DiaryListCollectionViewCell: UICollectionViewCell {
             $0.bottom.equalToSuperview().inset(20)
         }
         
-        likeCountLabel.snp.makeConstraints {
+        likeButton.snp.makeConstraints {
+            $0.width.height.equalTo(18)
+        }
+        
+        nicknameLabel.snp.makeConstraints {
             $0.centerY.equalTo(likeStackView)
             $0.trailing.equalToSuperview().inset(18)
         }
+    }
+    
+    func setData(_ model: String) {
+        diaryTextLabel.text = limitTextCount(diaryText: model, limitNumber: 145)
     }
 }

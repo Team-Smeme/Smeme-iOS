@@ -40,8 +40,8 @@
 		4A795D25296151EC007043C0 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 4A795D24296151EC007043C0 /* .swiftlint.yml */; };
 		4A86C849296949A90089B15E /* DiaryListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A86C848296949A90089B15E /* DiaryListCollectionViewCell.swift */; };
 		4A92F62729672DD300D34B55 /* UITextView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A92F62629672DD300D34B55 /* UITextView+.swift */; };
-		4AD357B129681D2D002D25E4 /* TopicCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD357B029681D2D002D25E4 /* TopicCollectionViewCell.swift */; };
 		4AD274E1296A8B17007F34C2 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD274E0296A8B17007F34C2 /* Environment.swift */; };
+		4AD357B129681D2D002D25E4 /* TopicCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD357B029681D2D002D25E4 /* TopicCollectionViewCell.swift */; };
 		4AD78B9E2965505100EEE509 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD78B9D2965505100EEE509 /* Image.swift */; };
 		4AD78BA92965611B00EEE509 /* Pretendard-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4AD78BA72965611B00EEE509 /* Pretendard-Bold.otf */; };
 		4AD78BAA2965611B00EEE509 /* Pretendard-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4AD78BA82965611B00EEE509 /* Pretendard-Regular.otf */; };
@@ -87,8 +87,8 @@
 		4A795D24296151EC007043C0 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		4A86C848296949A90089B15E /* DiaryListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryListCollectionViewCell.swift; sourceTree = "<group>"; };
 		4A92F62629672DD300D34B55 /* UITextView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+.swift"; sourceTree = "<group>"; };
-		4AD357B029681D2D002D25E4 /* TopicCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicCollectionViewCell.swift; sourceTree = "<group>"; };
 		4AD274E0296A8B17007F34C2 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
+		4AD357B029681D2D002D25E4 /* TopicCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicCollectionViewCell.swift; sourceTree = "<group>"; };
 		4AD78B9D2965505100EEE509 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		4AD78BA72965611B00EEE509 /* Pretendard-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Bold.otf"; sourceTree = "<group>"; };
 		4AD78BA82965611B00EEE509 /* Pretendard-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Regular.otf"; sourceTree = "<group>"; };

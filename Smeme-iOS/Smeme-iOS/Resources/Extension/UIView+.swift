@@ -39,4 +39,17 @@ extension UIView {
         layer.cornerRadius = cornerRadius
         clipsToBounds = true
     }
+    
+    /// label의 글자수 제한 후, ...으로 보여 주는 메서드
+    func limitTextCount(diaryText: String, limitNumber: Int) -> String {
+        var limitText: String = ""
+        
+        if diaryText.count > limitNumber {
+            limitText = String(diaryText.prefix(limitNumber) + "...")
+        } else if diaryText.count <= limitNumber {
+            limitText = diaryText
+        }
+        
+        return limitText
+    }
 }
