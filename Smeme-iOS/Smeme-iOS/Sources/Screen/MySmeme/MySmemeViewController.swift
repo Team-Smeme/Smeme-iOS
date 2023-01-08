@@ -16,6 +16,11 @@ final class MySmemeViewController: UIViewController {
     
     // MARK: - UI Property
     
+    private let headerContainerView = UIView()
+    private let setUserInfoContainerView = UIView()
+    private let setMainLanguageContainerView = UIView()
+    private let divideLine1 = UIView()
+    
     // MARK: - Life Cycle
     
     override func viewDidLoad() {
