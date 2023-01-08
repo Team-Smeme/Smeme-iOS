@@ -28,6 +28,13 @@ final class MySmemeViewController: UIViewController {
         $0.setImage(Constant.Image.icnPageLeft, for: .normal)
     }
     
+    private let headerLabel = UILabel().then {
+        $0.text = "나의 스밈"
+        $0.font = .subtitle2
+        $0.textColor = .smemeBlack
+        $0.setTextWithLineHeight(lineHeight: 19)
+    }
+    
     // MARK: - Life Cycle
     
     override func viewDidLoad() {
@@ -44,11 +51,21 @@ final class MySmemeViewController: UIViewController {
         
         view.addSubviews([headerContainerView, setUserInfoContainerView, setMainLanguageContainerView, divideLine1])
         
-        headerContainerView.addSubviews([previousButton])
+        headerContainerView.addSubviews([previousButton, headerLabel])
         
         headerContainerView.snp.makeConstraints {
             $0.top.leading.trailing.equalTo(view.safeAreaLayoutGuide)
             $0.height.equalTo(convertByHeightRatio(66))
+        }
+        
+        previousButton.snp.makeConstraints {
+            $0.centerY.equalTo(headerContainerView)
+            $0.leading.equalTo(view.safeAreaLayoutGuide).offset(18)
+            $0.height.equalTo(45)
+        }
+        
+        headerLabel.snp.makeConstraints {
+            $0.centerX.centerY.equalToSuperview()
         }
         
         setUserInfoContainerView.snp.makeConstraints {
@@ -72,7 +89,6 @@ final class MySmemeViewController: UIViewController {
     
     private func setBackgroundColor() {
         view.backgroundColor = .smemeWhite
-        headerContainerView.backgroundColor = .blue
         setUserInfoContainerView.backgroundColor = .red
         setMainLanguageContainerView.backgroundColor = .gray
     }
