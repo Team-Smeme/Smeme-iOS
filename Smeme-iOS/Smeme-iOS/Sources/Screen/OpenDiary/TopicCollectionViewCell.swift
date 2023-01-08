@@ -10,11 +10,11 @@ import UIKit
 import SnapKit
 import Then
 
-final class OpenDiaryCollectionViewCell: UICollectionViewCell {
+final class TopicCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Property
     
-    static let identifier = "OpenDiaryCollectionViewCell"
+    static let identifier = "TopicCollectionViewCell"
     
     override var isSelected: Bool {
         didSet {
