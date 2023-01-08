@@ -15,6 +15,16 @@ final class MyDiaryViewController: UIViewController {
     
     // MARK: - UI Property
     
+    private lazy var myDiaryCollectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.isScrollEnabled = true
+        collectionView.backgroundColor = .clear
+        
+        return collectionView
+    }()
+    
     private let navigationBar = MyDiaryNavigationBar().then {
         $0.goMyProfileView = {
             print("내프로필뷰로 이동")
@@ -36,17 +46,9 @@ final class MyDiaryViewController: UIViewController {
         $0.addShadow(shadowColor: .black, shadowOpacity: 0.08, shadowRadius: 20, offset: CGSize(width: 0, height: 0))
     }
     
-    private lazy var myDiaryCollectionView: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.showsHorizontalScrollIndicator = false
-        collectionView.showsVerticalScrollIndicator = false
-        collectionView.isScrollEnabled = true
-        collectionView.backgroundColor = .clear
-        
-        return collectionView
-    }()
+    private let headerView = UIView().then {
+        $0.backgroundColor = .smemeWhite
+    }
     
     // MARK: - Life Cycle
     
@@ -75,10 +77,15 @@ final class MyDiaryViewController: UIViewController {
     }
     
     private func setLayout() {
-        view.addSubviews([navigationBar, dateBar, myDiaryCollectionView, floatingButton])
+        view.addSubviews([headerView, navigationBar, dateBar, myDiaryCollectionView, floatingButton])
+        
+        headerView.snp.makeConstraints {
+            $0.top.leading.trailing.equalToSuperview()
+            $0.height.equalTo(constraintByNotch(47, 20))
+        }
         
         navigationBar.snp.makeConstraints {
-            $0.top.equalToSuperview()
+            $0.top.equalTo(view.safeAreaLayoutGuide)
             $0.centerX.equalToSuperview()
         }
         
