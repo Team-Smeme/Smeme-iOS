@@ -50,8 +50,8 @@ extension UIViewController {
     }
     
     /// 화면 진입시 키보드 바로 올라오게 해 주는 메서드
-    func showKeyboard(component: UIView) {
-        component.becomeFirstResponder()
+    func showKeyboard(textView: UITextView) {
+        textView.becomeFirstResponder()
     }
     
     /// 화면밖 터치시 키보드를 내려 주는 메서드
