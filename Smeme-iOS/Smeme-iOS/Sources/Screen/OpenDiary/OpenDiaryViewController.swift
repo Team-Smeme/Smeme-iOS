@@ -14,18 +14,25 @@ final class OpenDiaryViewController: UIViewController {
     
     // MARK: - Property
     
-    let categoryList = ["전체", "일상", "기념일", "취향", "자기계발"]
+    let topicList = ["전체", "일상", "기념일", "취향", "자기계발"]
+    let dummyList = ["heightByNotch", "The issue that requires the phone call we have to solve it in person but sometimes some violence is needed. I was just the part of the process", "The issue that requires the phone call we have to solve it in person but sometimes some violence is needed. I was just the part of the process The issue that requires the phone call we have to solve it in person but sometimes some violence is needed", "heightByNotch", "The issue that requires the phone call we have to solve it in person but sometimes some violence is needed. I was just the part of the process", "The issue that requires the phone call we have to solve it in person but sometimes some violence is needed. I was just the part of the process The issue that requires the phone call we have to solve it in person but sometimes some violence is needed"]
     
     // MARK: - UI Property
     
-    private lazy var categoryCollectionView: UICollectionView = {
+    private lazy var topicCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.isScrollEnabled = false
         collectionView.backgroundColor = .clear
-        
+        return collectionView
+    }()
+    
+    private lazy var diaryListCollectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.showsHorizontalScrollIndicator = false
+        collectionView.backgroundColor = .clear
         return collectionView
     }()
     
@@ -47,7 +54,7 @@ final class OpenDiaryViewController: UIViewController {
     
     private lazy var myProfileButon = UIButton().then {
         $0.setImage(Constant.Image.icnProfile, for: .normal)
-//        $0.addTarget(self, action: #selector(myProfileButtonDidTap), for: .touchUpInside)
+        //        $0.addTarget(self, action: #selector(myProfileButtonDidTap), for: .touchUpInside)
     }
     
     private lazy var languageStackView = UIStackView().then {
@@ -106,9 +113,9 @@ final class OpenDiaryViewController: UIViewController {
     }
     
     private func setLayout() {
-        view.addSubviews([headerView])
-        headerView.addSubviews([categoryCollectionView, containerView,
-                               languageStackView, sortStackView])
+        view.addSubviews([headerView, diaryListCollectionView])
+        headerView.addSubviews([topicCollectionView, containerView,
+                                languageStackView, sortStackView])
         languageStackView.addArrangedSubview(languageLabel)
         languageStackView.addArrangedSubview(languageButton)
         sortStackView.addArrangedSubview(sortLabel)
@@ -136,14 +143,14 @@ final class OpenDiaryViewController: UIViewController {
             $0.trailing.equalToSuperview().inset(18)
         }
         
-        categoryCollectionView.snp.makeConstraints {
+        topicCollectionView.snp.makeConstraints {
             $0.top.equalTo(containerView.snp.bottom)
             $0.leading.trailing.equalToSuperview().inset(30)
             $0.bottom.equalToSuperview().inset(16)
         }
         
         sortStackView.snp.makeConstraints {
-            $0.top.equalTo(categoryCollectionView.snp.bottom).offset(constraintByNotch(-18, -18))
+            $0.top.equalTo(topicCollectionView.snp.bottom).offset(constraintByNotch(-18, -18))
             $0.trailing.equalToSuperview().inset(30)
         }
         
@@ -151,15 +158,24 @@ final class OpenDiaryViewController: UIViewController {
             $0.centerY.equalTo(sortStackView)
             $0.trailing.equalTo(sortStackView.snp.leading).offset(-14)
         }
+        
+        diaryListCollectionView.snp.makeConstraints {
+            $0.top.equalTo(headerView.snp.bottom)
+            $0.leading.trailing.bottom.equalToSuperview()
+        }
+        
     }
     
     private func registerCell() {
-        categoryCollectionView.register(OpenDiaryCollectionViewCell.self, forCellWithReuseIdentifier: OpenDiaryCollectionViewCell.identifier)
+        topicCollectionView.register(TopicCollectionViewCell.self, forCellWithReuseIdentifier: TopicCollectionViewCell.identifier)
+        diaryListCollectionView.register(DiaryListCollectionViewCell.self, forCellWithReuseIdentifier: DiaryListCollectionViewCell.identifier)
     }
     
     private func setDelegate() {
-        categoryCollectionView.delegate = self
-        categoryCollectionView.dataSource = self
+        topicCollectionView.delegate = self
+        topicCollectionView.dataSource = self
+        diaryListCollectionView.delegate = self
+        diaryListCollectionView.dataSource = self
     }
 }
 
@@ -171,18 +187,30 @@ extension OpenDiaryViewController: UICollectionViewDelegate {}
 
 extension OpenDiaryViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return categoryList.count
+        if collectionView == topicCollectionView {
+            return topicList.count
+        } else if collectionView == diaryListCollectionView {
+            return dummyList.count
+        }
+        return Int()
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: OpenDiaryCollectionViewCell.identifier, for: indexPath) as? OpenDiaryCollectionViewCell else { return UICollectionViewCell() }
-        cell.setData(categoryList[indexPath.row])
-        
-        if indexPath.item == 0 {
-            cell.isSelected = true
-            collectionView.selectItem(at: indexPath, animated: false, scrollPosition: .init())
+        if collectionView == topicCollectionView {
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TopicCollectionViewCell.identifier, for: indexPath) as? TopicCollectionViewCell else { return UICollectionViewCell() }
+            cell.setData(topicList[indexPath.row])
+            
+            if indexPath.item == 0 {
+                cell.isSelected = true
+                collectionView.selectItem(at: indexPath, animated: false, scrollPosition: .init())
+            }
+            return cell
+        } else if collectionView == diaryListCollectionView {
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DiaryListCollectionViewCell.identifier, for: indexPath) as? DiaryListCollectionViewCell else { return UICollectionViewCell() }
+            cell.setData(dummyList[indexPath.item])
+            return cell
         }
-        return cell
+        return UICollectionViewCell()
     }
 }
 
@@ -190,11 +218,35 @@ extension OpenDiaryViewController: UICollectionViewDataSource {
 
 extension OpenDiaryViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let cellSize = CGSize(width: categoryList[indexPath.item].size(withAttributes: [NSAttributedString.Key.font: UIFont.subtitle2]).width + 24, height: 33)
-        return cellSize
+        if collectionView == topicCollectionView {
+            let cellSize = CGSize(width: topicList[indexPath.item].size(withAttributes: [NSAttributedString.Key.font: UIFont.subtitle2]).width + 24, height: 33)
+            return cellSize
+        } else if collectionView == diaryListCollectionView {
+            let cellWidth = convertByWidthRatio(315)
+            let cellHeight = convertByHeightRatio(161)
+            return CGSize(width: cellWidth, height: cellHeight)
+        }
+        return CGSize()
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 3
+        if collectionView == topicCollectionView {
+            return 3
+        }
+        return CGFloat()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        if collectionView == diaryListCollectionView {
+            return 12
+        }
+        return CGFloat()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        if collectionView == diaryListCollectionView {
+            return UIEdgeInsets(top: 18, left: 30, bottom: 18, right: 30)
+        }
+        return UIEdgeInsets()
     }
 }
