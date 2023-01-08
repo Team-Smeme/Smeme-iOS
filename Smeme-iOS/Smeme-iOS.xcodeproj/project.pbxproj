@@ -62,6 +62,7 @@
 		A32753292966FE81004BB8A0 /* ScrapedExpressionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32753282966FE81004BB8A0 /* ScrapedExpressionModel.swift */; };
 		A327532B2967F961004BB8A0 /* ScrapedListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A327532A2967F961004BB8A0 /* ScrapedListCollectionViewCell.swift */; };
 		A37BFA2A296B48CE00F292B5 /* MySmemeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37BFA29296B48CE00F292B5 /* MySmemeViewController.swift */; };
+		6FD3986F29699E9C00C16B79 /* MyDiaryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FD3986E29699E9C00C16B79 /* MyDiaryCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -109,6 +110,7 @@
 		6FBAA7CC2968754B00A4190D /* MyDiaryDateBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDiaryDateBar.swift; sourceTree = "<group>"; };
 		6FBAA7D02968830000A4190D /* IconWithTextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconWithTextButton.swift; sourceTree = "<group>"; };
 		6FBAA7D2296894F600A4190D /* MyDiaryFloatingButtonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDiaryFloatingButtonViewController.swift; sourceTree = "<group>"; };
+		6FD3986E29699E9C00C16B79 /* MyDiaryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDiaryCollectionViewCell.swift; sourceTree = "<group>"; };
 		A32753282966FE81004BB8A0 /* ScrapedExpressionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapedExpressionModel.swift; sourceTree = "<group>"; };
 		A327532A2967F961004BB8A0 /* ScrapedListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapedListCollectionViewCell.swift; sourceTree = "<group>"; };
 		A37BFA29296B48CE00F292B5 /* MySmemeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySmemeViewController.swift; sourceTree = "<group>"; };
@@ -365,6 +367,7 @@
 				6FBAA7CC2968754B00A4190D /* MyDiaryDateBar.swift */,
 				6FBAA7D2296894F600A4190D /* MyDiaryFloatingButtonViewController.swift */,
 				6FBAA7D02968830000A4190D /* IconWithTextButton.swift */,
+				6FD3986E29699E9C00C16B79 /* MyDiaryCollectionViewCell.swift */,
 			);
 			path = MyDiary;
 			sourceTree = "<group>";
@@ -521,6 +524,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6FD3986F29699E9C00C16B79 /* MyDiaryCollectionViewCell.swift in Sources */,
 				4AD78BB32965758100EEE509 /* ScrapStashViewController.swift in Sources */,
 				4AD78BAF2965756800EEE509 /* MyDiaryViewController.swift in Sources */,
 				4A050204295CBE6000E17386 /* API.swift in Sources */,
