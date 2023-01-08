@@ -98,4 +98,10 @@ final class DetailMyDiaryViewController: UIViewController {
             $0.width.equalTo(contentScrollView)
         }
     }
+    
+    private func setData() {
+        categoryLabel.text = myDiaryDetail.category
+        contentLabel.text = myDiaryDetail.content
+        dateLabel.text = myDiaryDetail.createdAt.getFormattedDate(format: "yyyy년 MM월 dd일 HH:mm")
+    }
 }
