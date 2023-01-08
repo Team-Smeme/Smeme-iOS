@@ -113,12 +113,15 @@ final class MySmemeViewController: UIViewController {
         view.addSubviews([headerContainerView,
                           setUserInfoContainerView,
                           setMainLanguageContainerView,
-                          divideLineFirst])
+                          divideLineFirst,
+                          termsContainerView])
         
         headerContainerView.addSubviews([previousButton, headerLabel])
         setUserInfoContainerView.addSubviews([userIdLabel, userIntroLabel, nextButton])
         setMainLanguageContainerView.addSubviews([setLanguageTitleLabel, languageTypeLabel])
+        termsContainerView.addSubviews([communityTermsLabel, serviceTermsLabel, personalInfoTermsLabel])
         
+        //헤더 컨테이너 뷰
         headerContainerView.snp.makeConstraints {
             $0.top.leading.trailing.equalTo(view.safeAreaLayoutGuide)
             $0.height.equalTo(convertByHeightRatio(66))
@@ -134,6 +137,7 @@ final class MySmemeViewController: UIViewController {
             $0.centerX.centerY.equalToSuperview()
         }
         
+        //프로필 설정 컨테이너 뷰
         setUserInfoContainerView.snp.makeConstraints {
             $0.top.equalTo(headerContainerView.snp.bottom)
             $0.leading.trailing.equalTo(view.safeAreaLayoutGuide)
@@ -156,6 +160,7 @@ final class MySmemeViewController: UIViewController {
             $0.height.width.equalTo(45)
         }
         
+        //주 사용 언어 컨테이너 뷰
         setMainLanguageContainerView.snp.makeConstraints {
             $0.top.equalTo(setUserInfoContainerView.snp.bottom).offset(12)
             $0.leading.trailing.equalTo(view.safeAreaLayoutGuide)
@@ -176,6 +181,28 @@ final class MySmemeViewController: UIViewController {
             $0.top.equalTo(setMainLanguageContainerView.snp.bottom).offset(14)
             $0.height.equalTo(1)
             $0.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(18)
+        }
+        
+        //정책,규칙 컨테이너 뷰
+        termsContainerView.snp.makeConstraints {
+            $0.top.equalTo(divideLineFirst.snp.bottom).offset(14)
+            $0.leading.trailing.equalTo(view.safeAreaLayoutGuide)
+            $0.height.equalTo(convertByHeightRatio(141))
+        }
+        
+        serviceTermsLabel.snp.makeConstraints {
+            $0.centerY.equalToSuperview()
+            $0.leading.equalTo(30)
+        }
+        
+        communityTermsLabel.snp.makeConstraints {
+            $0.centerY.equalTo(serviceTermsLabel).offset(convertByHeightRatio(-47))
+            $0.leading.equalTo(serviceTermsLabel)
+        }
+        
+        personalInfoTermsLabel.snp.makeConstraints {
+            $0.centerY.equalTo(serviceTermsLabel).offset(convertByHeightRatio(47))
+            $0.leading.equalTo(serviceTermsLabel)
         }
     }
     
