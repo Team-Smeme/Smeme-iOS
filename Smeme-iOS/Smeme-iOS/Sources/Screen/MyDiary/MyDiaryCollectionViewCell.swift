@@ -65,7 +65,7 @@ final class MyDiaryCollectionViewCell: UICollectionViewCell {
     }
     
     func setData(_ model: String) {
-        contentLabel.text = model.prefix(600) + " ... (\(model.count))"
+        contentLabel.text = limitTextCount(diaryText: model, limitNumber: 600) + " (\(model.count))"
         timeLabel.text = "00:00"
         contentLabel.setTextWithLineHeight(lineHeight: 21)
         timeLabel.setTextWithLineHeight(lineHeight: 17)
