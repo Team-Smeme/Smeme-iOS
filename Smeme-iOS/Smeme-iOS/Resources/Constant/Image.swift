@@ -53,6 +53,9 @@ extension Constant {
         static let btnPlus = UIImage(named: "btnPlus")!
         static let btnX = UIImage(named: "btnX")!
         
+        static let icnForeign = UIImage(named: "icnForeign")!
+        static let icnKorean = UIImage(named: "icnKorean")!
+        
         // MARK: - DiaryPost
         
         static let icnRefresh = UIImage(named: "icnRefresh")!
