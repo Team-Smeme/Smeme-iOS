@@ -8,7 +8,7 @@
 import UIKit
 
 extension UITextView {
-    func setLineHeight(_ fontSize: CGFloat, _ lineHeight: CGFloat) {
+    func setTextViewLineHeight(_ fontSize: CGFloat, _ lineHeight: CGFloat) {
         if let text = self.text {
             let style = NSMutableParagraphStyle()
             let lineHeight = fontSize * 1.09

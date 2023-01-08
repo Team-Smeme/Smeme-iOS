@@ -30,12 +30,14 @@ extension UIView {
         return (UIScreen.main.hasNotch ? 44 : 10) + height
     }
     
+    /// 특정 corner radius만 값을 주는 메서드
     func makeSelectedRoundCorners(cornerRadius: CGFloat, maskedCorners: CACornerMask) {
         layer.cornerRadius = cornerRadius
         layer.maskedCorners = CACornerMask(arrayLiteral: maskedCorners)
     }
     
-    func makeRoundCorner(cornerRadius: CGFloat = 4) {
+    /// 전체 corner radius 값을 주는 메서드
+    func makeRoundCorner(cornerRadius: CGFloat) {
         layer.cornerRadius = cornerRadius
         clipsToBounds = true
     }
