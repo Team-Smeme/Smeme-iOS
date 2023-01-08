@@ -35,14 +35,17 @@ class ScrapedListCollectionViewCell: UICollectionViewCell {
     
     private let openBrowserButton = UIButton().then {
         $0.setImage(Constant.Image.icnBrowser, for: .normal)
+        $0.isHidden = true
     }
     
     private let copyButton = UIButton().then {
         $0.setImage(Constant.Image.icnCopy, for: .normal)
+        $0.isHidden = true
     }
     
     private let translateButton = UIButton().then {
         $0.setImage(Constant.Image.icnTranslate, for: .normal)
+        $0.isHidden = true
     }
     
     private let deleteButton = UIButton().then {
