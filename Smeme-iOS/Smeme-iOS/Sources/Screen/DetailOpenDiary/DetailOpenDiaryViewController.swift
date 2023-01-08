@@ -17,10 +17,14 @@ final class DetailOpenDiaryViewController: UIViewController {
     // MARK: - UI Property
     
     private let headerView = UIView()
-    private let bottomView = UIView()
-    
+
     private lazy var backButton = UIButton().then {
         $0.setImage(Constant.Image.icnPageLeft, for: .normal)
+    }
+    
+    private let bottomView = UIView().then {
+        $0.backgroundColor = .white
+        $0.addShadow(shadowColor: UIColor.black, shadowOpacity: 0.04, shadowRadius: 20, offset: CGSize(width: 0, height: -9))
     }
     
     private lazy var likeButton = UIButton().then {
@@ -67,7 +71,7 @@ final class DetailOpenDiaryViewController: UIViewController {
         
         backButton.snp.makeConstraints {
             $0.centerY.equalToSuperview()
-            $0.leading.equalToSuperview().inset(28)
+            $0.leading.equalToSuperview().inset(18)
         }
         
         bottomView.snp.makeConstraints {
@@ -76,7 +80,7 @@ final class DetailOpenDiaryViewController: UIViewController {
         }
         
         likeButton.snp.makeConstraints {
-            $0.centerY.equalToSuperview()
+            $0.top.equalToSuperview().inset(17)
             $0.leading.equalToSuperview().inset(30)
         }
         
@@ -86,7 +90,7 @@ final class DetailOpenDiaryViewController: UIViewController {
         }
         
         translateButton.snp.makeConstraints {
-            $0.centerY.equalToSuperview()
+            $0.centerY.equalTo(likeButton)
             $0.trailing.equalToSuperview().inset(30)
         }
     }
