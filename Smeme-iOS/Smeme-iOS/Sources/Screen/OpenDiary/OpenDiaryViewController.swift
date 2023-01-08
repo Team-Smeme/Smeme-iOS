@@ -15,6 +15,7 @@ final class OpenDiaryViewController: UIViewController {
     // MARK: - Property
     
     let topicList = ["전체", "일상", "기념일", "취향", "자기계발"]
+    let dummyList = ["heightByNotch", "The issue that requires the phone call we have to solve it in person but sometimes some violence is needed. I was just the part of the process", "The issue that requires the phone call we have to solve it in person but sometimes some violence is needed. I was just the part of the process The issue that requires the phone call we have to solve it in person but sometimes some violence is needed"]
     
     // MARK: - UI Property
     
@@ -187,13 +188,18 @@ extension OpenDiaryViewController: UICollectionViewDelegate {}
 
 extension OpenDiaryViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return categoryList.count
+        if collectionView == topicCollectionView {
+            return topicList.count
+        } else if collectionView == diaryListCollectionView {
+            return dummyList.count
+        }
+        return Int()
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView == topicCollectionView {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TopicCollectionViewCell.identifier, for: indexPath) as? TopicCollectionViewCell else { return UICollectionViewCell() }
-            cell.setData(categoryList[indexPath.row])
+            cell.setData(topicList[indexPath.row])
             
             if indexPath.item == 0 {
                 cell.isSelected = true
@@ -202,6 +208,7 @@ extension OpenDiaryViewController: UICollectionViewDataSource {
             return cell
         } else if collectionView == diaryListCollectionView {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DiaryListCollectionViewCell.identifier, for: indexPath) as? DiaryListCollectionViewCell else { return UICollectionViewCell() }
+            cell.setData(dummyList[indexPath.item])
             return cell
         }
         return UICollectionViewCell()
@@ -213,11 +220,11 @@ extension OpenDiaryViewController: UICollectionViewDataSource {
 extension OpenDiaryViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if collectionView == topicCollectionView {
-            let cellSize = CGSize(width: categoryList[indexPath.item].size(withAttributes: [NSAttributedString.Key.font: UIFont.subtitle2]).width + 24, height: 33)
+            let cellSize = CGSize(width: topicList[indexPath.item].size(withAttributes: [NSAttributedString.Key.font: UIFont.subtitle2]).width + 24, height: 33)
             return cellSize
         } else if collectionView == diaryListCollectionView {
             let cellWidth = convertByWidthRatio(315)
-            let cellHeight: CGFloat = 161
+            let cellHeight = convertByHeightRatio(161)
             return CGSize(width: cellWidth, height: cellHeight)
         }
         return CGSize()
