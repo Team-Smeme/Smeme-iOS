@@ -19,23 +19,20 @@ final class StepTwoKoreanDiaryViewController: UIViewController {
     private let naviView = UIView()
     private let languageView = UIView()
     
-    private let koreanDiaryScrollView: UIScrollView = {
-        let scrollView = UIScrollView()
-        scrollView.translatesAutoresizingMaskIntoConstraints = false
-        scrollView.backgroundColor = .white
-        scrollView.showsVerticalScrollIndicator = true
-        return scrollView
-    }()
+    private lazy var koreanDiaryTextView = UITextView().then {
+        $0.font = .body1
+        $0.textColor = .smemeBlack
+        //            $0.delegate = self
+    }
     
     private lazy var textView = UITextView().then {
-        
         $0.font = .body1
         $0.text = "최소 10자이상의 외국어를 작성해주세요"
         $0.textColor = .gray400
         //            $0.delegate = self
     }
     
-    private let cancelButton = UIButton().then {
+    private let backButton = UIButton().then {
         $0.setImage(Constant.Image.icnPageLeft, for: .normal)
     }
     
@@ -85,7 +82,7 @@ final class StepTwoKoreanDiaryViewController: UIViewController {
     }
     
     private func setLayout() {
-        view.addSubviews([naviView, koreanDiaryScrollView, grayUnderlineView, textView])
+        view.addSubviews([naviView, koreanDiaryTextView, grayUnderlineView, textView])
         
         naviView.addSubviews([backButton, languageView, completeButton])
         languageView.addSubviews([languageLabel, languageIcon, stepLabel])
@@ -127,14 +124,15 @@ final class StepTwoKoreanDiaryViewController: UIViewController {
             $0.leading.equalTo(backButton.snp.trailing).offset(105)
         }
         
-        koreanDiaryScrollView.snp.makeConstraints {
+        koreanDiaryTextView.snp.makeConstraints {
             $0.top.equalTo(naviView.snp.bottom)
-            $0.leading.trailing.equalTo(view.safeAreaLayoutGuide)
+            $0.leading.equalTo(view.safeAreaLayoutGuide).offset(30)
+            $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-30)
             $0.height.equalTo(convertByHeightRatio(110))
         }
         
         grayUnderlineView.snp.makeConstraints {
-            $0.top.equalTo(koreanDiaryScrollView.snp.bottom)
+            $0.top.equalTo(koreanDiaryTextView.snp.bottom)
             $0.leading.trailing.equalTo(view.safeAreaLayoutGuide)
             $0.height.equalTo(convertByHeightRatio(6))
         }
