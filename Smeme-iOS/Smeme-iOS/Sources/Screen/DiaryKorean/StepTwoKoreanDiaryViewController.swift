@@ -20,14 +20,14 @@ final class StepTwoKoreanDiaryViewController: UIViewController {
     private let languageView = UIView()
     
     private let cancelButton = UIButton().then {
-        $0.setImage(Constant.Image.icnBack, for: .normal)
+        $0.setImage(Constant.Image.icnPageLeft, for: .normal)
     }
     
     private let completeButton = UIButton().then {
         $0.titleLabel?.font = .body1
         $0.setTitleColor(.smemeBlack, for: .normal)
         $0.titleLabel?.setTextWithLineHeight(lineHeight: 21)
-        $0.setTitle("다음", for: .normal)
+        $0.setTitle("완료", for: .normal)
     }
     
     private let languageLabel = UILabel().then {
@@ -37,7 +37,7 @@ final class StepTwoKoreanDiaryViewController: UIViewController {
         $0.text = "English"
     }
     
-    private let languageIcon = Constant.Image.icnArrowUnder
+    private let languageIcon = UIImageView(image: Constant.Image.icnArrowUnder)
     
     private let stepLabel = UILabel().then {
         $0.font = .caption1
