@@ -21,25 +21,29 @@ final class DiaryKoreanStepOneViewController: UIViewController {
     
     private let cancelButton = UIButton().then {
         $0.titleLabel?.font = .body1
-        $0.setTitleColor(.black, for: .normal)
+        $0.setTitleColor(.smemeBlack, for: .normal)
+        $0.titleLabel?.setTextWithLineHeight(lineHeight: 21)
         $0.setTitle("취소", for: .normal)
     }
     
     private let completeButton = UIButton().then {
         $0.titleLabel?.font = .body1
-        $0.setTitleColor(.black, for: .normal)
+        $0.setTitleColor(.smemeBlack, for: .normal)
+        $0.titleLabel?.setTextWithLineHeight(lineHeight: 21)
         $0.setTitle("다음", for: .normal)
     }
     
     private let languageLabel = UILabel().then {
         $0.font = .subtitle2
         $0.textColor = .smemeBlack
+        $0.setTextWithLineHeight(lineHeight: 19)
         $0.text = "한국어"
     }
     
     private let stepLabel = UILabel().then {
         $0.font = .caption1
         $0.textColor = .gray400
+        $0.setTextWithLineHeight(lineHeight: 14)
         $0.text = "STEP 1"
     }
     
