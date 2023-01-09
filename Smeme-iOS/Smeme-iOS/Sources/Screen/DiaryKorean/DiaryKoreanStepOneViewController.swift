@@ -11,7 +11,9 @@ import SnapKit
 import Then
 
 final class DiaryKoreanStepOneViewController: UIViewController {
+    
     // MARK: - Property
+    
     // MARK: - UI Property
     
     private let naviView = UIView()
@@ -54,6 +56,7 @@ final class DiaryKoreanStepOneViewController: UIViewController {
     // MARK: - @objc
     
     // MARK: - Custom Method
+    
     private func setBackgoundColor() {
         view.backgroundColor = .smemeWhite
     }
@@ -95,5 +98,4 @@ final class DiaryKoreanStepOneViewController: UIViewController {
             $0.top.equalTo(languageLabel.snp.bottom).offset(2)
         }
     }
-    
 }
