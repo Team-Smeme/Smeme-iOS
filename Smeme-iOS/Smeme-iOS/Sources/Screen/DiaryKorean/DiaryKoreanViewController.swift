@@ -26,16 +26,14 @@ final class DiaryKoreanViewController: UIViewController {
     private let completeButton = UIButton().then {
         $0.titleLabel?.font = .body1
         $0.setTitleColor(.black, for: .normal)
-        $0.setTitle("완료", for: .normal)
+        $0.setTitle("다음", for: .normal)
     }
     
     private let languageLabel = UILabel().then {
         $0.font = .subtitle2
-        $0.textColor = .gray500
-        $0.text = "English"
+        $0.textColor = .smemeBlack
+        $0.text = "한국어"
     }
-    
-    private let languageIcon = UIImageView(image: Constant.Image.icnArrowUnder)
     
     private let stepLabel = UILabel().then {
         $0.font = .caption1
