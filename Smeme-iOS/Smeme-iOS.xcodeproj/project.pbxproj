@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		37B33C80296BB032001E353D /* DiaryKoreanStepOneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B33C7F296BB032001E353D /* DiaryKoreanStepOneViewController.swift */; };
 		37D9E4962965A3160083A43F /* DiaryForeignViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D9E4952965A3160083A43F /* DiaryForeignViewController.swift */; };
 		4A0501CE295CB51600E17386 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 4A0501CD295CB51600E17386 /* Moya */; };
 		4A0501D1295CB53000E17386 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 4A0501D0295CB53000E17386 /* SnapKit */; };
@@ -70,6 +71,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		37B33C7F296BB032001E353D /* DiaryKoreanStepOneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryKoreanStepOneViewController.swift; sourceTree = "<group>"; };
 		37D9E4952965A3160083A43F /* DiaryForeignViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryForeignViewController.swift; sourceTree = "<group>"; };
 		4A0501EF295CBADD00E17386 /* DesignSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignSystem.swift; sourceTree = "<group>"; };
 		4A0501F1295CBAE300E17386 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
@@ -145,6 +147,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		37B33C7E296BAFEF001E353D /* DiaryKorean */ = {
+			isa = PBXGroup;
+			children = (
+				37B33C7F296BB032001E353D /* DiaryKoreanStepOneViewController.swift */,
+			);
+			path = DiaryKorean;
+			sourceTree = "<group>";
+		};
 		37D9E4942965A2980083A43F /* DiaryForeign */ = {
 			isa = PBXGroup;
 			children = (
@@ -181,6 +191,7 @@
 		4A0501E5295CB8C500E17386 /* Screen */ = {
 			isa = PBXGroup;
 			children = (
+				37B33C7E296BAFEF001E353D /* DiaryKorean */,
 				4AD78BAB2965746700EEE509 /* TabBar */,
 				37D9E4942965A2980083A43F /* DiaryForeign */,
 				4A39E74A29670C9400C48097 /* Login */,
@@ -583,6 +594,7 @@
 				4AD78BB12965757500EEE509 /* OpenDiaryViewController.swift in Sources */,
 				6FBAA7D3296894F600A4190D /* MyDiaryFloatingButtonViewController.swift in Sources */,
 				4A0501FC295CBDD900E17386 /* MoyaLoggingPlugin.swift in Sources */,
+				37B33C80296BB032001E353D /* DiaryKoreanStepOneViewController.swift in Sources */,
 				6FBAA7CD2968754B00A4190D /* MyDiaryDateBar.swift in Sources */,
 				4A4CB710295CAD7700F170CC /* SceneDelegate.swift in Sources */,
 				6FD39877296B2EA300C16B79 /* DetailMyDiaryViewController.swift in Sources */,
