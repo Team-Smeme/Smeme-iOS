@@ -13,4 +13,6 @@ struct Environment {
     static let nativeAppKey = Bundle.main.infoDictionary?["NATIVE_APP_KEY"] as? String ?? "nil"
     
     static let baseURL = Bundle.main.infoDictionary?["BASE_URL"] as? String ?? "nil"
+    
+    static let bearerToken = Bundle.main.infoDictionary?["BEARER_TOKEN"] as? String ?? "nil"
 }
