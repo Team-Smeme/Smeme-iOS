@@ -20,12 +20,14 @@ final class MyDiaryFloatingButtonViewController: UIViewController {
         $0.configure(with: IconWithTextButtonViewModel(
             image: Constant.Image.icnKorean,
             text: "한국어 일기부터 쓰기"))
+        $0.addShadow(shadowColor: .black, shadowOpacity: 0.12, shadowRadius: 20, offset: CGSize(width: 0, height: 0))
     }
     
     private let foreignDiaryButton = IconWithTextButton().then {
         $0.configure(with: IconWithTextButtonViewModel(
             image: Constant.Image.icnForeign,
             text: "바로 외국어 일기 쓰기"))
+        $0.addShadow(shadowColor: .black, shadowOpacity: 0.12, shadowRadius: 20, offset: CGSize(width: 0, height: 0))
     }
     
     private lazy var floatingButton = UIButton().then {
