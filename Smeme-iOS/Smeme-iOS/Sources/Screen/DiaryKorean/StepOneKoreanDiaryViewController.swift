@@ -1,5 +1,5 @@
 //
-//  DiaryKoreanViewController.swift
+//  StepOneKoreanDiaryViewController.swift
 //  Smeme-iOS
 //
 //  Created by Joon Baek on 2023/01/09.
@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 import Then
 
-final class DiaryKoreanStepOneViewController: UIViewController {
+final class StepOneKoreanDiaryViewController: UIViewController {
     
     // MARK: - Property
     
