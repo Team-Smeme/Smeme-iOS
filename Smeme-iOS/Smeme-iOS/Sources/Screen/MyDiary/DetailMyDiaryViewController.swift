@@ -99,7 +99,7 @@ final class DetailMyDiaryViewController: UIViewController {
         contentScrollView.snp.makeConstraints {
             $0.top.equalToSuperview().inset(headerHeightByNotch(66))
             $0.leading.trailing.equalToSuperview()
-            $0.bottom.equalToSuperview().inset(bottomHeightByNotch(54))
+            $0.bottom.equalTo(likeBottomView.snp.top)
         }
         
         contentView.snp.makeConstraints {
