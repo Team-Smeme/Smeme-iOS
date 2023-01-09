@@ -38,13 +38,13 @@ final class LoginProfileInfoViewController: UIViewController {
         $0.configure(with: ClearButtonTextFieldViewModel(placeHolderText: "닉네임을 입력해 주세요"))
     }
     
-    private let oneLineInfoTextField           = ClearButtonTextField().then {
+    private let oneLineInfoTextField = ClearButtonTextField().then {
         $0.configure(with: ClearButtonTextFieldViewModel(placeHolderText: "한 줄 소개를 입력해 주세요"))
     }
     
-//    private let congratulateButton = UIButton().then {
-//        $0.setImage(Constant.Image., for: <#T##UIControl.State#>)
-//    }
+    private let congratulateButton = UIButton().then {
+        $0.setImage(Constant.Image.btnWelcomeInactive, for: .normal)
+    }
     
     // MARK: - Life Cycle
     
@@ -64,7 +64,7 @@ final class LoginProfileInfoViewController: UIViewController {
     }
     
     private func setLayout() {
-        view.addSubviews([profileEnterinfoLabel, nickNameLabel, nickNameTextField, oneLineInfoLabel, oneLineInfoTextField])
+        view.addSubviews([profileEnterinfoLabel, nickNameLabel, nickNameTextField, oneLineInfoLabel, oneLineInfoTextField, congratulateButton])
         
         profileEnterinfoLabel.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide).inset(convertByHeightRatio(76))
@@ -88,6 +88,11 @@ final class LoginProfileInfoViewController: UIViewController {
         
         oneLineInfoTextField.snp.makeConstraints {
             $0.top.equalTo(oneLineInfoLabel.snp.bottom).offset(convertByHeightRatio(10))
+            $0.centerX.equalToSuperview()
+        }
+        
+        congratulateButton.snp.makeConstraints {
+            $0.bottom.equalTo(view.safeAreaLayoutGuide)
             $0.centerX.equalToSuperview()
         }
     }
