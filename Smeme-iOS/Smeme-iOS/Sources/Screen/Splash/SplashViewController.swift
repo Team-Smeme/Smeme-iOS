@@ -38,7 +38,7 @@ class SplashViewController: UIViewController {
         // MARK: - Custom Method
         
         func setBackgroundColor() {
-            view.backgroundColor = .white
+            view.backgroundColor = .background
         }
         
         func setLayout() {
@@ -51,9 +51,9 @@ class SplashViewController: UIViewController {
         }
         
         func setAnimation () {
-            animationView.play { _ in
-                self.animationView.loopMode = .loop
-            }
+            animationView.play()
+            animationView.animationSpeed = 0.7
+            animationView.loopMode = .playOnce
         }
     }
 }
