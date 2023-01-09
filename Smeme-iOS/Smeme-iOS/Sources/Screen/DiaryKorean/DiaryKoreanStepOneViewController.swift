@@ -19,6 +19,20 @@ final class DiaryKoreanStepOneViewController: UIViewController {
     private let naviView = UIView()
     private let languageView = UIView()
     
+    private lazy var textView: UITextView = {
+        let textView = UITextView().then {
+            $0.font = .body1
+            $0.text = "최소 10자이상 작성해주세요"
+            $0.textColor = .gray500
+//            $0.delegate = self
+        }
+        return textView
+    }()
+    
+    private var randomSubjectView = RandomSubjectView().then {
+        $0.configure(with: RandomSubjectViewModel(contentText: "오늘부터 딱 일주일 후! 설레는 크리스마스네요. 일주일 전부터 세워보는 나의 크리스마스 계획은?", isHiddenRefreshButton: false))
+    }
+    
     private let cancelButton = UIButton().then {
         $0.titleLabel?.font = .body1
         $0.setTitleColor(.smemeBlack, for: .normal)
@@ -45,6 +59,13 @@ final class DiaryKoreanStepOneViewController: UIViewController {
         $0.textColor = .gray400
         $0.setTextWithLineHeight(lineHeight: 14)
         $0.text = "STEP 1"
+    }
+    
+    private let tipLabel = UILabel().then {
+        $0.font = .body2
+        $0.textColor = .gray600
+        $0.setTextWithLineHeight(lineHeight: 17)
+        $0.text = "TIP 정확한 힌트를 받고 싶다면? 문장을 정리해보세요!"
     }
     
     // MARK: - Life Cycle
