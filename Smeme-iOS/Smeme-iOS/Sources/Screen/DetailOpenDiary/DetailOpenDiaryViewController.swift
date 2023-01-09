@@ -26,6 +26,7 @@ final class DetailOpenDiaryViewController: UIViewController {
     
     private let topicView = UIView().then {
         $0.backgroundColor = .primary
+        $0.makeRoundCorner(cornerRadius: 4)
     }
     
     private let topicNameLabel = UILabel().then {
