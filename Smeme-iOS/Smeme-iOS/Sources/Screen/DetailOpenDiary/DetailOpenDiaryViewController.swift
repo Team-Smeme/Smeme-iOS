@@ -53,6 +53,21 @@ final class DetailOpenDiaryViewController: UIViewController {
         $0.configure(with: RandomSubjectViewModel(contentText: "오늘부터 딱 일주일 후! 설레는 크리스마스네요. 일주일 전부터 세워보는 나의 크리스마스 계획은?", isHiddenRefreshButton: true))
     }
     
+    private let diarycontentLabel = UITextView().then {
+        $0.text = "The issue that requires the phone call we have to solve it in person but sometimes some violence is needed. I was just the part of the process not The issue that requires the phone call we have to solve it in person.        needed...The issue that requires the phone call we have to solve it in person but sometimes some violence is needed. I was just the part of the process not........ solve it in person but sometimes some violence is needed... I was just the part of the process not The issue that requires the phone call we have to solve it in person but sometimes some violence is needed... (661)"
+        $0.isEditable = false
+        $0.font = .body1
+        $0.textColor = .black
+//        $0.setTextViewLineHeight(16, 21)
+    }
+    
+    private let dataLabel = UILabel().then {
+        $0.text = "2022년 12월 24일 23:19"
+        $0.font = .body2
+        $0.textColor = .gray500
+        $0.setTextWithLineHeight(lineHeight: 17)
+    }
+    
     private let bottomView = UIView().then {
         $0.backgroundColor = .white
         $0.addShadow(shadowColor: UIColor.black, shadowOpacity: 0.04, shadowRadius: 20, offset: CGSize(width: 0, height: -9))
@@ -94,7 +109,7 @@ final class DetailOpenDiaryViewController: UIViewController {
         view.addSubviews([headerView, diaryContentScrollView, bottomView])
         headerView.addSubview(backButton)
         diaryContentScrollView.addSubview(contentView)
-        contentView.addSubviews([topicView, nicknameLabel, userInfoLabel, randomSubjectView])
+        contentView.addSubviews([topicView, nicknameLabel, userInfoLabel, randomSubjectView, diarycontentLabel])
         topicView.addSubview(topicNameLabel)
         bottomView.addSubviews([likeButton, likeCountLabel, translateButton])
         
@@ -144,6 +159,12 @@ final class DetailOpenDiaryViewController: UIViewController {
         
         randomSubjectView.snp.makeConstraints {
             $0.leading.equalToSuperview()
+            $0.bottom.equalTo(diarycontentLabel.snp.top).offset(-20)
+        }
+        
+        diarycontentLabel.snp.makeConstraints {
+            $0.leading.trailing.equalToSuperview().inset(30)
+            $0.bottom.equalToSuperview().inset(52)
         }
         
         bottomView.snp.makeConstraints {
