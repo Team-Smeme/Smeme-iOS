@@ -25,6 +25,16 @@ extension UIView {
         return UIScreen.main.hasNotch ? hasNotch : noNotch
     }
     
+    /// 아이폰 13 미니(width 375)를 기준으로 레이아웃을 잡고, 기기의 width 사이즈를 곱해 대응 값을 구할 때 사용
+    func convertByWidthRatio(_ convert: CGFloat) -> CGFloat {
+        return (convert / 375) * UIScreen.main.bounds.width
+    }
+    
+    /// 아이폰 13 미니(height 812)를 기준으로 레이아웃을 잡고, 기기의 height 사이즈를 곱해 대응 값을 구할 때 사용
+    func convertByHeightRatio(_ convert: CGFloat) -> CGFloat {
+        return (convert / 812) * UIScreen.main.bounds.height
+    }
+    
     /// 노치 유무에 따른 상단 Status Bar 부분 크기에 따른 높이
     func headerHeightByNotch(_ height: CGFloat) -> CGFloat {
         return (UIScreen.main.hasNotch ? 44 : 10) + height
