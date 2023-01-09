@@ -24,6 +24,31 @@ final class DetailOpenDiaryViewController: UIViewController {
         $0.setImage(Constant.Image.icnPageLeft, for: .normal)
     }
     
+    private let topicView = UIView().then {
+        $0.backgroundColor = .primary
+    }
+    
+    private let topicNameLabel = UILabel().then {
+        $0.text = "기념일"
+        $0.font = .body2
+        $0.textColor = .smemeWhite
+        $0.setTextWithLineHeight(lineHeight: 17)
+    }
+    
+    private let nicknameLabel = UILabel().then {
+        $0.text = "코코하는 도레미"
+        $0.font = .body3
+        $0.textColor = .smemeBlack
+        $0.setTextWithLineHeight(lineHeight: 17)
+    }
+    
+    private let userInfoLabel = UILabel().then {
+        $0.text = "미국 거주 4년차 일기 챌린저입니다."
+        $0.font = .caption1
+        $0.textColor = .gray600
+        $0.setTextWithLineHeight(lineHeight: 14)
+    }
+    
     private let bottomView = UIView().then {
         $0.backgroundColor = .white
         $0.addShadow(shadowColor: UIColor.black, shadowOpacity: 0.04, shadowRadius: 20, offset: CGSize(width: 0, height: -9))
@@ -65,6 +90,8 @@ final class DetailOpenDiaryViewController: UIViewController {
         view.addSubviews([headerView, diaryContentScrollView, bottomView])
         headerView.addSubview(backButton)
         diaryContentScrollView.addSubview(contentView)
+        contentView.addSubviews([topicView, nicknameLabel, userInfoLabel])
+        topicView.addSubview(topicNameLabel)
         bottomView.addSubviews([likeButton, likeCountLabel, translateButton])
         
         headerView.snp.makeConstraints {
@@ -87,6 +114,27 @@ final class DetailOpenDiaryViewController: UIViewController {
             $0.edges.equalTo(diaryContentScrollView.contentLayoutGuide)
             $0.width.equalTo(diaryContentScrollView.snp.width)
             $0.height.greaterThanOrEqualTo(diaryContentScrollView.snp.height).priority(.low)
+        }
+        
+        topicView.snp.makeConstraints {
+            $0.top.equalToSuperview().inset(4)
+            $0.leading.equalToSuperview().inset(30)
+            $0.bottom.equalTo(nicknameLabel.snp.top).offset(-14)
+            $0.height.equalTo(convertByHeightRatio(29))
+            $0.width.equalTo(topicNameLabel.intrinsicContentSize.width + 16)
+        }
+        
+        topicNameLabel.snp.makeConstraints {
+            $0.center.equalToSuperview()
+        }
+        
+        nicknameLabel.snp.makeConstraints {
+            $0.leading.equalToSuperview().inset(30)
+            $0.bottom.equalTo(userInfoLabel.snp.top).offset(-4)
+        }
+        
+        userInfoLabel.snp.makeConstraints {
+            $0.leading.equalTo(nicknameLabel)
         }
         
         bottomView.snp.makeConstraints {
