@@ -54,20 +54,19 @@
 		4AD78BBC2965993F00EEE509 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD78BBB2965993F00EEE509 /* ViewModel.swift */; };
 		4AD78BC42966888B00EEE509 /* UIScreen+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD78BC32966888B00EEE509 /* UIScreen+.swift */; };
 		4AD78BCC2966A93100EEE509 /* UILabel+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD78BCB2966A93100EEE509 /* UILabel+.swift */; };
+		6F1D7798296BDF5E00C8FE39 /* LikeBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F1D7797296BDF5E00C8FE39 /* LikeBottomView.swift */; };
 		6F33F1F82965C8CA002A2FBA /* RandomSubjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F33F1F72965C8C9002A2FBA /* RandomSubjectView.swift */; };
 		6F33F1FA2968162E002A2FBA /* MyDiaryNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F33F1F92968162E002A2FBA /* MyDiaryNavigationBar.swift */; };
 		6FBAA7CD2968754B00A4190D /* MyDiaryDateBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FBAA7CC2968754B00A4190D /* MyDiaryDateBar.swift */; };
 		6FBAA7D12968830000A4190D /* IconWithTextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FBAA7D02968830000A4190D /* IconWithTextButton.swift */; };
 		6FBAA7D3296894F600A4190D /* MyDiaryFloatingButtonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FBAA7D2296894F600A4190D /* MyDiaryFloatingButtonViewController.swift */; };
-		A32753292966FE81004BB8A0 /* ScrapedExpressionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32753282966FE81004BB8A0 /* ScrapedExpressionModel.swift */; };
-		A327532B2967F961004BB8A0 /* ScrapedListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A327532A2967F961004BB8A0 /* ScrapedListCollectionViewCell.swift */; };
-		A37BFA2A296B48CE00F292B5 /* MySmemeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37BFA29296B48CE00F292B5 /* MySmemeViewController.swift */; };
 		6FD3986F29699E9C00C16B79 /* MyDiaryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FD3986E29699E9C00C16B79 /* MyDiaryCollectionViewCell.swift */; };
 		6FD39873296AE27400C16B79 /* MyDiaryDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FD39872296AE27400C16B79 /* MyDiaryDetail.swift */; };
 		6FD39875296AEFBD00C16B79 /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FD39874296AEFBD00C16B79 /* String+.swift */; };
 		6FD39877296B2EA300C16B79 /* DetailMyDiaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FD39876296B2EA300C16B79 /* DetailMyDiaryViewController.swift */; };
 		A32753292966FE81004BB8A0 /* ScrapedExpressionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32753282966FE81004BB8A0 /* ScrapedExpressionModel.swift */; };
 		A327532B2967F961004BB8A0 /* ScrapedListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A327532A2967F961004BB8A0 /* ScrapedListCollectionViewCell.swift */; };
+		A37BFA2A296B48CE00F292B5 /* MySmemeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37BFA29296B48CE00F292B5 /* MySmemeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -110,6 +109,7 @@
 		4AD78BBB2965993F00EEE509 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		4AD78BC32966888B00EEE509 /* UIScreen+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScreen+.swift"; sourceTree = "<group>"; };
 		4AD78BCB2966A93100EEE509 /* UILabel+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+.swift"; sourceTree = "<group>"; };
+		6F1D7797296BDF5E00C8FE39 /* LikeBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeBottomView.swift; sourceTree = "<group>"; };
 		6F33F1F72965C8C9002A2FBA /* RandomSubjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomSubjectView.swift; sourceTree = "<group>"; };
 		6F33F1F92968162E002A2FBA /* MyDiaryNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDiaryNavigationBar.swift; sourceTree = "<group>"; };
 		6FBAA7CC2968754B00A4190D /* MyDiaryDateBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDiaryDateBar.swift; sourceTree = "<group>"; };
@@ -119,8 +119,6 @@
 		6FD39872296AE27400C16B79 /* MyDiaryDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDiaryDetail.swift; sourceTree = "<group>"; };
 		6FD39874296AEFBD00C16B79 /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 		6FD39876296B2EA300C16B79 /* DetailMyDiaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMyDiaryViewController.swift; sourceTree = "<group>"; };
-		A32753282966FE81004BB8A0 /* ScrapedExpressionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapedExpressionModel.swift; sourceTree = "<group>"; };
-		A327532A2967F961004BB8A0 /* ScrapedListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapedListCollectionViewCell.swift; sourceTree = "<group>"; };
 		A32753282966FE81004BB8A0 /* ScrapedExpressionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapedExpressionModel.swift; sourceTree = "<group>"; };
 		A327532A2967F961004BB8A0 /* ScrapedListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapedListCollectionViewCell.swift; sourceTree = "<group>"; };
 		A37BFA29296B48CE00F292B5 /* MySmemeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySmemeViewController.swift; sourceTree = "<group>"; };
@@ -375,12 +373,10 @@
 			isa = PBXGroup;
 			children = (
 				4AD78BAE2965756800EEE509 /* MyDiaryViewController.swift */,
-				6F33F1F92968162E002A2FBA /* MyDiaryNavigationBar.swift */,
-				6FBAA7CC2968754B00A4190D /* MyDiaryDateBar.swift */,
 				6FBAA7D2296894F600A4190D /* MyDiaryFloatingButtonViewController.swift */,
-				6FBAA7D02968830000A4190D /* IconWithTextButton.swift */,
 				6FD3986E29699E9C00C16B79 /* MyDiaryCollectionViewCell.swift */,
 				6FD39876296B2EA300C16B79 /* DetailMyDiaryViewController.swift */,
+				6F1D7796296BDEF600C8FE39 /* Subviews */,
 			);
 			path = MyDiary;
 			sourceTree = "<group>";
@@ -410,6 +406,17 @@
 				4AD78BBB2965993F00EEE509 /* ViewModel.swift */,
 			);
 			path = Protocol;
+			sourceTree = "<group>";
+		};
+		6F1D7796296BDEF600C8FE39 /* Subviews */ = {
+			isa = PBXGroup;
+			children = (
+				6F33F1F92968162E002A2FBA /* MyDiaryNavigationBar.swift */,
+				6FBAA7CC2968754B00A4190D /* MyDiaryDateBar.swift */,
+				6FBAA7D02968830000A4190D /* IconWithTextButton.swift */,
+				6F1D7797296BDF5E00C8FE39 /* LikeBottomView.swift */,
+			);
+			path = Subviews;
 			sourceTree = "<group>";
 		};
 		A37BFA28296B474F00F292B5 /* MySmeme */ = {
@@ -565,6 +572,7 @@
 				4A050208295CBE6800E17386 /* DataModel.swift in Sources */,
 				6FBAA7D12968830000A4190D /* IconWithTextButton.swift in Sources */,
 				4A0501FE295CBDED00E17386 /* NetworkConstant.swift in Sources */,
+				6F1D7798296BDF5E00C8FE39 /* LikeBottomView.swift in Sources */,
 				A327532B2967F961004BB8A0 /* ScrapedListCollectionViewCell.swift in Sources */,
 				4AD78BBC2965993F00EEE509 /* ViewModel.swift in Sources */,
 				6F33F1FA2968162E002A2FBA /* MyDiaryNavigationBar.swift in Sources */,
