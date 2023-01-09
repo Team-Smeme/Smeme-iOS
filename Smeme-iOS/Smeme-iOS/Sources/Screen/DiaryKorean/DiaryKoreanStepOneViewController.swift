@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 import Then
 
-final class DiaryKoreanViewController: UIViewController {
+final class DiaryKoreanStepOneViewController: UIViewController {
     // MARK: - Property
     // MARK: - UI Property
     
