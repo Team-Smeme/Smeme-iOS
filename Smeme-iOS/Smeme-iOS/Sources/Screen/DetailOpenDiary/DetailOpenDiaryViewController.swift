@@ -49,6 +49,10 @@ final class DetailOpenDiaryViewController: UIViewController {
         $0.setTextWithLineHeight(lineHeight: 14)
     }
     
+    private let randomSubjectView = RandomSubjectView().then {
+        $0.configure(with: RandomSubjectViewModel(contentText: "오늘부터 딱 일주일 후! 설레는 크리스마스네요. 일주일 전부터 세워보는 나의 크리스마스 계획은?", isHiddenRefreshButton: true))
+    }
+    
     private let bottomView = UIView().then {
         $0.backgroundColor = .white
         $0.addShadow(shadowColor: UIColor.black, shadowOpacity: 0.04, shadowRadius: 20, offset: CGSize(width: 0, height: -9))
@@ -90,7 +94,7 @@ final class DetailOpenDiaryViewController: UIViewController {
         view.addSubviews([headerView, diaryContentScrollView, bottomView])
         headerView.addSubview(backButton)
         diaryContentScrollView.addSubview(contentView)
-        contentView.addSubviews([topicView, nicknameLabel, userInfoLabel])
+        contentView.addSubviews([topicView, nicknameLabel, userInfoLabel, randomSubjectView])
         topicView.addSubview(topicNameLabel)
         bottomView.addSubviews([likeButton, likeCountLabel, translateButton])
         
@@ -135,6 +139,11 @@ final class DetailOpenDiaryViewController: UIViewController {
         
         userInfoLabel.snp.makeConstraints {
             $0.leading.equalTo(nicknameLabel)
+            $0.bottom.equalTo(randomSubjectView.snp.top).offset(-20)
+        }
+        
+        randomSubjectView.snp.makeConstraints {
+            $0.leading.equalToSuperview()
         }
         
         bottomView.snp.makeConstraints {
