@@ -11,9 +11,19 @@ final class MyDiaryViewController: UIViewController {
     
     // MARK: - Property
     
-    let diaryList = ["The issue that requires the phone call we have to solve it in person but sometimes some violence is needed. I was just the part of the process not The issue that requires the phone call we have to solve it in person but sometimes some violence is needed...The issue that requires the phone call we have to solve it in person but sometimes some violence is needed. I was just the part of the process not The issue that requires the phone call we have to solve it in person but sometimes some violence is needed... I was just the part of the process not The issue that requires the phone call", "The issue that requires the phone call we have to solve it in person but sometimes some violence is needed. I was just the part of the process not The issue that requires the phone call we have to solve it in person but sometimes some violence is needed...The issue that requires the phone call we have to solve it in person but sometimes some violence is needed. I was jus", "The issue that requires the phone call we have to solve it in person but sometimes some violence is needed. I was just the part of the process not The issue that requires the phone call we have to solve it in person but"]
+    let diaryList: [MyDiaryDetailResponse] = [MyDiaryDetailResponse(content: "The issue that requires the phone call we have to solve it in person but sometimes some violence is needed. I was just the part of the process not The issue that requires the phone call we have to solve it in person but sometimes some violence is needed...The issue that requires the phone call we have to solve it in person but sometimes some violence is needed. I was just the part of the process not The issue that requires the phone call we have to solve it in person but sometimes some violence is needed... I was just the part of the process not The issue that requires the phone call we have to solve it in person but sometimes some violence is needed was just the part of the process not The issue that requires the phone call we have to solve it in person but sometimes some violence is needed The issue that requires the phone call we have to solve it in person but sometimes some violence is needed. I was just the part of the process not The issue that requires the phone call we have to solve it in person but sometimes some violence is needed...The issue that requires the phone call we have to solve it in person but sometimes some violence is needed. I was just the part of the process not The issue that requires the phone call we have to solve it in person but sometimes some violence is needed... I was just the part of the process not The issue that requires the phone call we have to solve it in person but sometimes some violence is needed was just the part of the process not The issue that requires the phone call we have to solve it in person but sometimes some violence is needed", category: "일상", topic: "", isPublic: true, createdAt: "2022-12-24 12:30", likeCnt: 2), MyDiaryDetailResponse(content: "The issue that requires the phone call we have to solve it in person but sometimes some violence is needed. I was just the part of the process not The issue that requires the phone call we have to solve it in person but sometimes some violence is needed...The issue that requires the phone call we have to solve it in person but sometimes some violence is needed. I was just the part of the process not The issue that requires the ", category: "일상", topic: "", isPublic: true, createdAt: "2022-12-24 12:30", likeCnt: 5), MyDiaryDetailResponse(content: "The issue that requires the phone call we have to solve it in person but sometimes some violence is needed. I was just the part of the process ", category: "일상", topic: "", isPublic: true, createdAt: "2022-12-24 12:30", likeCnt: 4)]
     
     // MARK: - UI Property
+    
+    private lazy var myDiaryCollectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.isScrollEnabled = true
+        collectionView.backgroundColor = .clear
+        
+        return collectionView
+    }()
     
     private let navigationBar = MyDiaryNavigationBar().then {
         $0.goMyProfileView = {
@@ -36,17 +46,9 @@ final class MyDiaryViewController: UIViewController {
         $0.addShadow(shadowColor: .black, shadowOpacity: 0.08, shadowRadius: 20, offset: CGSize(width: 0, height: 0))
     }
     
-    private lazy var myDiaryCollectionView: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.showsHorizontalScrollIndicator = false
-        collectionView.showsVerticalScrollIndicator = false
-        collectionView.isScrollEnabled = true
-        collectionView.backgroundColor = .clear
-        
-        return collectionView
-    }()
+    private let headerView = UIView().then {
+        $0.backgroundColor = .smemeWhite
+    }
     
     // MARK: - Life Cycle
     
@@ -62,10 +64,10 @@ final class MyDiaryViewController: UIViewController {
     // MARK: - @objc
     
     @objc func floatingButtonClicked(_ sender: UIButton) {
-        let newVC = MyDiaryFloatingButtonViewController()
-        newVC.modalTransitionStyle = .crossDissolve
-        newVC.modalPresentationStyle = .overFullScreen
-        self.present(newVC, animated: true, completion: nil)
+        let newdetailMyDiaryViewControllerVC = MyDiaryFloatingButtonViewController()
+        newdetailMyDiaryViewControllerVC.modalTransitionStyle = .crossDissolve
+        newdetailMyDiaryViewControllerVC.modalPresentationStyle = .overFullScreen
+        self.present(newdetailMyDiaryViewControllerVC, animated: true, completion: nil)
     }
     
     // MARK: - Custom Method
@@ -75,10 +77,15 @@ final class MyDiaryViewController: UIViewController {
     }
     
     private func setLayout() {
-        view.addSubviews([navigationBar, dateBar, myDiaryCollectionView, floatingButton])
+        view.addSubviews([headerView, navigationBar, dateBar, myDiaryCollectionView, floatingButton])
+        
+        headerView.snp.makeConstraints {
+            $0.top.leading.trailing.equalToSuperview()
+            $0.height.equalTo(constraintByNotch(47, 20))
+        }
         
         navigationBar.snp.makeConstraints {
-            $0.top.equalToSuperview()
+            $0.top.equalTo(view.safeAreaLayoutGuide)
             $0.centerX.equalToSuperview()
         }
         
@@ -111,7 +118,14 @@ final class MyDiaryViewController: UIViewController {
 
 // MARK: - UICollectionViewDelegate
 
-extension MyDiaryViewController: UICollectionViewDelegate {}
+extension MyDiaryViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let detailMyDiaryViewController = DetailMyDiaryViewController()
+        let myDiaryInfo: MyDiaryDetailResponse = diaryList[indexPath.row]
+        detailMyDiaryViewController.myDiaryDetail = MyDiaryDetailResponse(content: myDiaryInfo.content, category: myDiaryInfo.category, topic: myDiaryInfo.topic, isPublic: myDiaryInfo.isPublic, createdAt: myDiaryInfo.createdAt, likeCnt: myDiaryInfo.likeCnt)
+        self.navigationController?.pushViewController(detailMyDiaryViewController, animated: true)
+    }
+}
 
 // MARK: - UICollectionViewDataSource
 
@@ -122,7 +136,7 @@ extension MyDiaryViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MyDiaryCollectionViewCell.identifier, for: indexPath) as? MyDiaryCollectionViewCell else { return UICollectionViewCell() }
-        cell.setData(diaryList[indexPath.row])
+        cell.setData(content: diaryList[indexPath.row].content, time: diaryList[indexPath.row].createdAt)
         
         return cell
     }
