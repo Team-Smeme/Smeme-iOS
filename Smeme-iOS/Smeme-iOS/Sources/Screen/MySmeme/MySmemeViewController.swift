@@ -189,7 +189,7 @@ final class MySmemeViewController: UIViewController {
         }
         
         versionTitleLabel.snp.makeConstraints {
-            $0.top.equalTo(divideLineSecond.snp.bottom).offset(convertByHeightRatio(14))
+            $0.top.equalTo(termsContainerView.snp.bottom).offset(convertByHeightRatio(14))
             $0.leading.equalToSuperview().offset(30)
         }
         
@@ -211,10 +211,28 @@ final class MySmemeViewController: UIViewController {
         }
         
         divideLineSecond.snp.makeConstraints {
-            $0.top.equalTo(versionContainerView).offset(14)
+            $0.top.equalTo(versionContainerView.snp.bottom)
             $0.height.equalTo(1)
             $0.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(18)
         }
+        
+        //로그아웃, 탈퇴 컨테이너 뷰
+        userStatusContainerView.snp.makeConstraints {
+            $0.top.equalTo(divideLineSecond.snp.bottom).offset(convertByHeightRatio(14))
+            $0.leading.trailing.equalTo(view.safeAreaLayoutGuide)
+            $0.height.equalTo(convertByHeightRatio(94))
+        }
+        
+        logoutLabel.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(convertByHeightRatio(14))
+            $0.leading.equalToSuperview().offset(30)
+        }
+        
+        leaveLabel.snp.makeConstraints {
+            $0.top.equalTo(logoutLabel).offset(convertByHeightRatio(47))
+            $0.leading.equalTo(logoutLabel)
+        }
+
     }
     
     private func setLayout() {
@@ -225,13 +243,15 @@ final class MySmemeViewController: UIViewController {
                           divideLineFirst,
                           termsContainerView,
                           versionContainerView,
-                          divideLineSecond])
+                          divideLineSecond,
+                          userStatusContainerView])
         
         headerContainerView.addSubviews([previousButton, headerLabel])
         setUserInfoContainerView.addSubviews([userIdLabel, userIntroLabel, nextButton])
         setMainLanguageContainerView.addSubviews([setLanguageTitleLabel, languageTypeLabel])
         termsContainerView.addSubviews([communityTermsLabel, serviceTermsLabel, personalInfoTermsLabel])
         versionContainerView.addSubviews([versionTitleLabel, updateVersionLabel, updateButton, versionInfoLabel])
+        userStatusContainerView.addSubviews([logoutLabel, leaveLabel])
         
         //헤더 컨테이너 뷰
         headerContainerView.snp.makeConstraints {
