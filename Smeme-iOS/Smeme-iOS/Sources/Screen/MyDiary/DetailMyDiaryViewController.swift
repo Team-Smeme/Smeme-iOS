@@ -57,6 +57,10 @@ final class DetailMyDiaryViewController: UIViewController {
         $0.font = .body2
     }
     
+    private let likeBottomView = LikeBottomView().then {
+        $0.addShadow(shadowColor: .black, shadowOpacity: 0.04, shadowRadius: 20, offset: CGSize(width: 0, height: -9))
+    }
+    
     // MARK: - Life Cycle
     
     override func viewDidLoad() {
@@ -84,17 +88,18 @@ final class DetailMyDiaryViewController: UIViewController {
         contentLabel.text = myDiaryDetail.content + " (\(myDiaryDetail.content.count))"
         contentLabel.setTextWithLineHeight(lineHeight: 21)
         dateLabel.text = myDiaryDetail.createdAt.getFormattedDate(format: "yyyy년 MM월 dd일 HH:mm")
+        likeBottomView.configure(with: LikeBottomViewModel(likeCount: myDiaryDetail.likeCnt))
     }
     
     private func setLayout() {
-        view.addSubviews([contentScrollView, backButton, optionButton])
+        view.addSubviews([contentScrollView, backButton, optionButton, likeBottomView])
         contentScrollView.addSubview(contentView)
         contentView.addSubviews([categoryBackgroundView, categoryLabel, publicLabel, contentLabel, dateLabel])
         
         contentScrollView.snp.makeConstraints {
             $0.top.equalToSuperview().inset(headerHeightByNotch(66))
             $0.leading.trailing.equalToSuperview()
-            $0.bottom.equalToSuperview().inset(bottomHeightByNotch(54))
+            $0.bottom.equalTo(likeBottomView.snp.top)
         }
         
         contentView.snp.makeConstraints {
@@ -112,7 +117,7 @@ final class DetailMyDiaryViewController: UIViewController {
             $0.centerY.equalTo(backButton)
             $0.trailing.equalToSuperview().inset(convertByWidthRatio(29))
         }
-    
+        
         categoryBackgroundView.snp.makeConstraints {
             $0.top.equalTo(contentView).inset(convertByHeightRatio(15))
             $0.leading.equalTo(contentView).inset(convertByWidthRatio(30))
@@ -137,6 +142,11 @@ final class DetailMyDiaryViewController: UIViewController {
         dateLabel.snp.makeConstraints {
             $0.top.equalTo(contentLabel.snp.bottom).offset(convertByHeightRatio(20))
             $0.trailing.equalTo(contentView).inset(convertByWidthRatio(30))
+        }
+        
+        likeBottomView.snp.makeConstraints {
+            $0.leading.trailing.equalToSuperview()
+            $0.bottom.equalTo(view.safeAreaLayoutGuide)
         }
     }
     
