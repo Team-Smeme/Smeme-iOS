@@ -16,6 +16,8 @@ extension Constant {
         
         static let btnKakaoLogin = UIImage(named: "btnKakaoLogin")!
         
+        static let icnCircleX = UIImage(named: "icnCircleX")!
+        
         // MARK: - NaviView
         
         static let icnProfile = UIImage(named: "icnProfile")!
