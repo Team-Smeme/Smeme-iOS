@@ -128,6 +128,22 @@ final class MySmemeViewController: UIViewController {
         $0.textAlignment = .left
         $0.setTextWithLineHeight(lineHeight: 19)
     }
+    
+    private let logoutLabel = UILabel().then {
+        $0.text = "로그아웃"
+        $0.font = .subtitle3
+        $0.textColor = .gray500
+        $0.textAlignment = .left
+        $0.setTextWithLineHeight(lineHeight: 19)
+    }
+    
+    private let leaveLabel = UILabel().then {
+        $0.text = "탈퇴하기"
+        $0.font = .subtitle3
+        $0.textColor = .gray500
+        $0.textAlignment = .left
+        $0.setTextWithLineHeight(lineHeight: 19)
+    }
 
 
     // MARK: - Life Cycle
