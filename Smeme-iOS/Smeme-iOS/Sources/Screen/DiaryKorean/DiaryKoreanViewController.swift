@@ -59,4 +59,43 @@ final class DiaryKoreanViewController: UIViewController {
     private func setBackgoundColor() {
         view.backgroundColor = .smemeWhite
     }
+    
+    private func setLayout() {
+        view.addSubviews([naviView])
+        
+        naviView.addSubviews([cancelButton, languageView, completeButton])
+        languageView.addSubviews([languageLabel, stepLabel])
+        
+        naviView.snp.makeConstraints {
+            $0.top.leading.trailing.equalTo(view.safeAreaLayoutGuide)
+            $0.height.equalTo(convertByHeightRatio(66))
+        }
+        
+        cancelButton.snp.makeConstraints {
+            $0.centerY.equalToSuperview()
+            $0.leading.equalToSuperview().offset(30)
+        }
+        
+        languageView.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.top.bottom.equalTo(cancelButton)
+            $0.leading.equalTo(languageLabel)
+            $0.trailing.equalTo(languageLabel)
+        }
+        
+        completeButton.snp.makeConstraints {
+            $0.centerY.equalToSuperview()
+            $0.trailing.equalToSuperview().offset(-30)
+        }
+        
+        languageLabel.snp.makeConstraints {
+            $0.centerY.leading.equalToSuperview()
+        }
+        
+        stepLabel.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.top.equalTo(languageLabel.snp.bottom).offset(2)
+        }
+    }
+    
 }
