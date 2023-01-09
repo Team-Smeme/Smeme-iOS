@@ -37,6 +37,8 @@ final class StepTwoKoreanDiaryViewController: UIViewController {
         $0.text = "English"
     }
     
+    private let languageIcon = Constant.Image.icnArrowUnder
+    
     private let stepLabel = UILabel().then {
         $0.font = .caption1
         $0.textColor = .gray400
