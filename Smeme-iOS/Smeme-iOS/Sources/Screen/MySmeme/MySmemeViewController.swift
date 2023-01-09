@@ -211,7 +211,7 @@ final class MySmemeViewController: UIViewController {
         }
         
         divideLineSecond.snp.makeConstraints {
-            $0.top.equalTo(versionContainerView.snp.bottom)
+            $0.top.equalTo(versionContainerView.snp.bottom).offset(convertByHeightRatio(14))
             $0.height.equalTo(1)
             $0.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(18)
         }
