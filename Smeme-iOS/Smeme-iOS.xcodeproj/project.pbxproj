@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		37B33C80296BB032001E353D /* DiaryKoreanStepOneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B33C7F296BB032001E353D /* DiaryKoreanStepOneViewController.swift */; };
+		37B33C8C296BF802001E353D /* StepTwoKoreanDiaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B33C8B296BF802001E353D /* StepTwoKoreanDiaryViewController.swift */; };
 		37D9E4962965A3160083A43F /* DiaryForeignViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D9E4952965A3160083A43F /* DiaryForeignViewController.swift */; };
 		4A0501CE295CB51600E17386 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 4A0501CD295CB51600E17386 /* Moya */; };
 		4A0501D1295CB53000E17386 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 4A0501D0295CB53000E17386 /* SnapKit */; };
@@ -71,6 +72,7 @@
 
 /* Begin PBXFileReference section */
 		37B33C7F296BB032001E353D /* DiaryKoreanStepOneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryKoreanStepOneViewController.swift; sourceTree = "<group>"; };
+		37B33C8B296BF802001E353D /* StepTwoKoreanDiaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepTwoKoreanDiaryViewController.swift; sourceTree = "<group>"; };
 		37D9E4952965A3160083A43F /* DiaryForeignViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryForeignViewController.swift; sourceTree = "<group>"; };
 		4A0501EF295CBADD00E17386 /* DesignSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignSystem.swift; sourceTree = "<group>"; };
 		4A0501F1295CBAE300E17386 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 			isa = PBXGroup;
 			children = (
 				37B33C7F296BB032001E353D /* DiaryKoreanStepOneViewController.swift */,
+				37B33C8B296BF802001E353D /* StepTwoKoreanDiaryViewController.swift */,
 			);
 			path = DiaryKorean;
 			sourceTree = "<group>";
@@ -563,6 +566,7 @@
 				4A0501F2295CBAE300E17386 /* Constant.swift in Sources */,
 				4A050206295CBE6400E17386 /* Service.swift in Sources */,
 				A32753292966FE81004BB8A0 /* ScrapedExpressionModel.swift in Sources */,
+				37B33C8C296BF802001E353D /* StepTwoKoreanDiaryViewController.swift in Sources */,
 				4AD357B129681D2D002D25E4 /* TopicCollectionViewCell.swift in Sources */,
 				4A05020C295CBF2900E17386 /* UIFont+.swift in Sources */,
 				4AD78BCC2966A93100EEE509 /* UILabel+.swift in Sources */,
