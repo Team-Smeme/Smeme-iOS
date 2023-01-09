@@ -19,6 +19,22 @@ final class StepTwoKoreanDiaryViewController: UIViewController {
     private let naviView = UIView()
     private let languageView = UIView()
     
+    private let koreanDiaryScrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.backgroundColor = .white
+        scrollView.showsVerticalScrollIndicator = true
+        return scrollView
+    }()
+    
+    private lazy var textView = UITextView().then {
+        
+        $0.font = .body1
+        $0.text = "최소 10자이상의 외국어를 작성해주세요"
+        $0.textColor = .gray400
+        //            $0.delegate = self
+    }
+    
     private let cancelButton = UIButton().then {
         $0.setImage(Constant.Image.icnPageLeft, for: .normal)
     }
@@ -44,6 +60,10 @@ final class StepTwoKoreanDiaryViewController: UIViewController {
         $0.textColor = .gray400
         $0.setTextWithLineHeight(lineHeight: 14)
         $0.text = "STEP 2"
+    }
+    
+    private let grayUnderlineView = UIView().then {
+        $0.backgroundColor = .gray100
     }
     
     // MARK: - Life Cycle
