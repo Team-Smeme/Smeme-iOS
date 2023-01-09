@@ -32,7 +32,7 @@ class SplashViewController: UIViewController {
         setLayout()
         setBackgroundColor()
         setAnimation()
-                
+        
         // MARK: - @objc
         
         // MARK: - Custom Method
@@ -46,14 +46,21 @@ class SplashViewController: UIViewController {
             
             animationView.snp.makeConstraints {
                 $0.centerX.centerY.equalToSuperview()
-                $0.height.equalTo(250)
+                $0.height.equalTo(convertByHeightRatio(250))
             }
         }
         
         func setAnimation () {
             animationView.play()
-            animationView.animationSpeed = 0.7
+            animationView.animationSpeed = 0.8
             animationView.loopMode = .playOnce
+            
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
+                let Tabbar = TabBarController()
+                Tabbar.modalTransitionStyle = .crossDissolve
+                Tabbar.modalPresentationStyle = .fullScreen
+                self.present(Tabbar, animated: true)
+            }
         }
     }
 }
