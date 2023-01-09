@@ -11,4 +11,6 @@ import Foundation
 
 struct Environment {
     static let nativeAppKey = Bundle.main.infoDictionary?["NATIVE_APP_KEY"] as? String ?? "nil"
+    
+    static let baseURL = Bundle.main.infoDictionary?["BASE_URL"] as? String ?? "nil"
 }

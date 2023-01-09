@@ -9,5 +9,5 @@ import Foundation
 
 struct URLConstant {
     
-    static let baseURL = ""
+    static let baseURL = Environment.baseURL
 }
