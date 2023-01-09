@@ -144,8 +144,7 @@ final class MySmemeViewController: UIViewController {
         $0.textAlignment = .left
         $0.setTextWithLineHeight(lineHeight: 19)
     }
-
-
+    
     // MARK: - Life Cycle
     
     override func viewDidLoad() {
@@ -158,8 +157,87 @@ final class MySmemeViewController: UIViewController {
     
     // MARK: - Custom Method
     
-    private func setLayout1() {
-        //정책,규칙 컨테이너 뷰
+    private func setLayout() {
+                
+        view.addSubviews([headerContainerView,
+                          setUserInfoContainerView,
+                          setMainLanguageContainerView,
+                          divideLineFirst,
+                          termsContainerView,
+                          versionContainerView,
+                          divideLineSecond,
+                          userStatusContainerView])
+        
+        headerContainerView.addSubviews([previousButton, headerLabel])
+        setUserInfoContainerView.addSubviews([userIdLabel, userIntroLabel, nextButton])
+        setMainLanguageContainerView.addSubviews([setLanguageTitleLabel, languageTypeLabel])
+        termsContainerView.addSubviews([communityTermsLabel, serviceTermsLabel, personalInfoTermsLabel])
+        versionContainerView.addSubviews([versionTitleLabel, updateVersionLabel, updateButton, versionInfoLabel])
+        userStatusContainerView.addSubviews([logoutLabel, leaveLabel])
+        
+        // 헤더 컨테이너 뷰
+        headerContainerView.snp.makeConstraints {
+            $0.top.leading.trailing.equalTo(view.safeAreaLayoutGuide)
+            $0.height.equalTo(convertByHeightRatio(66))
+        }
+        
+        previousButton.snp.makeConstraints {
+            $0.centerY.equalTo(headerContainerView)
+            $0.leading.equalTo(view.safeAreaLayoutGuide).offset(18)
+            $0.height.equalTo(45)
+        }
+        
+        headerLabel.snp.makeConstraints {
+            $0.centerX.centerY.equalToSuperview()
+        }
+        
+        // 프로필 설정 컨테이너 뷰
+        setUserInfoContainerView.snp.makeConstraints {
+            $0.top.equalTo(headerContainerView.snp.bottom)
+            $0.leading.trailing.equalTo(view.safeAreaLayoutGuide)
+            $0.height.equalTo(convertByHeightRatio(83))
+        }
+        
+        userIdLabel.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(convertByHeightRatio(14))
+            $0.leading.equalToSuperview().offset(30)
+        }
+        
+        userIntroLabel.snp.makeConstraints {
+            $0.top.equalTo(userIdLabel.snp.bottom).offset(10)
+            $0.leading.equalTo(userIdLabel)
+        }
+        
+        nextButton.snp.makeConstraints {
+            $0.centerY.equalTo(setUserInfoContainerView)
+            $0.trailing.equalToSuperview().inset(20)
+            $0.height.width.equalTo(45)
+        }
+        
+        // 주 사용 언어 컨테이너 뷰
+        setMainLanguageContainerView.snp.makeConstraints {
+            $0.top.equalTo(setUserInfoContainerView.snp.bottom).offset(12)
+            $0.leading.trailing.equalTo(view.safeAreaLayoutGuide)
+            $0.height.equalTo(convertByHeightRatio(47))
+        }
+        
+        setLanguageTitleLabel.snp.makeConstraints {
+            $0.centerY.equalToSuperview()
+            $0.leading.equalToSuperview().offset(30)
+        }
+        
+        languageTypeLabel.snp.makeConstraints {
+            $0.centerY.equalToSuperview()
+            $0.trailing.equalToSuperview().inset(30)
+        }
+        
+        divideLineFirst.snp.makeConstraints {
+            $0.top.equalTo(setMainLanguageContainerView.snp.bottom).offset(14)
+            $0.height.equalTo(1)
+            $0.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(18)
+        }
+        
+        // 정책,규칙 컨테이너 뷰
         termsContainerView.snp.makeConstraints {
             $0.top.equalTo(divideLineFirst.snp.bottom).offset(14)
             $0.leading.trailing.equalTo(view.safeAreaLayoutGuide)
@@ -181,7 +259,7 @@ final class MySmemeViewController: UIViewController {
             $0.leading.equalTo(serviceTermsLabel)
         }
         
-        //버전 컨테이너 뷰
+        // 버전 컨테이너 뷰
         versionContainerView.snp.makeConstraints {
             $0.top.equalTo(termsContainerView.snp.bottom)
             $0.leading.trailing.equalTo(view.safeAreaLayoutGuide)
@@ -216,7 +294,7 @@ final class MySmemeViewController: UIViewController {
             $0.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(18)
         }
         
-        //로그아웃, 탈퇴 컨테이너 뷰
+        // 로그아웃, 탈퇴 컨테이너 뷰
         userStatusContainerView.snp.makeConstraints {
             $0.top.equalTo(divideLineSecond.snp.bottom).offset(convertByHeightRatio(14))
             $0.leading.trailing.equalTo(view.safeAreaLayoutGuide)
@@ -232,90 +310,6 @@ final class MySmemeViewController: UIViewController {
             $0.top.equalTo(logoutLabel).offset(convertByHeightRatio(47))
             $0.leading.equalTo(logoutLabel)
         }
-
-    }
-    
-    private func setLayout() {
-                
-        view.addSubviews([headerContainerView,
-                          setUserInfoContainerView,
-                          setMainLanguageContainerView,
-                          divideLineFirst,
-                          termsContainerView,
-                          versionContainerView,
-                          divideLineSecond,
-                          userStatusContainerView])
-        
-        headerContainerView.addSubviews([previousButton, headerLabel])
-        setUserInfoContainerView.addSubviews([userIdLabel, userIntroLabel, nextButton])
-        setMainLanguageContainerView.addSubviews([setLanguageTitleLabel, languageTypeLabel])
-        termsContainerView.addSubviews([communityTermsLabel, serviceTermsLabel, personalInfoTermsLabel])
-        versionContainerView.addSubviews([versionTitleLabel, updateVersionLabel, updateButton, versionInfoLabel])
-        userStatusContainerView.addSubviews([logoutLabel, leaveLabel])
-        
-        //헤더 컨테이너 뷰
-        headerContainerView.snp.makeConstraints {
-            $0.top.leading.trailing.equalTo(view.safeAreaLayoutGuide)
-            $0.height.equalTo(convertByHeightRatio(66))
-        }
-        
-        previousButton.snp.makeConstraints {
-            $0.centerY.equalTo(headerContainerView)
-            $0.leading.equalTo(view.safeAreaLayoutGuide).offset(18)
-            $0.height.equalTo(45)
-        }
-        
-        headerLabel.snp.makeConstraints {
-            $0.centerX.centerY.equalToSuperview()
-        }
-        
-        //프로필 설정 컨테이너 뷰
-        setUserInfoContainerView.snp.makeConstraints {
-            $0.top.equalTo(headerContainerView.snp.bottom)
-            $0.leading.trailing.equalTo(view.safeAreaLayoutGuide)
-            $0.height.equalTo(convertByHeightRatio(83))
-        }
-        
-        userIdLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(convertByHeightRatio(14))
-            $0.leading.equalToSuperview().offset(30)
-        }
-        
-        userIntroLabel.snp.makeConstraints {
-            $0.top.equalTo(userIdLabel.snp.bottom).offset(10)
-            $0.leading.equalTo(userIdLabel)
-        }
-        
-        nextButton.snp.makeConstraints {
-            $0.centerY.equalTo(setUserInfoContainerView)
-            $0.trailing.equalToSuperview().inset(20)
-            $0.height.width.equalTo(45)
-        }
-        
-        //주 사용 언어 컨테이너 뷰
-        setMainLanguageContainerView.snp.makeConstraints {
-            $0.top.equalTo(setUserInfoContainerView.snp.bottom).offset(12)
-            $0.leading.trailing.equalTo(view.safeAreaLayoutGuide)
-            $0.height.equalTo(convertByHeightRatio(47))
-        }
-        
-        setLanguageTitleLabel.snp.makeConstraints {
-            $0.centerY.equalToSuperview()
-            $0.leading.equalToSuperview().offset(30)
-        }
-        
-        languageTypeLabel.snp.makeConstraints {
-            $0.centerY.equalToSuperview()
-            $0.trailing.equalToSuperview().inset(30)
-        }
-        
-        divideLineFirst.snp.makeConstraints {
-            $0.top.equalTo(setMainLanguageContainerView.snp.bottom).offset(14)
-            $0.height.equalTo(1)
-            $0.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(18)
-        }
-        
-        setLayout1()
     }
     
     private func setBackgroundColor() {
