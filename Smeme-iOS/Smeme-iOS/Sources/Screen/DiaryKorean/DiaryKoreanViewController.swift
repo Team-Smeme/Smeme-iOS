@@ -37,6 +37,12 @@ final class DiaryKoreanViewController: UIViewController {
     
     private let languageIcon = UIImageView(image: Constant.Image.icnArrowUnder)
     
+    private let stepLabel = UILabel().then {
+        $0.font = .caption1
+        $0.textColor = .gray400
+        $0.text = "STEP 1"
+    }
+    
     // MARK: - Life Cycle
     
     override func viewDidLoad() {
