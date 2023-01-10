@@ -22,7 +22,6 @@ final class DiaryForeignViewController: UIViewController {
     private let languageView = UIView()
     
     private lazy var diaryTextView = UITextView().then {
-//        $0.text = "최소 10자 이상의 외국어를 작성해 주세요"
         $0.setLineSpacing()
         $0.textColor = .gray400
         $0.delegate = self
@@ -154,13 +153,13 @@ final class DiaryForeignViewController: UIViewController {
         }
         
         diaryTextView.snp.makeConstraints {
-            $0.top.equalTo(naviView.snp.bottom).offset(9)
+            $0.top.equalTo(naviView.snp.bottom).offset(10)
             $0.leading.trailing.equalToSuperview().inset(24)
             $0.bottom.equalTo(bottomView.snp.top)
         }
         
         placeHolderLabel.snp.makeConstraints {
-            $0.top.leading.equalTo(diaryTextView)
+            $0.top.leading.equalToSuperview().inset(7)
         }
         
         bottomView.snp.makeConstraints {
@@ -241,6 +240,9 @@ extension DiaryForeignViewController: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
         if textView.text.isEmpty {
             placeHolderLabel.isHidden = false
+            textView.textColor = .smemeBlack
+            textView.font = .body1
+            textView.setLineSpacing()
             textView.tintColor = .clear
         }
     }
@@ -248,9 +250,15 @@ extension DiaryForeignViewController: UITextViewDelegate {
     func textViewDidChange(_ textView: UITextView) {
         if textView.text.isEmpty {
             placeHolderLabel.isHidden = false
+            textView.textColor = .smemeBlack
+            textView.font = .body1
+            textView.setLineSpacing()
             textView.tintColor = .clear
         } else {
             placeHolderLabel.isHidden = true
+            textView.textColor = .gray400
+            textView.font = .body1
+            textView.setLineSpacing()
             textView.tintColor = .primary
         }
     }
