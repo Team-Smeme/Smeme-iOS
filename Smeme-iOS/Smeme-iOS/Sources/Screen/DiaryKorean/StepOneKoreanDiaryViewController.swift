@@ -168,4 +168,40 @@ final class StepOneKoreanDiaryViewController: UIViewController {
             $0.trailing.equalTo(publicButton.snp.leading).offset(-16)
         }
     }
+    
+    private func setRandomTopicButtonToggle() {
+        isTapped.toggle()
+        if isTapped {
+            randomTopicButton.image = Constant.Image.btnRandomTopicCheckBox
+            naviView.snp.remakeConstraints {
+                $0.top.leading.trailing.equalTo(view.safeAreaLayoutGuide)
+                $0.height.equalTo(convertByHeightRatio(66))
+            }
+
+            diaryTextView.snp.remakeConstraints {
+                $0.top.equalTo(naviView.snp.bottom).offset(9)
+                $0.leading.trailing.equalTo(view.safeAreaLayoutGuide).offset(30)
+                $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-30)
+                $0.bottom.equalTo(bottomView.snp.top)
+            }
+
+            randomSubjectView.removeFromSuperview()
+
+        } else {
+            randomTopicButton.image = Constant.Image.btnRandomTopicCheckBoxSelected
+            view.addSubview(randomSubjectView)
+
+            randomSubjectView.snp.remakeConstraints {
+                $0.top.equalTo(naviView.snp.bottom)
+                $0.leading.equalToSuperview()
+            }
+
+            diaryTextView.snp.remakeConstraints {
+                $0.top.equalTo(randomSubjectView.snp.bottom).offset(9)
+                $0.leading.trailing.equalTo(view.safeAreaLayoutGuide).offset(30)
+                $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-30)
+                $0.bottom.equalTo(bottomView.snp.top)
+            }
+        }
+    }
 }
