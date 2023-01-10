@@ -34,7 +34,6 @@
 		4A05020C295CBF2900E17386 /* UIFont+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A05020B295CBF2900E17386 /* UIFont+.swift */; };
 		4A05020E295CBF2F00E17386 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A05020D295CBF2F00E17386 /* UIColor+.swift */; };
 		4A050210295CBF5200E17386 /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A05020F295CBF5200E17386 /* UIViewController+.swift */; };
-		4A05B7B1296D4D6E00692006 /* APIConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A05B7B0296D4D6E00692006 /* APIConstant.swift */; };
 		4A39E74C29670CAB00C48097 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A39E74B29670CAB00C48097 /* LoginViewController.swift */; };
 		4A4CB70E295CAD7700F170CC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4CB70D295CAD7700F170CC /* AppDelegate.swift */; };
 		4A4CB710295CAD7700F170CC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4CB70F295CAD7700F170CC /* SceneDelegate.swift */; };
@@ -68,6 +67,7 @@
 		6FD39877296B2EA300C16B79 /* DetailMyDiaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FD39876296B2EA300C16B79 /* DetailMyDiaryViewController.swift */; };
 		A32753292966FE81004BB8A0 /* ScrapedExpressionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32753282966FE81004BB8A0 /* ScrapedExpressionModel.swift */; };
 		A327532B2967F961004BB8A0 /* ScrapedListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A327532A2967F961004BB8A0 /* ScrapedListCollectionViewCell.swift */; };
+		A337793A296D4F6600A45764 /* APIConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3377939296D4F6600A45764 /* APIConstant.swift */; };
 		A37BFA2A296B48CE00F292B5 /* MySmemeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37BFA29296B48CE00F292B5 /* MySmemeViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -90,7 +90,6 @@
 		4A05020B295CBF2900E17386 /* UIFont+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+.swift"; sourceTree = "<group>"; };
 		4A05020D295CBF2F00E17386 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		4A05020F295CBF5200E17386 /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
-		4A05B7B0296D4D6E00692006 /* APIConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstant.swift; sourceTree = "<group>"; };
 		4A39E74B29670CAB00C48097 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		4A4CB70A295CAD7700F170CC /* Smeme-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Smeme-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A4CB70D295CAD7700F170CC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -125,6 +124,7 @@
 		6FD39876296B2EA300C16B79 /* DetailMyDiaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMyDiaryViewController.swift; sourceTree = "<group>"; };
 		A32753282966FE81004BB8A0 /* ScrapedExpressionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapedExpressionModel.swift; sourceTree = "<group>"; };
 		A327532A2967F961004BB8A0 /* ScrapedListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapedListCollectionViewCell.swift; sourceTree = "<group>"; };
+		A3377939296D4F6600A45764 /* APIConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstant.swift; sourceTree = "<group>"; };
 		A37BFA29296B48CE00F292B5 /* MySmemeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySmemeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -328,7 +328,7 @@
 				4A0501FD295CBDED00E17386 /* NetworkConstant.swift */,
 				4A0501FF295CBE0A00E17386 /* URLConstant.swift */,
 				4A050201295CBE1D00E17386 /* BaseTargetType.swift */,
-				4A05B7B0296D4D6E00692006 /* APIConstant.swift */,
+				A3377939296D4F6600A45764 /* APIConstant.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -588,7 +588,7 @@
 				4A0501FE295CBDED00E17386 /* NetworkConstant.swift in Sources */,
 				6F1D7798296BDF5E00C8FE39 /* LikeBottomView.swift in Sources */,
 				A327532B2967F961004BB8A0 /* ScrapedListCollectionViewCell.swift in Sources */,
-				4A05B7B1296D4D6E00692006 /* APIConstant.swift in Sources */,
+				A337793A296D4F6600A45764 /* APIConstant.swift in Sources */,
 				4AD78BBC2965993F00EEE509 /* ViewModel.swift in Sources */,
 				6F33F1FA2968162E002A2FBA /* MyDiaryNavigationBar.swift in Sources */,
 				4AD78BC42966888B00EEE509 /* UIScreen+.swift in Sources */,
