@@ -98,7 +98,7 @@ final class StepOneKoreanDiaryViewController: UIViewController {
     }
     
     private func setLayout() {
-        view.addSubviews([naviView, tipLabel, diaryTextView])
+        view.addSubviews([naviView, tipLabel, diaryTextView, bottomView])
         
         naviView.addSubviews([cancelButton, languageView, completeButton])
         languageView.addSubviews([languageLabel, stepLabel])
