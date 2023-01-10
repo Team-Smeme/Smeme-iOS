@@ -156,6 +156,14 @@ final class MySmemeViewController: UIViewController {
     }
     // MARK: - @objc
     
+    @objc
+    private func touchupBackButton() {
+        if self.navigationController == nil {
+            self.dismiss(animated: true)
+        } else { self.navigationController?.popViewController(animated: true)
+        }
+    }
+
     // MARK: - Custom Method
     
     private func setLayout() {
@@ -315,16 +323,5 @@ final class MySmemeViewController: UIViewController {
     
     private func setBackgroundColor() {
         view.backgroundColor = .smemeWhite
-    }
-    
-    
-    @objc
-    private func touchupBackButton() {
-        if self.navigationController == nil{
-            self.dismiss(animated: true)
-        }
-        else{
-            self.navigationController?.popViewController(animated: true)
-        }
     }
 }
