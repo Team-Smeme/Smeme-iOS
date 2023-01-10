@@ -54,7 +54,7 @@ final class OpenDiaryViewController: UIViewController {
     
     private lazy var myProfileButon = UIButton().then {
         $0.setImage(Constant.Image.icnProfile, for: .normal)
-        //        $0.addTarget(self, action: #selector(myProfileButtonDidTap), for: .touchUpInside)
+                $0.addTarget(self, action: #selector(touchupNextButton), for: .touchUpInside)
     }
     
     private lazy var languageStackView = UIStackView().then {
@@ -106,8 +106,13 @@ final class OpenDiaryViewController: UIViewController {
     
     // MARK: - @objc
     
+    @objc
+    private func touchupNextButton() {
+        pushToMySmemeViewController()
+    }
+        
     // MARK: - Custom Method
-    
+        
     private func setBackgroundColor() {
         view.backgroundColor = .background
     }
@@ -176,6 +181,11 @@ final class OpenDiaryViewController: UIViewController {
         topicCollectionView.dataSource = self
         diaryListCollectionView.delegate = self
         diaryListCollectionView.dataSource = self
+    }
+    
+    private func pushToMySmemeViewController() {
+        let mySmemeVC = MySmemeViewController()
+        self.navigationController?.pushViewController(mySmemeVC, animated: true)
     }
 }
 
