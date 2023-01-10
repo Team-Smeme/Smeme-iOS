@@ -58,7 +58,6 @@ final class LoginProfileInfoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        completionCongratulateButton(isOn: false)
         setBackgroundColor()
         setLayout()
         setDelegate()
@@ -121,7 +120,6 @@ final class LoginProfileInfoViewController: UIViewController {
         }
         
         congratulateButton.snp.makeConstraints {
-            $0.bottom.equalTo(view.safeAreaLayoutGuide)
             $0.bottom.equalTo(view.safeAreaLayoutGuide).inset(20)
             $0.centerX.equalToSuperview()
         }
