@@ -108,8 +108,8 @@ final class StepTwoKoreanDiaryViewController: UIViewController {
         view.addSubviews([naviView, koreanDiaryTextView, grayUnderlineView, diaryTextView, bottomView])
         
         naviView.addSubviews([backButton, languageView, completeButton])
+        diaryTextView.addSubview(placeHolderLabel)
         languageView.addSubviews([languageLabel, languageIcon, stepLabel])
-        
         bottomView.addSubviews([randomTopicButton, publicButton, hintButton])
         
         naviView.snp.makeConstraints {
