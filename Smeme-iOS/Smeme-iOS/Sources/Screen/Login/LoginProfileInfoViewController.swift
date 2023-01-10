@@ -96,4 +96,9 @@ final class LoginProfileInfoViewController: UIViewController {
             $0.centerX.equalToSuperview()
         }
     }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
+}
 }
