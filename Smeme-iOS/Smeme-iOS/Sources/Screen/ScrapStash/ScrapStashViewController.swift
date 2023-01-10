@@ -82,7 +82,6 @@ final class ScrapStashViewController: UIViewController {
         setBackgroundColor()
         setLayout()
         registerCell()
-//        alert()
     }
     
     // MARK: - @objc
