@@ -15,6 +15,16 @@ final class MyDiaryViewController: UIViewController {
     
     // MARK: - UI Property
     
+    private let headerView = UIView().then {
+        $0.makeRoundCorner(cornerRadius: 30)
+        $0.layer.maskedCorners = CACornerMask(arrayLiteral: .layerMinXMaxYCorner, .layerMaxXMaxYCorner)
+        $0.layer.masksToBounds = false
+        $0.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.06).cgColor
+        $0.layer.shadowOffset = CGSize(width: 0, height: 4)
+        $0.layer.shadowRadius = 26
+        $0.layer.shadowOpacity = 1
+    }
+    
     private lazy var myDiaryCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         
@@ -24,6 +34,10 @@ final class MyDiaryViewController: UIViewController {
         
         return collectionView
     }()
+    
+    private let notchWhiteView = UIView().then {
+        $0.backgroundColor = .smemeWhite
+    }
     
     private lazy var navigationBar = MyDiaryNavigationBar().then {
         $0.goMyProfileView = {
@@ -46,12 +60,6 @@ final class MyDiaryViewController: UIViewController {
         $0.addTarget(self, action: #selector(floatingButtonClicked(_:)), for: .touchUpInside)
         $0.addShadow(shadowColor: .black, shadowOpacity: 0.08, shadowRadius: 20, offset: CGSize(width: 0, height: 0))
     }
-    
-    private let headerView = UIView().then {
-        $0.backgroundColor = .smemeWhite
-    }
-    
-    private let contentView = UIView()
     
     // MARK: - Life Cycle
     
@@ -80,12 +88,16 @@ final class MyDiaryViewController: UIViewController {
     }
     
     private func setLayout() {
-        //view.addSubviews([containerView])
-        view.addSubviews([headerView, navigationBar, dateBar, myDiaryCollectionView, floatingButton])
+        view.addSubviews([notchWhiteView, headerView, navigationBar, dateBar, myDiaryCollectionView, floatingButton])
         
-        headerView.snp.makeConstraints {
+        notchWhiteView.snp.makeConstraints { /// 노치부분 하얗게 해주기 위해서 선언
             $0.top.leading.trailing.equalToSuperview()
             $0.height.equalTo(100)
+        }
+        
+        headerView.snp.makeConstraints { /// 상단 notchWhiteView, navigationBar, dateBar를 묶어줌, 그림자를 위해서 넣었습니다 안넣으면 그림자가 dateBar에만 적용되어 중간이 짤리더라구요!
+            $0.top.leading.trailing.equalToSuperview()
+            $0.bottom.equalTo(dateBar.snp.bottom)
         }
         
         navigationBar.snp.makeConstraints {
@@ -108,6 +120,8 @@ final class MyDiaryViewController: UIViewController {
             $0.leading.trailing.equalToSuperview()
             $0.bottom.equalToSuperview().inset(16)
         }
+        
+        view.bringSubviewToFront(self.dateBar)
     }
     
     private func registerCell() {
