@@ -20,6 +20,18 @@ final class ScrapStashViewController: UIViewController {
     
     // MARK: - UI Property
         
+    private lazy var scrapedListCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .vertical
+        
+        $0.backgroundColor = .clear
+        $0.collectionViewLayout = layout
+        $0.isScrollEnabled = true
+        $0.showsVerticalScrollIndicator = true
+        $0.delegate = self
+        $0.dataSource = self
+    }
+
     private let headerView = UIView().then {
         $0.layer.cornerRadius = 30
         $0.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
@@ -60,19 +72,7 @@ final class ScrapStashViewController: UIViewController {
         $0.textColor = .gray400
         $0.font = .subtitle2
     }
-    
-    private lazy var scrapedListCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .vertical
         
-        $0.backgroundColor = .clear
-        $0.collectionViewLayout = layout
-        $0.isScrollEnabled = true
-        $0.showsVerticalScrollIndicator = true
-        $0.delegate = self
-        $0.dataSource = self
-    }
-    
     // MARK: - Life Cycle
     
     override func viewDidLoad() {
