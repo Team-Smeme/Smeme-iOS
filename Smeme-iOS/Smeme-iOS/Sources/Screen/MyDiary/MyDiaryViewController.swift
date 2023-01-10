@@ -51,6 +51,8 @@ final class MyDiaryViewController: UIViewController {
         $0.backgroundColor = .smemeWhite
     }
     
+    private let contentView = UIView()
+    
     // MARK: - Life Cycle
     
     override func viewDidLoad() {
@@ -78,11 +80,12 @@ final class MyDiaryViewController: UIViewController {
     }
     
     private func setLayout() {
+        //view.addSubviews([containerView])
         view.addSubviews([headerView, navigationBar, dateBar, myDiaryCollectionView, floatingButton])
         
         headerView.snp.makeConstraints {
             $0.top.leading.trailing.equalToSuperview()
-            $0.height.equalTo(constraintByNotch(47, 20))
+            $0.height.equalTo(100)
         }
         
         navigationBar.snp.makeConstraints {
