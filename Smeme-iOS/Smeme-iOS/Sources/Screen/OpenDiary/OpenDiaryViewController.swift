@@ -109,6 +109,8 @@ final class OpenDiaryViewController: UIViewController {
     @objc
     private func touchupNextButton() {
         pushToMySmemeViewController()
+        self.tabBarController?.tabBar.isHidden = false
+
     }
         
     // MARK: - Custom Method
