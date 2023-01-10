@@ -21,15 +21,10 @@ final class DiaryForeignViewController: UIViewController {
     private let naviView = UIView()
     private let languageView = UIView()
     
-    private lazy var textView: UITextView = {
-        let textView = UITextView().then {
-            $0.font = .body1
-            $0.text = "최소 10자이상의 외국어를 작성해주세요"
-            $0.textColor = .gray400
-            $0.delegate = self
-        }
-        return textView
-    }()
+    private let diaryTextView = UITextView().then {
+        $0.text = "최소 10자 이상의 외국어를 작성해 주세요"
+        $0.setLineSpacing()
+    }
     
     private var randomSubjectView = RandomSubjectView().then {
         $0.configure(with: RandomSubjectViewModel(contentText: "오늘부터 딱 일주일 후! 설레는 크리스마스네요. 일주일 전부터 세워보는 나의 크리스마스 계획은?", isHiddenRefreshButton: false))
@@ -80,7 +75,7 @@ final class DiaryForeignViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        showKeyboard(textView: textView)
+        showKeyboard(textView: diaryTextView)
         keyboardAddObserver()
     }
     
@@ -110,7 +105,7 @@ final class DiaryForeignViewController: UIViewController {
     }
     
     private func setLayout() {
-        view.addSubviews([naviView, randomSubjectView, textView, bottomView])
+        view.addSubviews([naviView, randomSubjectView, diaryTextView, bottomView])
         
         naviView.addSubviews([cancelButton, languageView, completeButton])
         languageView.addSubviews([languageLabel, languageIcon])
@@ -148,10 +143,9 @@ final class DiaryForeignViewController: UIViewController {
             $0.leading.equalTo(languageLabel.snp.trailing).offset(6)
         }
         
-        textView.snp.makeConstraints {
+        diaryTextView.snp.makeConstraints {
             $0.top.equalTo(naviView.snp.bottom).offset(9)
-            $0.leading.trailing.equalTo(view.safeAreaLayoutGuide).offset(30)
-            $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-30)
+            $0.leading.trailing.equalToSuperview().inset(24)
             $0.bottom.equalTo(bottomView.snp.top)
         }
         
@@ -180,7 +174,7 @@ final class DiaryForeignViewController: UIViewController {
                 $0.height.equalTo(convertByHeightRatio(66))
             }
             
-            textView.snp.remakeConstraints {
+            diaryTextView.snp.remakeConstraints {
                 $0.top.equalTo(naviView.snp.bottom).offset(9)
                 $0.leading.trailing.equalTo(view.safeAreaLayoutGuide).offset(30)
                 $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-30)
@@ -203,7 +197,7 @@ final class DiaryForeignViewController: UIViewController {
                 $0.leading.equalToSuperview()
             }
             
-            textView.snp.remakeConstraints {
+            diaryTextView.snp.remakeConstraints {
                 $0.top.equalTo(randomSubjectView.snp.bottom).offset(9)
                 $0.leading.trailing.equalTo(view.safeAreaLayoutGuide).offset(30)
                 $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-30)
