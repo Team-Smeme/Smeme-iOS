@@ -231,7 +231,7 @@ extension OpenDiaryViewController: UICollectionViewDataSource {
 extension OpenDiaryViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if collectionView == topicCollectionView {
-            let cellSize = CGSize(width: topicList[indexPath.item].size(withAttributes: [NSAttributedString.Key.font: UIFont.subtitle2]).width + 24, height: 33)
+            let cellSize = CGSize(width: openDiaryCategoryArray[indexPath.item].content.size(withAttributes: [NSAttributedString.Key.font: UIFont.subtitle2]).width + 24, height: 33)
             return cellSize
         } else if collectionView == diaryListCollectionView {
             let cellWidth = convertByWidthRatio(315)
