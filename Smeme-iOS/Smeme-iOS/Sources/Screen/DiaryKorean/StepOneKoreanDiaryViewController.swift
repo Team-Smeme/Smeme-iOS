@@ -19,15 +19,12 @@ final class StepOneKoreanDiaryViewController: UIViewController {
     private let naviView = UIView()
     private let languageView = UIView()
     
-    private lazy var textView: UITextView = {
-        let textView = UITextView().then {
-            $0.font = .body1
-            $0.text = "최소 10자이상 작성해주세요"
-            $0.textColor = .gray500
-//            $0.delegate = self
-        }
-        return textView
-    }()
+    private lazy var textView = UITextView().then {
+        $0.font = .body1
+        $0.text = "최소 10자이상의 외국어를 작성해주세요"
+        $0.textColor = .gray500
+        //            $0.delegate = self
+    }
     
     private var randomSubjectView = RandomSubjectView().then {
         $0.configure(with: RandomSubjectViewModel(contentText: "오늘부터 딱 일주일 후! 설레는 크리스마스네요. 일주일 전부터 세워보는 나의 크리스마스 계획은?", isHiddenRefreshButton: false))
@@ -68,6 +65,21 @@ final class StepOneKoreanDiaryViewController: UIViewController {
         $0.text = "TIP 정확한 힌트를 받고 싶다면? 문장을 정리해보세요!"
     }
     
+    private let bottomView = UIView().then {
+        $0.backgroundColor = .white
+        $0.addShadow(shadowColor: .black, shadowOpacity: 0.04, shadowRadius: 16, offset: CGSize(width: 0, height: -4.0))
+    }
+    
+    private lazy var randomTopicButton: UIImageView = {
+        let view = UIImageView(image: Constant.Image.btnRandomTopicCheckBoxDisabled)
+//        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(topikBTNDidTap())
+//        view.addGestureRecognizer(tapGesture)
+        view.isUserInteractionEnabled = true
+        return view
+    }()
+    
+    private let publicButton = UIImageView(image: Constant.Image.btnPublicCheckBoxSelected)
+    
     // MARK: - Life Cycle
     
     override func viewDidLoad() {
@@ -87,10 +99,11 @@ final class StepOneKoreanDiaryViewController: UIViewController {
     }
     
     private func setLayout() {
-        view.addSubviews([naviView, tipLabel, textView])
+        view.addSubviews([naviView, tipLabel, textView, bottomView])
         
         naviView.addSubviews([cancelButton, languageView, completeButton])
         languageView.addSubviews([languageLabel, stepLabel])
+        bottomView.addSubviews([randomTopicButton, publicButton])
         
         naviView.snp.makeConstraints {
             $0.top.leading.trailing.equalTo(view.safeAreaLayoutGuide)
@@ -133,6 +146,21 @@ final class StepOneKoreanDiaryViewController: UIViewController {
             $0.leading.trailing.equalTo(view.safeAreaLayoutGuide).offset(30)
             $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-30)
             $0.bottom.equalToSuperview()
+        }
+        
+        bottomView.snp.makeConstraints {
+            $0.bottom.leading.trailing.equalToSuperview()
+            $0.height.equalTo(constraintByNotch(87, 53))
+        }
+        
+        publicButton.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(18)
+            $0.trailing.equalToSuperview().offset(-30)
+        }
+        
+        randomTopicButton.snp.makeConstraints {
+            $0.centerY.equalTo(publicButton)
+            $0.trailing.equalTo(publicButton.snp.leading).offset(-16)
         }
     }
 }
