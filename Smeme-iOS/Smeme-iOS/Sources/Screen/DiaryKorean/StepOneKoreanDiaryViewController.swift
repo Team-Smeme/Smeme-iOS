@@ -14,6 +14,8 @@ final class StepOneKoreanDiaryViewController: UIViewController {
     
     // MARK: - Property
     
+    var isTapped: Bool = true
+    
     // MARK: - UI Property
     
     private let naviView = UIView()
@@ -78,8 +80,8 @@ final class StepOneKoreanDiaryViewController: UIViewController {
     
     private lazy var randomTopicButton: UIImageView = {
         let view = UIImageView(image: Constant.Image.btnRandomTopicCheckBoxDisabled)
-//        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(topikBTNDidTap())
-//        view.addGestureRecognizer(tapGesture)
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(topikBTNDidTap(_:)))
+        view.addGestureRecognizer(tapGesture)
         view.isUserInteractionEnabled = true
         return view
     }()
@@ -93,10 +95,15 @@ final class StepOneKoreanDiaryViewController: UIViewController {
         
         setBackgoundColor()
         setLayout()
-
+        
     }
     
     // MARK: - @objc
+    
+    @objc
+    func topikBTNDidTap(_ gesture: UITapGestureRecognizer) {
+        setRandomTopicButtonToggle()
+    }
     
     // MARK: - Custom Method
     
@@ -105,7 +112,7 @@ final class StepOneKoreanDiaryViewController: UIViewController {
     }
     
     private func setLayout() {
-        view.addSubviews([naviView, tipLabel, diaryTextView])
+        view.addSubviews([naviView, tipLabel, diaryTextView, bottomView])
         
         naviView.addSubviews([cancelButton, languageView, completeButton])
         diaryTextView.addSubview(placeHolderLabel)
@@ -171,6 +178,42 @@ final class StepOneKoreanDiaryViewController: UIViewController {
         randomTopicButton.snp.makeConstraints {
             $0.centerY.equalTo(publicButton)
             $0.trailing.equalTo(publicButton.snp.leading).offset(-16)
+        }
+    }
+    
+    private func setRandomTopicButtonToggle() {
+        isTapped.toggle()
+        if isTapped {
+            randomTopicButton.image = Constant.Image.btnRandomTopicCheckBox
+            naviView.snp.remakeConstraints {
+                $0.top.leading.trailing.equalTo(view.safeAreaLayoutGuide)
+                $0.height.equalTo(convertByHeightRatio(66))
+            }
+
+            diaryTextView.snp.remakeConstraints {
+                $0.top.equalTo(naviView.snp.bottom).offset(9)
+                $0.leading.trailing.equalTo(view.safeAreaLayoutGuide).offset(30)
+                $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-30)
+                $0.bottom.equalTo(bottomView.snp.top)
+            }
+
+            randomSubjectView.removeFromSuperview()
+
+        } else {
+            randomTopicButton.image = Constant.Image.btnRandomTopicCheckBoxSelected
+            view.addSubview(randomSubjectView)
+
+            randomSubjectView.snp.remakeConstraints {
+                $0.top.equalTo(naviView.snp.bottom)
+                $0.leading.equalToSuperview()
+            }
+
+            diaryTextView.snp.remakeConstraints {
+                $0.top.equalTo(randomSubjectView.snp.bottom).offset(9)
+                $0.leading.trailing.equalTo(view.safeAreaLayoutGuide).offset(30)
+                $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-30)
+                $0.bottom.equalTo(bottomView.snp.top)
+            }
         }
     }
 }
