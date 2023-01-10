@@ -153,6 +153,7 @@ final class MySmemeViewController: UIViewController {
         
         setLayout()
         setBackgroundColor()
+        setTabbarHidden()
     }
     // MARK: - @objc
     
@@ -162,6 +163,7 @@ final class MySmemeViewController: UIViewController {
             self.dismiss(animated: true)
         } else { self.navigationController?.popViewController(animated: true)
         }
+        self.tabBarController?.tabBar.isHidden = false
     }
 
     // MARK: - Custom Method
@@ -323,5 +325,9 @@ final class MySmemeViewController: UIViewController {
     
     private func setBackgroundColor() {
         view.backgroundColor = .smemeWhite
+    }
+    
+    private func setTabbarHidden() {
+        self.tabBarController?.tabBar.isHidden = true
     }
 }
