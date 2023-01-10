@@ -164,18 +164,15 @@ extension MyDiaryViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
+// MARK: - Network
+
 extension MyDiaryViewController {
      func totalMyDiaryListWithAPI() {
-         print("함수 호출됨")
          MyDiaryAPI.shared.totalMyDiaryList { response in
-             print("response 들어옴")
              switch response {
              case .success(let data):
-                 print("success")
-                 print(data)
                  if let diaries = data as? [MyDiaryListResponse] {
                      self.simpleDiaryList = diaries
-                     print(diaries)
                      self.myDiaryCollectionView.reloadData()
                  }
              case .requestErr(let message):
