@@ -103,8 +103,9 @@ final class DetailMyDiaryViewController: UIViewController {
         }
         
         contentView.snp.makeConstraints {
-            $0.top.leading.trailing.bottom.equalTo(contentScrollView)
-            $0.width.equalTo(contentScrollView.snp.width)
+            $0.top.leading.trailing.bottom.equalTo(contentScrollView.contentLayoutGuide)
+            $0.width.equalTo(contentScrollView.frameLayoutGuide)
+            $0.height.equalTo(contentScrollView.frameLayoutGuide).priority(.low)
             $0.height.greaterThanOrEqualTo(view.snp.height).priority(.low)
         }
         
@@ -137,6 +138,7 @@ final class DetailMyDiaryViewController: UIViewController {
         contentLabel.snp.makeConstraints {
             $0.top.equalTo(categoryBackgroundView.snp.bottom).offset(convertByHeightRatio(20))
             $0.leading.trailing.equalTo(contentView).inset(convertByWidthRatio(30))
+            $0.bottom.equalTo(contentView).offset(-calculateScrollViewHeightOffset(defaultHeight: 98, heightOfBottomView: 54, paddingOfNaviWithContent: 53, paddingOfContentWithDate: 20))
         }
         
         dateLabel.snp.makeConstraints {
@@ -158,6 +160,30 @@ final class DetailMyDiaryViewController: UIViewController {
     }
     
     @objc func optionButtonDidTap(_ sender: UIButton) {
+       
+    }
+
+    func calculateScrollViewHeightOffset(defaultHeight: CGFloat, heightOfBottomView: CGFloat, paddingOfNaviWithContent: CGFloat, paddingOfContentWithDate: CGFloat) -> CGFloat {
+        let dummyLabel = UILabel().then {
+            $0.font = .body1
+            $0.numberOfLines = 0
+            $0.text = myDiaryDetail.content
+            $0.setTextWithLineHeight(lineHeight: 21)
+        }
+        dummyLabel.frame = CGRect(x: 0,
+                                  y: 0,
+                                  width: convertByWidthRatio(315),
+                                  height: dummyLabel.calculateContentHeight(lineHeight: 21))
+
+        let expectedLabelSize = dummyLabel.calculateContentHeight(lineHeight: 21)
+        let heightOfDateLabel: CGFloat = 17
+        let heightOfNotch: CGFloat = 44 + 34
+        let heightOfSafeArea: CGFloat = UIScreen.main.bounds.height - heightOfNotch
+        let heightOfScrollView: CGFloat = heightOfSafeArea - (heightOfBottomView + 66)
+        let contentSize: CGFloat = paddingOfNaviWithContent + paddingOfContentWithDate + expectedLabelSize + heightOfDateLabel
+        let isEnoughToScroll: Bool = contentSize > heightOfScrollView
+        contentScrollView.isScrollEnabled = isEnoughToScroll
         
+        return isEnoughToScroll ? defaultHeight : (heightOfScrollView - contentSize)
     }
 }

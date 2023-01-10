@@ -15,6 +15,10 @@ extension Constant {
         static let logoSmeme = UIImage(named: "logoSmeme")!
         
         static let btnKakaoLogin = UIImage(named: "btnKakaoLogin")!
+        static let btnWelcome = UIImage(named: "btnWelcome")!
+        static let btnWelcomeInactive = UIImage(named: "btnWelcomeInactive")!
+        
+        static let icnCircleX = UIImage(named: "icnCircleX")!
         
         // MARK: - NaviView
         
