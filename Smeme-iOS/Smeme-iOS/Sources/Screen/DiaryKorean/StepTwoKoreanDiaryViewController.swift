@@ -28,7 +28,7 @@ final class StepTwoKoreanDiaryViewController: UIViewController {
     private lazy var textView = UITextView().then {
         $0.font = .body1
         $0.text = "최소 10자이상의 외국어를 작성해주세요"
-        $0.textColor = .gray400
+        $0.textColor = .gray500
         //            $0.delegate = self
     }
     
