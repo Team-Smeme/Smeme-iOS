@@ -25,11 +25,17 @@ final class StepTwoKoreanDiaryViewController: UIViewController {
         //            $0.delegate = self
     }
     
-    private lazy var textView = UITextView().then {
+    private lazy var diaryTextView = UITextView().then {
+        $0.setLineSpacing()
+        $0.textColor = .gray400
+        $0.delegate = self
+    }
+    
+    private let placeHolderLabel = UILabel().then {
+        $0.text = "최소 10자 이상의 외국어를 작성해 주세요"
+        $0.textColor = .gray400
         $0.font = .body1
-        $0.text = "최소 10자이상의 외국어를 작성해주세요"
-        $0.textColor = .gray500
-        //            $0.delegate = self
+        $0.setTextWithLineHeight(lineHeight: 21)
     }
     
     private let backButton = UIButton().then {
