@@ -63,6 +63,23 @@ final class StepTwoKoreanDiaryViewController: UIViewController {
         $0.backgroundColor = .gray100
     }
     
+    private let bottomView = UIView().then {
+        $0.backgroundColor = .white
+        $0.addShadow(shadowColor: .black, shadowOpacity: 0.04, shadowRadius: 16, offset: CGSize(width: 0, height: -4.0))
+    }
+    
+    private lazy var randomTopicButton: UIImageView = {
+        let view = UIImageView(image: Constant.Image.btnRandomTopicCheckBoxDisabled)
+//        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(topikBTNDidTap())
+//        view.addGestureRecognizer(tapGesture)
+        view.isUserInteractionEnabled = true
+        return view
+    }()
+    
+    private let publicButton = UIImageView(image: Constant.Image.btnPublicCheckBoxSelected)
+    
+    private let hintButton = UIImageView(image: Constant.Image.btnTranslate)
+    
     // MARK: - Life Cycle
     
     override func viewDidLoad() {
