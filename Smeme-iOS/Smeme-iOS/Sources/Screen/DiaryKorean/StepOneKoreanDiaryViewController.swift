@@ -71,6 +71,8 @@ final class StepOneKoreanDiaryViewController: UIViewController {
         $0.textColor = .gray600
         $0.setTextWithLineHeight(lineHeight: 17)
         $0.text = "TIP 정확한 힌트를 받고 싶다면? 문장을 정리해보세요!"
+        $0.asColor(targetString: "TIP", color: .primary ?? UIColor())
+
     }
     
     private let bottomView = UIView().then {
