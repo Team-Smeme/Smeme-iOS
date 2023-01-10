@@ -55,8 +55,9 @@ class ScrapedListCollectionViewCell: UICollectionViewCell {
         $0.isHidden = true
     }
     
-    private let deleteButton = UIButton().then {
+    private lazy var deleteButton = UIButton().then {
         $0.setImage(Constant.Image.icnDelete, for: .normal)
+        $0.addTarget(self, action: #selector(deleteButtonDidTap), for: .touchUpInside)
     }
     
     // MARK: - Life Cycle
@@ -75,7 +76,9 @@ class ScrapedListCollectionViewCell: UICollectionViewCell {
     
     // MARK: - @objc
     
-    
+    @objc func deleteButtonDidTap() {
+        delegate?.presentAlert()
+    }
     
     // MARK: - Custom Method
 
