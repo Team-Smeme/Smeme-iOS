@@ -174,3 +174,33 @@ final class StepOneKoreanDiaryViewController: UIViewController {
         }
     }
 }
+
+// MARK: - UITextViewDelegate
+
+extension DiaryForeignViewController: UITextViewDelegate {
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.text.isEmpty {
+            placeHolderLabel.isHidden = false
+            textView.textColor = .smemeBlack
+            textView.font = .body1
+            textView.setLineSpacing()
+            textView.tintColor = .clear
+        }
+    }
+    
+    func textViewDidChange(_ textView: UITextView) {
+        if textView.text.isEmpty {
+            placeHolderLabel.isHidden = false
+            textView.textColor = .smemeBlack
+            textView.font = .body1
+            textView.setLineSpacing()
+            textView.tintColor = .clear
+        } else {
+            placeHolderLabel.isHidden = true
+            textView.textColor = .gray400
+            textView.font = .body1
+            textView.setLineSpacing()
+            textView.tintColor = .primary
+        }
+    }
+}
