@@ -59,6 +59,7 @@ final class DiaryForeignViewController: UIViewController {
     }
     
     private let languageIcon = UIImageView(image: Constant.Image.icnArrowUnder)
+    
     private lazy var randomTopicButton: UIImageView = {
         let view = UIImageView(image: Constant.Image.btnRandomTopicCheckBoxDisabled)
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(topikBTNDidTap(_:))) // UIImageView 클릭 제스쳐
