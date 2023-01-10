@@ -25,9 +25,10 @@ final class MyDiaryViewController: UIViewController {
         return collectionView
     }()
     
-    private let navigationBar = MyDiaryNavigationBar().then {
+    private lazy var navigationBar = MyDiaryNavigationBar().then {
         $0.goMyProfileView = {
-            print("내프로필뷰로 이동")
+            let mySmemeVC = MySmemeViewController()
+            self.navigationController?.pushViewController(mySmemeVC, animated: true)
         }
     }
     
