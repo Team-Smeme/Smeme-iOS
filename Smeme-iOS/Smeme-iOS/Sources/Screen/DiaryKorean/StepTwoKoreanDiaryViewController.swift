@@ -19,7 +19,20 @@ final class StepTwoKoreanDiaryViewController: UIViewController {
     private let naviView = UIView()
     private let languageView = UIView()
     
-    private let cancelButton = UIButton().then {
+    private lazy var koreanDiaryTextView = UITextView().then {
+        $0.font = .body1
+        $0.textColor = .smemeBlack
+        //            $0.delegate = self
+    }
+    
+    private lazy var textView = UITextView().then {
+        $0.font = .body1
+        $0.text = "최소 10자이상의 외국어를 작성해주세요"
+        $0.textColor = .gray500
+        //            $0.delegate = self
+    }
+    
+    private let backButton = UIButton().then {
         $0.setImage(Constant.Image.icnPageLeft, for: .normal)
     }
     
@@ -46,6 +59,27 @@ final class StepTwoKoreanDiaryViewController: UIViewController {
         $0.text = "STEP 2"
     }
     
+    private let grayUnderlineView = UIView().then {
+        $0.backgroundColor = .gray100
+    }
+    
+    private let bottomView = UIView().then {
+        $0.backgroundColor = .white
+        $0.addShadow(shadowColor: .black, shadowOpacity: 0.04, shadowRadius: 16, offset: CGSize(width: 0, height: -4.0))
+    }
+    
+    private lazy var randomTopicButton: UIImageView = {
+        let view = UIImageView(image: Constant.Image.btnRandomTopicCheckBoxDisabled)
+//        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(topikBTNDidTap())
+//        view.addGestureRecognizer(tapGesture)
+        view.isUserInteractionEnabled = true
+        return view
+    }()
+    
+    private let publicButton = UIImageView(image: Constant.Image.btnPublicCheckBoxSelected)
+    
+    private let hintButton = UIImageView(image: Constant.Image.btnTranslate)
+    
     // MARK: - Life Cycle
     
     override func viewDidLoad() {
@@ -65,24 +99,26 @@ final class StepTwoKoreanDiaryViewController: UIViewController {
     }
     
     private func setLayout() {
-        view.addSubviews([naviView])
+        view.addSubviews([naviView, koreanDiaryTextView, grayUnderlineView, textView, bottomView])
         
-        naviView.addSubviews([cancelButton, languageView, completeButton])
+        naviView.addSubviews([backButton, languageView, completeButton])
         languageView.addSubviews([languageLabel, languageIcon, stepLabel])
+        
+        bottomView.addSubviews([randomTopicButton, publicButton, hintButton])
         
         naviView.snp.makeConstraints {
             $0.top.leading.trailing.equalTo(view.safeAreaLayoutGuide)
             $0.height.equalTo(convertByHeightRatio(66))
         }
         
-        cancelButton.snp.makeConstraints {
+        backButton.snp.makeConstraints {
             $0.centerY.equalToSuperview()
             $0.leading.equalToSuperview().offset(30)
         }
         
         languageView.snp.makeConstraints {
             $0.centerX.equalToSuperview()
-            $0.top.bottom.equalTo(cancelButton)
+            $0.top.bottom.equalTo(backButton)
             $0.leading.equalTo(languageLabel)
             $0.trailing.equalTo(languageIcon)
         }
@@ -93,17 +129,57 @@ final class StepTwoKoreanDiaryViewController: UIViewController {
         }
         
         languageLabel.snp.makeConstraints {
-            $0.centerY.leading.equalToSuperview()
+            $0.centerY.equalToSuperview()
+            $0.leading.equalTo(backButton.snp.trailing).offset(95)
         }
         
         languageIcon.snp.makeConstraints {
             $0.centerY.equalToSuperview()
-            $0.leading.equalTo(languageLabel.snp.trailing).offset(6)
+            $0.leading.equalTo(languageLabel.snp.trailing).offset(4)
         }
         
         stepLabel.snp.makeConstraints {
-            $0.centerX.equalToSuperview()
             $0.top.equalTo(languageLabel.snp.bottom).offset(2)
+            $0.leading.equalTo(backButton.snp.trailing).offset(105)
+        }
+        
+        koreanDiaryTextView.snp.makeConstraints {
+            $0.top.equalTo(naviView.snp.bottom)
+            $0.leading.equalTo(view.safeAreaLayoutGuide).offset(30)
+            $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-30)
+            $0.height.equalTo(convertByHeightRatio(110))
+        }
+        
+        grayUnderlineView.snp.makeConstraints {
+            $0.top.equalTo(koreanDiaryTextView.snp.bottom)
+            $0.leading.trailing.equalTo(view.safeAreaLayoutGuide)
+            $0.height.equalTo(convertByHeightRatio(6))
+        }
+        
+        textView.snp.makeConstraints {
+            $0.top.equalTo(grayUnderlineView.snp.bottom)
+            $0.leading.trailing.equalTo(view.safeAreaLayoutGuide).offset(30)
+            $0.bottom.equalToSuperview()
+        }
+        
+        bottomView.snp.makeConstraints {
+            $0.bottom.leading.trailing.equalToSuperview()
+            $0.height.equalTo(constraintByNotch(87, 53))
+        }
+        
+        publicButton.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(18)
+            $0.trailing.equalToSuperview().offset(-30)
+        }
+        
+        randomTopicButton.snp.makeConstraints {
+            $0.centerY.equalTo(publicButton)
+            $0.trailing.equalTo(publicButton.snp.leading).offset(-16)
+        }
+        
+        hintButton.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(12)
+            $0.leading.equalToSuperview().offset(22)
         }
     }
 }

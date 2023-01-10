@@ -8,22 +8,17 @@
 import UIKit
 
 extension UITextView {
-    func setTextViewLineHeight(_ fontSize: CGFloat, _ lineHeight: CGFloat) {
-        if let text = self.text {
-            let style = NSMutableParagraphStyle()
-            let lineHeight = fontSize * 1.09
-            style.minimumLineHeight = lineHeight
-            style.maximumLineHeight = lineHeight
-            
-            let attributes: [NSAttributedString.Key: Any] = [
-                .paragraphStyle: style,
-                .baselineOffset: (lineHeight - fontSize) / 4
-            ]
-            
-            let attributedStr = NSMutableAttributedString(string: text,
-                                                          attributes: attributes)
-            
-            self.attributedText = attributedStr
-        }
+    /// 레이아웃 잡을 때 값 24로 주기 ex) $0.leading.trailing.equalToSuperview().inset(24)
+    func setLineSpacing() {
+        let style = NSMutableParagraphStyle()
+        style.lineSpacing = 2
+        let attributes = [
+            NSAttributedString.Key.paragraphStyle: style,
+            NSAttributedString.Key.foregroundColor: UIColor.black,
+            NSAttributedString.Key.font: UIFont.body1
+        ]
+        self.textAlignment = .left
+        self.sizeToFit()
+        self.attributedText = NSAttributedString(string: self.text, attributes: attributes)
     }
 }
