@@ -28,7 +28,7 @@ final class StepTwoKoreanDiaryViewController: UIViewController {
     private lazy var diaryTextView = UITextView().then {
         $0.setLineSpacing()
         $0.textColor = .gray400
-//        $0.delegate = self
+        $0.delegate = self
     }
     
     private let placeHolderLabel = UILabel().then {
@@ -164,13 +164,12 @@ final class StepTwoKoreanDiaryViewController: UIViewController {
         
         diaryTextView.snp.makeConstraints {
             $0.top.equalTo(grayUnderlineView.snp.bottom).offset(30)
-            $0.leading.trailing.equalTo(view.safeAreaLayoutGuide).offset(24)
+            $0.leading.trailing.equalToSuperview().inset(24)
             $0.bottom.equalToSuperview()
         }
         
         placeHolderLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(27)
-            $0.leading.equalToSuperview().inset(7)
+            $0.top.equalToSuperview().inset(7)
         }
         
         bottomView.snp.makeConstraints {
@@ -191,6 +190,36 @@ final class StepTwoKoreanDiaryViewController: UIViewController {
         hintButton.snp.makeConstraints {
             $0.top.equalToSuperview().offset(12)
             $0.leading.equalToSuperview().offset(22)
+        }
+    }
+}
+
+// MARK: - UITextViewDelegate
+
+extension StepTwoKoreanDiaryViewController: UITextViewDelegate {
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.text.isEmpty {
+            placeHolderLabel.isHidden = false
+            textView.textColor = .smemeBlack
+            textView.font = .body1
+            textView.setLineSpacing()
+            textView.tintColor = .clear
+        }
+    }
+    
+    func textViewDidChange(_ textView: UITextView) {
+        if textView.text.isEmpty {
+            placeHolderLabel.isHidden = false
+            textView.textColor = .smemeBlack
+            textView.font = .body1
+            textView.setLineSpacing()
+            textView.tintColor = .clear
+        } else {
+            placeHolderLabel.isHidden = true
+            textView.textColor = .gray400
+            textView.font = .body1
+            textView.setLineSpacing()
+            textView.tintColor = .primary
         }
     }
 }
