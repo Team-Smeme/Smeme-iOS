@@ -20,6 +20,18 @@ final class ScrapStashViewController: UIViewController {
     
     // MARK: - UI Property
         
+    private lazy var scrapedListCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .vertical
+        
+        $0.backgroundColor = .clear
+        $0.collectionViewLayout = layout
+        $0.isScrollEnabled = true
+        $0.showsVerticalScrollIndicator = true
+        $0.delegate = self
+        $0.dataSource = self
+    }
+
     private let headerView = UIView().then {
         $0.layer.cornerRadius = 30
         $0.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
@@ -34,8 +46,9 @@ final class ScrapStashViewController: UIViewController {
         $0.font = .headline3
     }
     
-    private let profileButton = UIButton().then {
+    private lazy var profileButton = UIButton().then {
         $0.setImage(Constant.Image.icnProfile, for: .normal)
+        $0.addTarget(self, action: #selector(touchupNextButton), for: .touchUpInside)
     }
     
     private let scrapedStackView = UIStackView().then {
@@ -60,19 +73,7 @@ final class ScrapStashViewController: UIViewController {
         $0.textColor = .gray400
         $0.font = .subtitle2
     }
-    
-    private lazy var scrapedListCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .vertical
         
-        $0.backgroundColor = .clear
-        $0.collectionViewLayout = layout
-        $0.isScrollEnabled = true
-        $0.showsVerticalScrollIndicator = true
-        $0.delegate = self
-        $0.dataSource = self
-    }
-    
     // MARK: - Life Cycle
     
     override func viewDidLoad() {
@@ -84,6 +85,11 @@ final class ScrapStashViewController: UIViewController {
     }
     
     // MARK: - @objc
+    
+    @objc
+    private func touchupNextButton() {
+        pushToMySmemeViewController()
+    }
     
     // MARK: - Custom Method
     
@@ -149,7 +155,7 @@ final class ScrapStashViewController: UIViewController {
     }
     
     private func setDummyLabel(_ text: String) -> CGFloat {
-        var dummyLabel = UILabel().then {
+        let dummyLabel = UILabel().then {
             $0.text = text
             $0.font = .body1
             $0.numberOfLines = 0
@@ -163,6 +169,11 @@ final class ScrapStashViewController: UIViewController {
                                   height: dummyLabel.calculateContentHeight(lineHeight: 21))
         
         return dummyLabel.calculateContentHeight(lineHeight: 21)
+    }
+    
+    private func pushToMySmemeViewController() {
+        let mySmemeVC = MySmemeViewController()
+        self.navigationController?.pushViewController(mySmemeVC, animated: true)
     }
 }
 
