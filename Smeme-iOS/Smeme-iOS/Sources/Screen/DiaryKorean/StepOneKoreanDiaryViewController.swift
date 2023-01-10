@@ -14,6 +14,8 @@ final class StepOneKoreanDiaryViewController: UIViewController {
     
     // MARK: - Property
     
+    var isTapped: Bool = true
+    
     // MARK: - UI Property
     
     private let naviView = UIView()
@@ -86,10 +88,15 @@ final class StepOneKoreanDiaryViewController: UIViewController {
         
         setBackgoundColor()
         setLayout()
-
+        
     }
     
     // MARK: - @objc
+    
+    @objc
+    func topikBTNDidTap(_ gesture: UITapGestureRecognizer) {
+        setRandomTopicButtonToggle()
+    }
     
     // MARK: - Custom Method
     
