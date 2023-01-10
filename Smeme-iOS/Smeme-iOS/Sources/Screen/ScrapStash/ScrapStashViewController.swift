@@ -46,8 +46,9 @@ final class ScrapStashViewController: UIViewController {
         $0.font = .headline3
     }
     
-    private let profileButton = UIButton().then {
+    private lazy var profileButton = UIButton().then {
         $0.setImage(Constant.Image.icnProfile, for: .normal)
+        $0.addTarget(self, action: #selector(touchupNextButton), for: .touchUpInside)
     }
     
     private let scrapedStackView = UIStackView().then {
@@ -172,7 +173,7 @@ final class ScrapStashViewController: UIViewController {
     
     private func pushToMySmemeViewController() {
         let mySmemeVC = MySmemeViewController()
-        self.navigationController?.pushViewController(MySmemeViewController, animated: true)
+        self.navigationController?.pushViewController(mySmemeVC, animated: true)
     }
 }
 
