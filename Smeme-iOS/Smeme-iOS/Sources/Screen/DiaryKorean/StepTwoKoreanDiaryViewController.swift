@@ -19,7 +19,20 @@ final class StepTwoKoreanDiaryViewController: UIViewController {
     private let naviView = UIView()
     private let languageView = UIView()
     
-    private let cancelButton = UIButton().then {
+    private lazy var koreanDiaryTextView = UITextView().then {
+        $0.font = .body1
+        $0.textColor = .smemeBlack
+        //            $0.delegate = self
+    }
+    
+    private lazy var textView = UITextView().then {
+        $0.font = .body1
+        $0.text = "최소 10자이상의 외국어를 작성해주세요"
+        $0.textColor = .gray400
+        //            $0.delegate = self
+    }
+    
+    private let backButton = UIButton().then {
         $0.setImage(Constant.Image.icnPageLeft, for: .normal)
     }
     
@@ -46,6 +59,10 @@ final class StepTwoKoreanDiaryViewController: UIViewController {
         $0.text = "STEP 2"
     }
     
+    private let grayUnderlineView = UIView().then {
+        $0.backgroundColor = .gray100
+    }
+    
     // MARK: - Life Cycle
     
     override func viewDidLoad() {
@@ -65,9 +82,9 @@ final class StepTwoKoreanDiaryViewController: UIViewController {
     }
     
     private func setLayout() {
-        view.addSubviews([naviView])
+        view.addSubviews([naviView, koreanDiaryTextView, grayUnderlineView, textView])
         
-        naviView.addSubviews([cancelButton, languageView, completeButton])
+        naviView.addSubviews([backButton, languageView, completeButton])
         languageView.addSubviews([languageLabel, languageIcon, stepLabel])
         
         naviView.snp.makeConstraints {
@@ -75,14 +92,14 @@ final class StepTwoKoreanDiaryViewController: UIViewController {
             $0.height.equalTo(convertByHeightRatio(66))
         }
         
-        cancelButton.snp.makeConstraints {
+        backButton.snp.makeConstraints {
             $0.centerY.equalToSuperview()
             $0.leading.equalToSuperview().offset(30)
         }
         
         languageView.snp.makeConstraints {
             $0.centerX.equalToSuperview()
-            $0.top.bottom.equalTo(cancelButton)
+            $0.top.bottom.equalTo(backButton)
             $0.leading.equalTo(languageLabel)
             $0.trailing.equalTo(languageIcon)
         }
@@ -93,17 +110,37 @@ final class StepTwoKoreanDiaryViewController: UIViewController {
         }
         
         languageLabel.snp.makeConstraints {
-            $0.centerY.leading.equalToSuperview()
+            $0.centerY.equalToSuperview()
+            $0.leading.equalTo(backButton.snp.trailing).offset(95)
         }
         
         languageIcon.snp.makeConstraints {
             $0.centerY.equalToSuperview()
-            $0.leading.equalTo(languageLabel.snp.trailing).offset(6)
+            $0.leading.equalTo(languageLabel.snp.trailing).offset(4)
         }
         
         stepLabel.snp.makeConstraints {
-            $0.centerX.equalToSuperview()
             $0.top.equalTo(languageLabel.snp.bottom).offset(2)
+            $0.leading.equalTo(backButton.snp.trailing).offset(105)
+        }
+        
+        koreanDiaryTextView.snp.makeConstraints {
+            $0.top.equalTo(naviView.snp.bottom)
+            $0.leading.equalTo(view.safeAreaLayoutGuide).offset(30)
+            $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-30)
+            $0.height.equalTo(convertByHeightRatio(110))
+        }
+        
+        grayUnderlineView.snp.makeConstraints {
+            $0.top.equalTo(koreanDiaryTextView.snp.bottom)
+            $0.leading.trailing.equalTo(view.safeAreaLayoutGuide)
+            $0.height.equalTo(convertByHeightRatio(6))
+        }
+        
+        textView.snp.makeConstraints {
+            $0.top.equalTo(grayUnderlineView.snp.bottom)
+            $0.leading.trailing.equalTo(view.safeAreaLayoutGuide).offset(30)
+            $0.bottom.equalToSuperview()
         }
     }
 }
