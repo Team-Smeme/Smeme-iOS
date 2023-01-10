@@ -1,0 +1,66 @@
+//
+//  SplashViewController.swift
+//  Smeme-iOS
+//
+//  Created by JH on 2023/01/09.
+//
+
+import UIKit
+
+import Lottie
+import SnapKit
+
+class SplashViewController: UIViewController {
+    
+    // MARK: - Property
+    
+    // MARK: - UI Property
+    
+    let animationView: LottieAnimationView = {
+        let aniView = LottieAnimationView(name: "smemeSplash")
+        aniView.frame = CGRect(x: 0, y: 0, width: 400, height: 400)
+        aniView.contentMode = .scaleAspectFit
+        
+        return aniView
+    }()
+    
+    // MARK: - Life Cycle
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        setLayout()
+        setBackgroundColor()
+        setAnimation()
+        
+        // MARK: - @objc
+        
+        // MARK: - Custom Method
+        
+        func setBackgroundColor() {
+            view.backgroundColor = .background
+        }
+        
+        func setLayout() {
+            view.addSubview(animationView)
+            
+            animationView.snp.makeConstraints {
+                $0.centerX.centerY.equalToSuperview()
+                $0.height.equalTo(convertByHeightRatio(250))
+            }
+        }
+        
+        func setAnimation () {
+            animationView.play()
+            animationView.animationSpeed = 0.8
+            animationView.loopMode = .playOnce
+            
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
+                let Tabbar = TabBarController()
+                Tabbar.modalTransitionStyle = .crossDissolve
+                Tabbar.modalPresentationStyle = .fullScreen
+                self.present(Tabbar, animated: true)
+            }
+        }
+    }
+}
