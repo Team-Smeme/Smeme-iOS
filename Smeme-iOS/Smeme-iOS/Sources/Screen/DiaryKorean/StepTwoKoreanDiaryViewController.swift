@@ -99,10 +99,12 @@ final class StepTwoKoreanDiaryViewController: UIViewController {
     }
     
     private func setLayout() {
-        view.addSubviews([naviView, koreanDiaryTextView, grayUnderlineView, textView])
+        view.addSubviews([naviView, koreanDiaryTextView, grayUnderlineView, textView, bottomView])
         
         naviView.addSubviews([backButton, languageView, completeButton])
         languageView.addSubviews([languageLabel, languageIcon, stepLabel])
+        
+        bottomView.addSubviews([randomTopicButton, publicButton, hintButton])
         
         naviView.snp.makeConstraints {
             $0.top.leading.trailing.equalTo(view.safeAreaLayoutGuide)
@@ -158,6 +160,26 @@ final class StepTwoKoreanDiaryViewController: UIViewController {
             $0.top.equalTo(grayUnderlineView.snp.bottom)
             $0.leading.trailing.equalTo(view.safeAreaLayoutGuide).offset(30)
             $0.bottom.equalToSuperview()
+        }
+        
+        bottomView.snp.makeConstraints {
+            $0.bottom.leading.trailing.equalToSuperview()
+            $0.height.equalTo(constraintByNotch(87, 53))
+        }
+        
+        publicButton.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(18)
+            $0.trailing.equalToSuperview().offset(-30)
+        }
+        
+        randomTopicButton.snp.makeConstraints {
+            $0.centerY.equalTo(publicButton)
+            $0.trailing.equalTo(publicButton.snp.leading).offset(-16)
+        }
+        
+        hintButton.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(12)
+            $0.leading.equalToSuperview().offset(22)
         }
     }
 }
