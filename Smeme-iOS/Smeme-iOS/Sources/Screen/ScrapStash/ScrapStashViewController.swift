@@ -85,6 +85,11 @@ final class ScrapStashViewController: UIViewController {
     
     // MARK: - @objc
     
+    @objc
+    private func touchupNextButton() {
+        pushToMySmemeViewController()
+    }
+    
     // MARK: - Custom Method
     
     private func setBackgroundColor() {
@@ -163,6 +168,11 @@ final class ScrapStashViewController: UIViewController {
                                   height: dummyLabel.calculateContentHeight(lineHeight: 21))
         
         return dummyLabel.calculateContentHeight(lineHeight: 21)
+    }
+    
+    private func pushToMySmemeViewController() {
+        let mySmemeVC = MySmemeViewController()
+        self.navigationController?.pushViewController(MySmemeViewController, animated: true)
     }
 }
 
