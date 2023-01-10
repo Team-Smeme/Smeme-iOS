@@ -28,7 +28,7 @@ final class StepTwoKoreanDiaryViewController: UIViewController {
     private lazy var diaryTextView = UITextView().then {
         $0.setLineSpacing()
         $0.textColor = .gray400
-        $0.delegate = self
+//        $0.delegate = self
     }
     
     private let placeHolderLabel = UILabel().then {
@@ -166,6 +166,10 @@ final class StepTwoKoreanDiaryViewController: UIViewController {
             $0.top.equalTo(grayUnderlineView.snp.bottom)
             $0.leading.trailing.equalTo(view.safeAreaLayoutGuide).offset(30)
             $0.bottom.equalToSuperview()
+        }
+        
+        placeHolderLabel.snp.makeConstraints {
+            $0.top.leading.equalToSuperview().inset(7)
         }
         
         bottomView.snp.makeConstraints {
