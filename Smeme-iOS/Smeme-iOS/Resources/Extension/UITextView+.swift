@@ -8,6 +8,7 @@
 import UIKit
 
 extension UITextView {
+    /// 레이아웃 잡을 때 값 24로 주기 ex) $0.leading.trailing.equalToSuperview().inset(24)
     func setLineSpacing() {
         let style = NSMutableParagraphStyle()
         style.lineSpacing = 2
