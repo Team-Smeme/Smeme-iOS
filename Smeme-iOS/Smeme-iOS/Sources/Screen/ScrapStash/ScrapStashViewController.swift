@@ -82,6 +82,7 @@ final class ScrapStashViewController: UIViewController {
         setBackgroundColor()
         setLayout()
         registerCell()
+        alert()
     }
     
     // MARK: - @objc
@@ -92,7 +93,7 @@ final class ScrapStashViewController: UIViewController {
     }
     
     // MARK: - Custom Method
-    
+        
     private func setBackgroundColor() {
         view.backgroundColor = .background
         headerView.backgroundColor = .white
@@ -211,4 +212,14 @@ extension ScrapStashViewController: UICollectionViewDataSource {
         listCell.dataBind(model: scrapedExpressionList[indexPath.item])
         return listCell
     }
+}
+
+// MARK: - alertDelegate
+
+extension ScrapStashViewController: alertProtocol {
+    func presentAlert(_ cell: ScrapedListCollectionViewCell) {
+        <#code#>
+    }
+    
+    
 }
