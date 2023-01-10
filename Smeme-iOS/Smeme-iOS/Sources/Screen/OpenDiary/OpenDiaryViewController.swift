@@ -13,9 +13,9 @@ import Then
 final class OpenDiaryViewController: UIViewController {
     
     // MARK: - Property
-    
-    let topicList = ["전체", "일상", "기념일", "취향", "자기계발"]
+
     let dummyList = ["heightByNotch", "The issue that requires the phone call we have to solve it in person but sometimes some violence is needed. I was just the part of the process", "The issue that requires the phone call we have to solve it in person but sometimes some violence is needed. I was just the part of the process The issue that requires the phone call we have to solve it in person but sometimes some violence is needed", "heightByNotch", "The issue that requires the phone call we have to solve it in person but sometimes some violence is needed. I was just the part of the process", "The issue that requires the phone call we have to solve it in person but sometimes some violence is needed. I was just the part of the process The issue that requires the phone call we have to solve it in person but sometimes some violence is needed"]
+    var openDiaryCategoryArray: [Category] = [Category(id: 0, content: "전체"), Category(id: 0, content: "일상")]
     
     // MARK: - UI Property
     
@@ -54,7 +54,7 @@ final class OpenDiaryViewController: UIViewController {
     
     private lazy var myProfileButon = UIButton().then {
         $0.setImage(Constant.Image.icnProfile, for: .normal)
-        //        $0.addTarget(self, action: #selector(myProfileButtonDidTap), for: .touchUpInside)
+                $0.addTarget(self, action: #selector(touchupNextButton), for: .touchUpInside)
     }
     
     private lazy var languageStackView = UIStackView().then {
@@ -104,10 +104,21 @@ final class OpenDiaryViewController: UIViewController {
         setDelegate()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        getOpenDiaryCategoryAPI()
+    }
+    
     // MARK: - @objc
     
+    @objc
+    private func touchupNextButton() {
+        pushToMySmemeViewController()
+        self.tabBarController?.tabBar.isHidden = false
+
+    }
+        
     // MARK: - Custom Method
-    
+        
     private func setBackgroundColor() {
         view.backgroundColor = .background
     }
@@ -177,6 +188,11 @@ final class OpenDiaryViewController: UIViewController {
         diaryListCollectionView.delegate = self
         diaryListCollectionView.dataSource = self
     }
+    
+    private func pushToMySmemeViewController() {
+        let mySmemeVC = MySmemeViewController()
+        self.navigationController?.pushViewController(mySmemeVC, animated: true)
+    }
 }
 
 // MARK: - UICollectionViewDelegate
@@ -188,7 +204,7 @@ extension OpenDiaryViewController: UICollectionViewDelegate {}
 extension OpenDiaryViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == topicCollectionView {
-            return topicList.count
+            return openDiaryCategoryArray.count
         } else if collectionView == diaryListCollectionView {
             return dummyList.count
         }
@@ -198,16 +214,17 @@ extension OpenDiaryViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView == topicCollectionView {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TopicCollectionViewCell.identifier, for: indexPath) as? TopicCollectionViewCell else { return UICollectionViewCell() }
-            cell.setData(topicList[indexPath.row])
-            
+            cell.setData(openDiaryCategoryArray[indexPath.item])
             if indexPath.item == 0 {
                 cell.isSelected = true
                 collectionView.selectItem(at: indexPath, animated: false, scrollPosition: .init())
             }
+            
             return cell
         } else if collectionView == diaryListCollectionView {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DiaryListCollectionViewCell.identifier, for: indexPath) as? DiaryListCollectionViewCell else { return UICollectionViewCell() }
             cell.setData(dummyList[indexPath.item])
+            
             return cell
         }
         return UICollectionViewCell()
@@ -219,7 +236,7 @@ extension OpenDiaryViewController: UICollectionViewDataSource {
 extension OpenDiaryViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if collectionView == topicCollectionView {
-            let cellSize = CGSize(width: topicList[indexPath.item].size(withAttributes: [NSAttributedString.Key.font: UIFont.subtitle2]).width + 24, height: 33)
+            let cellSize = CGSize(width: openDiaryCategoryArray[indexPath.item].content.size(withAttributes: [NSAttributedString.Key.font: UIFont.subtitle2]).width + 24, height: 33)
             return cellSize
         } else if collectionView == diaryListCollectionView {
             let cellWidth = convertByWidthRatio(315)
@@ -248,5 +265,17 @@ extension OpenDiaryViewController: UICollectionViewDelegateFlowLayout {
             return UIEdgeInsets(top: 18, left: 30, bottom: 18, right: 30)
         }
         return UIEdgeInsets()
+    }
+}
+
+// MARK: - Network
+
+extension OpenDiaryViewController {
+    private func getOpenDiaryCategoryAPI() {
+        OpenDiaryCategoryAPI.shared.getOpenDiaryCategory { response in
+            guard let openDiaryCategorydata = response?.data?.categories else { return }
+            self.openDiaryCategoryArray += openDiaryCategorydata
+            self.topicCollectionView.reloadData()
+        }
     }
 }

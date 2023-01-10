@@ -19,13 +19,21 @@ final class MySmemeViewController: UIViewController {
     private let headerContainerView = UIView()
     private let setUserInfoContainerView = UIView()
     private let setMainLanguageContainerView = UIView()
+    private let termsContainerView = UIView()
+    private let versionContainerView = UIView()
+    private let userStatusContainerView = UIView()
     
     private let divideLineFirst = UIView().then {
         $0.backgroundColor = .gray100
     }
     
-    private let previousButton = UIButton().then {
+    private let divideLineSecond = UIView().then {
+        $0.backgroundColor = .gray100
+    }
+    
+    private lazy var previousButton = UIButton().then {
         $0.setImage(Constant.Image.icnPageLeft, for: .normal)
+        $0.addTarget(self, action: #selector(touchupBackButton), for: .touchUpInside)
     }
     
     private let headerLabel = UILabel().then {
@@ -70,6 +78,74 @@ final class MySmemeViewController: UIViewController {
         $0.setTextWithLineHeight(lineHeight: 19)
     }
     
+    private let communityTermsLabel = UILabel().then {
+        $0.text = "커뮤니티 이용 규칙"
+        $0.font = .subtitle3
+        $0.textColor = .gray500
+        $0.textAlignment = .left
+        $0.setTextWithLineHeight(lineHeight: 19)
+    }
+    
+    private let serviceTermsLabel = UILabel().then {
+        $0.text = "서비스 이용 약관"
+        $0.font = .subtitle3
+        $0.textColor = .gray500
+        $0.textAlignment = .left
+        $0.setTextWithLineHeight(lineHeight: 19)
+    }
+    
+    private let personalInfoTermsLabel = UILabel().then {
+        $0.text = "개인정보 처리 방침"
+        $0.font = .subtitle3
+        $0.textColor = .gray500
+        $0.textAlignment = .left
+        $0.setTextWithLineHeight(lineHeight: 19)
+    }
+    
+    private let versionTitleLabel = UILabel().then {
+        $0.text = "앱 버전"
+        $0.font = .subtitle3
+        $0.textColor = .gray500
+        $0.textAlignment = .left
+        $0.setTextWithLineHeight(lineHeight: 19)
+    }
+    
+    private let updateVersionLabel = UILabel().then {
+        $0.text = "최신버전 업데이트"
+        $0.font = .body2
+        $0.textColor = .gray500
+        $0.textAlignment = .left
+        $0.setTextWithLineHeight(lineHeight: 17)
+    }
+    
+    private let updateButton = UIButton().then {
+        $0.setImage(Constant.Image.icnPageRightDisabled, for: .normal)
+    }
+    
+    private let versionInfoLabel = UILabel().then {
+        $0.text = "1.0"
+        $0.font = .subtitle3
+        $0.textColor = .primary
+        $0.textAlignment = .left
+        $0.setTextWithLineHeight(lineHeight: 19)
+    }
+    
+    private let logoutLabel = UILabel().then {
+        $0.text = "로그아웃"
+        $0.font = .subtitle3
+        $0.textColor = .gray500
+        $0.textAlignment = .left
+        $0.setTextWithLineHeight(lineHeight: 19)
+    }
+    
+    private let leaveLabel = UILabel().then {
+        $0.text = "탈퇴하기"
+        $0.font = .subtitle3
+        $0.textColor = .gray500
+        $0.textAlignment = .left
+        $0.setTextWithLineHeight(lineHeight: 19)
+    }
+    
     // MARK: - Life Cycle
     
     override func viewDidLoad() {
@@ -77,22 +153,40 @@ final class MySmemeViewController: UIViewController {
         
         setLayout()
         setBackgroundColor()
+        setTabbarHidden()
     }
     // MARK: - @objc
     
+    @objc
+    private func touchupBackButton() {
+        if self.navigationController == nil {
+            self.dismiss(animated: true)
+        } else { self.navigationController?.popViewController(animated: true)
+        }
+        self.tabBarController?.tabBar.isHidden = false
+    }
+
     // MARK: - Custom Method
     
     private func setLayout() {
-        
+                
         view.addSubviews([headerContainerView,
                           setUserInfoContainerView,
                           setMainLanguageContainerView,
-                          divideLineFirst])
+                          divideLineFirst,
+                          termsContainerView,
+                          versionContainerView,
+                          divideLineSecond,
+                          userStatusContainerView])
         
         headerContainerView.addSubviews([previousButton, headerLabel])
         setUserInfoContainerView.addSubviews([userIdLabel, userIntroLabel, nextButton])
         setMainLanguageContainerView.addSubviews([setLanguageTitleLabel, languageTypeLabel])
+        termsContainerView.addSubviews([communityTermsLabel, serviceTermsLabel, personalInfoTermsLabel])
+        versionContainerView.addSubviews([versionTitleLabel, updateVersionLabel, updateButton, versionInfoLabel])
+        userStatusContainerView.addSubviews([logoutLabel, leaveLabel])
         
+        // 헤더 컨테이너 뷰
         headerContainerView.snp.makeConstraints {
             $0.top.leading.trailing.equalTo(view.safeAreaLayoutGuide)
             $0.height.equalTo(convertByHeightRatio(66))
@@ -108,6 +202,7 @@ final class MySmemeViewController: UIViewController {
             $0.centerX.centerY.equalToSuperview()
         }
         
+        // 프로필 설정 컨테이너 뷰
         setUserInfoContainerView.snp.makeConstraints {
             $0.top.equalTo(headerContainerView.snp.bottom)
             $0.leading.trailing.equalTo(view.safeAreaLayoutGuide)
@@ -130,6 +225,7 @@ final class MySmemeViewController: UIViewController {
             $0.height.width.equalTo(45)
         }
         
+        // 주 사용 언어 컨테이너 뷰
         setMainLanguageContainerView.snp.makeConstraints {
             $0.top.equalTo(setUserInfoContainerView.snp.bottom).offset(12)
             $0.leading.trailing.equalTo(view.safeAreaLayoutGuide)
@@ -151,9 +247,87 @@ final class MySmemeViewController: UIViewController {
             $0.height.equalTo(1)
             $0.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(18)
         }
+        
+        // 정책,규칙 컨테이너 뷰
+        termsContainerView.snp.makeConstraints {
+            $0.top.equalTo(divideLineFirst.snp.bottom).offset(14)
+            $0.leading.trailing.equalTo(view.safeAreaLayoutGuide)
+            $0.height.equalTo(convertByHeightRatio(141))
+        }
+        
+        serviceTermsLabel.snp.makeConstraints {
+            $0.centerY.equalToSuperview()
+            $0.leading.equalTo(30)
+        }
+        
+        communityTermsLabel.snp.makeConstraints {
+            $0.centerY.equalTo(serviceTermsLabel).offset(convertByHeightRatio(-47))
+            $0.leading.equalTo(serviceTermsLabel)
+        }
+        
+        personalInfoTermsLabel.snp.makeConstraints {
+            $0.centerY.equalTo(serviceTermsLabel).offset(convertByHeightRatio(47))
+            $0.leading.equalTo(serviceTermsLabel)
+        }
+        
+        // 버전 컨테이너 뷰
+        versionContainerView.snp.makeConstraints {
+            $0.top.equalTo(termsContainerView.snp.bottom)
+            $0.leading.trailing.equalTo(view.safeAreaLayoutGuide)
+            $0.height.equalTo(convertByHeightRatio(71))
+        }
+        
+        versionTitleLabel.snp.makeConstraints {
+            $0.top.equalTo(termsContainerView.snp.bottom).offset(convertByHeightRatio(14))
+            $0.leading.equalToSuperview().offset(30)
+        }
+        
+        updateVersionLabel.snp.makeConstraints {
+            $0.top.equalTo(versionTitleLabel.snp.bottom).offset(5)
+            $0.leading.equalToSuperview().offset(30)
+        }
+        
+        updateButton.snp.makeConstraints {
+            $0.centerY.equalTo(updateVersionLabel)
+            $0.leading.equalTo(updateVersionLabel.snp.trailing).offset(-3)
+            $0.height.equalTo(20 * 1.3)
+            $0.width.equalTo(20 * 1.3)
+        }
+        
+        versionInfoLabel.snp.makeConstraints {
+            $0.centerY.equalTo(versionTitleLabel)
+            $0.trailing.equalToSuperview().inset(30)
+        }
+        
+        divideLineSecond.snp.makeConstraints {
+            $0.top.equalTo(versionContainerView.snp.bottom).offset(convertByHeightRatio(14))
+            $0.height.equalTo(1)
+            $0.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(18)
+        }
+        
+        // 로그아웃, 탈퇴 컨테이너 뷰
+        userStatusContainerView.snp.makeConstraints {
+            $0.top.equalTo(divideLineSecond.snp.bottom).offset(convertByHeightRatio(14))
+            $0.leading.trailing.equalTo(view.safeAreaLayoutGuide)
+            $0.height.equalTo(convertByHeightRatio(94))
+        }
+        
+        logoutLabel.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(convertByHeightRatio(14))
+            $0.leading.equalToSuperview().offset(30)
+        }
+        
+        leaveLabel.snp.makeConstraints {
+            $0.top.equalTo(logoutLabel).offset(convertByHeightRatio(47))
+            $0.leading.equalTo(logoutLabel)
+        }
     }
     
     private func setBackgroundColor() {
         view.backgroundColor = .smemeWhite
+    }
+    
+    private func setTabbarHidden() {
+        self.tabBarController?.tabBar.isHidden = true
     }
 }

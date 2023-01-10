@@ -1,8 +1,8 @@
 //
-//  DiaryForiegnViewController.swift
+//  StepOneKoreanDiaryViewController.swift
 //  Smeme-iOS
 //
-//  Created by Joon Baek on 2023/01/04.
+//  Created by Joon Baek on 2023/01/09.
 //
 
 import UIKit
@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 import Then
 
-final class DiaryForeignViewController: UIViewController {
+final class StepOneKoreanDiaryViewController: UIViewController {
     
     // MARK: - Property
     
@@ -38,34 +38,49 @@ final class DiaryForeignViewController: UIViewController {
         $0.configure(with: RandomSubjectViewModel(contentText: "오늘부터 딱 일주일 후! 설레는 크리스마스네요. 일주일 전부터 세워보는 나의 크리스마스 계획은?", isHiddenRefreshButton: false))
     }
     
-    private let bottomView = UIView().then {
-        $0.backgroundColor = .white
-        $0.addShadow(shadowColor: .black, shadowOpacity: 0.04, shadowRadius: 16, offset: CGSize(width: 0, height: -4.0))
-    }
-    
     private let cancelButton = UIButton().then {
         $0.titleLabel?.font = .body1
-        $0.setTitleColor(.black, for: .normal)
+        $0.setTitleColor(.smemeBlack, for: .normal)
+        $0.titleLabel?.setTextWithLineHeight(lineHeight: 21)
         $0.setTitle("취소", for: .normal)
     }
     
     private let completeButton = UIButton().then {
         $0.titleLabel?.font = .body1
-        $0.setTitleColor(.black, for: .normal)
-        $0.setTitle("완료", for: .normal)
+        $0.setTitleColor(.smemeBlack, for: .normal)
+        $0.titleLabel?.setTextWithLineHeight(lineHeight: 21)
+        $0.setTitle("다음", for: .normal)
     }
     
     private let languageLabel = UILabel().then {
         $0.font = .subtitle2
-        $0.textColor = .gray500
-        $0.text = "English"
+        $0.textColor = .smemeBlack
+        $0.setTextWithLineHeight(lineHeight: 19)
+        $0.text = "한국어"
     }
     
-    private let languageIcon = UIImageView(image: Constant.Image.icnArrowUnder)
+    private let stepLabel = UILabel().then {
+        $0.font = .caption1
+        $0.textColor = .gray400
+        $0.setTextWithLineHeight(lineHeight: 14)
+        $0.text = "STEP 1"
+    }
+    
+    private let tipLabel = UILabel().then {
+        $0.font = .body2
+        $0.textColor = .gray600
+        $0.setTextWithLineHeight(lineHeight: 17)
+        $0.text = "TIP 정확한 힌트를 받고 싶다면? 문장을 정리해보세요!"
+    }
+    
+    private let bottomView = UIView().then {
+        $0.backgroundColor = .white
+        $0.addShadow(shadowColor: .black, shadowOpacity: 0.04, shadowRadius: 16, offset: CGSize(width: 0, height: -4.0))
+    }
     
     private lazy var randomTopicButton: UIImageView = {
         let view = UIImageView(image: Constant.Image.btnRandomTopicCheckBoxDisabled)
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(topikBTNDidTap(_:))) // UIImageView 클릭 제스쳐
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(topikBTNDidTap(_:)))
         view.addGestureRecognizer(tapGesture)
         view.isUserInteractionEnabled = true
         return view
@@ -80,15 +95,7 @@ final class DiaryForeignViewController: UIViewController {
         
         setBackgoundColor()
         setLayout()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        showKeyboard(textView: diaryTextView)
-        keyboardAddObserver()
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        keyboardRemoveObserver()
+        
     }
     
     // MARK: - @objc
@@ -98,14 +105,6 @@ final class DiaryForeignViewController: UIViewController {
         setRandomTopicButtonToggle()
     }
     
-    @objc func keyboardWillShow(_ notification: Notification) {
-        handleKeyboardChanged(notification: notification, customView: bottomView, isActive: true)
-    }
-    
-    @objc func keyboardWillHide(_ notification: Notification) {
-        handleKeyboardChanged(notification: notification, customView: bottomView, isActive: false)
-    }
-    
     // MARK: - Custom Method
     
     private func setBackgoundColor() {
@@ -113,12 +112,11 @@ final class DiaryForeignViewController: UIViewController {
     }
     
     private func setLayout() {
-        view.addSubviews([naviView, randomSubjectView, diaryTextView, bottomView])
-        diaryTextView.addSubview(placeHolderLabel)
+        view.addSubviews([naviView, tipLabel, diaryTextView, bottomView])
         
         naviView.addSubviews([cancelButton, languageView, completeButton])
-        languageView.addSubviews([languageLabel, languageIcon])
-        
+        diaryTextView.addSubview(placeHolderLabel)
+        languageView.addSubviews([languageLabel, stepLabel])
         bottomView.addSubviews([randomTopicButton, publicButton])
         
         naviView.snp.makeConstraints {
@@ -135,7 +133,7 @@ final class DiaryForeignViewController: UIViewController {
             $0.centerX.equalToSuperview()
             $0.top.bottom.equalTo(cancelButton)
             $0.leading.equalTo(languageLabel)
-            $0.trailing.equalTo(languageIcon)
+            $0.trailing.equalTo(languageLabel)
         }
         
         completeButton.snp.makeConstraints {
@@ -147,15 +145,20 @@ final class DiaryForeignViewController: UIViewController {
             $0.centerY.leading.equalToSuperview()
         }
         
-        languageIcon.snp.makeConstraints {
-            $0.centerY.equalToSuperview()
-            $0.leading.equalTo(languageLabel.snp.trailing).offset(6)
+        stepLabel.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.top.equalTo(languageLabel.snp.bottom).offset(2)
+        }
+        
+        tipLabel.snp.makeConstraints {
+            $0.top.equalTo(naviView.snp.bottom).offset(10)
+            $0.leading.equalToSuperview().offset(30)
         }
         
         diaryTextView.snp.makeConstraints {
-            $0.top.equalTo(naviView.snp.bottom).offset(10)
+            $0.top.equalTo(tipLabel.snp.bottom).offset(10)
             $0.leading.trailing.equalToSuperview().inset(24)
-            $0.bottom.equalTo(bottomView.snp.top)
+            $0.bottom.equalToSuperview()
         }
         
         placeHolderLabel.snp.makeConstraints {
@@ -186,30 +189,25 @@ final class DiaryForeignViewController: UIViewController {
                 $0.top.leading.trailing.equalTo(view.safeAreaLayoutGuide)
                 $0.height.equalTo(convertByHeightRatio(66))
             }
-            
+
             diaryTextView.snp.remakeConstraints {
                 $0.top.equalTo(naviView.snp.bottom).offset(9)
                 $0.leading.trailing.equalTo(view.safeAreaLayoutGuide).offset(30)
                 $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-30)
                 $0.bottom.equalTo(bottomView.snp.top)
             }
-            
+
             randomSubjectView.removeFromSuperview()
-            
+
         } else {
             randomTopicButton.image = Constant.Image.btnRandomTopicCheckBoxSelected
             view.addSubview(randomSubjectView)
-            
-            languageIcon.snp.remakeConstraints {
-                $0.centerY.equalToSuperview()
-                $0.leading.equalTo(languageLabel.snp.trailing).offset(6)
-            }
-            
+
             randomSubjectView.snp.remakeConstraints {
                 $0.top.equalTo(naviView.snp.bottom)
                 $0.leading.equalToSuperview()
             }
-            
+
             diaryTextView.snp.remakeConstraints {
                 $0.top.equalTo(randomSubjectView.snp.bottom).offset(9)
                 $0.leading.trailing.equalTo(view.safeAreaLayoutGuide).offset(30)
@@ -218,24 +216,11 @@ final class DiaryForeignViewController: UIViewController {
             }
         }
     }
-    
-    private func keyboardAddObserver() {
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow),
-                                               name: UIResponder.keyboardWillShowNotification, object: nil)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide),
-                                               name: UIResponder.keyboardWillHideNotification, object: nil)
-    }
-    
-    private func keyboardRemoveObserver() {
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
-    }
 }
 
 // MARK: - UITextViewDelegate
 
-extension DiaryForeignViewController: UITextViewDelegate {
+extension StepOneKoreanDiaryViewController: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
         if textView.text.isEmpty {
             placeHolderLabel.isHidden = false
