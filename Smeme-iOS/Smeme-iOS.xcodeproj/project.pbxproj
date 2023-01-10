@@ -28,7 +28,6 @@
 		4A050200295CBE0A00E17386 /* URLConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0501FF295CBE0A00E17386 /* URLConstant.swift */; };
 		4A050202295CBE1D00E17386 /* BaseTargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A050201295CBE1D00E17386 /* BaseTargetType.swift */; };
 		4A050204295CBE6000E17386 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A050203295CBE6000E17386 /* API.swift */; };
-		4A050206295CBE6400E17386 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A050205295CBE6400E17386 /* Service.swift */; };
 		4A050208295CBE6800E17386 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A050207295CBE6800E17386 /* DataModel.swift */; };
 		4A05020A295CBEE100E17386 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A050209295CBEE100E17386 /* UIView+.swift */; };
 		4A05020C295CBF2900E17386 /* UIFont+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A05020B295CBF2900E17386 /* UIFont+.swift */; };
@@ -55,6 +54,9 @@
 		4AD78BBC2965993F00EEE509 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD78BBB2965993F00EEE509 /* ViewModel.swift */; };
 		4AD78BC42966888B00EEE509 /* UIScreen+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD78BC32966888B00EEE509 /* UIScreen+.swift */; };
 		4AD78BCC2966A93100EEE509 /* UILabel+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD78BCB2966A93100EEE509 /* UILabel+.swift */; };
+		4AF21F58296DDC5600AE38F6 /* OpenDiaryCategoryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF21F57296DDC5600AE38F6 /* OpenDiaryCategoryService.swift */; };
+		4AF21F5A296DDD5300AE38F6 /* OpenDiaryCategoryAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF21F59296DDD5300AE38F6 /* OpenDiaryCategoryAPI.swift */; };
+		4AF21F5C296DE40100AE38F6 /* OpenDiaryCategoryResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF21F5B296DE40100AE38F6 /* OpenDiaryCategoryResponse.swift */; };
 		6F1D7798296BDF5E00C8FE39 /* LikeBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F1D7797296BDF5E00C8FE39 /* LikeBottomView.swift */; };
 		6F1D779A296C0F8F00C8FE39 /* LoginProfileInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F1D7799296C0F8F00C8FE39 /* LoginProfileInfoViewController.swift */; };
 		6F1D77A2296C34C800C8FE39 /* ClearButtonTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F1D77A1296C34C800C8FE39 /* ClearButtonTextField.swift */; };
@@ -88,7 +90,6 @@
 		4A0501FF295CBE0A00E17386 /* URLConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLConstant.swift; sourceTree = "<group>"; };
 		4A050201295CBE1D00E17386 /* BaseTargetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTargetType.swift; sourceTree = "<group>"; };
 		4A050203295CBE6000E17386 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
-		4A050205295CBE6400E17386 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		4A050207295CBE6800E17386 /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 		4A050209295CBEE100E17386 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 		4A05020B295CBF2900E17386 /* UIFont+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+.swift"; sourceTree = "<group>"; };
@@ -116,6 +117,9 @@
 		4AD78BBB2965993F00EEE509 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		4AD78BC32966888B00EEE509 /* UIScreen+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScreen+.swift"; sourceTree = "<group>"; };
 		4AD78BCB2966A93100EEE509 /* UILabel+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+.swift"; sourceTree = "<group>"; };
+		4AF21F57296DDC5600AE38F6 /* OpenDiaryCategoryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenDiaryCategoryService.swift; sourceTree = "<group>"; };
+		4AF21F59296DDD5300AE38F6 /* OpenDiaryCategoryAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenDiaryCategoryAPI.swift; sourceTree = "<group>"; };
+		4AF21F5B296DE40100AE38F6 /* OpenDiaryCategoryResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenDiaryCategoryResponse.swift; sourceTree = "<group>"; };
 		6F1D7797296BDF5E00C8FE39 /* LikeBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeBottomView.swift; sourceTree = "<group>"; };
 		6F1D7799296C0F8F00C8FE39 /* LoginProfileInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginProfileInfoViewController.swift; sourceTree = "<group>"; };
 		6F1D77A1296C34C800C8FE39 /* ClearButtonTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClearButtonTextField.swift; sourceTree = "<group>"; };
@@ -309,6 +313,7 @@
 				A32753282966FE81004BB8A0 /* ScrapedExpressionModel.swift */,
 				4A050207295CBE6800E17386 /* DataModel.swift */,
 				6FD39872296AE27400C16B79 /* MyDiaryDetail.swift */,
+				4AF21F5B296DE40100AE38F6 /* OpenDiaryCategoryResponse.swift */,
 			);
 			path = DataModel;
 			sourceTree = "<group>";
@@ -316,7 +321,7 @@
 		4A0501F6295CBD8700E17386 /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				4A050205295CBE6400E17386 /* Service.swift */,
+				4AF21F57296DDC5600AE38F6 /* OpenDiaryCategoryService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -325,6 +330,7 @@
 			isa = PBXGroup;
 			children = (
 				4A050203295CBE6000E17386 /* API.swift */,
+				4AF21F59296DDD5300AE38F6 /* OpenDiaryCategoryAPI.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -583,6 +589,7 @@
 				6FD3986F29699E9C00C16B79 /* MyDiaryCollectionViewCell.swift in Sources */,
 				6F1D77A2296C34C800C8FE39 /* ClearButtonTextField.swift in Sources */,
 				4AD78BB32965758100EEE509 /* ScrapStashViewController.swift in Sources */,
+				4AF21F5A296DDD5300AE38F6 /* OpenDiaryCategoryAPI.swift in Sources */,
 				4AD78BAF2965756800EEE509 /* MyDiaryViewController.swift in Sources */,
 				4A050204295CBE6000E17386 /* API.swift in Sources */,
 				4A05020E295CBF2F00E17386 /* UIColor+.swift in Sources */,
@@ -596,12 +603,12 @@
 				4A050210295CBF5200E17386 /* UIViewController+.swift in Sources */,
 				4A699B69296ADA1E00343CBF /* DetailOpenDiaryViewController.swift in Sources */,
 				4A0501F2295CBAE300E17386 /* Constant.swift in Sources */,
-				4A050206295CBE6400E17386 /* Service.swift in Sources */,
 				A32753292966FE81004BB8A0 /* ScrapedExpressionModel.swift in Sources */,
 				37B33C8C296BF802001E353D /* StepTwoKoreanDiaryViewController.swift in Sources */,
 				4AD357B129681D2D002D25E4 /* TopicCollectionViewCell.swift in Sources */,
 				4A05020C295CBF2900E17386 /* UIFont+.swift in Sources */,
 				4AD78BCC2966A93100EEE509 /* UILabel+.swift in Sources */,
+				4AF21F58296DDC5600AE38F6 /* OpenDiaryCategoryService.swift in Sources */,
 				4AD78BAD296574F000EEE509 /* TabBarController.swift in Sources */,
 				4A92F62729672DD300D34B55 /* UITextView+.swift in Sources */,
 				37D9E4962965A3160083A43F /* DiaryForeignViewController.swift in Sources */,
@@ -611,6 +618,7 @@
 				4A0501FE295CBDED00E17386 /* NetworkConstant.swift in Sources */,
 				6F1D7798296BDF5E00C8FE39 /* LikeBottomView.swift in Sources */,
 				A327532B2967F961004BB8A0 /* ScrapedListCollectionViewCell.swift in Sources */,
+				4AF21F5C296DE40100AE38F6 /* OpenDiaryCategoryResponse.swift in Sources */,
 				4AD78BBC2965993F00EEE509 /* ViewModel.swift in Sources */,
 				6F33F1FA2968162E002A2FBA /* MyDiaryNavigationBar.swift in Sources */,
 				4AD78BC42966888B00EEE509 /* UIScreen+.swift in Sources */,
