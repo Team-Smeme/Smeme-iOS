@@ -53,6 +53,7 @@ final class LoginProfileInfoViewController: UIViewController {
         
         setBackgroundColor()
         setLayout()
+        setDelegate()
     }
     
     // MARK: - @objc
@@ -61,6 +62,11 @@ final class LoginProfileInfoViewController: UIViewController {
     
     private func setBackgroundColor() {
         view.backgroundColor = .smemeWhite
+    }
+    
+    private func setDelegate() {
+        nickNameTextField.textField.delegate = self
+        oneLineInfoTextField.textField.delegate = self
     }
     
     private func setLayout() {
@@ -101,4 +107,18 @@ final class LoginProfileInfoViewController: UIViewController {
         view.endEditing(true)
     }
 }
+
+extension LoginProfileInfoViewController: UITextFieldDelegate {
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        guard let isEmpty = nickNameTextField.textField.text?.isEmpty else { return }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == nickNameTextField.textField {
+            oneLineInfoTextField.textField.becomeFirstResponder()
+        } else {
+            oneLineInfoTextField.textField.resignFirstResponder()
+        }
+        return true
+    }
 }
