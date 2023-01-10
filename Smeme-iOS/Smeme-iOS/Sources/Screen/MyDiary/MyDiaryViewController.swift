@@ -102,7 +102,7 @@ final class MyDiaryViewController: UIViewController {
         
         myDiaryCollectionView.snp.makeConstraints {
             $0.top.equalTo(dateBar.snp.bottom)
-            $0.leading.trailing.equalToSuperview().inset(30)
+            $0.leading.trailing.equalToSuperview()
             $0.bottom.equalToSuperview().inset(16)
         }
     }
@@ -156,6 +156,6 @@ extension MyDiaryViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 18, left: 0, bottom: 18, right: 0)
+        return UIEdgeInsets(top: 18, left: 30, bottom: 18, right: 30)
     }
 }
