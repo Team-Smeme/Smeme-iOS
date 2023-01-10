@@ -13,9 +13,9 @@ import Then
 final class OpenDiaryViewController: UIViewController {
     
     // MARK: - Property
-    
-    let topicList = ["전체", "일상", "기념일", "취향", "자기계발"]
+
     let dummyList = ["heightByNotch", "The issue that requires the phone call we have to solve it in person but sometimes some violence is needed. I was just the part of the process", "The issue that requires the phone call we have to solve it in person but sometimes some violence is needed. I was just the part of the process The issue that requires the phone call we have to solve it in person but sometimes some violence is needed", "heightByNotch", "The issue that requires the phone call we have to solve it in person but sometimes some violence is needed. I was just the part of the process", "The issue that requires the phone call we have to solve it in person but sometimes some violence is needed. I was just the part of the process The issue that requires the phone call we have to solve it in person but sometimes some violence is needed"]
+    var openDiaryCategoryArray: [Category] = [Category(id: 0, content: "전체"), Category(id: 0, content: "일상")]
     
     // MARK: - UI Property
     
