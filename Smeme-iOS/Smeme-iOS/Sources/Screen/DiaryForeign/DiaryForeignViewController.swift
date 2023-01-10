@@ -241,14 +241,17 @@ extension DiaryForeignViewController: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
         if textView.text.isEmpty {
             placeHolderLabel.isHidden = false
+            textView.tintColor = .clear
         }
     }
     
     func textViewDidChange(_ textView: UITextView) {
         if textView.text.isEmpty {
             placeHolderLabel.isHidden = false
+            textView.tintColor = .clear
         } else {
             placeHolderLabel.isHidden = true
+            textView.tintColor = .primary
         }
     }
 }
