@@ -105,7 +105,7 @@ final class StepTwoKoreanDiaryViewController: UIViewController {
     }
     
     private func setLayout() {
-        view.addSubviews([naviView, koreanDiaryTextView, grayUnderlineView, textView, bottomView])
+        view.addSubviews([naviView, koreanDiaryTextView, grayUnderlineView, diaryTextView, bottomView])
         
         naviView.addSubviews([backButton, languageView, completeButton])
         languageView.addSubviews([languageLabel, languageIcon, stepLabel])
@@ -162,7 +162,7 @@ final class StepTwoKoreanDiaryViewController: UIViewController {
             $0.height.equalTo(convertByHeightRatio(6))
         }
         
-        textView.snp.makeConstraints {
+        diaryTextView.snp.makeConstraints {
             $0.top.equalTo(grayUnderlineView.snp.bottom)
             $0.leading.trailing.equalTo(view.safeAreaLayoutGuide).offset(30)
             $0.bottom.equalToSuperview()
