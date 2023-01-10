@@ -31,8 +31,9 @@ final class MySmemeViewController: UIViewController {
         $0.backgroundColor = .gray100
     }
     
-    private let previousButton = UIButton().then {
+    private lazy var previousButton = UIButton().then {
         $0.setImage(Constant.Image.icnPageLeft, for: .normal)
+        $0.addTarget(self, action: #selector(touchupBackButton), for: .touchUpInside)
     }
     
     private let headerLabel = UILabel().then {
@@ -314,5 +315,16 @@ final class MySmemeViewController: UIViewController {
     
     private func setBackgroundColor() {
         view.backgroundColor = .smemeWhite
+    }
+    
+    
+    @objc
+    private func touchupBackButton() {
+        if self.navigationController == nil{
+            self.dismiss(animated: true)
+        }
+        else{
+            self.navigationController?.popViewController(animated: true)
+        }
     }
 }
