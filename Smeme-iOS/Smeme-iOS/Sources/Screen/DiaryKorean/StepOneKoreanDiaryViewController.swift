@@ -102,10 +102,11 @@ final class StepOneKoreanDiaryViewController: UIViewController {
     }
     
     private func setLayout() {
-        view.addSubviews([naviView, tipLabel, textView])
+        view.addSubviews([naviView, tipLabel, textView, bottomView])
         
         naviView.addSubviews([cancelButton, languageView, completeButton])
         languageView.addSubviews([languageLabel, stepLabel])
+        bottomView.addSubviews([randomTopicButton, publicButton])
         
         naviView.snp.makeConstraints {
             $0.top.leading.trailing.equalTo(view.safeAreaLayoutGuide)
@@ -148,6 +149,21 @@ final class StepOneKoreanDiaryViewController: UIViewController {
             $0.leading.trailing.equalTo(view.safeAreaLayoutGuide).offset(30)
             $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-30)
             $0.bottom.equalToSuperview()
+        }
+        
+        bottomView.snp.makeConstraints {
+            $0.bottom.leading.trailing.equalToSuperview()
+            $0.height.equalTo(constraintByNotch(87, 53))
+        }
+        
+        publicButton.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(18)
+            $0.trailing.equalToSuperview().offset(-30)
+        }
+        
+        randomTopicButton.snp.makeConstraints {
+            $0.centerY.equalTo(publicButton)
+            $0.trailing.equalTo(publicButton.snp.leading).offset(-16)
         }
     }
 }
