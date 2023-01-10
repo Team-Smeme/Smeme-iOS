@@ -62,6 +62,7 @@ final class LoginProfileInfoViewController: UIViewController {
         setBackgroundColor()
         setLayout()
         setDelegate()
+        showKeyboard(textView: nickNameTextField.textField)
     }
     
     // MARK: - @objc
