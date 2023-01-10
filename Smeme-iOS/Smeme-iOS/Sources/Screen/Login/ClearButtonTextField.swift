@@ -15,6 +15,8 @@ final class ClearButtonTextField: UIView {
     
     // MARK: - Property
     
+    var enableCongratulateButton: (() -> Void)?
+    
     override var intrinsicContentSize: CGSize {
         return CGSize(width: convertByWidthRatio(315), height: convertByHeightRatio(52))
     }
@@ -22,7 +24,7 @@ final class ClearButtonTextField: UIView {
     // MARK: - UI Property
     
     var textField = UITextField()
-   
+    
     private lazy var clearButton = UIButton().then {
         $0.setImage(Constant.Image.icnCircleX, for: .normal)
         $0.addTarget(self, action: #selector(clearButtonDidTap(_:)), for: .touchUpInside)
@@ -32,6 +34,7 @@ final class ClearButtonTextField: UIView {
     
     @objc func clearButtonDidTap(_ sender: UIButton) {
         textField.text = ""
+        enableCongratulateButton?()
     }
     
     // MARK: - Custom Method
