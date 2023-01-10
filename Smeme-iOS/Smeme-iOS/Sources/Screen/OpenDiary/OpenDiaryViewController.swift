@@ -200,7 +200,7 @@ extension OpenDiaryViewController: UICollectionViewDelegate {}
 extension OpenDiaryViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == topicCollectionView {
-            return topicList.count
+            return openDiaryCategoryArray.count
         } else if collectionView == diaryListCollectionView {
             return dummyList.count
         }
