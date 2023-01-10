@@ -163,13 +163,14 @@ final class StepTwoKoreanDiaryViewController: UIViewController {
         }
         
         diaryTextView.snp.makeConstraints {
-            $0.top.equalTo(grayUnderlineView.snp.bottom)
-            $0.leading.trailing.equalTo(view.safeAreaLayoutGuide).offset(30)
+            $0.top.equalTo(grayUnderlineView.snp.bottom).offset(30)
+            $0.leading.trailing.equalTo(view.safeAreaLayoutGuide).offset(24)
             $0.bottom.equalToSuperview()
         }
         
         placeHolderLabel.snp.makeConstraints {
-            $0.top.leading.equalToSuperview().inset(7)
+            $0.top.equalToSuperview().inset(27)
+            $0.leading.equalToSuperview().inset(7)
         }
         
         bottomView.snp.makeConstraints {
