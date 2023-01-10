@@ -6,6 +6,7 @@
 .DS_Store
 .AppleDouble
 .LSOverride
+APIConstant.swift
 
 # Icon must end with two \r
 Icon
@@ -130,5 +131,6 @@ iOSInjectionProject/
 !*.xcworkspace/contents.xcworkspacedata
 /*.gcno
 **/xcshareddata/WorkspaceSettings.xcsettings
+Smeme-iOS/Smeme-iOS/Sources/Network/Base/APIConstant.swift
 
 # End of https://www.toptal.com/developers/gitignore/api/xcode,macos,swift
