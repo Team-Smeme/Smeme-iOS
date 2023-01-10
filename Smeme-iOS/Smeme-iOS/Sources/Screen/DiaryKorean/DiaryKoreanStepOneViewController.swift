@@ -19,13 +19,20 @@ final class DiaryKoreanStepOneViewController: UIViewController {
     private let naviView = UIView()
     private let languageView = UIView()
     
-    private lazy var textView: UITextView = {
-        let textView = UITextView().then {
-            $0.font = .body1
-            $0.text = "최소 10자이상 작성해주세요"
-            $0.textColor = .gray500
-//            $0.delegate = self
-        }
+    private let diaryTextView: UITextView = {
+        let textView = UITextView()
+        textView.text = "오늘은 OPR을 공개한 날이었다. 안 떨릴 줄 알았는데 겁나 떨렸당. 사실 카페가 추웠어서 추워서 떠는 건지 긴장 돼서 떠는 건지 구분이 잘 안 갔다. 근데 사실 나는 다리 떠는 것도 습관이라 다리를 떨어서 몸이 떨린 걸 수도 있다."
+        
+        let style = NSMutableParagraphStyle()
+        style.lineSpacing = 2
+        let attributes = [
+            NSAttributedString.Key.paragraphStyle: style,
+            NSAttributedString.Key.foregroundColor: UIColor.black,
+            NSAttributedString.Key.font: UIFont.body1
+        ]
+        textView.attributedText = NSAttributedString(string: textView.text, attributes: attributes)
+//        textView.typingAttributes = attributes
+        
         return textView
     }()
     
@@ -87,7 +94,7 @@ final class DiaryKoreanStepOneViewController: UIViewController {
     }
     
     private func setLayout() {
-        view.addSubviews([naviView, tipLabel, textView])
+        view.addSubviews([naviView, tipLabel, diaryTextView])
         
         naviView.addSubviews([cancelButton, languageView, completeButton])
         languageView.addSubviews([languageLabel, stepLabel])
@@ -128,10 +135,9 @@ final class DiaryKoreanStepOneViewController: UIViewController {
             $0.leading.equalToSuperview().offset(30)
         }
         
-        textView.snp.makeConstraints {
+        diaryTextView.snp.makeConstraints {
             $0.top.equalTo(tipLabel.snp.bottom).offset(10)
-            $0.leading.trailing.equalTo(view.safeAreaLayoutGuide).offset(30)
-            $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-30)
+            $0.leading.trailing.equalToSuperview().inset(30)
             $0.bottom.equalToSuperview()
         }
     }
