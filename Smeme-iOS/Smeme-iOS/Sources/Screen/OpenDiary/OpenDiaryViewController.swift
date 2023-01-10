@@ -262,3 +262,14 @@ extension OpenDiaryViewController: UICollectionViewDelegateFlowLayout {
         return UIEdgeInsets()
     }
 }
+
+// MARK: - Network
+
+extension OpenDiaryViewController {
+    private func getOpenDiaryCategoryAPI() {
+        OpenDiaryCategoryAPI.shared.getOpenDiaryCategory { response in
+            guard let openDiaryCategorydata = response?.data?.categories else { return }
+            self.openDiaryCategoryArray += openDiaryCategorydata
+        }
+    }
+}
