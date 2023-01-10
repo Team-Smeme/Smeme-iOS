@@ -34,16 +34,23 @@ final class LoginProfileInfoViewController: UIViewController {
         $0.setTextWithLineHeight(lineHeight: 17)
     }
     
-    private let nickNameTextField = ClearButtonTextField().then {
+    private lazy var nickNameTextField = ClearButtonTextField().then {
         $0.configure(with: ClearButtonTextFieldViewModel(placeHolderText: "닉네임을 입력해 주세요"))
+        $0.enableCongratulateButton = {
+            self.completionCongratulateButton(isOn: false)
+        }
     }
     
-    private let oneLineInfoTextField = ClearButtonTextField().then {
+    private lazy var oneLineInfoTextField = ClearButtonTextField().then {
         $0.configure(with: ClearButtonTextFieldViewModel(placeHolderText: "한 줄 소개를 입력해 주세요"))
+        $0.enableCongratulateButton = {
+            self.completionCongratulateButton(isOn: false)
+        }
     }
     
     private let congratulateButton = UIButton().then {
         $0.setImage(Constant.Image.btnWelcomeInactive, for: .normal)
+        $0.isEnabled = false
     }
     
     // MARK: - Life Cycle
@@ -51,6 +58,7 @@ final class LoginProfileInfoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        completionCongratulateButton(isOn: false)
         setBackgroundColor()
         setLayout()
         setDelegate()
@@ -67,6 +75,20 @@ final class LoginProfileInfoViewController: UIViewController {
     private func setDelegate() {
         nickNameTextField.textField.delegate = self
         oneLineInfoTextField.textField.delegate = self
+    }
+    
+    private func completionCongratulateButton(isOn: Bool) {
+        switch isOn {
+        case true:
+            congratulateButton.isEnabled = true
+            congratulateButton.setImage(Constant.Image.btnWelcome, for: .normal)
+        case false:
+            guard let isTextEmpty = nickNameTextField.textField.text?.isEmpty else { return }
+            if isTextEmpty {
+                congratulateButton.isEnabled = false
+                congratulateButton.setImage(Constant.Image.btnWelcomeInactive, for: .normal)
+            }
+        }
     }
     
     private func setLayout() {
@@ -111,6 +133,7 @@ final class LoginProfileInfoViewController: UIViewController {
 extension LoginProfileInfoViewController: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         guard let isEmpty = nickNameTextField.textField.text?.isEmpty else { return }
+        completionCongratulateButton(isOn: !isEmpty)
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
