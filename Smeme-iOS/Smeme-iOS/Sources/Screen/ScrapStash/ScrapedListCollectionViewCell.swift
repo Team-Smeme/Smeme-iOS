@@ -10,11 +10,16 @@ import UIKit
 import SnapKit
 import Then
 
+protocol alertProtocol {
+    func presentAlert()
+}
+
 class ScrapedListCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Property
     
     static let identifier = "UICollectionViewCell"
+    var delegate: alertProtocol?
     
     // MARK: - UI Property
         
@@ -70,8 +75,10 @@ class ScrapedListCollectionViewCell: UICollectionViewCell {
     
     // MARK: - @objc
     
-    // MARK: - Custom Method
     
+    
+    // MARK: - Custom Method
+
     private func setBackgroundColor() {
         backgroundColor = .smemeWhite
     }
