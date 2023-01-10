@@ -160,9 +160,15 @@ final class DetailMyDiaryViewController: UIViewController {
     }
     
     @objc func optionButtonDidTap(_ sender: UIButton) {
-       
+        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        actionSheet.addAction(UIAlertAction(title: "삭제", style: .default, handler: {_ in
+            print("삭제하기")
+        }))
+        actionSheet.addAction(UIAlertAction(title: "닫기", style: .cancel, handler: nil))
+        
+        self.present(actionSheet, animated: true, completion: nil)
     }
-
+    
     func calculateScrollViewHeightOffset(defaultHeight: CGFloat, heightOfBottomView: CGFloat, paddingOfNaviWithContent: CGFloat, paddingOfContentWithDate: CGFloat) -> CGFloat {
         let dummyLabel = UILabel().then {
             $0.font = .body1
