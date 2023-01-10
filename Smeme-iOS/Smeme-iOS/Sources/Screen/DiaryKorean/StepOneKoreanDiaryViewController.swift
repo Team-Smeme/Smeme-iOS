@@ -73,8 +73,8 @@ final class StepOneKoreanDiaryViewController: UIViewController {
     
     private lazy var randomTopicButton: UIImageView = {
         let view = UIImageView(image: Constant.Image.btnRandomTopicCheckBoxDisabled)
-//        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(topikBTNDidTap())
-//        view.addGestureRecognizer(tapGesture)
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(topikBTNDidTap(_:)))
+        view.addGestureRecognizer(tapGesture)
         view.isUserInteractionEnabled = true
         return view
     }()
