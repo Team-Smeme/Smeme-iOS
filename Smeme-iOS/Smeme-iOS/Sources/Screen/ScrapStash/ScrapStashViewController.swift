@@ -149,7 +149,7 @@ final class ScrapStashViewController: UIViewController {
     }
     
     private func setDummyLabel(_ text: String) -> CGFloat {
-        var dummyLabel = UILabel().then {
+        let dummyLabel = UILabel().then {
             $0.text = text
             $0.font = .body1
             $0.numberOfLines = 0
