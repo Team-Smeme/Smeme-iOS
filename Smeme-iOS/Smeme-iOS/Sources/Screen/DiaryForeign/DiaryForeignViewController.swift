@@ -21,9 +21,18 @@ final class DiaryForeignViewController: UIViewController {
     private let naviView = UIView()
     private let languageView = UIView()
     
-    private let diaryTextView = UITextView().then {
-        $0.text = "최소 10자 이상의 외국어를 작성해 주세요"
+    private lazy var diaryTextView = UITextView().then {
+//        $0.text = "최소 10자 이상의 외국어를 작성해 주세요"
         $0.setLineSpacing()
+        $0.textColor = .gray400
+        $0.delegate = self
+    }
+    
+    private let placeHolderLabel = UILabel().then {
+        $0.text = "최소 10자 이상의 외국어를 작성해 주세요"
+        $0.textColor = .gray400
+        $0.font = .body1
+        $0.setTextWithLineHeight(lineHeight: 21)
     }
     
     private var randomSubjectView = RandomSubjectView().then {
@@ -106,6 +115,7 @@ final class DiaryForeignViewController: UIViewController {
     
     private func setLayout() {
         view.addSubviews([naviView, randomSubjectView, diaryTextView, bottomView])
+        diaryTextView.addSubview(placeHolderLabel)
         
         naviView.addSubviews([cancelButton, languageView, completeButton])
         languageView.addSubviews([languageLabel, languageIcon])
@@ -147,6 +157,10 @@ final class DiaryForeignViewController: UIViewController {
             $0.top.equalTo(naviView.snp.bottom).offset(9)
             $0.leading.trailing.equalToSuperview().inset(24)
             $0.bottom.equalTo(bottomView.snp.top)
+        }
+        
+        placeHolderLabel.snp.makeConstraints {
+            $0.top.leading.equalTo(diaryTextView)
         }
         
         bottomView.snp.makeConstraints {
@@ -225,16 +239,16 @@ final class DiaryForeignViewController: UIViewController {
 extension DiaryForeignViewController: UITextViewDelegate {
     
     func textViewDidBeginEditing(_ textView: UITextView) {
-        if textView.textColor == .gray400 {
-            textView.text = nil
-            textView.textColor = .smemeBlack
+        if textView.text.isEmpty {
+            placeHolderLabel.isHidden = false
         }
     }
     
-    func textViewDidEndEditing(_ textView: UITextView) {
+    func textViewDidChange(_ textView: UITextView) {
         if textView.text.isEmpty {
-            textView.text = "최소 10자이상의 외국어를 작성해주세요"
-            textView.textColor = .gray400
+            placeHolderLabel.isHidden = false
+        } else {
+            placeHolderLabel.isHidden = true
         }
     }
 }
