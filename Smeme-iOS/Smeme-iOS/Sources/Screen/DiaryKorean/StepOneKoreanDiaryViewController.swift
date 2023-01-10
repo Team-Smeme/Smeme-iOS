@@ -177,7 +177,7 @@ final class StepOneKoreanDiaryViewController: UIViewController {
 
 // MARK: - UITextViewDelegate
 
-extension DiaryForeignViewController: UITextViewDelegate {
+extension StepOneKoreanDiaryViewController: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
         if textView.text.isEmpty {
             placeHolderLabel.isHidden = false
