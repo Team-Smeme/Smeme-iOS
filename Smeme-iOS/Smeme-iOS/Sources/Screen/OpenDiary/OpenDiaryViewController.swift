@@ -104,6 +104,10 @@ final class OpenDiaryViewController: UIViewController {
         setDelegate()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        getOpenDiaryCategoryAPI()
+    }
+    
     // MARK: - @objc
     
     @objc
@@ -210,16 +214,17 @@ extension OpenDiaryViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView == topicCollectionView {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TopicCollectionViewCell.identifier, for: indexPath) as? TopicCollectionViewCell else { return UICollectionViewCell() }
-            cell.setData(topicList[indexPath.row])
-            
+            cell.setData(openDiaryCategoryArray[indexPath.item])
             if indexPath.item == 0 {
                 cell.isSelected = true
                 collectionView.selectItem(at: indexPath, animated: false, scrollPosition: .init())
             }
+            
             return cell
         } else if collectionView == diaryListCollectionView {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DiaryListCollectionViewCell.identifier, for: indexPath) as? DiaryListCollectionViewCell else { return UICollectionViewCell() }
             cell.setData(dummyList[indexPath.item])
+            
             return cell
         }
         return UICollectionViewCell()
@@ -270,6 +275,7 @@ extension OpenDiaryViewController {
         OpenDiaryCategoryAPI.shared.getOpenDiaryCategory { response in
             guard let openDiaryCategorydata = response?.data?.categories else { return }
             self.openDiaryCategoryArray += openDiaryCategorydata
+            self.topicCollectionView.reloadData()
         }
     }
 }
