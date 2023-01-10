@@ -33,7 +33,7 @@ extension OpenDiaryCategoryService: BaseTargetType {
         }
     }
     
-    var headers: [String : String]? {
+    var headers: [String: String]? {
         return NetworkConstant.hasTokenHeader
     }
 }
