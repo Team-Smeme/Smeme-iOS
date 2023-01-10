@@ -22,6 +22,7 @@ final class DiaryKoreanStepOneViewController: UIViewController {
     private let diaryTextView: UITextView = {
         let textView = UITextView()
         textView.text = "오늘은 OPR을 공개한 날이었다. 안 떨릴 줄 알았는데 겁나 떨렸당. 사실 카페가 추웠어서 추워서 떠는 건지 긴장 돼서 떠는 건지 구분이 잘 안 갔다. 근데 사실 나는 다리 떠는 것도 습관이라 다리를 떨어서 몸이 떨린 걸 수도 있다."
+        textView.font = .body1
         
         let style = NSMutableParagraphStyle()
         style.lineSpacing = 2
@@ -31,8 +32,9 @@ final class DiaryKoreanStepOneViewController: UIViewController {
             NSAttributedString.Key.font: UIFont.body1
         ]
         textView.attributedText = NSAttributedString(string: textView.text, attributes: attributes)
-//        textView.typingAttributes = attributes
-        
+        textView.textAlignment = .left
+        textView.sizeToFit()
+    
         return textView
     }()
     
@@ -137,7 +139,7 @@ final class DiaryKoreanStepOneViewController: UIViewController {
         
         diaryTextView.snp.makeConstraints {
             $0.top.equalTo(tipLabel.snp.bottom).offset(10)
-            $0.leading.trailing.equalToSuperview().inset(30)
+            $0.leading.trailing.equalToSuperview().inset(24)
             $0.bottom.equalToSuperview()
         }
     }
