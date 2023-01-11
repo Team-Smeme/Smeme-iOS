@@ -43,15 +43,13 @@ final class MySmemeViewController: UIViewController {
         $0.setTextWithLineHeight(lineHeight: 19)
     }
     
-    private let userIdLabel = UILabel().then {
-        $0.text = "주지스님"
+    private lazy var userIdLabel = UILabel().then {
         $0.font = .headline3
         $0.textColor = .smemeBlack
         $0.setTextWithLineHeight(lineHeight: 26)
     }
     
-    private let userIntroLabel = UILabel().then {
-        $0.text = "미국 거주 4년차 일기 챌린저입니다."
+    private lazy var userIntroLabel = UILabel().then {
         $0.font = .subtitle3
         $0.textColor = .smemeBlack
         $0.textAlignment = .left
