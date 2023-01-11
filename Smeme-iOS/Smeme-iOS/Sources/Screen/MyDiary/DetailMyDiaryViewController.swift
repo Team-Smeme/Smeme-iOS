@@ -1,4 +1,3 @@
-//
 //  DetailMyDiaryViewController.swift
 //  Smeme-iOS
 //
@@ -11,7 +10,9 @@ final class DetailMyDiaryViewController: UIViewController {
     
     // MARK: - Property
     
-    var myDiaryDetail = MyDiaryDetailResponse(content: "", category: "기념일", topic: "", isPublic: false, createdAt: "00:00", likeCnt: 0)
+    var diaryId = 0
+    
+    var myDiaryDetail = MyDiaryDetailResponse(content: "", topicID: 0, topic: "", category: "", isPublic: false, createdAt: "", likeCnt: 0)
     
     // MARK: - UI Property
     
@@ -67,9 +68,11 @@ final class DetailMyDiaryViewController: UIViewController {
         super.viewDidLoad()
         
         setBackgroundColor()
-        setData()
         setTabbarHidden()
-        setLayout()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        detailMyDiaryWithAPI(diaryId: diaryId)
     }
     
     // MARK: - Custom Method
@@ -83,7 +86,7 @@ final class DetailMyDiaryViewController: UIViewController {
     }
     
     private func setData() {
-        publicLabel.isHidden = !myDiaryDetail.isPublic
+        publicLabel.isHidden = myDiaryDetail.isPublic
         categoryLabel.text = myDiaryDetail.category
         contentLabel.text = myDiaryDetail.content + " (\(myDiaryDetail.content.count))"
         contentLabel.setTextWithLineHeight(lineHeight: 21)
@@ -202,5 +205,18 @@ final class DetailMyDiaryViewController: UIViewController {
         actionSheet.addAction(UIAlertAction(title: "삭제", style: .default, handler: {_ in self.presentAlert()}))
         actionSheet.addAction(UIAlertAction(title: "닫기", style: .cancel, handler: nil))
         self.present(actionSheet, animated: true, completion: nil)
+    }
+}
+
+// MARK: - Network
+
+extension DetailMyDiaryViewController {
+    func detailMyDiaryWithAPI(diaryId: Int) {
+        MyDiaryAPI.shared.detailMyDiaryList(diaryId: diaryId) { response in
+            guard let diaryData = response?.data else { return }
+            self.myDiaryDetail = diaryData
+            self.setData()
+            self.setLayout()
+        }
     }
 }
