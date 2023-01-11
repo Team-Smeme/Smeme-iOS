@@ -75,7 +75,6 @@ final class MyDiaryViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         totalMyDiaryListWithAPI()
-        detailMyDiaryWithAPI(diaryId: 67)
     }
     
     // MARK: - @objc
