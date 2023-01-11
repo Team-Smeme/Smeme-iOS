@@ -88,6 +88,10 @@ final class ScrapStashViewController: UIViewController {
         setTapGesture()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        scrapStashListWithAPI()
+    }
+    
     // MARK: - @objc
     
     @objc private func touchupNextButton() {
