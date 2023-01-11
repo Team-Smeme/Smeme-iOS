@@ -19,7 +19,7 @@ final class DetailOpenDiaryViewController: UIViewController {
     private let headerView = UIView()
     private let diaryContentScrollView = UIScrollView()
     private let contentView = UIView()
-
+    
     private lazy var backButton = UIButton().then {
         $0.setImage(Constant.Image.icnPageLeft, for: .normal)
     }
@@ -55,11 +55,18 @@ final class DetailOpenDiaryViewController: UIViewController {
     }
     
     private let diaryContentLabel = UITextView().then {
-        $0.text = "The issue that requires the phone call we have to solve it in person but sometimes some violence is needed. I was just the part of the process not The issue that requires the phone call we have to solve it in person.        needed...The issue that requires the phone call we have to solve it in person but sometimes some violence is needed. I was just the part of the process not........ solve it in person but sometimes some violence is needed... I was just the part of the process not The issue that requires the phone call we have to solve it in person but sometimes some violence is needed... (661)"
+        $0.text = """
+                The issue that requires the phone call we have to solve it in person but sometimes some violence is needed. I was just the part of the process not The issue that requires the phone call we have to solve it in person.
+                
+                needed...The issue that requires the phone call we have to solve it in person but sometimes some violence is needed. I was just the part of the process not........
+                
+                solve it in person but sometimes some violence is needed... I was just the part of the process not The issue that requires the phone call we have to solve it in person but sometimes some violence is needed... (661)
+                """
         $0.isEditable = false
         $0.font = .body1
         $0.textColor = .black
-//        $0.setTextViewLineHeight(16, 21)
+        $0.sizeToFit()
+        $0.setLineSpacing()
     }
     
     private let dateLabel = UILabel().then {
@@ -132,8 +139,9 @@ final class DetailOpenDiaryViewController: UIViewController {
         
         contentView.snp.makeConstraints {
             $0.edges.equalTo(diaryContentScrollView.contentLayoutGuide)
-            $0.width.equalTo(diaryContentScrollView.snp.width)
-            $0.height.greaterThanOrEqualTo(diaryContentScrollView.snp.height).priority(.low)
+            $0.width.equalTo(diaryContentScrollView.frameLayoutGuide)
+            $0.height.equalTo(diaryContentScrollView.frameLayoutGuide).priority(.low)
+            $0.height.greaterThanOrEqualTo(view.snp.height).priority(.low)
         }
         
         topicView.snp.makeConstraints {
@@ -160,12 +168,17 @@ final class DetailOpenDiaryViewController: UIViewController {
         
         randomSubjectView.snp.makeConstraints {
             $0.leading.equalToSuperview()
-            $0.bottom.equalTo(diarycontentLabel.snp.top).offset(-20)
+            $0.bottom.equalTo(diaryContentLabel.snp.top).offset(-10)
         }
         
-        diarycontentLabel.snp.makeConstraints {
-            $0.leading.trailing.equalToSuperview().inset(30)
-            $0.bottom.equalToSuperview().inset(52)
+        diaryContentLabel.snp.makeConstraints {
+            $0.leading.trailing.equalToSuperview().inset(24)
+            $0.bottom.equalTo(contentView).offset(-calculateScrollViewHeightOffset(defaultHeight: 52, heightOfBottomView: 59, paddingOfNaviWithContent: 192, paddingOfContentWithDate: 0))
+        }
+        
+        dateLabel.snp.makeConstraints {
+            $0.top.equalTo(diaryContentLabel.snp.bottom)
+            $0.trailing.equalToSuperview().inset(30)
         }
         
         bottomView.snp.makeConstraints {
@@ -187,5 +200,33 @@ final class DetailOpenDiaryViewController: UIViewController {
             $0.centerY.equalTo(likeButton)
             $0.trailing.equalToSuperview().inset(30)
         }
+    }
+}
+
+// MARK: - ScrollView Height Calculate Method
+
+extension DetailOpenDiaryViewController {
+    func calculateScrollViewHeightOffset(defaultHeight: CGFloat, heightOfBottomView: CGFloat, paddingOfNaviWithContent: CGFloat, paddingOfContentWithDate: CGFloat) -> CGFloat {
+        let dummyLabel = UILabel().then {
+            $0.font = .body1
+            $0.numberOfLines = 0
+            $0.text = diaryContentLabel.text
+            $0.setTextWithLineHeight(lineHeight: 21)
+        }
+        dummyLabel.frame = CGRect(x: 0,
+                                  y: 0,
+                                  width: convertByWidthRatio(315),
+                                  height: dummyLabel.calculateContentHeight(lineHeight: 21))
+        
+        let expectedLabelSize = dummyLabel.calculateContentHeight(lineHeight: 21)
+        let heightOfDateLabel: CGFloat = 17
+        let heightOfNotch: CGFloat = 44 + 34
+        let heightOfSafeArea: CGFloat = UIScreen.main.bounds.height - heightOfNotch
+        let heightOfScrollView: CGFloat = heightOfSafeArea - (heightOfBottomView + 66)
+        let contentSize: CGFloat = paddingOfNaviWithContent + paddingOfContentWithDate + expectedLabelSize + heightOfDateLabel
+        let isEnoughToScroll: Bool = contentSize > heightOfScrollView
+        diaryContentScrollView.isScrollEnabled = isEnoughToScroll
+        
+        return isEnoughToScroll ? defaultHeight : (heightOfScrollView - contentSize)
     }
 }
