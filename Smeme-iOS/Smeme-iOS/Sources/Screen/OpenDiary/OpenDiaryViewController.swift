@@ -17,6 +17,7 @@ final class OpenDiaryViewController: UIViewController {
     let dummyList = ["heightByNotch", "The issue that requires the phone call we have to solve it in person but sometimes some violence is needed. I was just the part of the process", "The issue that requires the phone call we have to solve it in person but sometimes some violence is needed. I was just the part of the process The issue that requires the phone call we have to solve it in person but sometimes some violence is needed", "heightByNotch", "The issue that requires the phone call we have to solve it in person but sometimes some violence is needed. I was just the part of the process", "The issue that requires the phone call we have to solve it in person but sometimes some violence is needed. I was just the part of the process The issue that requires the phone call we have to solve it in person but sometimes some violence is needed"]
     var openDiaryCategoryArray: [Category] = [Category(id: 0, content: "전체"), Category(id: 0, content: "일상")]
     var openDiaryListArray: [DiaryList] = []
+//    var openDiarySelectListArray: [DiaryList] = []
     
     // MARK: - UI Property
     
@@ -198,7 +199,17 @@ final class OpenDiaryViewController: UIViewController {
 
 // MARK: - UICollectionViewDelegate
 
-extension OpenDiaryViewController: UICollectionViewDelegate {}
+extension OpenDiaryViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if collectionView == topicCollectionView {
+            if indexPath.row == 0 {
+                getOpenDiaryTotalListAPI()
+            } else {
+                getOpenDiarySelectList(param: indexPath.row - 1)
+            }
+        }
+    }
+}
 
 // MARK: - UICollectionViewDataSource
 
@@ -216,16 +227,15 @@ extension OpenDiaryViewController: UICollectionViewDataSource {
         if collectionView == topicCollectionView {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TopicCollectionViewCell.identifier, for: indexPath) as? TopicCollectionViewCell else { return UICollectionViewCell() }
             cell.setData(openDiaryCategoryArray[indexPath.item])
-            if indexPath.item == 0 {
+            if indexPath.row == 0 {
                 cell.isSelected = true
                 collectionView.selectItem(at: indexPath, animated: false, scrollPosition: .init())
             }
-            
             return cell
         } else if collectionView == diaryListCollectionView {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DiaryListCollectionViewCell.identifier, for: indexPath) as? DiaryListCollectionViewCell else { return UICollectionViewCell() }
+
             cell.setData(openDiaryListArray[indexPath.row])
-            
             return cell
         }
         return UICollectionViewCell()
@@ -284,6 +294,14 @@ extension OpenDiaryViewController {
         OpenDiaryTotalListAPI.shared.getOpenDiaryTotalList { response in
             guard let openDiaryListArray = response?.data?.diaries else { return }
             self.openDiaryListArray = openDiaryListArray
+            self.diaryListCollectionView.reloadData()
+        }
+    }
+    
+    private func getOpenDiarySelectList(param: Int) {
+        OpenDiaryTotalListAPI.shared.getOpenDiarySelectList(category: param) { response in
+            guard let openDiarySelectList = response?.data?.diaries else { return }
+            self.openDiaryListArray = openDiarySelectList
             self.diaryListCollectionView.reloadData()
         }
     }
