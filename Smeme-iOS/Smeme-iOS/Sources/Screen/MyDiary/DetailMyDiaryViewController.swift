@@ -167,7 +167,7 @@ final class DetailMyDiaryViewController: UIViewController {
             $0.bottom.equalTo(view.safeAreaLayoutGuide)
         }
     }
-
+    
     private func calculateScrollViewHeightOffset(defaultHeight: CGFloat,
                                                  heightOfBottomView: CGFloat,
                                                  paddingOfNaviWithContent: CGFloat,
@@ -182,7 +182,6 @@ final class DetailMyDiaryViewController: UIViewController {
                                   y: 0,
                                   width: convertByWidthRatio(315),
                                   height: dummyLabel.calculateContentHeight(lineHeight: 21))
-
         let expectedLabelSize = dummyLabel.calculateContentHeight(lineHeight: 21)
         let heightOfDateLabel: CGFloat = 17
         let heightOfNotch: CGFloat = 44 + 34
@@ -194,7 +193,7 @@ final class DetailMyDiaryViewController: UIViewController {
         
         return isEnoughToScroll ? defaultHeight : (heightOfScrollView - contentSize)
     }
-
+    
     private func presentAlert() {
         let alert = UIAlertController(title: nil, message: "삭제하시겠습니까?", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "취소", style: .destructive))
