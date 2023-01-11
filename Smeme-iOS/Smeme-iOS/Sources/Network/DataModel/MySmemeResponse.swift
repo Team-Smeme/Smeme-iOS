@@ -7,9 +7,11 @@
 
 import Foundation
 
-// MARK: - DataClass
+struct MySmemeResponse: Codable {
+    let userInfo: [UserInfo]
+}
 
-struct userInfoResponse: Codable {
+struct UserInfo: Codable {
     let username: String
     let targetLang: String
     let bio: String
