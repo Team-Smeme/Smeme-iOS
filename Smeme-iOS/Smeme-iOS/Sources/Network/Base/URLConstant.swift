@@ -12,4 +12,5 @@ struct URLConstant {
     static let baseURL = ""
     
     static let totalMyDiaryListURL = "users/diaries"
+    static let openDiaryCategoryURL = "/categories"
 }

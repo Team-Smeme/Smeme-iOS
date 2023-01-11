@@ -92,7 +92,7 @@ final class ScrapStashViewController: UIViewController {
     }
     
     // MARK: - Custom Method
-    
+        
     private func setBackgroundColor() {
         view.backgroundColor = .background
         headerView.backgroundColor = .white
@@ -209,6 +209,19 @@ extension ScrapStashViewController: UICollectionViewDataSource {
         guard let listCell = collectionView.dequeueReusableCell(withReuseIdentifier: ScrapedListCollectionViewCell.identifier, for: indexPath)
                 as? ScrapedListCollectionViewCell else {return UICollectionViewCell() }
         listCell.dataBind(model: scrapedExpressionList[indexPath.item])
+        listCell.delegate = self
         return listCell
+    }
+}
+
+// MARK: - alertDelegate
+
+extension ScrapStashViewController: alertProtocol {
+    func presentAlert() {
+        let alert = UIAlertController(title: nil, message: "삭제하시겠습니까?", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "취소", style: .destructive) { action in
+        })
+        alert.addAction(UIAlertAction(title: "확인", style: .default))
+        self.present(alert, animated: true, completion: nil)
     }
 }
