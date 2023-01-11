@@ -176,6 +176,11 @@ final class ScrapStashViewController: UIViewController {
         let mySmemeVC = MySmemeViewController()
         self.navigationController?.pushViewController(mySmemeVC, animated: true)
     }
+    
+    private func setTapGesture() {
+        let tapGestureLikedDiaryLabel = UITapGestureRecognizer(target: self, action: #selector(likedDiaryLabelDidTap))
+        likedDiaryLabel.addGestureRecognizer(tapGestureLikedDiaryLabel)
+    }
 }
 
 // MARK: - UICollectionViewDelegateFlowLayout
