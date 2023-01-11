@@ -63,6 +63,7 @@ final class DetailOpenDiaryViewController: UIViewController {
                 solve it in person but sometimes some violence is needed... I was just the part of the process not The issue that requires the phone call we have to solve it in person but sometimes some violence is needed... (661)
                 """
         $0.isEditable = false
+        $0.isScrollEnabled = false
         $0.font = .body1
         $0.textColor = .black
         $0.sizeToFit()
