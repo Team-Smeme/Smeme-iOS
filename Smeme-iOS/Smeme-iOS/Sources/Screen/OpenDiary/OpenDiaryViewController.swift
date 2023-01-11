@@ -103,16 +103,16 @@ final class OpenDiaryViewController: UIViewController {
         setLayout()
         registerCell()
         setDelegate()
+        getOpenDiaryCategoryAPI()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        getOpenDiaryCategoryAPI()
+        getOpenDiaryTotalListAPI()
     }
     
     // MARK: - @objc
     
-    @objc
-    private func touchupNextButton() {
+    @objc private func touchupNextButton() {
         pushToMySmemeViewController()
         self.tabBarController?.tabBar.isHidden = false
 
@@ -207,7 +207,7 @@ extension OpenDiaryViewController: UICollectionViewDataSource {
         if collectionView == topicCollectionView {
             return openDiaryCategoryArray.count
         } else if collectionView == diaryListCollectionView {
-            return dummyList.count
+            return openDiaryListArray.count
         }
         return Int()
     }
@@ -224,7 +224,7 @@ extension OpenDiaryViewController: UICollectionViewDataSource {
             return cell
         } else if collectionView == diaryListCollectionView {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DiaryListCollectionViewCell.identifier, for: indexPath) as? DiaryListCollectionViewCell else { return UICollectionViewCell() }
-            cell.setData(dummyList[indexPath.item])
+            cell.setData(openDiaryListArray[indexPath.row])
             
             return cell
         }
@@ -283,6 +283,7 @@ extension OpenDiaryViewController {
     private func getOpenDiaryTotalListAPI() {
         OpenDiaryTotalListAPI.shared.getOpenDiaryTotalList { response in
             guard let openDiaryListArray = response?.data?.diaries else { return }
+            self.openDiaryListArray = openDiaryListArray
             self.diaryListCollectionView.reloadData()
         }
     }
