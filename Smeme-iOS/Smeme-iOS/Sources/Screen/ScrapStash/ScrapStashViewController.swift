@@ -191,10 +191,8 @@ final class ScrapStashViewController: UIViewController {
 extension ScrapStashViewController: UICollectionViewDelegateFlowLayout {
    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
         let width = convertByWidthRatio(314)
-        let height: CGFloat = setDummyLabel(scrapedExpressionList[indexPath.item].scrapedExpression) + 90
-        
+        let height: CGFloat = setDummyLabel(scrapStashList[indexPath.item].scrapedExpression) + 90
         return CGSize(width: width, height: height)
     }
         
