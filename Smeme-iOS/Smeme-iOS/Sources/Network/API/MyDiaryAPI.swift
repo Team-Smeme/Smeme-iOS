@@ -46,4 +46,10 @@ final class MyDiaryAPI {
             }
         }
     }
+    
+    func deleteMyDiaryList(diaryId: Int, completion: @escaping (GeneralResponse<MyDiaryDetailResponse>?) -> Void) {
+        myDiaryProvider.request(.deleteDiary(diaryId: diaryId)) { _ in
+            print("완료")
+        }
+    }
 }
