@@ -7,7 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		371D2867296EE5E500836DD4 /* ForeignDiaryAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371D2866296EE5E500836DD4 /* ForeignDiaryAPI.swift */; };
+		371D2867296EE5E500836DD4 /* PostDiaryAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371D2866296EE5E500836DD4 /* PostDiaryAPI.swift */; };
+		371D286B296EE7D000836DD4 /* PostDiaryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371D286A296EE7D000836DD4 /* PostDiaryService.swift */; };
+		371D286D296EE80600836DD4 /* PostDiaryResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371D286C296EE80600836DD4 /* PostDiaryResponse.swift */; };
+		371D2870296EF18500836DD4 /* RandomSubjectResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371D286F296EF18500836DD4 /* RandomSubjectResponse.swift */; };
 		37B33C80296BB032001E353D /* StepOneKoreanDiaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B33C7F296BB032001E353D /* StepOneKoreanDiaryViewController.swift */; };
 		37B33C8C296BF802001E353D /* StepTwoKoreanDiaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B33C8B296BF802001E353D /* StepTwoKoreanDiaryViewController.swift */; };
 		37D9E4962965A3160083A43F /* DiaryForeignViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D9E4952965A3160083A43F /* DiaryForeignViewController.swift */; };
@@ -83,7 +86,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		371D2866296EE5E500836DD4 /* ForeignDiaryAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForeignDiaryAPI.swift; sourceTree = "<group>"; };
+		371D2866296EE5E500836DD4 /* PostDiaryAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDiaryAPI.swift; sourceTree = "<group>"; };
+		371D286A296EE7D000836DD4 /* PostDiaryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDiaryService.swift; sourceTree = "<group>"; };
+		371D286C296EE80600836DD4 /* PostDiaryResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDiaryResponse.swift; sourceTree = "<group>"; };
+		371D286F296EF18500836DD4 /* RandomSubjectResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomSubjectResponse.swift; sourceTree = "<group>"; };
 		37B33C7F296BB032001E353D /* StepOneKoreanDiaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepOneKoreanDiaryViewController.swift; sourceTree = "<group>"; };
 		37B33C8B296BF802001E353D /* StepTwoKoreanDiaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepTwoKoreanDiaryViewController.swift; sourceTree = "<group>"; };
 		37D9E4952965A3160083A43F /* DiaryForeignViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryForeignViewController.swift; sourceTree = "<group>"; };
@@ -171,26 +177,36 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		371D2865296EE53600836DD4 /* ForeignDiary */ = {
+		371D2865296EE53600836DD4 /* PostDiary */ = {
 			isa = PBXGroup;
 			children = (
-				371D2866296EE5E500836DD4 /* ForeignDiaryAPI.swift */,
+				371D2866296EE5E500836DD4 /* PostDiaryAPI.swift */,
 			);
-			path = ForeignDiary;
+			path = PostDiary;
 			sourceTree = "<group>";
 		};
-		371D2868296EE64D00836DD4 /* ForeignDiary */ = {
+		371D2868296EE64D00836DD4 /* PostDiary */ = {
 			isa = PBXGroup;
 			children = (
+				371D286A296EE7D000836DD4 /* PostDiaryService.swift */,
 			);
-			path = ForeignDiary;
+			path = PostDiary;
 			sourceTree = "<group>";
 		};
-		371D2869296EE66300836DD4 /* ForeignDiary */ = {
+		371D2869296EE66300836DD4 /* PostDiary */ = {
 			isa = PBXGroup;
 			children = (
+				371D286C296EE80600836DD4 /* PostDiaryResponse.swift */,
 			);
-			path = ForeignDiary;
+			path = PostDiary;
+			sourceTree = "<group>";
+		};
+		371D286E296EF16E00836DD4 /* RandomSubject */ = {
+			isa = PBXGroup;
+			children = (
+				371D286F296EF18500836DD4 /* RandomSubjectResponse.swift */,
+			);
+			path = RandomSubject;
 			sourceTree = "<group>";
 		};
 		37B33C7E296BAFEF001E353D /* DiaryKorean */ = {
@@ -342,7 +358,8 @@
 		4A0501F5295CBD6F00E17386 /* DataModel */ = {
 			isa = PBXGroup;
 			children = (
-				371D2869296EE66300836DD4 /* ForeignDiary */,
+				371D286E296EF16E00836DD4 /* RandomSubject */,
+				371D2869296EE66300836DD4 /* PostDiary */,
 				4A050207295CBE6800E17386 /* DataModel.swift */,
 				A32753282966FE81004BB8A0 /* ScrapedExpressionModel.swift */,
 				6FFC2551296DDA54006132FE /* MyDiaryListResponse.swift */,
@@ -356,7 +373,7 @@
 		4A0501F6295CBD8700E17386 /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				371D2868296EE64D00836DD4 /* ForeignDiary */,
+				371D2868296EE64D00836DD4 /* PostDiary */,
 				6FFC2553296DDBC5006132FE /* MyDiaryService.swift */,
 				4AF21F57296DDC5600AE38F6 /* OpenDiaryCategoryService.swift */,
 			);
@@ -366,7 +383,7 @@
 		4A0501F7295CBD8C00E17386 /* API */ = {
 			isa = PBXGroup;
 			children = (
-				371D2865296EE53600836DD4 /* ForeignDiary */,
+				371D2865296EE53600836DD4 /* PostDiary */,
 				4A050203295CBE6000E17386 /* API.swift */,
 				6F46B887296DE2D300DF33C7 /* MyDiaryAPI.swift */,
 				4AF21F59296DDD5300AE38F6 /* OpenDiaryCategoryAPI.swift */,
@@ -625,6 +642,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6FD39875296AEFBD00C16B79 /* String+.swift in Sources */,
+				371D286B296EE7D000836DD4 /* PostDiaryService.swift in Sources */,
 				6FD3986F29699E9C00C16B79 /* MyDiaryCollectionViewCell.swift in Sources */,
 				6F1D77A2296C34C800C8FE39 /* ClearButtonTextField.swift in Sources */,
 				4AD78BB32965758100EEE509 /* ScrapStashViewController.swift in Sources */,
@@ -659,6 +677,7 @@
 				6FBAA7D12968830000A4190D /* IconWithTextButton.swift in Sources */,
 				4A0501FE295CBDED00E17386 /* NetworkConstant.swift in Sources */,
 				6F1D7798296BDF5E00C8FE39 /* LikeBottomView.swift in Sources */,
+				371D2870296EF18500836DD4 /* RandomSubjectResponse.swift in Sources */,
 				A327532B2967F961004BB8A0 /* ScrapedListCollectionViewCell.swift in Sources */,
 				4AF21F5C296DE40100AE38F6 /* OpenDiaryCategoryResponse.swift in Sources */,
 				4AD78BBC2965993F00EEE509 /* ViewModel.swift in Sources */,
@@ -666,6 +685,7 @@
 				6F46B888296DE2D300DF33C7 /* MyDiaryAPI.swift in Sources */,
 				6F33F1FA2968162E002A2FBA /* MyDiaryNavigationBar.swift in Sources */,
 				4AD78BC42966888B00EEE509 /* UIScreen+.swift in Sources */,
+				371D286D296EE80600836DD4 /* PostDiaryResponse.swift in Sources */,
 				4A050202295CBE1D00E17386 /* BaseTargetType.swift in Sources */,
 				4AD78B9E2965505100EEE509 /* Image.swift in Sources */,
 				A337793C296D545600A45764 /* APIConstant.swift in Sources */,
@@ -677,7 +697,7 @@
 				6FBAA7CD2968754B00A4190D /* MyDiaryDateBar.swift in Sources */,
 				4A4CB710295CAD7700F170CC /* SceneDelegate.swift in Sources */,
 				6FD39877296B2EA300C16B79 /* DetailMyDiaryViewController.swift in Sources */,
-				371D2867296EE5E500836DD4 /* ForeignDiaryAPI.swift in Sources */,
+				371D2867296EE5E500836DD4 /* PostDiaryAPI.swift in Sources */,
 				4A39E74C29670CAB00C48097 /* LoginViewController.swift in Sources */,
 				4A050200295CBE0A00E17386 /* URLConstant.swift in Sources */,
 			);
