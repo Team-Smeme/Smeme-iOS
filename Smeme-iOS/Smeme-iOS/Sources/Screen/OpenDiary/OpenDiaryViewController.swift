@@ -13,11 +13,9 @@ import Then
 final class OpenDiaryViewController: UIViewController {
     
     // MARK: - Property
-
-    let dummyList = ["heightByNotch", "The issue that requires the phone call we have to solve it in person but sometimes some violence is needed. I was just the part of the process", "The issue that requires the phone call we have to solve it in person but sometimes some violence is needed. I was just the part of the process The issue that requires the phone call we have to solve it in person but sometimes some violence is needed", "heightByNotch", "The issue that requires the phone call we have to solve it in person but sometimes some violence is needed. I was just the part of the process", "The issue that requires the phone call we have to solve it in person but sometimes some violence is needed. I was just the part of the process The issue that requires the phone call we have to solve it in person but sometimes some violence is needed"]
+    
     var openDiaryCategoryArray: [Category] = [Category(id: 0, content: "전체"), Category(id: 0, content: "일상")]
     var openDiaryListArray: [DiaryList] = []
-//    var openDiarySelectListArray: [DiaryList] = []
     
     // MARK: - UI Property
     
@@ -227,6 +225,7 @@ extension OpenDiaryViewController: UICollectionViewDataSource {
         if collectionView == topicCollectionView {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TopicCollectionViewCell.identifier, for: indexPath) as? TopicCollectionViewCell else { return UICollectionViewCell() }
             cell.setData(openDiaryCategoryArray[indexPath.item])
+            
             if indexPath.row == 0 {
                 cell.isSelected = true
                 collectionView.selectItem(at: indexPath, animated: false, scrollPosition: .init())
@@ -234,8 +233,8 @@ extension OpenDiaryViewController: UICollectionViewDataSource {
             return cell
         } else if collectionView == diaryListCollectionView {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DiaryListCollectionViewCell.identifier, for: indexPath) as? DiaryListCollectionViewCell else { return UICollectionViewCell() }
-
             cell.setData(openDiaryListArray[indexPath.row])
+            
             return cell
         }
         return UICollectionViewCell()
