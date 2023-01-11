@@ -10,11 +10,16 @@ import UIKit
 import SnapKit
 import Then
 
+protocol alertProtocol {
+    func presentAlert()
+}
+
 class ScrapedListCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Property
     
     static let identifier = "UICollectionViewCell"
+    var delegate: alertProtocol?
     
     // MARK: - UI Property
         
@@ -50,8 +55,9 @@ class ScrapedListCollectionViewCell: UICollectionViewCell {
         $0.isHidden = true
     }
     
-    private let deleteButton = UIButton().then {
+    private lazy var deleteButton = UIButton().then {
         $0.setImage(Constant.Image.icnDelete, for: .normal)
+        $0.addTarget(self, action: #selector(deleteButtonDidTap), for: .touchUpInside)
     }
     
     // MARK: - Life Cycle
@@ -70,8 +76,12 @@ class ScrapedListCollectionViewCell: UICollectionViewCell {
     
     // MARK: - @objc
     
-    // MARK: - Custom Method
+    @objc func deleteButtonDidTap() {
+        delegate?.presentAlert()
+    }
     
+    // MARK: - Custom Method
+
     private func setBackgroundColor() {
         backgroundColor = .smemeWhite
     }

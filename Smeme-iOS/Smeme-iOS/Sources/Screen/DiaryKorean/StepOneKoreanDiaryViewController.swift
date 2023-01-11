@@ -14,15 +14,24 @@ final class StepOneKoreanDiaryViewController: UIViewController {
     
     // MARK: - Property
     
+    var isTapped: Bool = true
+    
     // MARK: - UI Property
     
     private let naviView = UIView()
     private let languageView = UIView()
     
-    private let diaryTextView = UITextView().then {
-        $0.text = "오늘은 OPR을 공개한 날이었다. 안 떨릴 줄 알았는데 겁나 떨렸당. 사실 카페가 추웠어서 추워서 떠는 건지 긴장 돼서 떠는 건지 구분이 잘 안 갔다. 근데 사실 나는 다리 떠는 것도 습관이라 다리를 떨어서 몸이 떨린 걸 수도 있다."
-        $0.font = .body1
+    private lazy var diaryTextView = UITextView().then {
         $0.setLineSpacing()
+        $0.textColor = .gray400
+        $0.delegate = self
+    }
+    
+    private let placeHolderLabel = UILabel().then {
+        $0.text = "최소 10자 이상의 외국어를 작성해 주세요"
+        $0.textColor = .gray400
+        $0.font = .body1
+        $0.setTextWithLineHeight(lineHeight: 21)
     }
     
     private var randomSubjectView = RandomSubjectView().then {
@@ -71,8 +80,8 @@ final class StepOneKoreanDiaryViewController: UIViewController {
     
     private lazy var randomTopicButton: UIImageView = {
         let view = UIImageView(image: Constant.Image.btnRandomTopicCheckBoxDisabled)
-//        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(topikBTNDidTap())
-//        view.addGestureRecognizer(tapGesture)
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(topikBTNDidTap(_:)))
+        view.addGestureRecognizer(tapGesture)
         view.isUserInteractionEnabled = true
         return view
     }()
@@ -86,10 +95,15 @@ final class StepOneKoreanDiaryViewController: UIViewController {
         
         setBackgoundColor()
         setLayout()
-
+        
     }
     
     // MARK: - @objc
+    
+    @objc
+    func topikBTNDidTap(_ gesture: UITapGestureRecognizer) {
+        setRandomTopicButtonToggle()
+    }
     
     // MARK: - Custom Method
     
@@ -98,9 +112,10 @@ final class StepOneKoreanDiaryViewController: UIViewController {
     }
     
     private func setLayout() {
-        view.addSubviews([naviView, tipLabel, diaryTextView])
+        view.addSubviews([naviView, tipLabel, diaryTextView, bottomView])
         
         naviView.addSubviews([cancelButton, languageView, completeButton])
+        diaryTextView.addSubview(placeHolderLabel)
         languageView.addSubviews([languageLabel, stepLabel])
         bottomView.addSubviews([randomTopicButton, publicButton])
         
@@ -146,6 +161,10 @@ final class StepOneKoreanDiaryViewController: UIViewController {
             $0.bottom.equalToSuperview()
         }
         
+        placeHolderLabel.snp.makeConstraints {
+            $0.top.leading.equalToSuperview().inset(7)
+        }
+        
         bottomView.snp.makeConstraints {
             $0.bottom.leading.trailing.equalToSuperview()
             $0.height.equalTo(constraintByNotch(87, 53))
@@ -159,6 +178,72 @@ final class StepOneKoreanDiaryViewController: UIViewController {
         randomTopicButton.snp.makeConstraints {
             $0.centerY.equalTo(publicButton)
             $0.trailing.equalTo(publicButton.snp.leading).offset(-16)
+        }
+    }
+    
+    private func setRandomTopicButtonToggle() {
+        isTapped.toggle()
+        if isTapped {
+            randomTopicButton.image = Constant.Image.btnRandomTopicCheckBox
+            naviView.snp.remakeConstraints {
+                $0.top.leading.trailing.equalTo(view.safeAreaLayoutGuide)
+                $0.height.equalTo(convertByHeightRatio(66))
+            }
+
+            diaryTextView.snp.remakeConstraints {
+                $0.top.equalTo(naviView.snp.bottom).offset(9)
+                $0.leading.trailing.equalTo(view.safeAreaLayoutGuide).offset(30)
+                $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-30)
+                $0.bottom.equalTo(bottomView.snp.top)
+            }
+
+            randomSubjectView.removeFromSuperview()
+
+        } else {
+            randomTopicButton.image = Constant.Image.btnRandomTopicCheckBoxSelected
+            view.addSubview(randomSubjectView)
+
+            randomSubjectView.snp.remakeConstraints {
+                $0.top.equalTo(naviView.snp.bottom)
+                $0.leading.equalToSuperview()
+            }
+
+            diaryTextView.snp.remakeConstraints {
+                $0.top.equalTo(randomSubjectView.snp.bottom).offset(9)
+                $0.leading.trailing.equalTo(view.safeAreaLayoutGuide).offset(30)
+                $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-30)
+                $0.bottom.equalTo(bottomView.snp.top)
+            }
+        }
+    }
+}
+
+// MARK: - UITextViewDelegate
+
+extension StepOneKoreanDiaryViewController: UITextViewDelegate {
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.text.isEmpty {
+            placeHolderLabel.isHidden = false
+            textView.textColor = .smemeBlack
+            textView.font = .body1
+            textView.setLineSpacing()
+            textView.tintColor = .clear
+        }
+    }
+    
+    func textViewDidChange(_ textView: UITextView) {
+        if textView.text.isEmpty {
+            placeHolderLabel.isHidden = false
+            textView.textColor = .smemeBlack
+            textView.font = .body1
+            textView.setLineSpacing()
+            textView.tintColor = .clear
+        } else {
+            placeHolderLabel.isHidden = true
+            textView.textColor = .gray400
+            textView.font = .body1
+            textView.setLineSpacing()
+            textView.tintColor = .primary
         }
     }
 }

@@ -25,11 +25,17 @@ final class StepTwoKoreanDiaryViewController: UIViewController {
         //            $0.delegate = self
     }
     
-    private lazy var textView = UITextView().then {
+    private lazy var diaryTextView = UITextView().then {
+        $0.setLineSpacing()
+        $0.textColor = .gray400
+        $0.delegate = self
+    }
+    
+    private let placeHolderLabel = UILabel().then {
+        $0.text = "최소 10자 이상의 외국어를 작성해 주세요"
+        $0.textColor = .gray400
         $0.font = .body1
-        $0.text = "최소 10자이상의 외국어를 작성해주세요"
-        $0.textColor = .gray500
-        //            $0.delegate = self
+        $0.setTextWithLineHeight(lineHeight: 21)
     }
     
     private let backButton = UIButton().then {
@@ -99,11 +105,11 @@ final class StepTwoKoreanDiaryViewController: UIViewController {
     }
     
     private func setLayout() {
-        view.addSubviews([naviView, koreanDiaryTextView, grayUnderlineView, textView, bottomView])
+        view.addSubviews([naviView, koreanDiaryTextView, grayUnderlineView, diaryTextView, bottomView])
         
         naviView.addSubviews([backButton, languageView, completeButton])
+        diaryTextView.addSubview(placeHolderLabel)
         languageView.addSubviews([languageLabel, languageIcon, stepLabel])
-        
         bottomView.addSubviews([randomTopicButton, publicButton, hintButton])
         
         naviView.snp.makeConstraints {
@@ -156,10 +162,14 @@ final class StepTwoKoreanDiaryViewController: UIViewController {
             $0.height.equalTo(convertByHeightRatio(6))
         }
         
-        textView.snp.makeConstraints {
-            $0.top.equalTo(grayUnderlineView.snp.bottom)
-            $0.leading.trailing.equalTo(view.safeAreaLayoutGuide).offset(30)
+        diaryTextView.snp.makeConstraints {
+            $0.top.equalTo(grayUnderlineView.snp.bottom).offset(30)
+            $0.leading.trailing.equalToSuperview().inset(24)
             $0.bottom.equalToSuperview()
+        }
+        
+        placeHolderLabel.snp.makeConstraints {
+            $0.top.equalToSuperview().inset(7)
         }
         
         bottomView.snp.makeConstraints {
@@ -180,6 +190,36 @@ final class StepTwoKoreanDiaryViewController: UIViewController {
         hintButton.snp.makeConstraints {
             $0.top.equalToSuperview().offset(12)
             $0.leading.equalToSuperview().offset(22)
+        }
+    }
+}
+
+// MARK: - UITextViewDelegate
+
+extension StepTwoKoreanDiaryViewController: UITextViewDelegate {
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.text.isEmpty {
+            placeHolderLabel.isHidden = false
+            textView.textColor = .smemeBlack
+            textView.font = .body1
+            textView.setLineSpacing()
+            textView.tintColor = .clear
+        }
+    }
+    
+    func textViewDidChange(_ textView: UITextView) {
+        if textView.text.isEmpty {
+            placeHolderLabel.isHidden = false
+            textView.textColor = .smemeBlack
+            textView.font = .body1
+            textView.setLineSpacing()
+            textView.tintColor = .clear
+        } else {
+            placeHolderLabel.isHidden = true
+            textView.textColor = .gray400
+            textView.font = .body1
+            textView.setLineSpacing()
+            textView.tintColor = .primary
         }
     }
 }

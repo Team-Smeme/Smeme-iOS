@@ -15,6 +15,7 @@ final class TopicCollectionViewCell: UICollectionViewCell {
     // MARK: - Property
     
     static let identifier = "TopicCollectionViewCell"
+    var topicId: Int?
     
     override var isSelected: Bool {
         didSet {
@@ -62,7 +63,8 @@ final class TopicCollectionViewCell: UICollectionViewCell {
         backgroundColor = .gray100
     }
     
-    func setData(_ model: String) {
-        categoryLabel.text = model
+    func setData(_ model: Category) {
+        topicId = model.id
+        categoryLabel.text = model.content
     }
 }
