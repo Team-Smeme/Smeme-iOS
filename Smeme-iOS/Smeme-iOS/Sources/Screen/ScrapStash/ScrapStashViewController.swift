@@ -148,13 +148,6 @@ final class ScrapStashViewController: UIViewController {
         }
     }
     
-    var scrapedExpressionList: [ScrapedExpressionModel] = [
-        ScrapedExpressionModel(scrapedExpression: "component"),
-        ScrapedExpressionModel(scrapedExpression: "The Merge Wireframing Kit is another simple solution"),
-        ScrapedExpressionModel(scrapedExpression: "The Merge Wireframing Kit is another simple solution The Merge Wireframing Kit is another simple solutionThe Merge Wireframing Kit is another simple solution"),
-        ScrapedExpressionModel(scrapedExpression: "The Merge Wireframing Kit is another simple solution The Merge Wireframing Kit is another simple solutionThe Merge Wireframing Kit is another simple solution, The Merge Wireframing Kit is another simple solution The Merge Wireframing Kit is another simple solutionThe Merge Wireframing Kit is another simple solution")
-    ]
-    
     private func registerCell() {
         scrapedListCollectionView.register(ScrapedListCollectionViewCell.self, forCellWithReuseIdentifier: ScrapedListCollectionViewCell.identifier)
     }
