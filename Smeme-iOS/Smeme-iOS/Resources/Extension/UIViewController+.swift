@@ -77,7 +77,7 @@ extension UIViewController {
         let toastBackgroundView = UIView()
         toastBackgroundView.backgroundColor = .smemeBlack?.withAlphaComponent(0.7)
         toastBackgroundView.frame = CGRect(x: 0, y: 0, width: view.frame.width - 60, height: 50)
-        toastBackgroundView.center = CGPoint(x: view.frame.width/2, y: view.frame.height-73)
+        toastBackgroundView.center = CGPoint(x: view.frame.width/2, y: view.frame.height-123)
         toastBackgroundView.layer.cornerRadius = 6
 
         let toastLabel = UILabel()
