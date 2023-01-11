@@ -16,6 +16,7 @@ final class OpenDiaryViewController: UIViewController {
 
     let dummyList = ["heightByNotch", "The issue that requires the phone call we have to solve it in person but sometimes some violence is needed. I was just the part of the process", "The issue that requires the phone call we have to solve it in person but sometimes some violence is needed. I was just the part of the process The issue that requires the phone call we have to solve it in person but sometimes some violence is needed", "heightByNotch", "The issue that requires the phone call we have to solve it in person but sometimes some violence is needed. I was just the part of the process", "The issue that requires the phone call we have to solve it in person but sometimes some violence is needed. I was just the part of the process The issue that requires the phone call we have to solve it in person but sometimes some violence is needed"]
     var openDiaryCategoryArray: [Category] = [Category(id: 0, content: "전체"), Category(id: 0, content: "일상")]
+    var openDiaryListArray: [DiaryList] = []
     
     // MARK: - UI Property
     
@@ -54,7 +55,7 @@ final class OpenDiaryViewController: UIViewController {
     
     private lazy var myProfileButon = UIButton().then {
         $0.setImage(Constant.Image.icnProfile, for: .normal)
-                $0.addTarget(self, action: #selector(touchupNextButton), for: .touchUpInside)
+        $0.addTarget(self, action: #selector(touchupNextButton), for: .touchUpInside)
     }
     
     private lazy var languageStackView = UIStackView().then {
@@ -102,16 +103,16 @@ final class OpenDiaryViewController: UIViewController {
         setLayout()
         registerCell()
         setDelegate()
+        getOpenDiaryCategoryAPI()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        getOpenDiaryCategoryAPI()
+        getOpenDiaryTotalListAPI()
     }
     
     // MARK: - @objc
     
-    @objc
-    private func touchupNextButton() {
+    @objc private func touchupNextButton() {
         pushToMySmemeViewController()
         self.tabBarController?.tabBar.isHidden = false
 
@@ -206,7 +207,7 @@ extension OpenDiaryViewController: UICollectionViewDataSource {
         if collectionView == topicCollectionView {
             return openDiaryCategoryArray.count
         } else if collectionView == diaryListCollectionView {
-            return dummyList.count
+            return openDiaryListArray.count
         }
         return Int()
     }
@@ -223,7 +224,7 @@ extension OpenDiaryViewController: UICollectionViewDataSource {
             return cell
         } else if collectionView == diaryListCollectionView {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DiaryListCollectionViewCell.identifier, for: indexPath) as? DiaryListCollectionViewCell else { return UICollectionViewCell() }
-            cell.setData(dummyList[indexPath.item])
+            cell.setData(openDiaryListArray[indexPath.row])
             
             return cell
         }
@@ -276,6 +277,14 @@ extension OpenDiaryViewController {
             guard let openDiaryCategorydata = response?.data?.categories else { return }
             self.openDiaryCategoryArray += openDiaryCategorydata
             self.topicCollectionView.reloadData()
+        }
+    }
+    
+    private func getOpenDiaryTotalListAPI() {
+        OpenDiaryTotalListAPI.shared.getOpenDiaryTotalList { response in
+            guard let openDiaryListArray = response?.data?.diaries else { return }
+            self.openDiaryListArray = openDiaryListArray
+            self.diaryListCollectionView.reloadData()
         }
     }
 }

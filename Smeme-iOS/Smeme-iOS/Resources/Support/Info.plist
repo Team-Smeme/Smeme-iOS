@@ -2,8 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NATIVE_APP_KEY</key>
-	<string>$(NATIVE_APP_KEY)</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
@@ -20,6 +18,8 @@
 		<string>kakaokompassauth</string>
 		<string>kakaolink</string>
 	</array>
+	<key>NATIVE_APP_KEY</key>
+	<string>$(NATIVE_APP_KEY)</string>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>

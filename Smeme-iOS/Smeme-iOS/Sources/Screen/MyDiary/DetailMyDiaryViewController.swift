@@ -136,9 +136,13 @@ final class DetailMyDiaryViewController: UIViewController {
         }
         
         contentLabel.snp.makeConstraints {
+            let paddingContentWithContentView = calculateScrollViewHeightOffset(defaultHeight: 98,
+                                                                                heightOfBottomView: 54,
+                                                                                paddingOfNaviWithContent: 53,
+                                                                                paddingOfContentWithDate: 20)
             $0.top.equalTo(categoryBackgroundView.snp.bottom).offset(convertByHeightRatio(20))
             $0.leading.trailing.equalTo(contentView).inset(convertByWidthRatio(30))
-            $0.bottom.equalTo(contentView).offset(-calculateScrollViewHeightOffset(defaultHeight: 98, heightOfBottomView: 54, paddingOfNaviWithContent: 53, paddingOfContentWithDate: 20))
+            $0.bottom.equalTo(contentView).offset(-paddingContentWithContentView)
         }
         
         dateLabel.snp.makeConstraints {
@@ -151,19 +155,11 @@ final class DetailMyDiaryViewController: UIViewController {
             $0.bottom.equalTo(view.safeAreaLayoutGuide)
         }
     }
-    
-    // MARK: - objc
-    
-    @objc func backButtonDidTap(_ sender: UIButton) {
-        self.navigationController?.popViewController(animated: true)
-        self.tabBarController?.tabBar.isHidden = false
-    }
-    
-    @objc func optionButtonDidTap(_ sender: UIButton) {
-       
-    }
 
-    func calculateScrollViewHeightOffset(defaultHeight: CGFloat, heightOfBottomView: CGFloat, paddingOfNaviWithContent: CGFloat, paddingOfContentWithDate: CGFloat) -> CGFloat {
+    private func calculateScrollViewHeightOffset(defaultHeight: CGFloat,
+                                                 heightOfBottomView: CGFloat,
+                                                 paddingOfNaviWithContent: CGFloat,
+                                                 paddingOfContentWithDate: CGFloat) -> CGFloat {
         let dummyLabel = UILabel().then {
             $0.font = .body1
             $0.numberOfLines = 0
@@ -185,5 +181,26 @@ final class DetailMyDiaryViewController: UIViewController {
         contentScrollView.isScrollEnabled = isEnoughToScroll
         
         return isEnoughToScroll ? defaultHeight : (heightOfScrollView - contentSize)
+    }
+
+    private func presentAlert() {
+        let alert = UIAlertController(title: nil, message: "삭제하시겠습니까?", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "취소", style: .destructive))
+        alert.addAction(UIAlertAction(title: "확인", style: .default))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    // MARK: - objc
+    
+    @objc func backButtonDidTap(_ sender: UIButton) {
+        self.navigationController?.popViewController(animated: true)
+        self.tabBarController?.tabBar.isHidden = false
+    }
+    
+    @objc func optionButtonDidTap(_ sender: UIButton) {
+        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        actionSheet.addAction(UIAlertAction(title: "삭제", style: .default, handler: {_ in self.presentAlert()}))
+        actionSheet.addAction(UIAlertAction(title: "닫기", style: .cancel, handler: nil))
+        self.present(actionSheet, animated: true, completion: nil)
     }
 }

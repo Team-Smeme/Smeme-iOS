@@ -68,10 +68,11 @@ final class ScrapStashViewController: UIViewController {
         $0.backgroundColor = .primary
     }
     
-    private let likedDiaryLabel = UILabel().then {
+    private lazy var likedDiaryLabel = UILabel().then {
         $0.text = "추천한 일기"
         $0.textColor = .gray400
         $0.font = .subtitle2
+        $0.isUserInteractionEnabled = true
     }
         
     // MARK: - Life Cycle
@@ -82,13 +83,17 @@ final class ScrapStashViewController: UIViewController {
         setBackgroundColor()
         setLayout()
         registerCell()
+        setTapGesture()
     }
     
     // MARK: - @objc
     
-    @objc
-    private func touchupNextButton() {
+    @objc private func touchupNextButton() {
         pushToMySmemeViewController()
+    }
+    
+    @objc private func likedDiaryLabelDidTap() {
+        showToast(toastMessage: "더 나은 서비스를 위해 페이지 준비중에 있습니다.")
     }
     
     // MARK: - Custom Method
@@ -174,6 +179,11 @@ final class ScrapStashViewController: UIViewController {
     private func pushToMySmemeViewController() {
         let mySmemeVC = MySmemeViewController()
         self.navigationController?.pushViewController(mySmemeVC, animated: true)
+    }
+    
+    private func setTapGesture() {
+        let tapGestureLikedDiaryLabel = UITapGestureRecognizer(target: self, action: #selector(likedDiaryLabelDidTap))
+        likedDiaryLabel.addGestureRecognizer(tapGestureLikedDiaryLabel)
     }
 }
 

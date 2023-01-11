@@ -9,10 +9,12 @@ import Foundation
 
 struct URLConstant {
     
-    static let baseURL = ""
-    
     static let totalMyDiaryListURL = "users/diaries"
+    
+    // MARK: - OpenDiary
+    
     static let openDiaryCategoryURL = "/categories"
     static let postDiaryURL = "/diaries"
     static let randomSubjectURL = "/categories/topic"
+    static let openDiaryToTalListURL = "/diaries"
 }
