@@ -83,6 +83,7 @@
 		A37BFA2A296B48CE00F292B5 /* MySmemeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37BFA29296B48CE00F292B5 /* MySmemeViewController.swift */; };
 		A396F75A296F45A1003A2748 /* MySmemeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A396F759296F45A1003A2748 /* MySmemeResponse.swift */; };
 		A396F75C296F46FC003A2748 /* MySmemeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A396F75B296F46FC003A2748 /* MySmemeService.swift */; };
+		A396F75E296F48A4003A2748 /* MySmemeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A396F75D296F48A4003A2748 /* MySmemeAPI.swift */; };
 		A3B74F83296F1D8A00E2A0F7 /* OpenDiaryCategoryResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B74F82296F1D8A00E2A0F7 /* OpenDiaryCategoryResponse.swift */; };
 		A3B74F85296F1D9800E2A0F7 /* DetailOpenDiaryResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B74F84296F1D9800E2A0F7 /* DetailOpenDiaryResponse.swift */; };
 		A3B74F8A296F1E7100E2A0F7 /* ScrapStashService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B74F89296F1E7100E2A0F7 /* ScrapStashService.swift */; };
@@ -161,6 +162,7 @@
 		A37BFA29296B48CE00F292B5 /* MySmemeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySmemeViewController.swift; sourceTree = "<group>"; };
 		A396F759296F45A1003A2748 /* MySmemeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySmemeResponse.swift; sourceTree = "<group>"; };
 		A396F75B296F46FC003A2748 /* MySmemeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySmemeService.swift; sourceTree = "<group>"; };
+		A396F75D296F48A4003A2748 /* MySmemeAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySmemeAPI.swift; sourceTree = "<group>"; };
 		A3B74F82296F1D8A00E2A0F7 /* OpenDiaryCategoryResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenDiaryCategoryResponse.swift; sourceTree = "<group>"; };
 		A3B74F84296F1D9800E2A0F7 /* DetailOpenDiaryResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailOpenDiaryResponse.swift; sourceTree = "<group>"; };
 		A3B74F89296F1E7100E2A0F7 /* ScrapStashService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrapStashService.swift; sourceTree = "<group>"; };
@@ -409,6 +411,7 @@
 				371D2865296EE53600836DD4 /* PostDiary */,
 				4A9B4EFC296EE5160078FBBC /* OpenDiary */,
 				6F46B887296DE2D300DF33C7 /* MyDiaryAPI.swift */,
+				A396F75D296F48A4003A2748 /* MySmemeAPI.swift */,
 				A36843E3296F0B1100BA447F /* ScrapStash */,
 			);
 			path = API;
@@ -755,6 +758,7 @@
 				A3B74F85296F1D9800E2A0F7 /* DetailOpenDiaryResponse.swift in Sources */,
 				6F1D7798296BDF5E00C8FE39 /* LikeBottomView.swift in Sources */,
 				371D2870296EF18500836DD4 /* RandomSubjectResponse.swift in Sources */,
+				A396F75E296F48A4003A2748 /* MySmemeAPI.swift in Sources */,
 				A327532B2967F961004BB8A0 /* ScrapedListCollectionViewCell.swift in Sources */,
 				4AD78BBC2965993F00EEE509 /* ViewModel.swift in Sources */,
 				6FFC2554296DDBC5006132FE /* MyDiaryService.swift in Sources */,
