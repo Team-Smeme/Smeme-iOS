@@ -13,7 +13,7 @@ final class MyDiaryViewController: UIViewController {
     
     // MARK: - Property
     
-    var simpleDiaryList: [MyDiaryListResponse] = []
+    var simpleDiaryList: [MyDiary] = []
     var diaryList: [MyDiaryDetailResponse] = [MyDiaryDetailResponse(content: "The issue that requires the phone call we have to solve it in person but sometimes some violence is needed. I was just the part of the process not The issue that requires the phone call we have to solve it in person but sometimes some violence is needed...The issue that requires the phone call we have to solve it in person but sometimes some violence is needed. I was just the part of the process not The issue that requires the phone call we have to solve it in person but sometimes some violence is needed... I was just the part of the process not The issue that requires the phone call we have to solve it in person but sometimes some violence is needed was just the part of the process not The issue that requires the phone call we have to solve it in person but sometimes some violence is needed The issue that requires the phone call we have to solve it in person but sometimes some violence is needed. I was just the part of the process not The issue that requires the phone call we have to solve it in person but sometimes some violence is needed...The issue that requires the phone call we have to solve it in person but sometimes some violence is needed. I was just the part of the process not The issue that requires the phone call we have to solve it in person but sometimes some violence is needed... I was just the part of the process not The issue that requires the phone call we have to solve it in person but sometimes some violence is needed was just the part of the process not The issue that requires the phone call we have to solve it in person but sometimes some violence is needed", category: "일상", topic: "", isPublic: true, createdAt: "2022-12-24 12:30", likeCnt: 2), MyDiaryDetailResponse(content: "The issue that requires the phone call we have to solve it in person but sometimes some violence is needed. I was just the part of the process not The issue that requires the phone call we have to solve it in person but sometimes some violence is needed...The issue that requires the phone call we have to solve it in person but sometimes some violence is needed. I was just the part of the process not The issue that requires the ", category: "일상", topic: "", isPublic: true, createdAt: "2022-12-24 12:30", likeCnt: 5), MyDiaryDetailResponse(content: "The issue that requires the phone call we have to solve it in person but sometimes some violence is needed. I was just the part of the process ", category: "일상", topic: "", isPublic: true, createdAt: "2022-12-24 12:30", likeCnt: 4)]
     
     // MARK: - UI Property
@@ -167,23 +167,11 @@ extension MyDiaryViewController: UICollectionViewDelegateFlowLayout {
 // MARK: - Network
 
 extension MyDiaryViewController {
-     func totalMyDiaryListWithAPI() {
-         MyDiaryAPI.shared.totalMyDiaryList { response in
-             switch response {
-             case .success(let data):
-                 if let diaries = data as? [MyDiaryListResponse] {
-                     self.simpleDiaryList = diaries
-                     self.myDiaryCollectionView.reloadData()
-                 }
-             case .requestErr(let message):
-                 print("latestPhotosWithAPI - requestErr: \(message)")
-             case .pathErr:
-                 print("latestPhotosWithAPI - pathErr")
-             case .serverErr:
-                 print("latestPhotosWithAPI - serverErr")
-             case .networkFail:
-                 print("latestPhotosWithAPI - networkFail")
-             }
-         }
-     }
- }
+    func totalMyDiaryListWithAPI() {
+        MyDiaryAPI.shared.totalMyDiaryList { response in
+            guard let diariesData = response?.data?.diaries else { return }
+            self.simpleDiaryList = diariesData
+            self.myDiaryCollectionView.reloadData()
+        }
+    }
+}

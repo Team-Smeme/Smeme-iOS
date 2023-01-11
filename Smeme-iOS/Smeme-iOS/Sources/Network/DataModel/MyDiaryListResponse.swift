@@ -8,6 +8,10 @@
 import Foundation
 
 struct MyDiaryListResponse: Codable {
+    let diaries: [MyDiary]?
+}
+
+struct MyDiary: Codable {
     let diaryId: Int?
     let content, createdAt: String?
     let isPublic: Bool?
