@@ -279,4 +279,11 @@ extension OpenDiaryViewController {
             self.topicCollectionView.reloadData()
         }
     }
+    
+    private func getOpenDiaryTotalListAPI() {
+        OpenDiaryTotalListAPI.shared.getOpenDiaryTotalList { response in
+            guard let openDiaryListArray = response?.data?.diaries else { return }
+            self.diaryListCollectionView.reloadData()
+        }
+    }
 }
