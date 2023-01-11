@@ -14,6 +14,8 @@ final class DetailOpenDiaryViewController: UIViewController {
     
     // MARK: - Property
     
+    var editMenuInteraction: UIEditMenuInteraction?
+    
     // MARK: - UI Property
     
     private let headerView = UIView()
@@ -55,7 +57,7 @@ final class DetailOpenDiaryViewController: UIViewController {
         $0.configure(with: RandomSubjectViewModel(contentText: "오늘부터 딱 일주일 후! 설레는 크리스마스네요. 일주일 전부터 세워보는 나의 크리스마스 계획은?", isHiddenRefreshButton: true))
     }
     
-    private let diaryContentLabel = UITextView().then {
+    private lazy var diaryContentLabel = UITextView().then {
         $0.text = """
                 The issue that requires the phone call we have to solve it in person but sometimes some violence is needed. I was just the part of the process not The issue that requires the phone call we have to solve it in person.
                 
@@ -67,7 +69,7 @@ final class DetailOpenDiaryViewController: UIViewController {
         $0.isScrollEnabled = false
         $0.font = .body1
         $0.textColor = .black
-        $0.sizeToFit()
+        $0.tintColor = .primary
         $0.setLineSpacing()
     }
     
@@ -105,6 +107,8 @@ final class DetailOpenDiaryViewController: UIViewController {
         
         setBackgroundColor()
         setLayout()
+        setTabbarHidden()
+        setTextViewDelegate()
     }
     
     // MARK: - @objc
@@ -117,6 +121,14 @@ final class DetailOpenDiaryViewController: UIViewController {
     
     private func setBackgroundColor() {
         view.backgroundColor = .white
+    }
+    
+    private func setTabbarHidden() {
+        self.tabBarController?.tabBar.isHidden = true
+    }
+    
+    private func setTextViewDelegate() {
+        diaryContentLabel.delegate = self
     }
     
     private func setLayout() {
@@ -234,5 +246,26 @@ extension DetailOpenDiaryViewController {
         diaryContentScrollView.isScrollEnabled = isEnoughToScroll
         
         return isEnoughToScroll ? defaultHeight : (heightOfScrollView - contentSize)
+    }
+}
+
+// MARK: - UIEditMenuInteractionDelegate
+
+extension DetailOpenDiaryViewController: UIEditMenuInteractionDelegate, UITextViewDelegate {
+    func textView(_ textView: UITextView, editMenuForTextIn range: NSRange, suggestedActions: [UIMenuElement]) -> UIMenu? {
+        var additionalActions: [UIMenuElement] = []
+
+        if textView.selectedRange.length > 0 {
+            let highlightAction = [UIAction(title: "Smeme 🧡") { _ in
+                if !(textView.selectedTextRange?.isEmpty)! {
+                    let selectedString = textView.text(in: textView.selectedTextRange!)
+                    guard let selectedString = selectedString else { return }
+                    print("select : \(selectedString)")
+                }
+            }]
+            additionalActions.append(contentsOf: highlightAction)
+        }
+        
+        return UIMenu(children: additionalActions)
     }
 }
