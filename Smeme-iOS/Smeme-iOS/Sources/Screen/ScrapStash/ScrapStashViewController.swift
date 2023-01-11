@@ -68,10 +68,11 @@ final class ScrapStashViewController: UIViewController {
         $0.backgroundColor = .primary
     }
     
-    private let likedDiaryLabel = UILabel().then {
+    private lazy var likedDiaryLabel = UILabel().then {
         $0.text = "추천한 일기"
         $0.textColor = .gray400
         $0.font = .subtitle2
+        $0.isUserInteractionEnabled = true
     }
         
     // MARK: - Life Cycle
