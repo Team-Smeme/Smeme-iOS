@@ -136,9 +136,13 @@ final class DetailMyDiaryViewController: UIViewController {
         }
         
         contentLabel.snp.makeConstraints {
+            let paddingContentWithContentView = calculateScrollViewHeightOffset(defaultHeight: 98,
+                                                                                heightOfBottomView: 54,
+                                                                                paddingOfNaviWithContent: 53,
+                                                                                paddingOfContentWithDate: 20)
             $0.top.equalTo(categoryBackgroundView.snp.bottom).offset(convertByHeightRatio(20))
             $0.leading.trailing.equalTo(contentView).inset(convertByWidthRatio(30))
-            $0.bottom.equalTo(contentView).offset(-calculateScrollViewHeightOffset(defaultHeight: 98, heightOfBottomView: 54, paddingOfNaviWithContent: 53, paddingOfContentWithDate: 20))
+            $0.bottom.equalTo(contentView).offset(-paddingContentWithContentView)
         }
         
         dateLabel.snp.makeConstraints {
@@ -152,7 +156,10 @@ final class DetailMyDiaryViewController: UIViewController {
         }
     }
 
-    private func calculateScrollViewHeightOffset(defaultHeight: CGFloat, heightOfBottomView: CGFloat, paddingOfNaviWithContent: CGFloat, paddingOfContentWithDate: CGFloat) -> CGFloat {
+    private func calculateScrollViewHeightOffset(defaultHeight: CGFloat,
+                                                 heightOfBottomView: CGFloat,
+                                                 paddingOfNaviWithContent: CGFloat,
+                                                 paddingOfContentWithDate: CGFloat) -> CGFloat {
         let dummyLabel = UILabel().then {
             $0.font = .body1
             $0.numberOfLines = 0
