@@ -18,6 +18,7 @@ final class DetailMyDiaryViewController: UIViewController {
     
     private let contentView = UIView()
     private let contentScrollView = UIScrollView()
+    private var randomSubjectView = RandomSubjectView()
     
     private lazy var backButton = UIButton().then {
         $0.setImage(Constant.Image.icnPageLeft, for: .normal)
@@ -92,12 +93,14 @@ final class DetailMyDiaryViewController: UIViewController {
         contentLabel.setTextWithLineHeight(lineHeight: 21)
         dateLabel.text = myDiaryDetail.createdAt.getFormattedDate(format: "yyyy년 MM월 dd일 HH:mm")
         likeBottomView.configure(with: LikeBottomViewModel(likeCount: myDiaryDetail.likeCnt))
+        randomSubjectView.configure(with: RandomSubjectViewModel(contentText: myDiaryDetail.topic, isHiddenRefreshButton: true))
+        randomSubjectView.isHidden = myDiaryDetail.topic.isEmpty
     }
     
     private func setLayout() {
         view.addSubviews([contentScrollView, backButton, optionButton, likeBottomView])
         contentScrollView.addSubview(contentView)
-        contentView.addSubviews([categoryBackgroundView, categoryLabel, publicLabel, contentLabel, dateLabel])
+        contentView.addSubviews([categoryBackgroundView, categoryLabel, publicLabel, randomSubjectView, contentLabel, dateLabel])
         
         contentScrollView.snp.makeConstraints {
             $0.top.equalToSuperview().inset(headerHeightByNotch(66))
@@ -138,12 +141,18 @@ final class DetailMyDiaryViewController: UIViewController {
             $0.trailing.equalTo(contentView).inset(convertByWidthRatio(30))
         }
         
+        randomSubjectView.snp.makeConstraints {
+            $0.top.equalTo(categoryBackgroundView.snp.bottom).offset(convertByHeightRatio(20))
+            $0.leading.equalToSuperview()
+        }
+        
         contentLabel.snp.makeConstraints {
+            let paddingOfNaviWithContent = myDiaryDetail.topic.isEmpty ? 53 : 73 + randomSubjectView.frame.height
             let paddingContentWithContentView = calculateScrollViewHeightOffset(defaultHeight: 98,
                                                                                 heightOfBottomView: 54,
-                                                                                paddingOfNaviWithContent: 53,
+                                                                                paddingOfNaviWithContent: paddingOfNaviWithContent,
                                                                                 paddingOfContentWithDate: 20)
-            $0.top.equalTo(categoryBackgroundView.snp.bottom).offset(convertByHeightRatio(20))
+            $0.top.equalTo(randomSubjectView.snp.bottom).offset(convertByHeightRatio(20))
             $0.leading.trailing.equalTo(contentView).inset(convertByWidthRatio(30))
             $0.bottom.equalTo(contentView).offset(-paddingContentWithContentView)
         }
