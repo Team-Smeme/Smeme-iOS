@@ -67,9 +67,12 @@ final class DetailMyDiaryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        detailMyDiaryWithAPI(diaryId: 67)
         setBackgroundColor()
         setTabbarHidden()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        detailMyDiaryWithAPI(diaryId: diaryId)
     }
     
     // MARK: - Custom Method
