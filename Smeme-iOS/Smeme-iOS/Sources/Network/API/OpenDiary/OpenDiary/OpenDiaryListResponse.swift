@@ -1,5 +1,5 @@
 //
-//  DetailOpenDiaryResponse.swift
+//  OpenDiaryListResponse.swift
 //  Smeme-iOS
 //
 //  Created by 황찬미 on 2023/01/11.
@@ -7,22 +7,28 @@
 
 import Foundation
 
-struct DetailOpenDiaryResponse: Codable {
+// MARK: - OpenDiaryListResponse
+
+struct OpenDiaryListResponse: Codable {
+    let diaries: [DiaryList]
+}
+
+// MARK: - DiaryList
+
+struct DiaryList: Codable {
     let diaryID: Int
     let content: String
-    let category: String
-    let topic: String
     let likeCnt: Int
-    let createdAt: String
     let userID: Int
     let username: String
-    let bio: String
+    let isSeen: Bool
     let hasLike: Bool
-    
+    let createdAt: String
+
     enum CodingKeys: String, CodingKey {
         case diaryID = "diaryId"
-        case content, category, topic, likeCnt, createdAt
+        case content, likeCnt
         case userID = "userId"
-        case username, bio, hasLike
+        case username, isSeen, hasLike, createdAt
     }
 }

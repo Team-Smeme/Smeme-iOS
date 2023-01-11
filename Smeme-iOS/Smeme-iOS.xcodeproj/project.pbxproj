@@ -42,9 +42,9 @@
 		4A86C849296949A90089B15E /* DiaryListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A86C848296949A90089B15E /* DiaryListCollectionViewCell.swift */; };
 		4A92F62729672DD300D34B55 /* UITextView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A92F62629672DD300D34B55 /* UITextView+.swift */; };
 		4A9B4EF5296E96F20078FBBC /* OpenDiaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A9B4EF4296E96F20078FBBC /* OpenDiaryViewController.swift */; };
-		4A9B4EF8296EDBCD0078FBBC /* OpenDiaryListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A9B4EF7296EDBCD0078FBBC /* OpenDiaryListResponse.swift */; };
 		4A9B4EFB296EDD930078FBBC /* OpenDiaryListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A9B4EFA296EDD930078FBBC /* OpenDiaryListService.swift */; };
 		4A9B4EFE296EF17F0078FBBC /* OpenDiaryListAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A9B4EFD296EF17F0078FBBC /* OpenDiaryListAPI.swift */; };
+		4A9B4F05296EFBB00078FBBC /* OpenDiaryListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A9B4F04296EFBB00078FBBC /* OpenDiaryListResponse.swift */; };
 		4AD357B129681D2D002D25E4 /* TopicCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD357B029681D2D002D25E4 /* TopicCollectionViewCell.swift */; };
 		4AD78B9E2965505100EEE509 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD78B9D2965505100EEE509 /* Image.swift */; };
 		4AD78BA92965611B00EEE509 /* Pretendard-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4AD78BA72965611B00EEE509 /* Pretendard-Bold.otf */; };
@@ -111,9 +111,9 @@
 		4A86C848296949A90089B15E /* DiaryListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryListCollectionViewCell.swift; sourceTree = "<group>"; };
 		4A92F62629672DD300D34B55 /* UITextView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+.swift"; sourceTree = "<group>"; };
 		4A9B4EF4296E96F20078FBBC /* OpenDiaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenDiaryViewController.swift; sourceTree = "<group>"; };
-		4A9B4EF7296EDBCD0078FBBC /* OpenDiaryListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenDiaryListResponse.swift; sourceTree = "<group>"; };
 		4A9B4EFA296EDD930078FBBC /* OpenDiaryListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenDiaryListService.swift; sourceTree = "<group>"; };
 		4A9B4EFD296EF17F0078FBBC /* OpenDiaryListAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenDiaryListAPI.swift; sourceTree = "<group>"; };
+		4A9B4F04296EFBB00078FBBC /* OpenDiaryListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenDiaryListResponse.swift; sourceTree = "<group>"; };
 		4AD357B029681D2D002D25E4 /* TopicCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicCollectionViewCell.swift; sourceTree = "<group>"; };
 		4AD78B9D2965505100EEE509 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		4AD78BA72965611B00EEE509 /* Pretendard-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Bold.otf"; sourceTree = "<group>"; };
@@ -408,7 +408,7 @@
 			children = (
 				4AF21F5B296DE40100AE38F6 /* OpenDiaryCategoryResponse.swift */,
 				4A072451296E395E004C16BD /* DetailOpenDiaryResponse.swift */,
-				4A9B4EF7296EDBCD0078FBBC /* OpenDiaryListResponse.swift */,
+				4A9B4F04296EFBB00078FBBC /* OpenDiaryListResponse.swift */,
 			);
 			path = OpenDiary;
 			sourceTree = "<group>";
@@ -636,7 +636,7 @@
 				4A0501F0295CBADD00E17386 /* DesignSystem.swift in Sources */,
 				4A05020A295CBEE100E17386 /* UIView+.swift in Sources */,
 				A37BFA2A296B48CE00F292B5 /* MySmemeViewController.swift in Sources */,
-				4A9B4EF8296EDBCD0078FBBC /* OpenDiaryListResponse.swift in Sources */,
+				4A9B4F05296EFBB00078FBBC /* OpenDiaryListResponse.swift in Sources */,
 				4A0501FA295CBDB700E17386 /* GeneralResponse.swift in Sources */,
 				6F33F1F82965C8CA002A2FBA /* RandomSubjectView.swift in Sources */,
 				6FD39873296AE27400C16B79 /* MyDiaryDetailResponse.swift in Sources */,

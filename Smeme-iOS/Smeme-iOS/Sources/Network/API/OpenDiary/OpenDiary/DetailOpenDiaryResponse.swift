@@ -18,7 +18,7 @@ struct DetailOpenDiaryResponse: Codable {
     let username: String
     let bio: String
     let hasLike: Bool
-    
+
     enum CodingKeys: String, CodingKey {
         case diaryID = "diaryId"
         case content, category, topic, likeCnt, createdAt
