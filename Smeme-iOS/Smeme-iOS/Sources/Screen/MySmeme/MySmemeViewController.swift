@@ -153,6 +153,11 @@ final class MySmemeViewController: UIViewController {
         setBackgroundColor()
         setTabbarHidden()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        mySmemeWithAPI()
+    }
+    
     // MARK: - @objc
     
     @objc
