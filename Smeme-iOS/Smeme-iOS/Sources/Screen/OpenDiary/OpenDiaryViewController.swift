@@ -55,7 +55,7 @@ final class OpenDiaryViewController: UIViewController {
     
     private lazy var myProfileButon = UIButton().then {
         $0.setImage(Constant.Image.icnProfile, for: .normal)
-                $0.addTarget(self, action: #selector(touchupNextButton), for: .touchUpInside)
+        $0.addTarget(self, action: #selector(touchupNextButton), for: .touchUpInside)
     }
     
     private lazy var languageStackView = UIStackView().then {
