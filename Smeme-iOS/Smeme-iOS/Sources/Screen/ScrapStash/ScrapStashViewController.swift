@@ -18,6 +18,8 @@ final class ScrapStashViewController: UIViewController {
     
     final let scrapedLineSpacing: CGFloat = 12
     
+    var scrapStashList: [Scrap] = []
+    
     // MARK: - UI Property
         
     private lazy var scrapedListCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then {
