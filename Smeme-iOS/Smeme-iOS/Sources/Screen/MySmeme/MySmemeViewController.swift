@@ -329,3 +329,15 @@ final class MySmemeViewController: UIViewController {
         self.tabBarController?.tabBar.isHidden = true
     }
 }
+
+// MARK: - Network
+
+extension MySmemeViewController {
+    func mySmemeWithAPI() {
+        MySmemeAPI.shared.getMySmeme { response in
+            guard let mySmemeData = response?.data else { return }
+            self.userIdLabel.text = mySmemeData.username
+            self.userIntroLabel.text = mySmemeData.bio
+        }
+    }
+}
