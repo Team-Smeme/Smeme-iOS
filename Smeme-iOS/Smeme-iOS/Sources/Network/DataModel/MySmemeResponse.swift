@@ -8,10 +8,6 @@
 import Foundation
 
 struct MySmemeResponse: Codable {
-    let userInfo: [UserInfo]
-}
-
-struct UserInfo: Codable {
     let username: String
     let targetLang: String
     let bio: String
