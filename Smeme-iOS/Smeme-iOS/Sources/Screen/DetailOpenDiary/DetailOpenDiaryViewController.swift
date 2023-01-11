@@ -22,6 +22,7 @@ final class DetailOpenDiaryViewController: UIViewController {
     
     private lazy var backButton = UIButton().then {
         $0.setImage(Constant.Image.icnPageLeft, for: .normal)
+        $0.addTarget(self, action: #selector(backButtonDidTap), for: .touchUpInside)
     }
     
     private let topicView = UIView().then {
@@ -107,6 +108,10 @@ final class DetailOpenDiaryViewController: UIViewController {
     }
     
     // MARK: - @objc
+    
+    @objc func backButtonDidTap() {
+        self.navigationController?.popViewController(animated: true)
+    }
     
     // MARK: - Custom Method
     

@@ -205,6 +205,9 @@ extension OpenDiaryViewController: UICollectionViewDelegate {
             } else {
                 getOpenDiarySelectList(param: indexPath.row - 1)
             }
+        } else if collectionView == diaryListCollectionView {
+            let detailOpenDiaryViewController = DetailOpenDiaryViewController()
+            self.navigationController?.pushViewController(detailOpenDiaryViewController, animated: true)
         }
     }
 }
