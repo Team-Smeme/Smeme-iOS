@@ -207,13 +207,13 @@ extension ScrapStashViewController: UICollectionViewDelegateFlowLayout {
 
 extension ScrapStashViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return scrapedExpressionList.count
+        return scrapStashList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let listCell = collectionView.dequeueReusableCell(withReuseIdentifier: ScrapedListCollectionViewCell.identifier, for: indexPath)
                 as? ScrapedListCollectionViewCell else {return UICollectionViewCell() }
-        listCell.dataBind(model: scrapedExpressionList[indexPath.item])
+        listCell.dataBind(model: scrapStashList[indexPath.item])
         listCell.delegate = self
         return listCell
     }
