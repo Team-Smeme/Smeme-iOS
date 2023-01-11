@@ -28,7 +28,6 @@
 		4A050200295CBE0A00E17386 /* URLConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0501FF295CBE0A00E17386 /* URLConstant.swift */; };
 		4A050202295CBE1D00E17386 /* BaseTargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A050201295CBE1D00E17386 /* BaseTargetType.swift */; };
 		4A050204295CBE6000E17386 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A050203295CBE6000E17386 /* API.swift */; };
-		4A050208295CBE6800E17386 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A050207295CBE6800E17386 /* DataModel.swift */; };
 		4A05020A295CBEE100E17386 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A050209295CBEE100E17386 /* UIView+.swift */; };
 		4A05020C295CBF2900E17386 /* UIFont+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A05020B295CBF2900E17386 /* UIFont+.swift */; };
 		4A05020E295CBF2F00E17386 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A05020D295CBF2F00E17386 /* UIColor+.swift */; };
@@ -95,7 +94,6 @@
 		4A0501FF295CBE0A00E17386 /* URLConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLConstant.swift; sourceTree = "<group>"; };
 		4A050201295CBE1D00E17386 /* BaseTargetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTargetType.swift; sourceTree = "<group>"; };
 		4A050203295CBE6000E17386 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
-		4A050207295CBE6800E17386 /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 		4A050209295CBEE100E17386 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 		4A05020B295CBF2900E17386 /* UIFont+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+.swift"; sourceTree = "<group>"; };
 		4A05020D295CBF2F00E17386 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
@@ -321,7 +319,6 @@
 			isa = PBXGroup;
 			children = (
 				4A9B4EF6296EDB970078FBBC /* OpenDiary */,
-				4A050207295CBE6800E17386 /* DataModel.swift */,
 				A32753282966FE81004BB8A0 /* ScrapedExpressionModel.swift */,
 				6FFC2551296DDA54006132FE /* MyDiaryListResponse.swift */,
 				6FD39872296AE27400C16B79 /* MyDiaryDetailResponse.swift */,
@@ -638,7 +635,6 @@
 				4A072452296E395E004C16BD /* DetailOpenDiaryResponse.swift in Sources */,
 				4A92F62729672DD300D34B55 /* UITextView+.swift in Sources */,
 				37D9E4962965A3160083A43F /* DiaryForeignViewController.swift in Sources */,
-				4A050208295CBE6800E17386 /* DataModel.swift in Sources */,
 				6F1D779A296C0F8F00C8FE39 /* LoginProfileInfoViewController.swift in Sources */,
 				4A9B4EF5296E96F20078FBBC /* OpenDiaryViewController.swift in Sources */,
 				6FBAA7D12968830000A4190D /* IconWithTextButton.swift in Sources */,
