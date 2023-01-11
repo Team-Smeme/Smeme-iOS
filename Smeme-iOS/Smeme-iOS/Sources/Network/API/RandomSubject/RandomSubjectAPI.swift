@@ -9,7 +9,7 @@ import Foundation
 
 final class RandomSubjectAPI {
     static let shared: RandomSubjectAPI = RandomSubjectAPI
-    private let randomSubjectProvider = MoyaProvider<RandomSubjectService>(plugins: [MoyaLoggingPlugin()])
+    private let randomSubjectProvider = MoyaProvider<RandomSubjectService>(plugins: [MoyaLoggingPlugin()]
     
     private var randomSubjectData: GeneralResponse<RandomSubjectResponse>?)
     
@@ -19,15 +19,13 @@ final class RandomSubjectAPI {
             switch response {
             case .success(let result):
                 do {
-                    self.randomSubjectData = try
-                    result.map(GeneralResponse<RandomSubjectResponse>.self)
+                    self.randomSubjectData = try result.map(GeneralResponse<RandomSubjectResponse>.self)
                     completion(self.randomSubjectData)
                 } catch {
                     print(error)
                 }
             case .failure(let err):
                 print(err)
-                
             }
         }
     }

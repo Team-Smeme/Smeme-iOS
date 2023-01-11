@@ -15,7 +15,7 @@ extension RandomSubjectService: BaseTargetType {
     var path: String {
         switch self {
         case .randomSubject:
-            return URLConstant.randomsu
+            return URLConstant.randomSubjectURL
         }
     }
     

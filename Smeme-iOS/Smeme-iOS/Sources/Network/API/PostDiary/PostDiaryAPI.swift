@@ -8,9 +8,9 @@
 import Moya
 
 final class PostDiaryAPI {
-    static let shared = postDiaryAPI = PostDiaryAPI()
+    static let shared: postDiaryAPI = PostDiaryAPI()
     private let postDiaryProvider = MoyaProvider<PostDiaryService>
-    (plugins: [MoyaLoggingPlugin])
+    (plugins: [MoyaLoggingPlugin()]
     
     private var postDiaryData: GeneralResponse<PostDiaryResponse>?
     
