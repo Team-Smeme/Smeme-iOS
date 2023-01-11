@@ -5,16 +5,16 @@
 //  Created by Joon Baek on 2023/01/11.
 //
 
-import Foundation
+import Moya
 
 final class RandomSubjectAPI {
-    static let shared: RandomSubjectAPI = RandomSubjectAPI
-    private let randomSubjectProvider = MoyaProvider<RandomSubjectService>(plugins: [MoyaLoggingPlugin()]
+    static let shared: RandomSubjectAPI = RandomSubjectAPI()
+    private let randomSubjectProvider = MoyaProvider<RandomSubjectService>(plugins: [MoyaLoggingPlugin()])
     
-    private var randomSubjectData: GeneralResponse<RandomSubjectResponse>?)
+    private var randomSubjectData: GeneralResponse<RandomSubjectResponse>?
     
     func getRandomSubject(completion: @escaping
-                          (RandomSubjectResponse<OpenDiaryCategoryResponse>?) -> Void) {
+                          (GeneralResponse<RandomSubjectResponse>?) -> Void) {
         randomSubjectProvider.request(.randomSubject) { response in
             switch response {
             case .success(let result):

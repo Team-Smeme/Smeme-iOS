@@ -5,7 +5,7 @@
 //  Created by Joon Baek on 2023/01/11.
 //
 
-import Foundation
+import Moya
 
 enum RandomSubjectService {
     case randomSubject

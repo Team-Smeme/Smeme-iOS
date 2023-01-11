@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct DataClass: Codable {
+struct RandomSubjectResponse: Codable {
     let id: Int
     let content: String
 }
