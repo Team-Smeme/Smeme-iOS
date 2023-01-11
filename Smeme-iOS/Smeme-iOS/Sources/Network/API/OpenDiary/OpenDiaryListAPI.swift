@@ -31,24 +31,6 @@ final class OpenDiaryTotalListAPI {
         }
     }
     
-    // MARK: - getOpenDiaryDailyList
-    
-    func getOpenDiaryDailyList(completion: @escaping (GeneralResponse<OpenDiaryListResponse>?) -> Void) {
-        openDiaryListProvider.request(.openDiaryDailyList) { response in
-            switch response {
-            case .success(let result):
-                do {
-                    self.openDiaryListTotalData = try result.map(GeneralResponse<OpenDiaryListResponse>.self)
-                    completion(self.openDiaryListTotalData)
-                } catch {
-                    print(error)
-                }
-            case .failure(let err):
-                print(err)
-            }
-        }
-    }
-    
     // MARK: - getOpenDiarySelectList
     
     func getOpenDiarySelectList(category: Int, completion: @escaping (GeneralResponse<OpenDiaryListResponse>?) -> Void) {
