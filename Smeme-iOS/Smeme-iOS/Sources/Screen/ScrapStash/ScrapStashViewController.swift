@@ -95,6 +95,7 @@ final class ScrapStashViewController: UIViewController {
     @objc private func likedDiaryLabelDidTap() {
         showToast(toastMessage: "더 나은 서비스를 위해 페이지 준비중에 있습니다.")
     }
+    
     // MARK: - Custom Method
         
     private func setBackgroundColor() {
