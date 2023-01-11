@@ -63,6 +63,9 @@ final class MyDiaryViewController: UIViewController {
         setLayout()
         registerCell()
         setDelegate()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         totalMyDiaryListWithAPI()
     }
     
@@ -141,7 +144,10 @@ extension MyDiaryViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MyDiaryCollectionViewCell.identifier, for: indexPath) as? MyDiaryCollectionViewCell else { return UICollectionViewCell() }
-        cell.setData(content: simpleDiaryList[indexPath.row].content!, time: simpleDiaryList[indexPath.row].createdAt!)
+        if let content = simpleDiaryList[indexPath.row].content,
+           let time = simpleDiaryList[indexPath.row].createdAt {
+            cell.setData(content: content, time: time)
+        }
         
         return cell
     }

@@ -9,14 +9,12 @@ import Moya
 
 enum MyDiaryService {
     case totalMyDiary
-    // case detailMydiary(diaryId: Int)
 }
 
 extension MyDiaryService: BaseTargetType {
     var path: String {
         switch self {
         case .totalMyDiary:
-            return "/users/diaries"
             return URLConstant.totalMyDiaryListURL
         }
     }
