@@ -235,3 +235,15 @@ extension ScrapStashViewController: alertProtocol {
         self.present(alert, animated: true, completion: nil)
     }
 }
+
+// MARK: - Network
+
+extension ScrapStashViewController {
+    func scrapStashListWithAPI() {
+        ScrapStashAPI.shared.getScrapStashList { response in
+            guard let scrapListData = response?.data?.scraps else { return }
+            self.scrapStashList = scrapListData
+            self.scrapedListCollectionView.reloadData()
+        }
+    }
+}
