@@ -27,7 +27,6 @@
 		4A0501FE295CBDED00E17386 /* NetworkConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0501FD295CBDED00E17386 /* NetworkConstant.swift */; };
 		4A050200295CBE0A00E17386 /* URLConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0501FF295CBE0A00E17386 /* URLConstant.swift */; };
 		4A050202295CBE1D00E17386 /* BaseTargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A050201295CBE1D00E17386 /* BaseTargetType.swift */; };
-		4A050204295CBE6000E17386 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A050203295CBE6000E17386 /* API.swift */; };
 		4A05020A295CBEE100E17386 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A050209295CBEE100E17386 /* UIView+.swift */; };
 		4A05020C295CBF2900E17386 /* UIFont+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A05020B295CBF2900E17386 /* UIFont+.swift */; };
 		4A05020E295CBF2F00E17386 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A05020D295CBF2F00E17386 /* UIColor+.swift */; };
@@ -45,6 +44,7 @@
 		4A9B4EF5296E96F20078FBBC /* OpenDiaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A9B4EF4296E96F20078FBBC /* OpenDiaryViewController.swift */; };
 		4A9B4EF8296EDBCD0078FBBC /* OpenDiaryListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A9B4EF7296EDBCD0078FBBC /* OpenDiaryListResponse.swift */; };
 		4A9B4EFB296EDD930078FBBC /* OpenDiaryListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A9B4EFA296EDD930078FBBC /* OpenDiaryListService.swift */; };
+		4A9B4EFE296EF17F0078FBBC /* OpenDiaryListAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A9B4EFD296EF17F0078FBBC /* OpenDiaryListAPI.swift */; };
 		4AD357B129681D2D002D25E4 /* TopicCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD357B029681D2D002D25E4 /* TopicCollectionViewCell.swift */; };
 		4AD78B9E2965505100EEE509 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD78B9D2965505100EEE509 /* Image.swift */; };
 		4AD78BA92965611B00EEE509 /* Pretendard-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4AD78BA72965611B00EEE509 /* Pretendard-Bold.otf */; };
@@ -94,7 +94,6 @@
 		4A0501FD295CBDED00E17386 /* NetworkConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConstant.swift; sourceTree = "<group>"; };
 		4A0501FF295CBE0A00E17386 /* URLConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLConstant.swift; sourceTree = "<group>"; };
 		4A050201295CBE1D00E17386 /* BaseTargetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTargetType.swift; sourceTree = "<group>"; };
-		4A050203295CBE6000E17386 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		4A050209295CBEE100E17386 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 		4A05020B295CBF2900E17386 /* UIFont+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+.swift"; sourceTree = "<group>"; };
 		4A05020D295CBF2F00E17386 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
@@ -114,6 +113,7 @@
 		4A9B4EF4296E96F20078FBBC /* OpenDiaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenDiaryViewController.swift; sourceTree = "<group>"; };
 		4A9B4EF7296EDBCD0078FBBC /* OpenDiaryListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenDiaryListResponse.swift; sourceTree = "<group>"; };
 		4A9B4EFA296EDD930078FBBC /* OpenDiaryListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenDiaryListService.swift; sourceTree = "<group>"; };
+		4A9B4EFD296EF17F0078FBBC /* OpenDiaryListAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenDiaryListAPI.swift; sourceTree = "<group>"; };
 		4AD357B029681D2D002D25E4 /* TopicCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicCollectionViewCell.swift; sourceTree = "<group>"; };
 		4AD78B9D2965505100EEE509 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		4AD78BA72965611B00EEE509 /* Pretendard-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Bold.otf"; sourceTree = "<group>"; };
@@ -340,9 +340,8 @@
 		4A0501F7295CBD8C00E17386 /* API */ = {
 			isa = PBXGroup;
 			children = (
-				4A050203295CBE6000E17386 /* API.swift */,
+				4A9B4EFC296EE5160078FBBC /* OpenDiary */,
 				6F46B887296DE2D300DF33C7 /* MyDiaryAPI.swift */,
-				4AF21F59296DDD5300AE38F6 /* OpenDiaryCategoryAPI.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -419,6 +418,15 @@
 			children = (
 				4AF21F57296DDC5600AE38F6 /* OpenDiaryCategoryService.swift */,
 				4A9B4EFA296EDD930078FBBC /* OpenDiaryListService.swift */,
+			);
+			path = OpenDiary;
+			sourceTree = "<group>";
+		};
+		4A9B4EFC296EE5160078FBBC /* OpenDiary */ = {
+			isa = PBXGroup;
+			children = (
+				4AF21F59296DDD5300AE38F6 /* OpenDiaryCategoryAPI.swift */,
+				4A9B4EFD296EF17F0078FBBC /* OpenDiaryListAPI.swift */,
 			);
 			path = OpenDiary;
 			sourceTree = "<group>";
@@ -618,11 +626,11 @@
 			files = (
 				6FD39875296AEFBD00C16B79 /* String+.swift in Sources */,
 				6FD3986F29699E9C00C16B79 /* MyDiaryCollectionViewCell.swift in Sources */,
+				4A9B4EFE296EF17F0078FBBC /* OpenDiaryListAPI.swift in Sources */,
 				6F1D77A2296C34C800C8FE39 /* ClearButtonTextField.swift in Sources */,
 				4AD78BB32965758100EEE509 /* ScrapStashViewController.swift in Sources */,
 				4AF21F5A296DDD5300AE38F6 /* OpenDiaryCategoryAPI.swift in Sources */,
 				4AD78BAF2965756800EEE509 /* MyDiaryViewController.swift in Sources */,
-				4A050204295CBE6000E17386 /* API.swift in Sources */,
 				4A05020E295CBF2F00E17386 /* UIColor+.swift in Sources */,
 				6FFC2552296DDA54006132FE /* MyDiaryListResponse.swift in Sources */,
 				4A0501F0295CBADD00E17386 /* DesignSystem.swift in Sources */,
