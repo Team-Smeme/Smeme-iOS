@@ -87,8 +87,7 @@ final class ScrapStashViewController: UIViewController {
     
     // MARK: - @objc
     
-    @objc
-    private func touchupNextButton() {
+    @objc private func touchupNextButton() {
         pushToMySmemeViewController()
     }
     
