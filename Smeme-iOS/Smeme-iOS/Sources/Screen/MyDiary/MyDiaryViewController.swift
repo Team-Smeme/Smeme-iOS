@@ -14,18 +14,15 @@ final class MyDiaryViewController: UIViewController {
     // MARK: - Property
     
     var simpleDiaryList: [MyDiary] = []
-    var diaryList: [MyDiaryDetailResponse] = [MyDiaryDetailResponse(content: "The issue that requires the phone call we have to solve it in person but sometimes some violence is needed. I was just the part of the process not The issue that requires the phone call we have to solve it in person but sometimes some violence is needed...The issue that requires the phone call we have to solve it in person but sometimes some violence is needed. I was just the part of the process not The issue that requires the phone call we have to solve it in person but sometimes some violence is needed... I was just the part of the process not The issue that requires the phone call we have to solve it in person but sometimes some violence is needed was just the part of the process not The issue that requires the phone call we have to solve it in person but sometimes some violence is needed The issue that requires the phone call we have to solve it in person but sometimes some violence is needed. I was just the part of the process not The issue that requires the phone call we have to solve it in person but sometimes some violence is needed...The issue that requires the phone call we have to solve it in person but sometimes some violence is needed. I was just the part of the process not The issue that requires the phone call we have to solve it in person but sometimes some violence is needed... I was just the part of the process not The issue that requires the phone call we have to solve it in person but sometimes some violence is needed was just the part of the process not The issue that requires the phone call we have to solve it in person but sometimes some violence is needed", category: "일상", topic: "", isPublic: true, createdAt: "2022-12-24 12:30", likeCnt: 2), MyDiaryDetailResponse(content: "The issue that requires the phone call we have to solve it in person but sometimes some violence is needed. I was just the part of the process not The issue that requires the phone call we have to solve it in person but sometimes some violence is needed...The issue that requires the phone call we have to solve it in person but sometimes some violence is needed. I was just the part of the process not The issue that requires the ", category: "일상", topic: "", isPublic: true, createdAt: "2022-12-24 12:30", likeCnt: 5), MyDiaryDetailResponse(content: "The issue that requires the phone call we have to solve it in person but sometimes some violence is needed. I was just the part of the process ", category: "일상", topic: "", isPublic: true, createdAt: "2022-12-24 12:30", likeCnt: 4)]
+    var diaryList: [MyDiaryDetailResponse] = []
     
     // MARK: - UI Property
     
     private let headerView = UIView().then {
         $0.makeRoundCorner(cornerRadius: 30)
         $0.layer.maskedCorners = CACornerMask(arrayLiteral: .layerMinXMaxYCorner, .layerMaxXMaxYCorner)
-        $0.layer.masksToBounds = false
-        $0.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.06).cgColor
-        $0.layer.shadowOffset = CGSize(width: 0, height: 4)
-        $0.layer.shadowRadius = 26
-        $0.layer.shadowOpacity = 1
+        $0.backgroundColor = .white
+        $0.addShadow(shadowColor: .black, shadowOpacity: 0.06, shadowRadius: 26, offset: CGSize(width: 0, height: 4))
     }
     
     private lazy var myDiaryCollectionView: UICollectionView = {
@@ -48,7 +45,7 @@ final class MyDiaryViewController: UIViewController {
             self.navigationController?.pushViewController(mySmemeVC, animated: true)
         }
     }
-    
+      
     private let dateBar = MyDiaryDateBar().then {
         $0.increaseDate = {
             print("날짜 증가")
@@ -95,14 +92,15 @@ final class MyDiaryViewController: UIViewController {
     }
     
     private func setLayout() {
-        view.addSubviews([notchWhiteView, headerView, navigationBar, dateBar, myDiaryCollectionView, floatingButton])
+        view.addSubviews([notchWhiteView, headerView, myDiaryCollectionView, floatingButton])
+        headerView.addSubviews([navigationBar, dateBar])
         
-        notchWhiteView.snp.makeConstraints { /// 노치부분 하얗게 해주기 위해서 선언
+        notchWhiteView.snp.makeConstraints {
             $0.top.leading.trailing.equalToSuperview()
             $0.height.equalTo(100)
         }
         
-        headerView.snp.makeConstraints { /// 상단 notchWhiteView, navigationBar, dateBar를 묶어줌, 그림자를 위해서 넣었습니다 안넣으면 그림자가 dateBar에만 적용되어 중간이 짤리더라구요!
+        headerView.snp.makeConstraints {
             $0.top.leading.trailing.equalToSuperview()
             $0.bottom.equalTo(dateBar.snp.bottom)
         }
@@ -127,8 +125,6 @@ final class MyDiaryViewController: UIViewController {
             $0.leading.trailing.equalToSuperview()
             $0.bottom.equalToSuperview().inset(16)
         }
-        
-        view.bringSubviewToFront(self.dateBar)
     }
     
     private func registerCell() {
