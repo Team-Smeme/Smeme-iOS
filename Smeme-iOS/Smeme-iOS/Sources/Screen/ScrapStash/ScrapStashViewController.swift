@@ -217,6 +217,7 @@ extension ScrapStashViewController: UICollectionViewDataSource {
                 as? ScrapedListCollectionViewCell else {return UICollectionViewCell() }
         listCell.dataBind(model: scrapStashList[indexPath.item])
         listCell.delegate = self
+        
         return listCell
     }
 }
