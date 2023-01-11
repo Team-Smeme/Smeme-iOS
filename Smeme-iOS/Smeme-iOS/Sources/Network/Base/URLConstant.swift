@@ -10,4 +10,6 @@ import Foundation
 struct URLConstant {
     
     static let baseURL = ""
+    
+    static let totalMyDiaryListURL = "users/diaries"
 }

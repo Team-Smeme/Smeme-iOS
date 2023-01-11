@@ -17,6 +17,7 @@ extension MyDiaryService: BaseTargetType {
         switch self {
         case .totalMyDiary:
             return "/users/diaries"
+            return URLConstant.totalMyDiaryListURL
         }
     }
     

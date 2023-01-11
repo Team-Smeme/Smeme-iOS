@@ -12,38 +12,40 @@ import Moya
 public class MyDiaryAPI {
     
     static let shared = MyDiaryAPI()
-    var myDiaryProvider = MoyaProvider<MyDiaryService>()
-
-    public init() { }
+    private let myDiaryProvider = MoyaProvider<MyDiaryService>(plugins: [MoyaLoggingPlugin()])
     
-    func totalMyDiaryList(completion: @escaping (NetworkResult<Any>) -> Void) {
-        myDiaryProvider.request(.totalMyDiary) { (result) in
-            switch result {
-            case .success(let response):
-                let statusCode = response.statusCode
-                let data = response.data
-                let networkResult = self.judgeTotalMyDiaryStatus(by: statusCode, data)
-                completion(networkResult)
+    private var myDiaryListData: GeneralArrayResponse<MyDiaryService>?
+    private var myDiaryDetailData: General   Response<MyDiaryService>?
+    
+    func totalMyDiaryList(completion: @escaping (GeneralResponse<OpenDiaryViewController>?) -> Void) {
+        myDiaryProvider.request(.totalMyDiary) { response in
+            switch response {
+            case .success(let result):
+                do {
+                    self.myDiaryListData = try result.map(GeneralArrayResponse<MyDiaryListResponse>.self)
+                    completion(self.myDiaryListData)
+                } catch {
+                    print(error)
+                }
             case .failure(let err):
                 print(err)
             }
         }
     }
     
-    private func judgeTotalMyDiaryStatus(by statusCode: Int, _ data: Data) -> NetworkResult<Any> {
-        let decoder = JSONDecoder()
-        guard let decodedData = try? decoder.decode(GeneralArrayResponse<MyDiaryListResponse>.self, from: data)
-        else { return .pathErr }
-        
-        switch statusCode {
-        case 200:
-            return .success(decodedData.data ?? "None-Data")
-        case 400..<500:
-            return .requestErr(decodedData.message ?? "None-Message")
-        case 500:
-            return .serverErr
-        default:
-            return .networkFail
+    func detailMyDiary(completion: @escaping (NetworkResult<Any>) -> Void) {
+        myDiaryProvider.request(.detailMyDiary) { (result) in
+            switch result {
+            case .success(let result):
+                do {
+                    self.myDiaryListData = try result.map(GeneralArrayResponse<MyDiaryListResponse>.self)
+                    completion(self.myDiaryListData)
+                } catch {
+                    print(error)
+                }
+            case .failure(let err):
+                print(err)
+            }
         }
     }
 }
