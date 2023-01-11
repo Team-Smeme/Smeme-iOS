@@ -11,14 +11,14 @@ final class ScrapStashAPI {
     static let shared: ScrapStashAPI = ScrapStashAPI()
     private let scrapStashProvider = MoyaProvider<ScrapStashService>(plugins: [MoyaLoggingPlugin()])
     
-    private var scrapStashData: GeneralResponse<ScrapedExpressionResponse>?
+    private var scrapStashData: GeneralResponse<ScrapedStashResponse>?
     
-    func getScrapStashList(completion: @escaping (GeneralResponse<ScrapedExpressionResponse>?) -> Void) {
+    func getScrapStashList(completion: @escaping (GeneralResponse<ScrapedStashResponse>?) -> Void) {
         scrapStashProvider.request(.scrapStashList) { response in
             switch response {
             case .success(let result):
                 do {
-                    self.scrapStashData = try result.map(GeneralResponse<ScrapedExpressionResponse>.self)
+                    self.scrapStashData = try result.map(GeneralResponse<ScrapedStashResponse>.self)
                     completion(self.scrapStashData)
                 } catch {
                     print(error)
