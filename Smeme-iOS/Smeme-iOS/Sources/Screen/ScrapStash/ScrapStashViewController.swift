@@ -83,6 +83,7 @@ final class ScrapStashViewController: UIViewController {
         setBackgroundColor()
         setLayout()
         registerCell()
+        setTapGesture()
     }
     
     // MARK: - @objc
