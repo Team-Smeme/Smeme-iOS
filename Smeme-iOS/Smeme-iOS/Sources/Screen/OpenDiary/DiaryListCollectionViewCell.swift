@@ -97,7 +97,11 @@ final class DiaryListCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    func setData(_ model: String) {
-        diaryTextLabel.text = limitTextCount(diaryText: model, limitNumber: 145)
+    func setData(_ model: DiaryList) {
+        diaryTextLabel.text = limitTextCount(diaryText: model.content, limitNumber: 145)
+        likeCountLabel.text = String(model.likeCnt)
+        nicknameLabel.text = model.username
+//        hasLike
+//        isSeen
     }
 }
