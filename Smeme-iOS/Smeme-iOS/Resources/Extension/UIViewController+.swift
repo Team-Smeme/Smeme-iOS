@@ -75,7 +75,7 @@ extension UIViewController {
     /// 토스트 메세지 메서드
     func showToast(toastMessage: String) {
         let toastBackgroundView = UIView()
-        toastBackgroundView.backgroundColor = .smemeBlack?.withAlphaComponent(0.7)
+        toastBackgroundView.backgroundColor = .secondary
         toastBackgroundView.frame = CGRect(x: 0, y: 0, width: view.frame.width - 60, height: 50)
         toastBackgroundView.center = CGPoint(x: view.frame.width/2, y: view.frame.height-123)
         toastBackgroundView.layer.cornerRadius = 6
