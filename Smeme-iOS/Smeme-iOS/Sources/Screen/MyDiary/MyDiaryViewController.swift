@@ -13,8 +13,9 @@ final class MyDiaryViewController: UIViewController {
     
     // MARK: - Property
     
-    var simpleDiaryList: [MyDiary] = []
-    var diaryList: [MyDiaryDetailResponse] = []
+    var diaryList: [MyDiary] = []
+    
+    var myDiaryDetail = MyDiaryDetailResponse(content: "", topicID: 0, topic: "", category: "", isPublic: false, createdAt: "", likeCnt: 0)
     
     // MARK: - UI Property
     
@@ -74,6 +75,7 @@ final class MyDiaryViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         totalMyDiaryListWithAPI()
+        detailMyDiaryWithAPI(diaryId: 67)
     }
     
     // MARK: - @objc
@@ -88,6 +90,7 @@ final class MyDiaryViewController: UIViewController {
     // MARK: - Custom Method
     
     private func setBackgroundColor() {
+        print(URLConstant.detailMyDiaryListURL + "\(67)")
         view.backgroundColor = .background
     }
     
@@ -142,8 +145,7 @@ final class MyDiaryViewController: UIViewController {
 extension MyDiaryViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let detailMyDiaryViewController = DetailMyDiaryViewController()
-        let myDiaryInfo: MyDiaryDetailResponse = diaryList[indexPath.row]
-        detailMyDiaryViewController.myDiaryDetail = MyDiaryDetailResponse(content: myDiaryInfo.content, category: myDiaryInfo.category, topic: myDiaryInfo.topic, isPublic: myDiaryInfo.isPublic, createdAt: myDiaryInfo.createdAt, likeCnt: myDiaryInfo.likeCnt)
+        detailMyDiaryViewController.diaryId = diaryList[indexPath.row].diaryId
         self.navigationController?.pushViewController(detailMyDiaryViewController, animated: true)
     }
 }
@@ -152,15 +154,14 @@ extension MyDiaryViewController: UICollectionViewDelegate {
 
 extension MyDiaryViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return simpleDiaryList.count
+        return diaryList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MyDiaryCollectionViewCell.identifier, for: indexPath) as? MyDiaryCollectionViewCell else { return UICollectionViewCell() }
-        if let content = simpleDiaryList[indexPath.row].content,
-           let time = simpleDiaryList[indexPath.row].createdAt {
-            cell.setData(content: content, time: time)
-        }
+        let content = diaryList[indexPath.row].content
+        let time = diaryList[indexPath.row].createdAt
+        cell.setData(content: content, time: time)
         
         return cell
     }
@@ -189,8 +190,15 @@ extension MyDiaryViewController {
     func totalMyDiaryListWithAPI() {
         MyDiaryAPI.shared.totalMyDiaryList { response in
             guard let diariesData = response?.data?.diaries else { return }
-            self.simpleDiaryList = diariesData
+            self.diaryList = diariesData
             self.myDiaryCollectionView.reloadData()
+        }
+    }
+    
+    func detailMyDiaryWithAPI(diaryId: Int) {
+        MyDiaryAPI.shared.detailMyDiaryList(diaryId: diaryId) { response in
+            guard let diaryData = response?.data else { return }
+            self.myDiaryDetail = diaryData
         }
     }
 }
