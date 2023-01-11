@@ -112,7 +112,7 @@ class ScrapedListCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    func dataBind(model: ScrapedExpressionModel) {
-        scrapedExpLabel.text = model.scrapedExpression
+    func dataBind(model: Scrap) {
+        scrapedExpLabel.text = model.paragraph
     }
 }

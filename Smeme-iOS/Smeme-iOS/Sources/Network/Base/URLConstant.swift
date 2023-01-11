@@ -14,7 +14,11 @@ struct URLConstant {
     // MARK: - OpenDiary
     
     static let openDiaryCategoryURL = "/categories"
+
     static let postDiaryURL = "/diaries"
     static let randomSubjectURL = "/categories/topic"
     static let openDiaryToTalListURL = "/diaries"
+    
+    static let scrapStashListURL = "/scraps"
+
 }

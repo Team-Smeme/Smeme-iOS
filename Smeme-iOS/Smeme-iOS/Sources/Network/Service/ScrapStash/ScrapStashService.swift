@@ -1,34 +1,34 @@
 //
-//  RandomSubjectService.swift
+//  ScrapStashService.swift
 //  Smeme-iOS
 //
-//  Created by Joon Baek on 2023/01/11.
+//  Created by JH on 2023/01/12.
 //
 
 import Moya
 
-enum RandomSubjectService {
-    case randomSubject
+enum ScrapStashService {
+    case scrapStashList
 }
 
-extension RandomSubjectService: BaseTargetType {
+extension ScrapStashService: BaseTargetType {
     var path: String {
         switch self {
-        case .randomSubject:
-            return URLConstant.randomSubjectURL
+        case .scrapStashList:
+            return URLConstant.scrapStashListURL
         }
     }
     
     var method: Moya.Method {
         switch self {
-        case .randomSubject:
+        case .scrapStashList:
             return .get
         }
     }
     
     var task: Moya.Task {
         switch self {
-        case .randomSubject:
+        case .scrapStashList:
             return .requestPlain
         }
     }

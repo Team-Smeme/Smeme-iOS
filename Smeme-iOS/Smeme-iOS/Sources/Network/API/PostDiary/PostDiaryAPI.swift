@@ -8,22 +8,20 @@
 import Moya
 
 final class PostDiaryAPI {
-    static let shared: postDiaryAPI = PostDiaryAPI()
-    private let postDiaryProvider = MoyaProvider<PostDiaryService>
-    (plugins: [MoyaLoggingPlugin()]
+    static let shared: PostDiaryAPI = PostDiaryAPI()
+    private let postDiaryProvider = MoyaProvider<PostDiaryService>(plugins: [MoyaLoggingPlugin()])
     
-    private var postDiaryData: GeneralResponse<PostDiaryResponse>?
+    private var postDiaryData: VoidType?
     
     func postDiary(completion: @escaping
-                   (GeneralResponse<PostDiaryResponse>?) -> Void) {
+                   (VoidType?) -> Void) {
         postDiaryProvider.request(.postDiary) { response in
             switch response {
             case .success(let result):
                 do {
                     self.postDiaryData = try
-                    result.map(GeneralResponse<PostDiaryResponse>
-                        .self)
-                    complention(self.postDiaryData)
+                    result.map(VoidType.self)
+                    completion(self.postDiaryData)
                 } catch {
                     print(error)
                 }

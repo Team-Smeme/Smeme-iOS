@@ -18,6 +18,8 @@ final class ScrapStashViewController: UIViewController {
     
     final let scrapedLineSpacing: CGFloat = 12
     
+    var scrapStashList: [Scrap] = []
+    
     // MARK: - UI Property
         
     private lazy var scrapedListCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then {
@@ -86,6 +88,10 @@ final class ScrapStashViewController: UIViewController {
         setTapGesture()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        scrapStashListWithAPI()
+    }
+    
     // MARK: - @objc
     
     @objc private func touchupNextButton() {
@@ -148,13 +154,6 @@ final class ScrapStashViewController: UIViewController {
         }
     }
     
-    var scrapedExpressionList: [ScrapedExpressionModel] = [
-        ScrapedExpressionModel(scrapedExpression: "component"),
-        ScrapedExpressionModel(scrapedExpression: "The Merge Wireframing Kit is another simple solution"),
-        ScrapedExpressionModel(scrapedExpression: "The Merge Wireframing Kit is another simple solution The Merge Wireframing Kit is another simple solutionThe Merge Wireframing Kit is another simple solution"),
-        ScrapedExpressionModel(scrapedExpression: "The Merge Wireframing Kit is another simple solution The Merge Wireframing Kit is another simple solutionThe Merge Wireframing Kit is another simple solution, The Merge Wireframing Kit is another simple solution The Merge Wireframing Kit is another simple solutionThe Merge Wireframing Kit is another simple solution")
-    ]
-    
     private func registerCell() {
         scrapedListCollectionView.register(ScrapedListCollectionViewCell.self, forCellWithReuseIdentifier: ScrapedListCollectionViewCell.identifier)
     }
@@ -192,10 +191,8 @@ final class ScrapStashViewController: UIViewController {
 extension ScrapStashViewController: UICollectionViewDelegateFlowLayout {
    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
         let width = convertByWidthRatio(314)
-        let height: CGFloat = setDummyLabel(scrapedExpressionList[indexPath.item].scrapedExpression) + 90
-        
+        let height: CGFloat = setDummyLabel(scrapStashList[indexPath.item].paragraph) + 90
         return CGSize(width: width, height: height)
     }
         
@@ -212,13 +209,13 @@ extension ScrapStashViewController: UICollectionViewDelegateFlowLayout {
 
 extension ScrapStashViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return scrapedExpressionList.count
+        return scrapStashList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let listCell = collectionView.dequeueReusableCell(withReuseIdentifier: ScrapedListCollectionViewCell.identifier, for: indexPath)
                 as? ScrapedListCollectionViewCell else {return UICollectionViewCell() }
-        listCell.dataBind(model: scrapedExpressionList[indexPath.item])
+        listCell.dataBind(model: scrapStashList[indexPath.item])
         listCell.delegate = self
         return listCell
     }
@@ -233,5 +230,17 @@ extension ScrapStashViewController: alertProtocol {
         })
         alert.addAction(UIAlertAction(title: "확인", style: .default))
         self.present(alert, animated: true, completion: nil)
+    }
+}
+
+// MARK: - Network
+
+extension ScrapStashViewController {
+    func scrapStashListWithAPI() {
+        ScrapStashAPI.shared.getScrapStashList { response in
+            guard let scrapListData = response?.data?.scraps else { return }
+            self.scrapStashList = scrapListData
+            self.scrapedListCollectionView.reloadData()
+        }
     }
 }
