@@ -69,14 +69,10 @@ final class LoginProfileInfoViewController: UIViewController {
     
     // MARK: - @objc
     
-    @objc func congratulateButtonDidTap(_ sender: UIButton) {
+    @objc func congratulateButtonDidTap() {
         guard let username = nickNameTextField.textField.text,
               let bio = oneLineInfoTextField.textField.text else { return }
         signUpSmemeWithAPI(accessToken: APIConstant.bearerToken, username: username, bio: bio)
-//        let myDiaryViewController = TabBarController()
-//        myDiaryViewController.modalTransitionStyle = .coverVertical
-//        myDiaryViewController.modalPresentationStyle = .fullScreen
-//        self.present(myDiaryViewController, animated: true, completion: nil)
         changeMainRootViewController()
         
     }
