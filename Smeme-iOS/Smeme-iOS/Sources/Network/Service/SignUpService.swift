@@ -23,7 +23,8 @@ extension SignUpService: BaseTargetType {
     var task: Moya.Task {
         switch self {
         case .signUp(_, let username, let bio):
-            return .requestParameters(parameters: ["username": username, "bio": bio], encoding: URLEncoding.queryString)
+            return .requestJSONEncodable(["username": username, "bio": bio])
+
         }
     }
     
