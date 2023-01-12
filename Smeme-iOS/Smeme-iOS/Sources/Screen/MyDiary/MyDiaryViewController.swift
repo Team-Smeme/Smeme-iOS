@@ -127,6 +127,8 @@ final class MyDiaryViewController: UIViewController {
             $0.leading.trailing.equalToSuperview()
             $0.bottom.equalToSuperview().inset(16)
         }
+        
+        self.view.bringSubviewToFront(headerView)
     }
     
     private func registerCell() {
