@@ -243,4 +243,10 @@ extension ScrapStashViewController {
             self.scrapedListCollectionView.reloadData()
         }
     }
+    
+    func deleteScrapWithAPI(param: Int) {
+        deleteScrapAPI.shared.deleteScrap(param: param) {_ in
+            self.scrapStashListWithAPI()
+        }
+    }
 }
