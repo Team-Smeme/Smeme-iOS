@@ -8,7 +8,7 @@
 import Moya
 
 enum PostDiaryService {
-    case postDiary
+    case postDiary(param: PostDiaryRequest)
 }
 
 extension PostDiaryService: BaseTargetType {
@@ -28,8 +28,8 @@ extension PostDiaryService: BaseTargetType {
     
     var task: Moya.Task {
         switch self {
-        case .postDiary:
-            return .requestPlain
+        case .postDiary(let param):
+            return .requestJSONEncodable(param)
         }
     }
     
