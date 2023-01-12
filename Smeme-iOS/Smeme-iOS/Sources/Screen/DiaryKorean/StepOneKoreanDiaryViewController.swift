@@ -16,6 +16,10 @@ final class StepOneKoreanDiaryViewController: UIViewController {
     
     var isTapped: Bool = true
     
+    var id = 0
+    
+    var randomSubject = RandomSubjectResponse(id: 0, content: "")
+    
     // MARK: - UI Property
     
     private let naviView = UIView()
@@ -100,6 +104,10 @@ final class StepOneKoreanDiaryViewController: UIViewController {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        randomSubjectWithAPI()
+    }
+    
     // MARK: - @objc
     
     @objc
@@ -113,6 +121,10 @@ final class StepOneKoreanDiaryViewController: UIViewController {
         view.backgroundColor = .smemeWhite
     }
     
+    private func setData() {
+        randomSubjectView.configure(with: RandomSubjectViewModel(contentText: randomSubject.content, isHiddenRefreshButton: false))
+    }
+
     private func setLayout() {
         view.addSubviews([naviView, tipLabel, diaryTextView, bottomView])
         
@@ -246,6 +258,18 @@ extension StepOneKoreanDiaryViewController: UITextViewDelegate {
             textView.font = .body1
             textView.setLineSpacing()
             textView.tintColor = .primary
+        }
+    }
+}
+
+// MARK: - Network
+
+extension StepOneKoreanDiaryViewController {
+    func randomSubjectWithAPI () {
+        RandomSubjectAPI.shared.getRandomSubject { response in
+            guard let randomSubjectData = response?.data else { return }
+            self.randomSubject = randomSubjectData
+            self.setData()
         }
     }
 }
