@@ -13,9 +13,9 @@ final class RandomSubjectAPI {
     
     private var randomSubjectData: GeneralResponse<RandomSubjectResponse>?
     
-    func getRandomSubject(id: Int, completion: @escaping
+    func getRandomSubject(completion: @escaping
                           (GeneralResponse<RandomSubjectResponse>?) -> Void) {
-        randomSubjectProvider.request(.randomSubject(id: id)) { response in
+        randomSubjectProvider.request(.randomSubject) { response in
             switch response {
             case .success(let result):
                 do {

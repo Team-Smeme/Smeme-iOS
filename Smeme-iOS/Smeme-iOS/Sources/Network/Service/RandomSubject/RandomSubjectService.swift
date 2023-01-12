@@ -8,7 +8,7 @@
 import Moya
 
 enum RandomSubjectService {
-    case randomSubject(id: Int)
+    case randomSubject
 }
 
 extension RandomSubjectService: BaseTargetType {
