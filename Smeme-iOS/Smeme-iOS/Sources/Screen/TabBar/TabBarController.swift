@@ -9,7 +9,9 @@ import UIKit
 
 class TabBarController: UITabBarController {
 
-    // MARK: Life Cycle
+private lazy var defaultTabBarHeight = { tabBar.frame.size.height }()
+    
+    // MARK: - Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
