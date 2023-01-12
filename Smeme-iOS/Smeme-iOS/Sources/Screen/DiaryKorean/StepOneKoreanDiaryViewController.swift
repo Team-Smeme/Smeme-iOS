@@ -16,6 +16,10 @@ final class StepOneKoreanDiaryViewController: UIViewController {
     
     var isTapped: Bool = true
     
+    var id = 0
+    
+    var randomSubject = RandomSubjectResponse(id: 0, content: "")
+    
     // MARK: - UI Property
     
     private let naviView = UIView()
