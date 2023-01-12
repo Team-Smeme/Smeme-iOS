@@ -15,7 +15,7 @@ extension DetailOpenDiaryService: BaseTargetType {
     var path: String {
         switch self {
         case .detailOpenDiary(let param):
-            return URLConstant.openDiaryTotalListURL + "\(param)"
+            return URLConstant.openDiaryTotalListURL + "/\(param)"
         }
     }
     
