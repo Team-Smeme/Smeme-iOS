@@ -58,7 +58,7 @@ final class DiaryForeignViewController: UIViewController {
         $0.titleLabel?.font = .body1
         $0.setTitleColor(.black, for: .normal)
         $0.setTitle("완료", for: .normal)
-        $0.addTarget(self, action: #selector(naviButtonDidTap), for: .touchUpInside)
+        $0.addTarget(self, action: #selector(completionButtonDidTap), for: .touchUpInside)
     }
     
     private let languageLabel = UILabel().then {
@@ -114,6 +114,10 @@ final class DiaryForeignViewController: UIViewController {
     
     @objc func naviButtonDidTap() {
         self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
+    }
+    
+    @objc func completionButtonDidTap() {
+        changeMainRootViewController()
     }
     
     // MARK: - Custom Method
