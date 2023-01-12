@@ -16,6 +16,10 @@ final class DiaryForeignViewController: UIViewController {
     
     var isTapped: Bool = true
     
+    var id = 0
+    
+    var randomSubject = RandomSubjectResponse(id: 0, content: "")
+    
     // MARK: - UI Property
     
     private let naviView = UIView()
@@ -110,6 +114,10 @@ final class DiaryForeignViewController: UIViewController {
     
     private func setBackgoundColor() {
         view.backgroundColor = .smemeWhite
+    }
+    
+    private func setData() {
+        randomSubjectView.contentLabel.text = randomSubject.content
     }
     
     private func setLayout() {
@@ -259,6 +267,17 @@ extension DiaryForeignViewController: UITextViewDelegate {
             textView.font = .body1
             textView.setLineSpacing()
             textView.tintColor = .primary
+        }
+    }
+}
+
+// MARK: - Network
+
+extension DiaryForeignViewController {
+    func randomSubjectWithAPI (id: Int) {
+        RandomSubjectAPI.shared.getRandomSubject(id: id) { response in guard let randomSubjectData = response?.data else {return}
+            self.randomSubject = randomSubjectData
+            self.setData()
         }
     }
 }
