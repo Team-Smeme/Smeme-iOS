@@ -54,7 +54,7 @@ final class DiaryForeignViewController: UIViewController {
         $0.addTarget(self, action: #selector(naviButtonDidTap), for: .touchUpInside)
     }
     
-    private let completeButton = UIButton().then {
+    private lazy var completeButton = UIButton().then {
         $0.titleLabel?.font = .body1
         $0.setTitleColor(.black, for: .normal)
         $0.setTitle("완료", for: .normal)
