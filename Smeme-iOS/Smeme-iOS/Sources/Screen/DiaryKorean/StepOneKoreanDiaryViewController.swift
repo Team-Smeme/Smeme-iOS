@@ -257,3 +257,15 @@ extension StepOneKoreanDiaryViewController: UITextViewDelegate {
         }
     }
 }
+
+// MARK: - Network
+
+extension StepOneKoreanDiaryViewController {
+    func randomSubjectWithAPI () {
+        RandomSubjectAPI.shared.getRandomSubject { response in
+            guard let randomSubjectData = response?.data else {return}
+            self.randomSubject = randomSubjectData
+            self.setData()
+        }
+    }
+}
