@@ -18,7 +18,7 @@ final class DetailOpenDiaryViewController: UIViewController {
     var scrapText: String?
     var scrapId: Int?
     
-//    var dummyScrap = ScrapRequest()
+    var diaryID: Int = 1
     
     // MARK: - UI Property
     
@@ -229,8 +229,8 @@ final class DetailOpenDiaryViewController: UIViewController {
 // MARK: - Network
 
 extension DetailOpenDiaryViewController {
-    private func postScrapOpenDiaryAPI(param: ScrapRequest) {
-        ScrapOpenDiaryAPI.shared.postScrapOpenDiary(param: ScrapRequest(diaryID: 1, paragraph: scrapText ?? "")) { response in
+    private func postScrapOpenDiaryAPI(dirayID: Int, scrapText: String) {
+        ScrapOpenDiaryAPI.shared.postScrapOpenDiary(param: ScrapRequest(diaryID: diaryID, paragraph: scrapText)) { response in
             guard let responseData = response?.data else { return }
             self.scrapId = responseData.scrapID
         }
@@ -276,8 +276,7 @@ extension DetailOpenDiaryViewController: UIEditMenuInteractionDelegate, UITextVi
                 if !(textView.selectedTextRange?.isEmpty)! {
                     let selectedString = textView.text(in: textView.selectedTextRange!)
                     guard let selectedString = selectedString else { return }
-                    self.scrapText = selectedString
-                    self.postScrapOpenDiaryAPI(param: ScrapRequest(diaryID: 1, paragraph: self.scrapText ?? ""))
+                    self.postScrapOpenDiaryAPI(dirayID: 1, scrapText: selectedString)
                 }
             }]
             additionalActions.append(contentsOf: highlightAction)

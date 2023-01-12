@@ -33,7 +33,7 @@ extension ScrapOpenDirayService: BaseTargetType {
         }
     }
     
-    var headers: [String : String]? {
+    var headers: [String: String]? {
         return NetworkConstant.hasTokenHeader
     }
 }
