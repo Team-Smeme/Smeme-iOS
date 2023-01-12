@@ -73,10 +73,12 @@ final class LoginProfileInfoViewController: UIViewController {
         guard let username = nickNameTextField.textField.text,
               let bio = oneLineInfoTextField.textField.text else { return }
         signUpSmemeWithAPI(accessToken: APIConstant.bearerToken, username: username, bio: bio)
-        let myDiaryViewController = TabBarController()
-        myDiaryViewController.modalTransitionStyle = .coverVertical
-        myDiaryViewController.modalPresentationStyle = .fullScreen
-        self.present(myDiaryViewController, animated: true, completion: nil)
+//        let myDiaryViewController = TabBarController()
+//        myDiaryViewController.modalTransitionStyle = .coverVertical
+//        myDiaryViewController.modalPresentationStyle = .fullScreen
+//        self.present(myDiaryViewController, animated: true, completion: nil)
+        changeMainRootViewController()
+        
     }
     
     // MARK: - Custom Method
@@ -163,8 +165,7 @@ extension LoginProfileInfoViewController: UITextFieldDelegate {
 
 extension LoginProfileInfoViewController {
     func signUpSmemeWithAPI(accessToken: String, username: String, bio: String) {
-        SignUpAPI.shared.signUpSmeme(accessToken: accessToken, username: username, bio: bio) { response in
-            print("status: \(response?.status ?? 0), message : \(response?.message ?? "")")
+        SignUpAPI.shared.signUpSmeme(accessToken: accessToken, username: username, bio: bio) { _ in
         }
     }
 }
