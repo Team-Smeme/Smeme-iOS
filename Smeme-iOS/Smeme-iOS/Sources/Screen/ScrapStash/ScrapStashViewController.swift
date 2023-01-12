@@ -19,7 +19,6 @@ final class ScrapStashViewController: UIViewController {
     final let scrapedLineSpacing: CGFloat = 12
     
     var scrapStashList: [Scrap] = []
-    var scrapId: Int?
     
     // MARK: - UI Property
         
