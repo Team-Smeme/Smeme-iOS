@@ -117,6 +117,10 @@ final class StepOneKoreanDiaryViewController: UIViewController {
         view.backgroundColor = .smemeWhite
     }
     
+    private func setData() {
+        randomSubjectView.configure(with: RandomSubjectViewModel(contentText: randomSubject.content, isHiddenRefreshButton: false))
+    }
+
     private func setLayout() {
         view.addSubviews([naviView, tipLabel, diaryTextView, bottomView])
         
