@@ -7,16 +7,17 @@
 
 import Foundation
 
-struct MyDiaryDetailResponse {
+struct MyDiaryDetailResponse: Codable {
     let content: String
-    let category: String
-    let topic: String
+    let topicID: Int
+    let topic, category: String
     let isPublic: Bool
-    let createdAt: String // yyyy-MM-DD HH:mm
+    let createdAt: String
     let likeCnt: Int
     
     enum CodingKeys: String, CodingKey {
-        case topicName = "category"
-        case topicContent = "topic"
+        case content
+        case topicID = "topicId"
+        case topic, category, isPublic, createdAt, likeCnt
     }
 }

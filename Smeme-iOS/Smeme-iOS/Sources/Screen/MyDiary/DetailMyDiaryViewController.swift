@@ -1,4 +1,3 @@
-//
 //  DetailMyDiaryViewController.swift
 //  Smeme-iOS
 //
@@ -11,12 +10,15 @@ final class DetailMyDiaryViewController: UIViewController {
     
     // MARK: - Property
     
-    var myDiaryDetail = MyDiaryDetailResponse(content: "", category: "기념일", topic: "", isPublic: false, createdAt: "00:00", likeCnt: 0)
+    var diaryId = 0
+    
+    var myDiaryDetail = MyDiaryDetailResponse(content: "", topicID: 0, topic: "", category: "", isPublic: false, createdAt: "", likeCnt: 0)
     
     // MARK: - UI Property
     
     private let contentView = UIView()
     private let contentScrollView = UIScrollView()
+    private var randomSubjectView = RandomSubjectView()
     
     private lazy var backButton = UIButton().then {
         $0.setImage(Constant.Image.icnPageLeft, for: .normal)
@@ -67,9 +69,11 @@ final class DetailMyDiaryViewController: UIViewController {
         super.viewDidLoad()
         
         setBackgroundColor()
-        setData()
         setTabbarHidden()
-        setLayout()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        detailMyDiaryWithAPI(diaryId: diaryId)
     }
     
     // MARK: - Custom Method
@@ -83,18 +87,20 @@ final class DetailMyDiaryViewController: UIViewController {
     }
     
     private func setData() {
-        publicLabel.isHidden = !myDiaryDetail.isPublic
+        publicLabel.isHidden = myDiaryDetail.isPublic
         categoryLabel.text = myDiaryDetail.category
         contentLabel.text = myDiaryDetail.content + " (\(myDiaryDetail.content.count))"
         contentLabel.setTextWithLineHeight(lineHeight: 21)
         dateLabel.text = myDiaryDetail.createdAt.getFormattedDate(format: "yyyy년 MM월 dd일 HH:mm")
         likeBottomView.configure(with: LikeBottomViewModel(likeCount: myDiaryDetail.likeCnt))
+        randomSubjectView.configure(with: RandomSubjectViewModel(contentText: myDiaryDetail.topic, isHiddenRefreshButton: true))
+        randomSubjectView.isHidden = myDiaryDetail.topic.isEmpty
     }
     
     private func setLayout() {
         view.addSubviews([contentScrollView, backButton, optionButton, likeBottomView])
         contentScrollView.addSubview(contentView)
-        contentView.addSubviews([categoryBackgroundView, categoryLabel, publicLabel, contentLabel, dateLabel])
+        contentView.addSubviews([categoryBackgroundView, categoryLabel, publicLabel, randomSubjectView, contentLabel, dateLabel])
         
         contentScrollView.snp.makeConstraints {
             $0.top.equalToSuperview().inset(headerHeightByNotch(66))
@@ -135,12 +141,18 @@ final class DetailMyDiaryViewController: UIViewController {
             $0.trailing.equalTo(contentView).inset(convertByWidthRatio(30))
         }
         
+        randomSubjectView.snp.makeConstraints {
+            $0.top.equalTo(categoryBackgroundView.snp.bottom).offset(convertByHeightRatio(20))
+            $0.leading.equalToSuperview()
+        }
+        
         contentLabel.snp.makeConstraints {
+            let paddingOfNaviWithContent = myDiaryDetail.topic.isEmpty ? 53 : 73 + randomSubjectView.frame.height
             let paddingContentWithContentView = calculateScrollViewHeightOffset(defaultHeight: 98,
                                                                                 heightOfBottomView: 54,
-                                                                                paddingOfNaviWithContent: 53,
+                                                                                paddingOfNaviWithContent: paddingOfNaviWithContent,
                                                                                 paddingOfContentWithDate: 20)
-            $0.top.equalTo(categoryBackgroundView.snp.bottom).offset(convertByHeightRatio(20))
+            $0.top.equalTo(randomSubjectView.snp.bottom).offset(convertByHeightRatio(20))
             $0.leading.trailing.equalTo(contentView).inset(convertByWidthRatio(30))
             $0.bottom.equalTo(contentView).offset(-paddingContentWithContentView)
         }
@@ -155,7 +167,7 @@ final class DetailMyDiaryViewController: UIViewController {
             $0.bottom.equalTo(view.safeAreaLayoutGuide)
         }
     }
-
+    
     private func calculateScrollViewHeightOffset(defaultHeight: CGFloat,
                                                  heightOfBottomView: CGFloat,
                                                  paddingOfNaviWithContent: CGFloat,
@@ -170,7 +182,6 @@ final class DetailMyDiaryViewController: UIViewController {
                                   y: 0,
                                   width: convertByWidthRatio(315),
                                   height: dummyLabel.calculateContentHeight(lineHeight: 21))
-
         let expectedLabelSize = dummyLabel.calculateContentHeight(lineHeight: 21)
         let heightOfDateLabel: CGFloat = 17
         let heightOfNotch: CGFloat = 44 + 34
@@ -182,7 +193,7 @@ final class DetailMyDiaryViewController: UIViewController {
         
         return isEnoughToScroll ? defaultHeight : (heightOfScrollView - contentSize)
     }
-
+    
     private func presentAlert() {
         let alert = UIAlertController(title: nil, message: "삭제하시겠습니까?", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "취소", style: .destructive))
@@ -202,5 +213,18 @@ final class DetailMyDiaryViewController: UIViewController {
         actionSheet.addAction(UIAlertAction(title: "삭제", style: .default, handler: {_ in self.presentAlert()}))
         actionSheet.addAction(UIAlertAction(title: "닫기", style: .cancel, handler: nil))
         self.present(actionSheet, animated: true, completion: nil)
+    }
+}
+
+// MARK: - Network
+
+extension DetailMyDiaryViewController {
+    func detailMyDiaryWithAPI(diaryId: Int) {
+        MyDiaryAPI.shared.detailMyDiaryList(diaryId: diaryId) { response in
+            guard let diaryData = response?.data else { return }
+            self.myDiaryDetail = diaryData
+            self.setData()
+            self.setLayout()
+        }
     }
 }

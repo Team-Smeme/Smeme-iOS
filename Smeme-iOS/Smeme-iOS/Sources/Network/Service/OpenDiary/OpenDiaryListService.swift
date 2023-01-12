@@ -9,19 +9,20 @@ import Moya
 
 enum OpenDiaryListService {
     case openDiaryTotalList
+    case openDiarySelectList(param: Int)
 }
 
 extension OpenDiaryListService: BaseTargetType {
     var path: String {
         switch self {
-        case .openDiaryTotalList:
-            return URLConstant.openDiaryToTalListURL
+        case .openDiaryTotalList, .openDiarySelectList:
+            return URLConstant.openDiaryTotalListURL
         }
     }
 
     var method: Moya.Method {
         switch self {
-        case .openDiaryTotalList:
+        case .openDiaryTotalList, .openDiarySelectList:
             return .get
         }
     }
@@ -30,11 +31,12 @@ extension OpenDiaryListService: BaseTargetType {
         switch self {
         case .openDiaryTotalList:
             return .requestPlain
+        case .openDiarySelectList(let param):
+            return .requestParameters(parameters: ["category": param], encoding: URLEncoding.queryString)
         }
     }
 
-    var headers: [String : String]? {
+    var headers: [String: String]? {
         return NetworkConstant.hasTokenHeader
     }
 }
-
