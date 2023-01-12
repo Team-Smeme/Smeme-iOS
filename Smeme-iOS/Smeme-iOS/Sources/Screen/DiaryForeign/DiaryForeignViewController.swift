@@ -98,8 +98,7 @@ final class DiaryForeignViewController: UIViewController {
     
     // MARK: - @objc
     
-    @objc
-    func topikBTNDidTap(_ gesture: UITapGestureRecognizer) {
+    @objc func topikBTNDidTap(_ gesture: UITapGestureRecognizer) {
         setRandomTopicButtonToggle()
     }
     
@@ -118,9 +117,7 @@ final class DiaryForeignViewController: UIViewController {
     }
     
     private func setData() {
-        
         randomSubjectView.configure(with: RandomSubjectViewModel(contentText: randomSubject.content, isHiddenRefreshButton: false))
-        
     }
     
     private func setLayout() {
@@ -278,10 +275,10 @@ extension DiaryForeignViewController: UITextViewDelegate {
 
 extension DiaryForeignViewController {
     func randomSubjectWithAPI () {
-        RandomSubjectAPI.shared.getRandomSubject { response in guard let randomSubjectData = response?.data else {return}
+        RandomSubjectAPI.shared.getRandomSubject { response in
+            guard let randomSubjectData = response?.data else {return}
             self.randomSubject = randomSubjectData
             self.setData()
-//            self.setLayout()
         }
     }
 }
