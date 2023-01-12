@@ -56,4 +56,10 @@ extension TabBarController {
         tabBar.backgroundColor = .white
         tabBar.tintColor = .primary
     }
+extension UITabBar {
+    static func clearShadow() {
+        UITabBar.appearance().shadowImage = UIImage()
+        UITabBar.appearance().backgroundImage = UIImage()
+        UITabBar.appearance().backgroundColor = UIColor.white
+    }
 }
