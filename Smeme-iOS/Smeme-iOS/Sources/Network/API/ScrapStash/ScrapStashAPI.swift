@@ -29,3 +29,26 @@ final class ScrapStashAPI {
         }
     }
 }
+
+final class deleteScrapAPI {
+    static let shared: deleteScrapAPI = deleteScrapAPI()
+    private let deleteScrapProvider = MoyaProvider<ScrapStashService>(plugins: [MoyaLoggingPlugin()])
+    
+    private var deleteScrapData: GeneralResponse<ScrapedStashResponse>?
+    
+    func deleteScrap(completion: @escaping (GeneralResponse<ScrapedStashResponse>?) -> Void) {
+        deleteScrapProvider.request(.deleteScrap) { response in
+            switch response {
+            case .success(let result):
+                do {
+                    self.deleteScrapData = try result.map(GeneralResponse<ScrapedStashResponse>.self)
+                    completion(self.deleteScrapData)
+                } catch {
+                    print(error)
+                }
+            case .failure(let err):
+                print(err)
+            }
+        }
+    }
+}
