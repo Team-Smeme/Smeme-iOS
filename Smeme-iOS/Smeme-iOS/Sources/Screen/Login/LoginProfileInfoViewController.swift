@@ -11,6 +11,8 @@ final class LoginProfileInfoViewController: UIViewController {
     
     // MARK: - Property
     
+    var Response: GeneralResponse<VoidType>?
+    
     // MARK: - UI Property
     
     private let profileEnterinfoLabel = UILabel().then {
@@ -143,5 +145,15 @@ extension LoginProfileInfoViewController: UITextFieldDelegate {
             oneLineInfoTextField.textField.resignFirstResponder()
         }
         return true
+    }
+}
+
+// MARK: - Network
+
+extension LoginProfileInfoViewController {
+    func signUpSmemeWithAPI(accessToken: String, username: String, bio: String) {
+        SignUpAPI.shared.signUpSmeme(accessToken: accessToken, username: username, bio: bio) { response in
+            print("status: \(response?.status ?? 0), message : \(response?.message ?? "")")
+        }
     }
 }
