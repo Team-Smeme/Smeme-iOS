@@ -37,17 +37,17 @@ extension TabBarController {
                                    title: "",
                                  tabBarImg: Constant.Image.tabBarMyDiary,
                                    tabBarSelectedImg: Constant.Image.tabBarMyDiarySelected,
-                                   renderingMode: .alwaysTemplate)
+                                   renderingMode: .alwaysOriginal)
         let openDiary = makeTabBar(viewController: OpenDiaryViewController(),
                                        title: "",
                                        tabBarImg: Constant.Image.tabBarOpenDiary,
                                  tabBarSelectedImg: Constant.Image.tabBarOpenDiarySelected,
-                                 renderingMode: .alwaysTemplate)
+                                 renderingMode: .alwaysOriginal)
         let scrapStash = makeTabBar(viewController: ScrapStashViewController(),
                                      title: "",
                                      tabBarImg: Constant.Image.tabBarStash,
                                  tabBarSelectedImg: Constant.Image.tabBarStashSelected,
-                                 renderingMode: .alwaysTemplate)
+                                 renderingMode: .alwaysOriginal)
         
         let tabs = [myDiary, openDiary, scrapStash]
     
