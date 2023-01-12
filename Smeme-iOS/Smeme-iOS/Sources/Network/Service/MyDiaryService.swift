@@ -32,6 +32,7 @@ extension MyDiaryService: BaseTargetType {
         case .deleteDiary:
             return .delete
         }
+        
     }
     
     var task: Moya.Task {

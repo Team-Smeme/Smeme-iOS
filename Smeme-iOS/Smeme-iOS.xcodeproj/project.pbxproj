@@ -385,6 +385,8 @@
 				4A9B4EF6296EDB970078FBBC /* OpenDiary */,
 				A32753282966FE81004BB8A0 /* ScrapedExpressionResponse.swift */,
 				A396F759296F45A1003A2748 /* MySmemeResponse.swift */,
+				4A050207295CBE6800E17386 /* DataModel.swift */,
+				A32753282966FE81004BB8A0 /* ScrapedExpressionModel.swift */,
 				6FFC2551296DDA54006132FE /* MyDiaryListResponse.swift */,
 				6FD39872296AE27400C16B79 /* MyDiaryDetailResponse.swift */,
 			);
