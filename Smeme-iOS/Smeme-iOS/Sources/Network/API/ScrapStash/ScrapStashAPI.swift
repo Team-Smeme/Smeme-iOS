@@ -36,8 +36,8 @@ final class deleteScrapAPI {
     
     private var deleteScrapData: GeneralResponse<ScrapedStashResponse>?
     
-    func deleteScrap(completion: @escaping (GeneralResponse<ScrapedStashResponse>?) -> Void) {
-        deleteScrapProvider.request(.deleteScrap) { response in
+    func deleteScrap(param: Int, completion: @escaping (GeneralResponse<ScrapedStashResponse>?) -> Void) {
+        deleteScrapProvider.request(.deleteScrap(param: param)) { response in
             switch response {
             case .success(let result):
                 do {
