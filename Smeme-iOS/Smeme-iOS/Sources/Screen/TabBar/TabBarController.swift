@@ -56,6 +56,12 @@ extension TabBarController {
         tabBar.backgroundColor = .white
         tabBar.tintColor = .primary
     }
+    private func setTabBarShadow() {
+        UITabBar.clearShadow()
+        tabBar.layer.applyShadow(color: .black, alpha: 0.15, x: 0, y: 3, blur: 14)
+    }
+}
+
 // MARK: - SetShadow
 
 extension CALayer {
