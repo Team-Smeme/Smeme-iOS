@@ -387,13 +387,13 @@
 		4A0501F5295CBD6F00E17386 /* DataModel */ = {
 			isa = PBXGroup;
 			children = (
+				4AA146A52970CFCB0013D9F5 /* PostDiary */,
 				371D286E296EF16E00836DD4 /* RandomSubject */,
 				4A9B4EF6296EDB970078FBBC /* OpenDiary */,
 				A32753282966FE81004BB8A0 /* ScrapedStashResponse.swift */,
 				A396F759296F45A1003A2748 /* MySmemeResponse.swift */,
 				6FFC2551296DDA54006132FE /* MyDiaryListResponse.swift */,
 				6FD39872296AE27400C16B79 /* MyDiaryDetailResponse.swift */,
-				4AA146A32970CF520013D9F5 /* PostDiaryRequest.swift */,
 			);
 			path = DataModel;
 			sourceTree = "<group>";
@@ -510,6 +510,14 @@
 				4A9B4EFD296EF17F0078FBBC /* OpenDiaryListAPI.swift */,
 			);
 			path = OpenDiary;
+			sourceTree = "<group>";
+		};
+		4AA146A52970CFCB0013D9F5 /* PostDiary */ = {
+			isa = PBXGroup;
+			children = (
+				4AA146A32970CF520013D9F5 /* PostDiaryRequest.swift */,
+			);
+			path = PostDiary;
 			sourceTree = "<group>";
 		};
 		4AD78BAB2965746700EEE509 /* TabBar */ = {
