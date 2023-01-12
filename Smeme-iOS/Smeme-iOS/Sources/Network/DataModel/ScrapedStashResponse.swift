@@ -7,7 +7,7 @@
 
 // MARK: - DataClass
 
-struct ScrapedExpressionResponse: Codable {
+struct ScrapedStashResponse: Codable {
     let scraps: [Scrap]
 }
 

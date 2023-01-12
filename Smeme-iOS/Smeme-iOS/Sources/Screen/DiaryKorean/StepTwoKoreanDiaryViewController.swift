@@ -38,15 +38,17 @@ final class StepTwoKoreanDiaryViewController: UIViewController {
         $0.setTextWithLineHeight(lineHeight: 21)
     }
     
-    private let backButton = UIButton().then {
+    private lazy var backButton = UIButton().then {
         $0.setImage(Constant.Image.icnPageLeft, for: .normal)
+        $0.addTarget(self, action: #selector(backButtonDidTap), for: .touchUpInside)
     }
     
-    private let completeButton = UIButton().then {
+    private lazy var completeButton = UIButton().then {
         $0.titleLabel?.font = .body1
         $0.setTitleColor(.smemeBlack, for: .normal)
         $0.titleLabel?.setTextWithLineHeight(lineHeight: 21)
         $0.setTitle("완료", for: .normal)
+        $0.addTarget(self, action: #selector(compleButtonDidTap), for: .touchUpInside)
     }
     
     private let languageLabel = UILabel().then {
@@ -97,6 +99,14 @@ final class StepTwoKoreanDiaryViewController: UIViewController {
     }
     
     // MARK: - @objc
+    
+    @objc func backButtonDidTap() {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    @objc func compleButtonDidTap() {
+        changeMainRootViewController()
+    }
     
     // MARK: - Custom Method
     

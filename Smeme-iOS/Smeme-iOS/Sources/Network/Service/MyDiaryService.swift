@@ -9,6 +9,7 @@ import Moya
 
 enum MyDiaryService {
     case totalMyDiary
+    case detailMyDiary(diaryId: Int)
 }
 
 extension MyDiaryService: BaseTargetType {
@@ -16,12 +17,16 @@ extension MyDiaryService: BaseTargetType {
         switch self {
         case .totalMyDiary:
             return URLConstant.totalMyDiaryListURL
+        case .detailMyDiary(let diaryId):
+            return URLConstant.detailMyDiaryListURL + "\(diaryId)"
         }
     }
     
     var method: Moya.Method {
         switch self {
         case .totalMyDiary:
+            return .get
+        case .detailMyDiary:
             return .get
         }
     }
@@ -30,12 +35,16 @@ extension MyDiaryService: BaseTargetType {
         switch self {
         case .totalMyDiary:
             return .requestPlain
+        case .detailMyDiary:
+            return .requestPlain
         }
     }
     
     var headers: [String: String]? {
         switch self {
         case .totalMyDiary:
+            return NetworkConstant.hasTokenHeader
+        case .detailMyDiary:
             return NetworkConstant.hasTokenHeader
         }
     }

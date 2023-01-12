@@ -16,6 +16,10 @@ final class StepOneKoreanDiaryViewController: UIViewController {
     
     var isTapped: Bool = true
     
+    var id = 0
+    
+    var randomSubject = RandomSubjectResponse(id: 0, content: "")
+    
     // MARK: - UI Property
     
     private let naviView = UIView()
@@ -38,18 +42,20 @@ final class StepOneKoreanDiaryViewController: UIViewController {
         $0.configure(with: RandomSubjectViewModel(contentText: "오늘부터 딱 일주일 후! 설레는 크리스마스네요. 일주일 전부터 세워보는 나의 크리스마스 계획은?", isHiddenRefreshButton: false))
     }
     
-    private let cancelButton = UIButton().then {
+    private lazy var cancelButton = UIButton().then {
         $0.titleLabel?.font = .body1
         $0.setTitleColor(.smemeBlack, for: .normal)
         $0.titleLabel?.setTextWithLineHeight(lineHeight: 21)
         $0.setTitle("취소", for: .normal)
+        $0.addTarget(self, action: #selector(cancelButtonDidTap), for: .touchUpInside)
     }
     
-    private let completeButton = UIButton().then {
+    private lazy var nextButton = UIButton().then {
         $0.titleLabel?.font = .body1
         $0.setTitleColor(.smemeBlack, for: .normal)
         $0.titleLabel?.setTextWithLineHeight(lineHeight: 21)
         $0.setTitle("다음", for: .normal)
+        $0.addTarget(self, action: #selector(nextButtonDidTap), for: .touchUpInside)
     }
     
     private let languageLabel = UILabel().then {
@@ -100,11 +106,23 @@ final class StepOneKoreanDiaryViewController: UIViewController {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        randomSubjectWithAPI()
+    }
+    
     // MARK: - @objc
     
-    @objc
-    func topikBTNDidTap(_ gesture: UITapGestureRecognizer) {
+    @objc func topikBTNDidTap(_ gesture: UITapGestureRecognizer) {
         setRandomTopicButtonToggle()
+    }
+    
+    @objc func nextButtonDidTap() {
+        let stepTwoKoreanDiaryViewController = StepTwoKoreanDiaryViewController()
+        self.navigationController?.pushViewController(stepTwoKoreanDiaryViewController, animated: true)
+    }
+    
+    @objc func cancelButtonDidTap() {
+        self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
     }
     
     // MARK: - Custom Method
@@ -113,10 +131,14 @@ final class StepOneKoreanDiaryViewController: UIViewController {
         view.backgroundColor = .smemeWhite
     }
     
+    private func setData() {
+        randomSubjectView.configure(with: RandomSubjectViewModel(contentText: randomSubject.content, isHiddenRefreshButton: false))
+    }
+
     private func setLayout() {
         view.addSubviews([naviView, tipLabel, diaryTextView, bottomView])
         
-        naviView.addSubviews([cancelButton, languageView, completeButton])
+        naviView.addSubviews([cancelButton, languageView, nextButton])
         diaryTextView.addSubview(placeHolderLabel)
         languageView.addSubviews([languageLabel, stepLabel])
         bottomView.addSubviews([randomTopicButton, publicButton])
@@ -133,12 +155,12 @@ final class StepOneKoreanDiaryViewController: UIViewController {
         
         languageView.snp.makeConstraints {
             $0.centerX.equalToSuperview()
-            $0.top.bottom.equalTo(cancelButton)
+            $0.top.bottom.equalTo(nextButton)
             $0.leading.equalTo(languageLabel)
             $0.trailing.equalTo(languageLabel)
         }
         
-        completeButton.snp.makeConstraints {
+        nextButton.snp.makeConstraints {
             $0.centerY.equalToSuperview()
             $0.trailing.equalToSuperview().offset(-30)
         }
@@ -246,6 +268,18 @@ extension StepOneKoreanDiaryViewController: UITextViewDelegate {
             textView.font = .body1
             textView.setLineSpacing()
             textView.tintColor = .primary
+        }
+    }
+}
+
+// MARK: - Network
+
+extension StepOneKoreanDiaryViewController {
+    func randomSubjectWithAPI () {
+        RandomSubjectAPI.shared.getRandomSubject { response in
+            guard let randomSubjectData = response?.data else { return }
+            self.randomSubject = randomSubjectData
+            self.setData()
         }
     }
 }

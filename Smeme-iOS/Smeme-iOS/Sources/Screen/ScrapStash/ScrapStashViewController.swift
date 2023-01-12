@@ -216,6 +216,7 @@ extension ScrapStashViewController: UICollectionViewDataSource {
         guard let listCell = collectionView.dequeueReusableCell(withReuseIdentifier: ScrapedListCollectionViewCell.identifier, for: indexPath)
                 as? ScrapedListCollectionViewCell else {return UICollectionViewCell() }
         listCell.dataBind(model: scrapStashList[indexPath.item])
+        listCell.id = scrapStashList[indexPath.item].id
         listCell.delegate = self
         return listCell
     }
@@ -224,11 +225,12 @@ extension ScrapStashViewController: UICollectionViewDataSource {
 // MARK: - alertDelegate
 
 extension ScrapStashViewController: alertProtocol {
-    func presentAlert() {
+    func presentAlert(id: Int) {
         let alert = UIAlertController(title: nil, message: "삭제하시겠습니까?", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "취소", style: .destructive) { action in
+        alert.addAction(UIAlertAction(title: "취소", style: .destructive))
+        alert.addAction(UIAlertAction(title: "확인", style: .default) { _ in
+            self.deleteScrapWithAPI(param: id)
         })
-        alert.addAction(UIAlertAction(title: "확인", style: .default))
         self.present(alert, animated: true, completion: nil)
     }
 }
@@ -241,6 +243,12 @@ extension ScrapStashViewController {
             guard let scrapListData = response?.data?.scraps else { return }
             self.scrapStashList = scrapListData
             self.scrapedListCollectionView.reloadData()
+        }
+    }
+    
+    func deleteScrapWithAPI(param: Int) {
+        deleteScrapAPI.shared.deleteScrap(param: param) {_ in
+            self.scrapStashListWithAPI()
         }
     }
 }

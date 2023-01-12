@@ -16,6 +16,10 @@ final class DiaryForeignViewController: UIViewController {
     
     var isTapped: Bool = true
     
+    var id = 0
+    
+    var randomSubject = RandomSubjectResponse(id: 0, content: "")
+    
     // MARK: - UI Property
     
     private let naviView = UIView()
@@ -43,16 +47,18 @@ final class DiaryForeignViewController: UIViewController {
         $0.addShadow(shadowColor: .black, shadowOpacity: 0.04, shadowRadius: 16, offset: CGSize(width: 0, height: -4.0))
     }
     
-    private let cancelButton = UIButton().then {
+    private lazy var cancelButton = UIButton().then {
         $0.titleLabel?.font = .body1
         $0.setTitleColor(.black, for: .normal)
         $0.setTitle("취소", for: .normal)
+        $0.addTarget(self, action: #selector(naviButtonDidTap), for: .touchUpInside)
     }
     
-    private let completeButton = UIButton().then {
+    private lazy var completeButton = UIButton().then {
         $0.titleLabel?.font = .body1
         $0.setTitleColor(.black, for: .normal)
         $0.setTitle("완료", for: .normal)
+        $0.addTarget(self, action: #selector(completionButtonDidTap), for: .touchUpInside)
     }
     
     private let languageLabel = UILabel().then {
@@ -85,6 +91,7 @@ final class DiaryForeignViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         showKeyboard(textView: diaryTextView)
         keyboardAddObserver()
+        randomSubjectWithAPI()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -93,8 +100,7 @@ final class DiaryForeignViewController: UIViewController {
     
     // MARK: - @objc
     
-    @objc
-    func topikBTNDidTap(_ gesture: UITapGestureRecognizer) {
+    @objc func topikBTNDidTap(_ gesture: UITapGestureRecognizer) {
         setRandomTopicButtonToggle()
     }
     
@@ -106,10 +112,22 @@ final class DiaryForeignViewController: UIViewController {
         handleKeyboardChanged(notification: notification, customView: bottomView, isActive: false)
     }
     
+    @objc func naviButtonDidTap() {
+        self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
+    }
+    
+    @objc func completionButtonDidTap() {
+        changeMainRootViewController()
+    }
+    
     // MARK: - Custom Method
     
     private func setBackgoundColor() {
         view.backgroundColor = .smemeWhite
+    }
+    
+    private func setData() {
+        randomSubjectView.configure(with: RandomSubjectViewModel(contentText: randomSubject.content, isHiddenRefreshButton: false))
     }
     
     private func setLayout() {
@@ -259,6 +277,18 @@ extension DiaryForeignViewController: UITextViewDelegate {
             textView.font = .body1
             textView.setLineSpacing()
             textView.tintColor = .primary
+        }
+    }
+}
+
+// MARK: - Network
+
+extension DiaryForeignViewController {
+    func randomSubjectWithAPI () {
+        RandomSubjectAPI.shared.getRandomSubject { response in
+            guard let randomSubjectData = response?.data else {return}
+            self.randomSubject = randomSubjectData
+            self.setData()
         }
     }
 }

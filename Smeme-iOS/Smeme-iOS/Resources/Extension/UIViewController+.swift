@@ -86,7 +86,7 @@ extension UIViewController {
         toastLabel.text = toastMessage
         toastLabel.font = .body2
         toastLabel.setTextWithLineHeight(lineHeight: 17)
-        
+
         view.addSubview(toastBackgroundView)
         toastBackgroundView.addSubview(toastLabel)
         
@@ -98,9 +98,26 @@ extension UIViewController {
         UIView.animate(withDuration: 0.3, delay: 2, options: .curveEaseOut, animations: {
             toastBackgroundView.alpha = 0.0
             toastLabel.alpha = 0
-        }, completion: {_ in
+        }, completion: { _ in
               toastBackgroundView.removeFromSuperview()
               toastLabel.removeFromSuperview()
           })
+    }
+    
+    func changeRootViewController(_ viewControllerToPresent: UIViewController) {
+        if let window = UIApplication.shared.windows.first {
+            window.rootViewController = viewControllerToPresent
+            UIView.transition(with: window, duration: 0.5, options: .transitionCrossDissolve, animations: nil)
+        } else {
+            viewControllerToPresent.modalPresentationStyle = .overFullScreen
+            self.present(viewControllerToPresent, animated: true, completion: nil)
+        }
+    }
+    
+    /// TabbarViewController로 root view controller 변경
+    func changeMainRootViewController() {
+        let tabBarViewController = UINavigationController(rootViewController: TabBarController())
+        tabBarViewController.isNavigationBarHidden = true
+        changeRootViewController(tabBarViewController)
     }
 }
