@@ -56,6 +56,17 @@ extension TabBarController {
         tabBar.backgroundColor = .white
         tabBar.tintColor = .primary
     }
+    
+    private func setTabBarHeight() {
+        let newTabBarHeight = defaultTabBarHeight + convertByHeightRatio(34)
+
+        var newFrame = tabBar.frame
+        newFrame.size.height = newTabBarHeight
+        newFrame.origin.y = view.frame.size.height - newTabBarHeight
+
+        tabBar.frame = newFrame
+    }
+
     private func setTabBarShadow() {
         UITabBar.clearShadow()
         tabBar.layer.applyShadow(color: .black, alpha: 0.15, x: 0, y: 3, blur: 14)
