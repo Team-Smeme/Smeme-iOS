@@ -15,6 +15,10 @@ final class DetailOpenDiaryViewController: UIViewController {
     // MARK: - Property
     
     var editMenuInteraction: UIEditMenuInteraction?
+    var scrapText: String?
+    var scrapId: Int?
+    
+//    var dummyScrap = ScrapRequest()
     
     // MARK: - UI Property
     
@@ -115,6 +119,7 @@ final class DetailOpenDiaryViewController: UIViewController {
     
     @objc func backButtonDidTap() {
         self.navigationController?.popViewController(animated: true)
+        self.tabBarController?.tabBar.isHidden = false
     }
     
     // MARK: - Custom Method
@@ -221,6 +226,17 @@ final class DetailOpenDiaryViewController: UIViewController {
     }
 }
 
+// MARK: - Network
+
+extension DetailOpenDiaryViewController {
+    private func postScrapOpenDiaryAPI(param: ScrapRequest) {
+        ScrapOpenDiaryAPI.shared.postScrapOpenDiary(param: ScrapRequest(diaryID: 1, paragraph: scrapText ?? "")) { response in
+            guard let responseData = response?.data else { return }
+            self.scrapId = responseData.scrapID
+        }
+    }
+}
+
 // MARK: - ScrollView Height Calculate Method
 
 extension DetailOpenDiaryViewController {
@@ -260,7 +276,8 @@ extension DetailOpenDiaryViewController: UIEditMenuInteractionDelegate, UITextVi
                 if !(textView.selectedTextRange?.isEmpty)! {
                     let selectedString = textView.text(in: textView.selectedTextRange!)
                     guard let selectedString = selectedString else { return }
-                    print("select : \(selectedString)")
+                    self.scrapText = selectedString
+                    self.postScrapOpenDiaryAPI(param: ScrapRequest(diaryID: 1, paragraph: self.scrapText ?? ""))
                 }
             }]
             additionalActions.append(contentsOf: highlightAction)
