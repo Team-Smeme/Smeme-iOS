@@ -21,15 +21,15 @@ final class MyDiaryFloatingButtonViewController: UIViewController {
             image: Constant.Image.icnKorean,
             text: "한국어 일기부터 쓰기"))
         $0.addShadow(shadowColor: .black, shadowOpacity: 0.12, shadowRadius: 20, offset: CGSize(width: 0, height: 0))
-//        $0.addTarget(self, action: #selector(koreanDiaryButtonDidTap), for: .touchUpInside)
+        $0.addTarget(self, action: #selector(koreanDiaryButtonDidTap), for: .touchUpInside)
     }
     
-    private let foreignDiaryButton = IconWithTextButton().then {
+    private lazy var foreignDiaryButton = IconWithTextButton().then {
         $0.configure(with: IconWithTextButtonViewModel(
             image: Constant.Image.icnForeign,
             text: "바로 외국어 일기 쓰기"))
         $0.addShadow(shadowColor: .black, shadowOpacity: 0.12, shadowRadius: 20, offset: CGSize(width: 0, height: 0))
-        $0.addTarget(self, action: #selector(koreanDiaryButtonDidTap), for: .touchUpInside)
+        $0.addTarget(self, action: #selector(foreignDiaryButtonDidTap), for: .touchUpInside)
     }
     
     private lazy var floatingButton = UIButton().then {
@@ -86,10 +86,19 @@ final class MyDiaryFloatingButtonViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
-    @objc func koreanDiaryButtonDidTap() {
+    @objc func foreignDiaryButtonDidTap() {
         let diaryForeignViewController = DiaryForeignViewController()
         diaryForeignViewController.modalTransitionStyle = .coverVertical
         diaryForeignViewController.modalPresentationStyle = .fullScreen
         self.present(diaryForeignViewController, animated: true)
+    }
+    
+    @objc func koreanDiaryButtonDidTap() {
+        let stepOneKoreanDiaryViewController = StepOneKoreanDiaryViewController()
+        let navigationController = UINavigationController(rootViewController: stepOneKoreanDiaryViewController)
+        navigationController.modalTransitionStyle = .coverVertical
+        navigationController.modalPresentationStyle = .fullScreen
+        navigationController.isNavigationBarHidden = true
+        present(navigationController, animated: true)
     }
 }
