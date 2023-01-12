@@ -104,6 +104,10 @@ final class StepOneKoreanDiaryViewController: UIViewController {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        randomSubjectWithAPI()
+    }
+    
     // MARK: - @objc
     
     @objc
