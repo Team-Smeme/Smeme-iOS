@@ -14,6 +14,9 @@ class TabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setTabBar()
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        setTabBarHeight()
     }
 }
 
