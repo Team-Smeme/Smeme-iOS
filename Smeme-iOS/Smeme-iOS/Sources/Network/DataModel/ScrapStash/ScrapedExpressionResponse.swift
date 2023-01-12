@@ -6,10 +6,6 @@
 //
 
 import Foundation
-//
-//struct ScrapedExpressionModel {
-//    let scrapedExpression: String
-//}
 
 // MARK: - DataClass
 

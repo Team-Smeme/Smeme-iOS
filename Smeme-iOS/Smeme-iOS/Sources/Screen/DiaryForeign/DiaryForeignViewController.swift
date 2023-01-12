@@ -16,6 +16,10 @@ final class DiaryForeignViewController: UIViewController {
     
     var isTapped: Bool = true
     
+    var id = 0
+    
+    var randomSubject = RandomSubjectResponse(id: 0, content: "")
+    
     // MARK: - UI Property
     
     private let naviView = UIView()
@@ -85,6 +89,7 @@ final class DiaryForeignViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         showKeyboard(textView: diaryTextView)
         keyboardAddObserver()
+        randomSubjectWithAPI()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -93,8 +98,7 @@ final class DiaryForeignViewController: UIViewController {
     
     // MARK: - @objc
     
-    @objc
-    func topikBTNDidTap(_ gesture: UITapGestureRecognizer) {
+    @objc func topikBTNDidTap(_ gesture: UITapGestureRecognizer) {
         setRandomTopicButtonToggle()
     }
     
@@ -110,6 +114,10 @@ final class DiaryForeignViewController: UIViewController {
     
     private func setBackgoundColor() {
         view.backgroundColor = .smemeWhite
+    }
+    
+    private func setData() {
+        randomSubjectView.configure(with: RandomSubjectViewModel(contentText: randomSubject.content, isHiddenRefreshButton: false))
     }
     
     private func setLayout() {
@@ -259,6 +267,18 @@ extension DiaryForeignViewController: UITextViewDelegate {
             textView.font = .body1
             textView.setLineSpacing()
             textView.tintColor = .primary
+        }
+    }
+}
+
+// MARK: - Network
+
+extension DiaryForeignViewController {
+    func randomSubjectWithAPI () {
+        RandomSubjectAPI.shared.getRandomSubject { response in
+            guard let randomSubjectData = response?.data else {return}
+            self.randomSubject = randomSubjectData
+            self.setData()
         }
     }
 }

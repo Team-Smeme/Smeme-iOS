@@ -13,7 +13,7 @@ import Then
 final class MySmemeViewController: UIViewController {
     
     // MARK: - Property
-    
+        
     // MARK: - UI Property
     
     private let headerContainerView = UIView()
@@ -43,15 +43,13 @@ final class MySmemeViewController: UIViewController {
         $0.setTextWithLineHeight(lineHeight: 19)
     }
     
-    private let userIdLabel = UILabel().then {
-        $0.text = "주지스님"
+    private lazy var userIdLabel = UILabel().then {
         $0.font = .headline3
         $0.textColor = .smemeBlack
         $0.setTextWithLineHeight(lineHeight: 26)
     }
     
-    private let userIntroLabel = UILabel().then {
-        $0.text = "미국 거주 4년차 일기 챌린저입니다."
+    private lazy var userIntroLabel = UILabel().then {
         $0.font = .subtitle3
         $0.textColor = .smemeBlack
         $0.textAlignment = .left
@@ -155,6 +153,11 @@ final class MySmemeViewController: UIViewController {
         setBackgroundColor()
         setTabbarHidden()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        mySmemeWithAPI()
+    }
+    
     // MARK: - @objc
     
     @objc
@@ -329,5 +332,17 @@ final class MySmemeViewController: UIViewController {
     
     private func setTabbarHidden() {
         self.tabBarController?.tabBar.isHidden = true
+    }
+}
+
+// MARK: - Network
+
+extension MySmemeViewController {
+    func mySmemeWithAPI() {
+        MySmemeAPI.shared.getMySmeme { response in
+            guard let mySmemeData = response?.data else { return }
+            self.userIdLabel.text = mySmemeData.username
+            self.userIntroLabel.text = mySmemeData.bio
+        }
     }
 }
