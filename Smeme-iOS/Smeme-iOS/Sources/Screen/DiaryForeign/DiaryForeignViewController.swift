@@ -89,6 +89,7 @@ final class DiaryForeignViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         showKeyboard(textView: diaryTextView)
         keyboardAddObserver()
+        randomSubjectWithAPI()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -117,7 +118,9 @@ final class DiaryForeignViewController: UIViewController {
     }
     
     private func setData() {
-        randomSubjectView.contentLabel.text = randomSubject.content
+        
+        randomSubjectView.configure(with: RandomSubjectViewModel(contentText: randomSubject.content, isHiddenRefreshButton: false))
+        
     }
     
     private func setLayout() {
@@ -274,10 +277,11 @@ extension DiaryForeignViewController: UITextViewDelegate {
 // MARK: - Network
 
 extension DiaryForeignViewController {
-    func randomSubjectWithAPI (id: Int) {
-        RandomSubjectAPI.shared.getRandomSubject(id: id) { response in guard let randomSubjectData = response?.data else {return}
+    func randomSubjectWithAPI () {
+        RandomSubjectAPI.shared.getRandomSubject { response in guard let randomSubjectData = response?.data else {return}
             self.randomSubject = randomSubjectData
             self.setData()
+//            self.setLayout()
         }
     }
 }
