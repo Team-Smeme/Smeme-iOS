@@ -47,16 +47,18 @@ final class DiaryForeignViewController: UIViewController {
         $0.addShadow(shadowColor: .black, shadowOpacity: 0.04, shadowRadius: 16, offset: CGSize(width: 0, height: -4.0))
     }
     
-    private let cancelButton = UIButton().then {
+    private lazy var cancelButton = UIButton().then {
         $0.titleLabel?.font = .body1
         $0.setTitleColor(.black, for: .normal)
         $0.setTitle("취소", for: .normal)
+        $0.addTarget(self, action: #selector(naviButtonDidTap), for: .touchUpInside)
     }
     
-    private let completeButton = UIButton().then {
+    private lazy var completeButton = UIButton().then {
         $0.titleLabel?.font = .body1
         $0.setTitleColor(.black, for: .normal)
         $0.setTitle("완료", for: .normal)
+        $0.addTarget(self, action: #selector(naviButtonDidTap), for: .touchUpInside)
     }
     
     private let languageLabel = UILabel().then {
@@ -108,6 +110,10 @@ final class DiaryForeignViewController: UIViewController {
     
     @objc func keyboardWillHide(_ notification: Notification) {
         handleKeyboardChanged(notification: notification, customView: bottomView, isActive: false)
+    }
+    
+    @objc func naviButtonDidTap() {
+        self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
     }
     
     // MARK: - Custom Method
