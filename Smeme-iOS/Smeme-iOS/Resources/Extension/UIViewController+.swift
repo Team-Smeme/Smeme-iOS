@@ -103,4 +103,21 @@ extension UIViewController {
               toastLabel.removeFromSuperview()
           })
     }
+    
+    func changeRootViewController(_ viewControllerToPresent: UIViewController) {
+        if let window = UIApplication.shared.windows.first {
+            window.rootViewController = viewControllerToPresent
+            UIView.transition(with: window, duration: 0.5, options: .transitionCrossDissolve, animations: nil)
+        } else {
+            viewControllerToPresent.modalPresentationStyle = .overFullScreen
+            self.present(viewControllerToPresent, animated: true, completion: nil)
+        }
+    }
+    
+    ///main navigation controller로 root view controller 변경
+    func changeMainRootViewController() {
+        let mainViewController = UINavigationController(rootViewController: MainViewController())
+        mainViewController.isNavigationBarHidden = true
+        changeRootViewController(mainViewController)
+    }
 }
