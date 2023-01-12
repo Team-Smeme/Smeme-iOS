@@ -11,6 +11,8 @@ final class LoginProfileInfoViewController: UIViewController {
     
     // MARK: - Property
     
+    var Response: GeneralResponse<VoidType>?
+    
     // MARK: - UI Property
     
     private let profileEnterinfoLabel = UILabel().then {
@@ -48,9 +50,10 @@ final class LoginProfileInfoViewController: UIViewController {
         }
     }
     
-    private let congratulateButton = UIButton().then {
+    private lazy var congratulateButton = UIButton().then {
         $0.setImage(Constant.Image.btnWelcomeInactive, for: .normal)
         $0.isEnabled = false
+        $0.addTarget(self, action: #selector(self.congratulateButtonDidTap(_:)), for: .touchUpInside)
     }
     
     // MARK: - Life Cycle
@@ -65,6 +68,14 @@ final class LoginProfileInfoViewController: UIViewController {
     }
     
     // MARK: - @objc
+    
+    @objc func congratulateButtonDidTap() {
+        guard let username = nickNameTextField.textField.text,
+              let bio = oneLineInfoTextField.textField.text else { return }
+        signUpSmemeWithAPI(accessToken: APIConstant.bearerToken, username: username, bio: bio)
+        changeMainRootViewController()
+        
+    }
     
     // MARK: - Custom Method
     
@@ -143,5 +154,14 @@ extension LoginProfileInfoViewController: UITextFieldDelegate {
             oneLineInfoTextField.textField.resignFirstResponder()
         }
         return true
+    }
+}
+
+// MARK: - Network
+
+extension LoginProfileInfoViewController {
+    func signUpSmemeWithAPI(accessToken: String, username: String, bio: String) {
+        SignUpAPI.shared.signUpSmeme(accessToken: accessToken, username: username, bio: bio) { _ in
+        }
     }
 }
