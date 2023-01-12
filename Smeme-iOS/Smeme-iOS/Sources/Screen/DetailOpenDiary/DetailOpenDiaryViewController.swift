@@ -17,8 +17,9 @@ final class DetailOpenDiaryViewController: UIViewController {
     var editMenuInteraction: UIEditMenuInteraction?
     var scrapText: String?
     var scrapId: Int?
+    var detailOpenDiaryList: [DetailOpenDiaryResponse] = []
     
-    var diaryID: Int = 1
+    var diaryID: Int?
     
     // MARK: - UI Property
     
@@ -113,6 +114,10 @@ final class DetailOpenDiaryViewController: UIViewController {
         setLayout()
         setTabbarHidden()
         setTextViewDelegate()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        getDetailOpenDiaryAPI(diaryID: diaryID ?? 0)
     }
     
     // MARK: - @objc
@@ -229,8 +234,21 @@ final class DetailOpenDiaryViewController: UIViewController {
 // MARK: - Network
 
 extension DetailOpenDiaryViewController {
+    private func getDetailOpenDiaryAPI(diaryID: Int) {
+        DetailOpenDiaryAPI.shared.getDetailOpenDiaryAPI(param: diaryID) { response in
+            guard let detailOpenDiaryResponse = response?.data else { return }
+            self.diaryContentLabel.text = detailOpenDiaryResponse.content
+            self.topicNameLabel.text = detailOpenDiaryResponse.category
+            self.randomSubjectView.configure(with: RandomSubjectViewModel(contentText: detailOpenDiaryResponse.topic, isHiddenRefreshButton: true))
+            self.likeCountLabel.text = "\(detailOpenDiaryResponse.likeCnt)"
+            self.nicknameLabel.text = detailOpenDiaryResponse.username
+            self.userInfoLabel.text = detailOpenDiaryResponse.bio
+//            hasLike
+        }
+    }
+    
     private func postScrapOpenDiaryAPI(dirayID: Int, scrapText: String) {
-        ScrapOpenDiaryAPI.shared.postScrapOpenDiary(param: ScrapRequest(diaryID: diaryID, paragraph: scrapText)) { response in
+        ScrapOpenDiaryAPI.shared.postScrapOpenDiary(param: ScrapRequest(diaryID: diaryID ?? 0, paragraph: scrapText)) { response in
             guard let responseData = response?.data else { return }
             self.scrapId = responseData.scrapID
         }
