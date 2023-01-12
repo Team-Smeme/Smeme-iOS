@@ -50,6 +50,7 @@
 		4A9B4EFE296EF17F0078FBBC /* OpenDiaryListAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A9B4EFD296EF17F0078FBBC /* OpenDiaryListAPI.swift */; };
 		4A9B4F05296EFBB00078FBBC /* OpenDiaryListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A9B4F04296EFBB00078FBBC /* OpenDiaryListResponse.swift */; };
 		4AA1469D2970AB790013D9F5 /* DetailOpenDiaryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA1469C2970AB790013D9F5 /* DetailOpenDiaryService.swift */; };
+		4AA146A22970AD5A0013D9F5 /* DetailOpenDiaryAP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA146A12970AD5A0013D9F5 /* DetailOpenDiaryAP.swift */; };
 		4AC95571296F834600704162 /* ScrapOpenDirayService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC95570296F834600704162 /* ScrapOpenDirayService.swift */; };
 		4AC95573296F855400704162 /* ScrapRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC95572296F855400704162 /* ScrapRequest.swift */; };
 		4AC95575296F861100704162 /* ScrapOpenDiaryAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC95574296F861100704162 /* ScrapOpenDiaryAPI.swift */; };
@@ -136,6 +137,7 @@
 		4A9B4EFD296EF17F0078FBBC /* OpenDiaryListAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenDiaryListAPI.swift; sourceTree = "<group>"; };
 		4A9B4F04296EFBB00078FBBC /* OpenDiaryListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenDiaryListResponse.swift; sourceTree = "<group>"; };
 		4AA1469C2970AB790013D9F5 /* DetailOpenDiaryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailOpenDiaryService.swift; sourceTree = "<group>"; };
+		4AA146A12970AD5A0013D9F5 /* DetailOpenDiaryAP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailOpenDiaryAP.swift; sourceTree = "<group>"; };
 		4AC95570296F834600704162 /* ScrapOpenDirayService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapOpenDirayService.swift; sourceTree = "<group>"; };
 		4AC95572296F855400704162 /* ScrapRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapRequest.swift; sourceTree = "<group>"; };
 		4AC95574296F861100704162 /* ScrapOpenDiaryAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapOpenDiaryAPI.swift; sourceTree = "<group>"; };
@@ -395,6 +397,7 @@
 		4A0501F5295CBD6F00E17386 /* DataModel */ = {
 			isa = PBXGroup;
 			children = (
+				4AA1469F2970AD1A0013D9F5 /* SracpOpen */,
 				371D286E296EF16E00836DD4 /* RandomSubject */,
 				4A9B4EF6296EDB970078FBBC /* OpenDiary */,
 				A32753282966FE81004BB8A0 /* ScrapedStashResponse.swift */,
@@ -408,6 +411,7 @@
 		4A0501F6295CBD8700E17386 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				4AA1469E2970AD030013D9F5 /* ScrapOpen */,
 				A3B74F88296F1E7100E2A0F7 /* ScrapStash */,
 				371D2871296EF56400836DD4 /* RandomSubject */,
 				371D2868296EE64D00836DD4 /* PostDiary */,
@@ -422,6 +426,7 @@
 		4A0501F7295CBD8C00E17386 /* API */ = {
 			isa = PBXGroup;
 			children = (
+				4AA146A02970AD410013D9F5 /* ScrapOpen */,
 				371D2872296EF5A100836DD4 /* RandomSubject */,
 				371D2865296EE53600836DD4 /* PostDiary */,
 				4A9B4EFC296EE5160078FBBC /* OpenDiary */,
@@ -497,7 +502,6 @@
 				A3B74F82296F1D8A00E2A0F7 /* OpenDiaryCategoryResponse.swift */,
 				A3B74F84296F1D9800E2A0F7 /* DetailOpenDiaryResponse.swift */,
 				4A9B4F04296EFBB00078FBBC /* OpenDiaryListResponse.swift */,
-				4AC95572296F855400704162 /* ScrapRequest.swift */,
 			);
 			path = OpenDiary;
 			sourceTree = "<group>";
@@ -507,8 +511,6 @@
 			children = (
 				4AF21F57296DDC5600AE38F6 /* OpenDiaryCategoryService.swift */,
 				4A9B4EFA296EDD930078FBBC /* OpenDiaryListService.swift */,
-				4AC95570296F834600704162 /* ScrapOpenDirayService.swift */,
-				4AC95576296F86E700704162 /* ScrapOpenDiaryResponse.swift */,
 				4AA1469C2970AB790013D9F5 /* DetailOpenDiaryService.swift */,
 			);
 			path = OpenDiary;
@@ -519,9 +521,34 @@
 			children = (
 				A3B74F8B296F1EAE00E2A0F7 /* OpenDiaryCategoryAPI.swift */,
 				4A9B4EFD296EF17F0078FBBC /* OpenDiaryListAPI.swift */,
-				4AC95574296F861100704162 /* ScrapOpenDiaryAPI.swift */,
+				4AA146A12970AD5A0013D9F5 /* DetailOpenDiaryAP.swift */,
 			);
 			path = OpenDiary;
+			sourceTree = "<group>";
+		};
+		4AA1469E2970AD030013D9F5 /* ScrapOpen */ = {
+			isa = PBXGroup;
+			children = (
+				4AC95570296F834600704162 /* ScrapOpenDirayService.swift */,
+			);
+			path = ScrapOpen;
+			sourceTree = "<group>";
+		};
+		4AA1469F2970AD1A0013D9F5 /* SracpOpen */ = {
+			isa = PBXGroup;
+			children = (
+				4AC95576296F86E700704162 /* ScrapOpenDiaryResponse.swift */,
+				4AC95572296F855400704162 /* ScrapRequest.swift */,
+			);
+			path = SracpOpen;
+			sourceTree = "<group>";
+		};
+		4AA146A02970AD410013D9F5 /* ScrapOpen */ = {
+			isa = PBXGroup;
+			children = (
+				4AC95574296F861100704162 /* ScrapOpenDiaryAPI.swift */,
+			);
+			path = ScrapOpen;
 			sourceTree = "<group>";
 		};
 		4AD78BAB2965746700EEE509 /* TabBar */ = {
@@ -788,6 +815,7 @@
 				4AD78BBC2965993F00EEE509 /* ViewModel.swift in Sources */,
 				6FFC2554296DDBC5006132FE /* MyDiaryService.swift in Sources */,
 				6F46B888296DE2D300DF33C7 /* MyDiaryAPI.swift in Sources */,
+				4AA146A22970AD5A0013D9F5 /* DetailOpenDiaryAP.swift in Sources */,
 				4AC95575296F861100704162 /* ScrapOpenDiaryAPI.swift in Sources */,
 				6F33F1FA2968162E002A2FBA /* MyDiaryNavigationBar.swift in Sources */,
 				4AD78BC42966888B00EEE509 /* UIScreen+.swift in Sources */,
