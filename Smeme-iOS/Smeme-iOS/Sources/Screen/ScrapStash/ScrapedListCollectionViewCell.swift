@@ -11,7 +11,7 @@ import SnapKit
 import Then
 
 protocol alertProtocol {
-    func presentAlert()
+    func presentAlert(id: Int)
 }
 
 class ScrapedListCollectionViewCell: UICollectionViewCell {
@@ -19,6 +19,7 @@ class ScrapedListCollectionViewCell: UICollectionViewCell {
     // MARK: - Property
     
     static let identifier = "UICollectionViewCell"
+    var id: Int?
     var delegate: alertProtocol?
     
     // MARK: - UI Property
@@ -77,7 +78,7 @@ class ScrapedListCollectionViewCell: UICollectionViewCell {
     // MARK: - @objc
     
     @objc func deleteButtonDidTap() {
-        delegate?.presentAlert()
+        delegate?.presentAlert(id: id ?? 0)
     }
     
     // MARK: - Custom Method
