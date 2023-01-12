@@ -9,7 +9,7 @@ import Moya
 
 enum ScrapStashService {
     case scrapStashList
-    case deleteScrap
+    case deleteScrap(param: Int)
 }
 
 extension ScrapStashService: BaseTargetType {
@@ -17,8 +17,8 @@ extension ScrapStashService: BaseTargetType {
         switch self {
         case .scrapStashList:
             return URLConstant.scrapStashListURL
-        case .deleteScrap:
-            return URLConstant.scrapDeleteURL
+        case .deleteScrap(let param):
+            return URLConstant.scrapDeleteURL + "\(param)"
         }
     }
     
