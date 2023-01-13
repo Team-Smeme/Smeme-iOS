@@ -287,7 +287,7 @@ final class StepOneKoreanDiaryViewController: UIViewController {
     }
     
     private func characterValidation() -> Bool {
-        while diaryTextView.text.getArrayAfterRegex(regex: "[가-핳]").count > 9 {
+        while diaryTextView.text.getArrayAfterRegex(regex: "[가-핳ㄱ-ㅎㅏ-ㅣ]").count > 9 {
             return true
         }
         return false
