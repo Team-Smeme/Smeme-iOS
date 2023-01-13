@@ -57,6 +57,10 @@ final class MyDiaryFloatingButtonViewController: UIViewController {
         view.backgroundColor = .clear
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     private func setLayout() {
         view.addSubviews([floatingDimView, floatingButton, koreanDiaryButton, foreignDiaryButton])
         
