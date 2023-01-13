@@ -89,7 +89,6 @@ final class MyDiaryViewController: UIViewController {
     // MARK: - Custom Method
     
     private func setBackgroundColor() {
-        print(URLConstant.detailMyDiaryListURL + "\(67)")
         view.backgroundColor = .background
     }
     
@@ -163,7 +162,7 @@ extension MyDiaryViewController: UICollectionViewDataSource {
         let content = diaryList[indexPath.row].content
         let time = diaryList[indexPath.row].createdAt
         cell.setData(content: content, time: time)
-        
+
         return cell
     }
 }

@@ -197,7 +197,10 @@ final class DetailMyDiaryViewController: UIViewController {
     private func presentAlert() {
         let alert = UIAlertController(title: nil, message: "삭제하시겠습니까?", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "취소", style: .destructive))
-        alert.addAction(UIAlertAction(title: "확인", style: .default))
+        alert.addAction(UIAlertAction(title: "확인", style: .default, handler: { _ in
+            self.deleteMyDiaryWithAPI(diaryId: self.diaryId)
+            self.changeMainRootViewController()
+        }))
         self.present(alert, animated: true, completion: nil)
     }
     
@@ -225,6 +228,11 @@ extension DetailMyDiaryViewController {
             self.myDiaryDetail = diaryData
             self.setData()
             self.setLayout()
+        }
+    }
+    
+    func deleteMyDiaryWithAPI(diaryId: Int) {
+        MyDiaryAPI.shared.deleteMyDiaryList(diaryId: diaryId) { _ in
         }
     }
 }

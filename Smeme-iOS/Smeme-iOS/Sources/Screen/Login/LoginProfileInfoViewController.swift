@@ -74,7 +74,6 @@ final class LoginProfileInfoViewController: UIViewController {
               let bio = oneLineInfoTextField.textField.text else { return }
         signUpSmemeWithAPI(accessToken: APIConstant.bearerToken, username: username, bio: bio)
         changeMainRootViewController()
-        
     }
     
     // MARK: - Custom Method

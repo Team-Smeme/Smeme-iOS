@@ -218,6 +218,7 @@ extension ScrapStashViewController: UICollectionViewDataSource {
         listCell.dataBind(model: scrapStashList[indexPath.item])
         listCell.id = scrapStashList[indexPath.item].id
         listCell.delegate = self
+        
         return listCell
     }
 }
