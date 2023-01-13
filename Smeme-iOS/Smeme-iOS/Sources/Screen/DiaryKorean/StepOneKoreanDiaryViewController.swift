@@ -206,7 +206,7 @@ final class StepOneKoreanDiaryViewController: UIViewController {
         }
         
         diaryTextView.snp.makeConstraints {
-            $0.top.equalTo(tipLabel.snp.bottom).offset(10)
+            $0.top.equalTo(tipLabel.snp.bottom).offset(7)
             $0.leading.trailing.equalToSuperview().inset(24)
             $0.bottom.equalToSuperview()
         }

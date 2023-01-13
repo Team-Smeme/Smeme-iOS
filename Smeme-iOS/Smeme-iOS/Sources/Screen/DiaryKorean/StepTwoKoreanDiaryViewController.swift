@@ -24,14 +24,16 @@ final class StepTwoKoreanDiaryViewController: UIViewController {
     private let languageView = UIView()
     
     var koreanDiaryTextView = UITextView().then {
+        $0.setLineSpacing()
         $0.font = .body1
         $0.textColor = .smemeBlack
-        //            $0.delegate = self
+        $0.tintColor = .primary
     }
     
     private lazy var diaryTextView = UITextView().then {
         $0.setLineSpacing()
         $0.textColor = .gray400
+        $0.tintColor = .primary
         $0.delegate = self
     }
     
@@ -178,10 +180,9 @@ final class StepTwoKoreanDiaryViewController: UIViewController {
         }
         
         koreanDiaryTextView.snp.makeConstraints {
-            $0.top.equalTo(naviView.snp.bottom)
-            $0.leading.equalTo(view.safeAreaLayoutGuide).offset(30)
-            $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-30)
-            $0.height.equalTo(convertByHeightRatio(110))
+            $0.top.equalTo(naviView.snp.bottom).offset(13)
+            $0.leading.trailing.equalToSuperview().inset(24)
+            $0.height.equalTo(convertByHeightRatio(84))
         }
         
         grayUnderlineView.snp.makeConstraints {
