@@ -51,6 +51,7 @@ extension Constant {
         // MARK: - Main
         
         static let icnPageLeft = UIImage(named: "icnPageLeft")!
+        static let icnPageLeftDisabled = UIImage(named: "icnPageLeftInactive")!
         static let icnPageRight = UIImage(named: "icnPageRight")!
         static let icnPageRightDisabled = UIImage(named: "icnPageRightDisabled")!
         static let icnPageRightSmall = UIImage(named: "icnPageRightSmall")!
