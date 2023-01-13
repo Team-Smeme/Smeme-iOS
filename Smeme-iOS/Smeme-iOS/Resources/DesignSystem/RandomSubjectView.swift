@@ -111,11 +111,11 @@ final class RandomSubjectView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        questionLabel.frame = CGRect(x: (UIScreen.main.bounds.width - 315) / 2,
+        questionLabel.frame = CGRect(x: 30,
                                      y: 16,
                                      width: 14,
                                      height: 17)
-        contentLabel.frame = CGRect(x: (UIScreen.main.bounds.width - 315) / 2,
+        contentLabel.frame = CGRect(x: 30,
                                     y: 14,
                                     width: 315,
                                     height: contentLabel.calculateContentHeight(lineHeight: 21))
