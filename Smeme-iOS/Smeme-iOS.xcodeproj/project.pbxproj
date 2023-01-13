@@ -68,7 +68,6 @@
 		4AD78BAF2965756800EEE509 /* MyDiaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD78BAE2965756800EEE509 /* MyDiaryViewController.swift */; };
 		4AD78BB32965758100EEE509 /* ScrapStashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD78BB22965758100EEE509 /* ScrapStashViewController.swift */; };
 		4AD78BB6296577A700EEE509 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 4AD78BB5296577A700EEE509 /* Lottie */; };
-		4AD78BBC2965993F00EEE509 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD78BBB2965993F00EEE509 /* ViewModel.swift */; };
 		4AD78BC42966888B00EEE509 /* UIScreen+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD78BC32966888B00EEE509 /* UIScreen+.swift */; };
 		4AD78BCC2966A93100EEE509 /* UILabel+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD78BCB2966A93100EEE509 /* UILabel+.swift */; };
 		4AF21F58296DDC5600AE38F6 /* OpenDiaryCategoryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF21F57296DDC5600AE38F6 /* OpenDiaryCategoryService.swift */; };
@@ -159,7 +158,6 @@
 		4AD78BAC296574F000EEE509 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		4AD78BAE2965756800EEE509 /* MyDiaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDiaryViewController.swift; sourceTree = "<group>"; };
 		4AD78BB22965758100EEE509 /* ScrapStashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapStashViewController.swift; sourceTree = "<group>"; };
-		4AD78BBB2965993F00EEE509 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		4AD78BC32966888B00EEE509 /* UIScreen+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScreen+.swift"; sourceTree = "<group>"; };
 		4AD78BCB2966A93100EEE509 /* UILabel+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+.swift"; sourceTree = "<group>"; };
 		4AF21F57296DDC5600AE38F6 /* OpenDiaryCategoryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenDiaryCategoryService.swift; sourceTree = "<group>"; };
@@ -183,7 +181,6 @@
 		A32753282966FE81004BB8A0 /* ScrapedStashResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapedStashResponse.swift; sourceTree = "<group>"; };
 		A327532A2967F961004BB8A0 /* ScrapedListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapedListCollectionViewCell.swift; sourceTree = "<group>"; };
 		A337793B296D545600A45764 /* APIConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstant.swift; sourceTree = "<group>"; };
-		A36843E6296F0C7F00BA447F /* ScrapStashService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapStashService.swift; sourceTree = "<group>"; };
 		A36843E8296F0DB600BA447F /* ScrapStashAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapStashAPI.swift; sourceTree = "<group>"; };
 		A37BFA29296B48CE00F292B5 /* MySmemeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySmemeViewController.swift; sourceTree = "<group>"; };
 		A396F759296F45A1003A2748 /* MySmemeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySmemeResponse.swift; sourceTree = "<group>"; };
@@ -311,7 +308,6 @@
 		4A0501E4295CB88E00E17386 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				4AD78BBA2965993500EEE509 /* Protocol */,
 				4A0501E8295CB9EC00E17386 /* DesignSystem */,
 				4A0501E7295CB8ED00E17386 /* Extension */,
 				4A0501E9295CB9F700E17386 /* Constant */,
@@ -431,15 +427,13 @@
 		4A0501F5295CBD6F00E17386 /* DataModel */ = {
 			isa = PBXGroup;
 			children = (
+				A362C0EC2971A71600460E04 /* MyDiary */,
+				A362C0EB2971A70300460E04 /* MySmeme */,
 				4A003FF729716AA900954ADB /* Papago */,
 				4AA1469F2970AD1A0013D9F5 /* SracpOpen */,
 				4AA146A52970CFCB0013D9F5 /* PostDiary */,
 				371D286E296EF16E00836DD4 /* RandomSubject */,
 				4A9B4EF6296EDB970078FBBC /* OpenDiary */,
-				A396F759296F45A1003A2748 /* MySmemeResponse.swift */,
-				A32753282966FE81004BB8A0 /* ScrapedStashResponse.swift */,
-				6FFC2551296DDA54006132FE /* MyDiaryListResponse.swift */,
-				6FD39872296AE27400C16B79 /* MyDiaryDetailResponse.swift */,
 			);
 			path = DataModel;
 			sourceTree = "<group>";
@@ -447,15 +441,15 @@
 		4A0501F6295CBD8700E17386 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				A362C0EA2971A6F900460E04 /* SignUp */,
+				A362C0E92971A6EF00460E04 /* MySmeme */,
+				A362C0E82971A6E300460E04 /* MyDiary */,
 				4A003FFA29716AE700954ADB /* PapagoService */,
 				4AA1469E2970AD030013D9F5 /* ScrapOpen */,
 				A3B74F88296F1E7100E2A0F7 /* ScrapStash */,
 				371D2871296EF56400836DD4 /* RandomSubject */,
 				371D2868296EE64D00836DD4 /* PostDiary */,
 				4A9B4EF9296EDD200078FBBC /* OpenDiary */,
-				6FFC2553296DDBC5006132FE /* MyDiaryService.swift */,
-				A396F75B296F46FC003A2748 /* MySmemeService.swift */,
-				6F9FF112296F8791002202FD /* SignUpService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -463,15 +457,15 @@
 		4A0501F7295CBD8C00E17386 /* API */ = {
 			isa = PBXGroup;
 			children = (
+				A362C0E72971A6D800460E04 /* SignUp */,
+				A362C0E62971A6CA00460E04 /* MySmeme */,
+				A362C0E52971A6C000460E04 /* MyDiary */,
 				4A003FFD29716C0300954ADB /* Papago */,
 				4A845D582970EEA300C230B4 /* ScrapOpen */,
 				371D2872296EF5A100836DD4 /* RandomSubject */,
 				371D2865296EE53600836DD4 /* PostDiary */,
 				4A9B4EFC296EE5160078FBBC /* OpenDiary */,
-				6F46B887296DE2D300DF33C7 /* MyDiaryAPI.swift */,
-				A396F75D296F48A4003A2748 /* MySmemeAPI.swift */,
 				A36843E3296F0B1100BA447F /* ScrapStash */,
-				6F9FF110296F8779002202FD /* SignUpAPI.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -505,7 +499,6 @@
 				4A795D24296151EC007043C0 /* .swiftlint.yml */,
 				4A4CB70C295CAD7700F170CC /* Smeme-iOS */,
 				4A4CB70B295CAD7700F170CC /* Products */,
-				A3B74F81296F1CB700E2A0F7 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -583,6 +576,7 @@
 		4AA1469F2970AD1A0013D9F5 /* SracpOpen */ = {
 			isa = PBXGroup;
 			children = (
+				A32753282966FE81004BB8A0 /* ScrapedStashResponse.swift */,
 				4AC95576296F86E700704162 /* ScrapOpenDiaryResponse.swift */,
 				4AC95572296F855400704162 /* ScrapRequest.swift */,
 			);
@@ -637,14 +631,6 @@
 			path = ScrapStash;
 			sourceTree = "<group>";
 		};
-		4AD78BBA2965993500EEE509 /* Protocol */ = {
-			isa = PBXGroup;
-			children = (
-				4AD78BBB2965993F00EEE509 /* ViewModel.swift */,
-			);
-			path = Protocol;
-			sourceTree = "<group>";
-		};
 		6F1D7796296BDEF600C8FE39 /* Subviews */ = {
 			isa = PBXGroup;
 			children = (
@@ -654,6 +640,71 @@
 				6F1D7797296BDF5E00C8FE39 /* LikeBottomView.swift */,
 			);
 			path = Subviews;
+			sourceTree = "<group>";
+		};
+		A362C0E52971A6C000460E04 /* MyDiary */ = {
+			isa = PBXGroup;
+			children = (
+				6F46B887296DE2D300DF33C7 /* MyDiaryAPI.swift */,
+			);
+			path = MyDiary;
+			sourceTree = "<group>";
+		};
+		A362C0E62971A6CA00460E04 /* MySmeme */ = {
+			isa = PBXGroup;
+			children = (
+				A396F75D296F48A4003A2748 /* MySmemeAPI.swift */,
+			);
+			path = MySmeme;
+			sourceTree = "<group>";
+		};
+		A362C0E72971A6D800460E04 /* SignUp */ = {
+			isa = PBXGroup;
+			children = (
+				6F9FF110296F8779002202FD /* SignUpAPI.swift */,
+			);
+			path = SignUp;
+			sourceTree = "<group>";
+		};
+		A362C0E82971A6E300460E04 /* MyDiary */ = {
+			isa = PBXGroup;
+			children = (
+				6FFC2553296DDBC5006132FE /* MyDiaryService.swift */,
+			);
+			path = MyDiary;
+			sourceTree = "<group>";
+		};
+		A362C0E92971A6EF00460E04 /* MySmeme */ = {
+			isa = PBXGroup;
+			children = (
+				A396F75B296F46FC003A2748 /* MySmemeService.swift */,
+			);
+			path = MySmeme;
+			sourceTree = "<group>";
+		};
+		A362C0EA2971A6F900460E04 /* SignUp */ = {
+			isa = PBXGroup;
+			children = (
+				6F9FF112296F8791002202FD /* SignUpService.swift */,
+			);
+			path = SignUp;
+			sourceTree = "<group>";
+		};
+		A362C0EB2971A70300460E04 /* MySmeme */ = {
+			isa = PBXGroup;
+			children = (
+				A396F759296F45A1003A2748 /* MySmemeResponse.swift */,
+			);
+			path = MySmeme;
+			sourceTree = "<group>";
+		};
+		A362C0EC2971A71600460E04 /* MyDiary */ = {
+			isa = PBXGroup;
+			children = (
+				6FD39872296AE27400C16B79 /* MyDiaryDetailResponse.swift */,
+				6FFC2551296DDA54006132FE /* MyDiaryListResponse.swift */,
+			);
+			path = MyDiary;
 			sourceTree = "<group>";
 		};
 		A36843E3296F0B1100BA447F /* ScrapStash */ = {
@@ -670,14 +721,6 @@
 				A37BFA29296B48CE00F292B5 /* MySmemeViewController.swift */,
 			);
 			path = MySmeme;
-			sourceTree = "<group>";
-		};
-		A3B74F81296F1CB700E2A0F7 /* Recovered References */ = {
-			isa = PBXGroup;
-			children = (
-				A36843E6296F0C7F00BA447F /* ScrapStashService.swift */,
-			);
-			name = "Recovered References";
 			sourceTree = "<group>";
 		};
 		A3B74F88296F1E7100E2A0F7 /* ScrapStash */ = {
@@ -863,7 +906,6 @@
 				371D2870296EF18500836DD4 /* RandomSubjectResponse.swift in Sources */,
 				A396F75E296F48A4003A2748 /* MySmemeAPI.swift in Sources */,
 				A327532B2967F961004BB8A0 /* ScrapedListCollectionViewCell.swift in Sources */,
-				4AD78BBC2965993F00EEE509 /* ViewModel.swift in Sources */,
 				6FFC2554296DDBC5006132FE /* MyDiaryService.swift in Sources */,
 				6F46B888296DE2D300DF33C7 /* MyDiaryAPI.swift in Sources */,
 				4AA146A22970AD5A0013D9F5 /* DetailOpenDiaryAP.swift in Sources */,

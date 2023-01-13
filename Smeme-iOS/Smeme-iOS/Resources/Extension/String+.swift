@@ -29,7 +29,7 @@ extension String {
     }
     
     func getArrayAfterRegex(regex: String) -> [String] {
-
+        
         do {
             let regex = try NSRegularExpression(pattern: regex)
             let results = regex.matches(in: self,
@@ -41,6 +41,7 @@ extension String {
             print("invalid regex: \(error.localizedDescription)")
             return []
         }
+    }
 
     func utcToLocale(dateFormat: String) -> String {
         let dfFormat = DateFormatter()

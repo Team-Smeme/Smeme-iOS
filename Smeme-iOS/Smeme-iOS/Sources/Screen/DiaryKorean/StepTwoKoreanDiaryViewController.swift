@@ -53,7 +53,7 @@ final class StepTwoKoreanDiaryViewController: UIViewController {
     
     private lazy var completeButton = UIButton().then {
         $0.titleLabel?.font = .body1
-        $0.setTitleColor(.smemeBlack, for: .normal)
+        $0.setTitleColor(.gray400, for: .normal)
         $0.titleLabel?.setTextWithLineHeight(lineHeight: 21)
         $0.setTitle("완료", for: .normal)
         $0.addTarget(self, action: #selector(compleButtonDidTap), for: .touchUpInside)
@@ -106,8 +106,6 @@ final class StepTwoKoreanDiaryViewController: UIViewController {
         
         setBackgoundColor()
         setLayout()
-        
-        print("random: \(randomTopicId)")
     }
     
     override func viewWillAppear(_ animated: Bool) {
