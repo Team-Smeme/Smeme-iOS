@@ -147,7 +147,7 @@ final class StepTwoKoreanDiaryViewController: UIViewController {
         
         backButton.snp.makeConstraints {
             $0.centerY.equalToSuperview()
-            $0.leading.equalToSuperview().offset(30)
+            $0.leading.equalToSuperview().offset(18)
         }
         
         languageView.snp.makeConstraints {
