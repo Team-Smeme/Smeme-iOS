@@ -216,7 +216,7 @@ final class StepTwoKoreanDiaryViewController: UIViewController {
         }
         
         hintButton.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(12)
+            $0.centerY.equalTo(randomTopicButton)
             $0.leading.equalToSuperview().offset(22)
         }
     }
