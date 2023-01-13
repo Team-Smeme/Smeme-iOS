@@ -14,7 +14,7 @@ final class StepOneKoreanDiaryViewController: UIViewController {
     
     // MARK: - Property
     
-    var isTapped: Bool = true
+    var isRandomTopic: Bool = false
     var isPublic: Bool = true
     
     var randomSubject = RandomSubjectResponse(id: 0, content: "")
@@ -125,6 +125,7 @@ final class StepOneKoreanDiaryViewController: UIViewController {
     @objc func nextButtonDidTap() {
         let stepTwoKoreanDiaryViewController = StepTwoKoreanDiaryViewController()
         stepTwoKoreanDiaryViewController.koreanDiaryTextView.text = diaryTextView.text
+        stepTwoKoreanDiaryViewController.pulickCheckBox = isPublic
         self.navigationController?.pushViewController(stepTwoKoreanDiaryViewController, animated: true)
     }
     
@@ -232,38 +233,44 @@ final class StepOneKoreanDiaryViewController: UIViewController {
     
     private func setRandomTopicButtonToggle() {
         topicID = 0
-        isTapped.toggle()
-        if isTapped {
+        isRandomTopic.toggle()
+        if isRandomTopic {
             randomTopicButton.setImage(Constant.Image.btnRandomTopicCheckBoxSelected, for: .normal)
-            naviView.snp.remakeConstraints {
-                $0.top.leading.trailing.equalTo(view.safeAreaLayoutGuide)
-                $0.height.equalTo(convertByHeightRatio(66))
-            }
-
-            diaryTextView.snp.remakeConstraints {
-                $0.top.equalTo(naviView.snp.bottom).offset(9)
-                $0.leading.trailing.equalTo(view.safeAreaLayoutGuide).offset(30)
-                $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-30)
-                $0.bottom.equalTo(bottomView.snp.top)
-            }
-
-            randomSubjectView.removeFromSuperview()
-
-        } else {
-            randomTopicButton.setImage(Constant.Image.btnRandomTopicCheckBox, for: .normal)
+            
             view.addSubview(randomSubjectView)
-
+            
+            languageView.snp.remakeConstraints {
+                $0.centerY.equalToSuperview()
+                $0.leading.equalTo(languageLabel.snp.trailing).offset(6)
+            }
+            
             randomSubjectView.snp.remakeConstraints {
                 $0.top.equalTo(naviView.snp.bottom)
                 $0.leading.equalToSuperview()
             }
-
+            
             diaryTextView.snp.remakeConstraints {
                 $0.top.equalTo(randomSubjectView.snp.bottom).offset(9)
                 $0.leading.trailing.equalTo(view.safeAreaLayoutGuide).offset(30)
                 $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-30)
                 $0.bottom.equalTo(bottomView.snp.top)
             }
+        } else {
+            randomTopicButton.setImage(Constant.Image.btnRandomTopicCheckBox, for: .normal)
+            
+            naviView.snp.remakeConstraints {
+                $0.top.leading.trailing.equalTo(view.safeAreaLayoutGuide)
+                $0.height.equalTo(convertByHeightRatio(66))
+            }
+            
+            diaryTextView.snp.remakeConstraints {
+                $0.top.equalTo(naviView.snp.bottom).offset(9)
+                $0.leading.trailing.equalTo(view.safeAreaLayoutGuide).offset(30)
+                $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-30)
+                $0.bottom.equalTo(bottomView.snp.top)
+            }
+            
+            randomSubjectView.removeFromSuperview()
         }
     }
     
