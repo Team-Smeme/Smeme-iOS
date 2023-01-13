@@ -15,10 +15,10 @@ final class DiaryForeignViewController: UIViewController {
     // MARK: - Property
     
     var isTapped: Bool = true
+    var isPublic: Bool = true
     
     var randomSubject = RandomSubjectResponse(id: 0, content: "")
     var topicID: Int?
-    var isPublic: Bool?
     var diaryID: Int?
     
     // MARK: - UI Property
@@ -72,13 +72,16 @@ final class DiaryForeignViewController: UIViewController {
     
     private lazy var randomTopicButton: UIImageView = {
         let view = UIImageView(image: Constant.Image.btnRandomTopicCheckBoxDisabled)
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(topikBTNDidTap(_:))) // UIImageView 클릭 제스쳐
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(topikBTNDidTap(_:)))
         view.addGestureRecognizer(tapGesture)
         view.isUserInteractionEnabled = true
         return view
     }()
     
-    private let publicButton = UIImageView(image: Constant.Image.btnPublicCheckBoxSelected)
+    private lazy var publicButton = UIButton().then {
+        $0.setImage(Constant.Image.btnPublicCheckBoxSelected, for: .normal)
+        $0.addTarget(self, action: #selector(publicButtonDidTap), for: .touchUpInside)
+    }
     
     // MARK: - Life Cycle
     
@@ -87,6 +90,7 @@ final class DiaryForeignViewController: UIViewController {
         
         setBackgoundColor()
         setLayout()
+        print(isPublic)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -120,6 +124,15 @@ final class DiaryForeignViewController: UIViewController {
     @objc func completionButtonDidTap() {
         postDiaryAPI()
         changeMainRootViewController()
+    }
+    
+    @objc func publicButtonDidTap() {
+        isPublic.toggle()
+        if isPublic {
+            publicButton.setImage(Constant.Image.btnPublicCheckBoxSelected, for: .normal)
+        } else {
+            publicButton.setImage(Constant.Image.btnPublicCheckBox, for: .normal)
+        }
     }
     
     // MARK: - Custom Method
