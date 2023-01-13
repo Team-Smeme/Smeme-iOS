@@ -53,7 +53,7 @@ final class LoginProfileInfoViewController: UIViewController {
     private lazy var congratulateButton = UIButton().then {
         $0.setImage(Constant.Image.btnWelcomeInactive, for: .normal)
         $0.isEnabled = false
-        $0.addTarget(self, action: #selector(self.congratulateButtonDidTap(_:)), for: .touchUpInside)
+        $0.addTarget(self, action: #selector(self.congratulateButtonDidTap), for: .touchUpInside)
     }
     
     // MARK: - Life Cycle
@@ -74,7 +74,6 @@ final class LoginProfileInfoViewController: UIViewController {
               let bio = oneLineInfoTextField.textField.text else { return }
         signUpSmemeWithAPI(accessToken: APIConstant.bearerToken, username: username, bio: bio)
         changeMainRootViewController()
-        
     }
     
     // MARK: - Custom Method

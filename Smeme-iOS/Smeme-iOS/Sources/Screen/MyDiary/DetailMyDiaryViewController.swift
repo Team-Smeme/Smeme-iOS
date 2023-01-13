@@ -199,7 +199,7 @@ final class DetailMyDiaryViewController: UIViewController {
         alert.addAction(UIAlertAction(title: "취소", style: .destructive))
         alert.addAction(UIAlertAction(title: "확인", style: .default, handler: { _ in
             self.deleteMyDiaryWithAPI(diaryId: self.diaryId)
-            self.detailMyDiaryWithAPI(diaryId: self.diaryId)
+            self.changeMainRootViewController()
         }))
         self.present(alert, animated: true, completion: nil)
     }
@@ -232,10 +232,7 @@ extension DetailMyDiaryViewController {
     }
     
     func deleteMyDiaryWithAPI(diaryId: Int) {
-        MyDiaryAPI.shared.deleteMyDiaryList(diaryId: diaryId) { response in
-            let data = response?.message
-            print("완료2")
-            print(data)
+        MyDiaryAPI.shared.deleteMyDiaryList(diaryId: diaryId) { _ in
         }
     }
 }
