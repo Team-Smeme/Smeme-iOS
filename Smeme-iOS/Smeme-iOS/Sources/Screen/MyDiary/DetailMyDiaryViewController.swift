@@ -91,7 +91,7 @@ final class DetailMyDiaryViewController: UIViewController {
         categoryLabel.text = (myDiaryDetail.category.isEmpty) ? "일상" : myDiaryDetail.category
         contentLabel.text = myDiaryDetail.content + " (\(myDiaryDetail.content.count))"
         contentLabel.setTextWithLineHeight(lineHeight: 21)
-        dateLabel.text = myDiaryDetail.createdAt.getFormattedDate(format: "yyyy년 MM월 dd일 HH:mm")
+        dateLabel.text = myDiaryDetail.createdAt.utcToLocale(dateFormat: "yyyy년 MM월 dd일 HH:mm")
         likeBottomView.configure(with: LikeBottomViewModel(likeCount: myDiaryDetail.likeCnt))
         randomSubjectView.configure(with: RandomSubjectViewModel(contentText: myDiaryDetail.topic, isHiddenRefreshButton: true))
         randomSubjectView.isHidden = myDiaryDetail.topic.isEmpty
