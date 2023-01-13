@@ -225,11 +225,13 @@ final class DetailOpenDiaryViewController: UIViewController {
         ? 122
         : 122 + randomSubjectView.frame.height
         let paddingOfContentWithContentView = calculateScrollViewHeightOffset(defaultHeight: 52,
-                                                                              heightOfBottomView: 59,
+                                                                              heightOfBottomView: convertByHeightRatio(59),
                                                                               paddingOfNaviWithContent: paddingOfNaviWithContent,
                                                                               paddingOfContentWithDate: 12)
         diaryContentLabel.snp.makeConstraints {
-            detailOpenDiaryList.topic.isEmpty ? $0.top.equalTo(borderLineView.snp.bottom).offset(convertByHeightRatio(20)) : $0.top.equalTo(randomSubjectView.snp.bottom).offset(20)
+            detailOpenDiaryList.topic.isEmpty
+            ? $0.top.equalTo(borderLineView.snp.bottom).offset(convertByHeightRatio(20))
+            : $0.top.equalTo(randomSubjectView.snp.bottom).offset(20)
             $0.leading.trailing.equalTo(contentView).inset(24)
             $0.bottom.equalTo(contentView).offset(-paddingOfContentWithContentView)
         }

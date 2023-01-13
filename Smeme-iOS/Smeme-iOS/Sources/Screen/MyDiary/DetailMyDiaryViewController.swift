@@ -105,7 +105,7 @@ final class DetailMyDiaryViewController: UIViewController {
         contentScrollView.snp.makeConstraints {
             $0.top.equalToSuperview().inset(headerHeightByNotch(66))
             $0.leading.trailing.equalToSuperview()
-            $0.bottom.equalTo(likeBottomView.snp.top)
+            $0.bottom.equalTo(view.safeAreaLayoutGuide).inset(likeBottomView.frame.height)
         }
         
         contentView.snp.makeConstraints {
@@ -147,7 +147,7 @@ final class DetailMyDiaryViewController: UIViewController {
         
         let paddingOfNaviWithContent = myDiaryDetail.topic.isEmpty ? 53 : (73 + randomSubjectView.frame.height)
         let paddingContentWithContentView = calculateScrollViewHeightOffset(defaultHeight: 98,
-                                                                            heightOfBottomView: 54,
+                                                                            heightOfBottomView: convertByHeightRatio(64),
                                                                             paddingOfNaviWithContent: paddingOfNaviWithContent,
                                                                             paddingOfContentWithDate: 20)
         contentLabel.snp.makeConstraints {
@@ -155,7 +155,7 @@ final class DetailMyDiaryViewController: UIViewController {
             ? $0.top.equalTo(categoryBackgroundView.snp.bottom).offset(convertByHeightRatio(20))
             : $0.top.equalTo(randomSubjectView.snp.bottom).offset(convertByHeightRatio(20))
             $0.leading.trailing.equalTo(contentView).inset(convertByWidthRatio(30))
-            $0.bottom.equalTo(contentView).offset(-paddingContentWithContentView)
+            $0.bottom.equalTo(contentView).offset(-paddingContentWithContentView-20)
         }
         
         dateLabel.snp.makeConstraints {

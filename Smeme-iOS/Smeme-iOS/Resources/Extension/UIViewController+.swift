@@ -120,4 +120,17 @@ extension UIViewController {
         tabBarViewController.isNavigationBarHidden = true
         changeRootViewController(tabBarViewController)
     }
+    
+    /// label의 글자수 제한
+    func limitTextCount(diaryText: String, limitNumber: Int) -> String {
+        var limitText: String = ""
+        
+        if diaryText.count > limitNumber {
+            limitText = String(diaryText.prefix(limitNumber))
+        } else if diaryText.count <= limitNumber {
+            limitText = diaryText
+        }
+        
+        return limitText
+    }
 }
