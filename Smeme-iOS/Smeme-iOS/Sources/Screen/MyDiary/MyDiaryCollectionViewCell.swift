@@ -70,7 +70,7 @@ final class MyDiaryCollectionViewCell: UICollectionViewCell {
     
     func setData(content: String, time: String) {
         contentLabel.text = limitTextCount(diaryText: content, limitNumber: 600) + " (\(content.count))"
-        timeLabel.text = time.getFormattedDate(format: "HH:mm")
+        timeLabel.text = time.utcToLocale(dateFormat: "HH:mm")
         contentLabel.setTextWithLineHeight(lineHeight: 21)
         timeLabel.setTextWithLineHeight(lineHeight: 17)
     }
