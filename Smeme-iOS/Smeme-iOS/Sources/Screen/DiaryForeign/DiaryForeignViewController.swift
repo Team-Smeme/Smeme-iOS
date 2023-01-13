@@ -251,6 +251,13 @@ final class DiaryForeignViewController: UIViewController {
         }
     }
     
+    private func characterValidation() -> Bool {
+        while diaryTextView.text.getArrayAfterRegex(regex: "[a-zA-z]").count > 9 {
+            return true
+        }
+        return false
+    }
+    
     private func keyboardAddObserver() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow),
                                                name: UIResponder.keyboardWillShowNotification, object: nil)
@@ -287,10 +294,18 @@ extension DiaryForeignViewController: UITextViewDelegate {
             textView.tintColor = .clear
         } else {
             placeHolderLabel.isHidden = true
-            textView.textColor = .gray400
             textView.font = .body1
             textView.setLineSpacing()
             textView.tintColor = .primary
+            completeButton.isEnabled = false
+            
+            if characterValidation() == true {
+                completeButton.isEnabled = true
+                completeButton.setTitleColor(.smemeBlack, for: .normal)
+            } else {
+                completeButton.isEnabled = false
+                completeButton.setTitleColor(.gray400, for: .normal)
+            }
         }
     }
 }
