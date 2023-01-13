@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct URLConstant {
+enum URLConstant {
     
     // MARK: - Login
     
