@@ -14,7 +14,7 @@ final class DiaryForeignViewController: UIViewController {
     
     // MARK: - Property
     
-    var isTapped: Bool = true
+    var isRandomTopic: Bool = false
     var isPublic: Bool = true
     
     var randomSubject = RandomSubjectResponse(id: 0, content: "")
@@ -40,7 +40,7 @@ final class DiaryForeignViewController: UIViewController {
     }
     
     private var randomSubjectView = RandomSubjectView().then {
-        $0.configure(with: RandomSubjectViewModel(contentText: "", isHiddenRefreshButton: false))
+        $0.configure(with: RandomSubjectViewModel(contentText: "", isHiddenRefreshButton: true))
     }
     
     private let bottomView = UIView().then {
@@ -70,13 +70,10 @@ final class DiaryForeignViewController: UIViewController {
     
     private let languageIcon = UIImageView(image: Constant.Image.icnArrowUnder)
     
-    private lazy var randomTopicButton: UIImageView = {
-        let view = UIImageView(image: Constant.Image.btnRandomTopicCheckBox)
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(topikBTNDidTap(_:)))
-        view.addGestureRecognizer(tapGesture)
-        view.isUserInteractionEnabled = true
-        return view
-    }()
+    private lazy var randomTopicButton = UIButton().then {
+        $0.setImage(Constant.Image.btnRandomTopicCheckBox, for: .normal)
+        $0.addTarget(self, action: #selector(randomTopicButtonDidTap), for: .touchUpInside)
+    }
     
     private lazy var publicButton = UIButton().then {
         $0.setImage(Constant.Image.btnPublicCheckBoxSelected, for: .normal)
@@ -90,12 +87,12 @@ final class DiaryForeignViewController: UIViewController {
         
         setBackgoundColor()
         setLayout()
+        randomSubjectWithAPI()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         showKeyboard(textView: diaryTextView)
         keyboardAddObserver()
-        randomSubjectWithAPI()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -104,7 +101,7 @@ final class DiaryForeignViewController: UIViewController {
     
     // MARK: - @objc
     
-    @objc func topikBTNDidTap(_ gesture: UITapGestureRecognizer) {
+    @objc func randomTopicButtonDidTap(_ gesture: UITapGestureRecognizer) {
         setRandomTopicButtonToggle()
     }
     
@@ -212,26 +209,10 @@ final class DiaryForeignViewController: UIViewController {
     
     private func setRandomTopicButtonToggle() {
         topicID = 0
-        isTapped.toggle()
-        if isTapped {
-            randomTopicButton.image = Constant.Image.btnRandomTopicCheckBox
+        isRandomTopic.toggle()
+        if isRandomTopic {
+            randomTopicButton.setImage(Constant.Image.btnRandomTopicCheckBoxSelected, for: .normal)
             
-            naviView.snp.remakeConstraints {
-                $0.top.leading.trailing.equalTo(view.safeAreaLayoutGuide)
-                $0.height.equalTo(convertByHeightRatio(66))
-            }
-            
-            diaryTextView.snp.remakeConstraints {
-                $0.top.equalTo(naviView.snp.bottom).offset(9)
-                $0.leading.trailing.equalTo(view.safeAreaLayoutGuide).offset(30)
-                $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-30)
-                $0.bottom.equalTo(bottomView.snp.top)
-            }
-            
-            randomSubjectView.removeFromSuperview()
-            
-        } else {
-            randomTopicButton.image = Constant.Image.btnRandomTopicCheckBoxSelected
             view.addSubview(randomSubjectView)
             
             languageIcon.snp.remakeConstraints {
@@ -250,6 +231,23 @@ final class DiaryForeignViewController: UIViewController {
                 $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-30)
                 $0.bottom.equalTo(bottomView.snp.top)
             }
+            
+        } else {
+            randomTopicButton.setImage(Constant.Image.btnRandomTopicCheckBox, for: .normal)
+            
+            naviView.snp.remakeConstraints {
+                $0.top.leading.trailing.equalTo(view.safeAreaLayoutGuide)
+                $0.height.equalTo(convertByHeightRatio(66))
+            }
+            
+            diaryTextView.snp.remakeConstraints {
+                $0.top.equalTo(naviView.snp.bottom).offset(9)
+                $0.leading.trailing.equalTo(view.safeAreaLayoutGuide).offset(30)
+                $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-30)
+                $0.bottom.equalTo(bottomView.snp.top)
+            }
+            
+            randomSubjectView.removeFromSuperview()
         }
     }
     
@@ -312,7 +310,7 @@ extension DiaryForeignViewController {
     func postDiaryAPI() {
         PostDiaryAPI.shared.postDiary(param: PostDiaryRequest(content: diaryTextView.text,
                                                               targetLang: "en",
-                                                              topicId: self.topicID ?? 0,
+                                                              topicId: isRandomTopic ? self.topicID ?? 0 : 0,
                                                               isPublic: isPublic)) { response in
             guard let postDiaryresponse = response?.data?.diaryID else { return }
             self.diaryID = postDiaryresponse
