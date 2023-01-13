@@ -16,9 +16,10 @@ final class DiaryForeignViewController: UIViewController {
     
     var isTapped: Bool = true
     
-    var id = 0
-    
     var randomSubject = RandomSubjectResponse(id: 0, content: "")
+    var topicID: Int?
+    var isPublic: Bool?
+    var diaryID: Int?
     
     // MARK: - UI Property
     
@@ -117,6 +118,7 @@ final class DiaryForeignViewController: UIViewController {
     }
     
     @objc func completionButtonDidTap() {
+        postDiaryAPI()
         changeMainRootViewController()
     }
     
@@ -127,7 +129,7 @@ final class DiaryForeignViewController: UIViewController {
     }
     
     private func setData() {
-        randomSubjectView.configure(with: RandomSubjectViewModel(contentText: randomSubject.content, isHiddenRefreshButton: false))
+        randomSubjectView.configure(with: RandomSubjectViewModel(contentText: randomSubject.content, isHiddenRefreshButton: true))
     }
     
     private func setLayout() {
@@ -288,7 +290,18 @@ extension DiaryForeignViewController {
         RandomSubjectAPI.shared.getRandomSubject { response in
             guard let randomSubjectData = response?.data else {return}
             self.randomSubject = randomSubjectData
-            self.setData()
+            self.topicID = self.randomSubject.id
+//            self.setData()
+        }
+    }
+    
+    func postDiaryAPI() {
+        PostDiaryAPI.shared.postDiary(param: PostDiaryRequest(content: diaryTextView.text,
+                                                              targetLang: "en",
+                                                              topicID: self.topicID ?? 0,
+                                                              isPublic: false)) { response in
+            guard let postDiaryresponse = response?.data?.diaryID else { return }
+            self.diaryID = postDiaryresponse
         }
     }
 }
