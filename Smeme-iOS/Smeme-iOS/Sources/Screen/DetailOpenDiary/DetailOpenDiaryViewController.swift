@@ -14,6 +14,13 @@ final class DetailOpenDiaryViewController: UIViewController {
     
     // MARK: - Property
     
+    var editMenuInteraction: UIEditMenuInteraction?
+    var scrapText: String?
+    var scrapId: Int?
+    var detailOpenDiaryList: DetailOpenDiaryResponse?
+    
+    var diaryID: Int?
+    
     // MARK: - UI Property
     
     private let headerView = UIView()
@@ -22,6 +29,7 @@ final class DetailOpenDiaryViewController: UIViewController {
     
     private lazy var backButton = UIButton().then {
         $0.setImage(Constant.Image.icnPageLeft, for: .normal)
+        $0.addTarget(self, action: #selector(backButtonDidTap), for: .touchUpInside)
     }
     
     private let topicView = UIView().then {
@@ -54,7 +62,7 @@ final class DetailOpenDiaryViewController: UIViewController {
         $0.configure(with: RandomSubjectViewModel(contentText: "오늘부터 딱 일주일 후! 설레는 크리스마스네요. 일주일 전부터 세워보는 나의 크리스마스 계획은?", isHiddenRefreshButton: true))
     }
     
-    private let diaryContentLabel = UITextView().then {
+    private lazy var diaryContentLabel = UITextView().then {
         $0.text = """
                 The issue that requires the phone call we have to solve it in person but sometimes some violence is needed. I was just the part of the process not The issue that requires the phone call we have to solve it in person.
                 
@@ -66,7 +74,7 @@ final class DetailOpenDiaryViewController: UIViewController {
         $0.isScrollEnabled = false
         $0.font = .body1
         $0.textColor = .black
-        $0.sizeToFit()
+        $0.tintColor = .primary
         $0.setLineSpacing()
     }
     
@@ -104,14 +112,33 @@ final class DetailOpenDiaryViewController: UIViewController {
         
         setBackgroundColor()
         setLayout()
+        setTabbarHidden()
+        setTextViewDelegate()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        getDetailOpenDiaryAPI(diaryID: diaryID ?? 0)
     }
     
     // MARK: - @objc
+    
+    @objc func backButtonDidTap() {
+        self.navigationController?.popViewController(animated: true)
+        self.tabBarController?.tabBar.isHidden = false
+    }
     
     // MARK: - Custom Method
     
     private func setBackgroundColor() {
         view.backgroundColor = .white
+    }
+    
+    private func setTabbarHidden() {
+        self.tabBarController?.tabBar.isHidden = true
+    }
+    
+    private func setTextViewDelegate() {
+        diaryContentLabel.delegate = self
     }
     
     private func setLayout() {
@@ -159,26 +186,35 @@ final class DetailOpenDiaryViewController: UIViewController {
         
         nicknameLabel.snp.makeConstraints {
             $0.leading.equalToSuperview().inset(30)
-            $0.bottom.equalTo(userInfoLabel.snp.top).offset(-4)
         }
         
         userInfoLabel.snp.makeConstraints {
+            $0.top.equalTo(nicknameLabel.snp.bottom).offset(4)
             $0.leading.equalTo(nicknameLabel)
-            $0.bottom.equalTo(randomSubjectView.snp.top).offset(-20)
         }
         
         randomSubjectView.snp.makeConstraints {
+            $0.top.equalTo(userInfoLabel.snp.bottom).offset(20)
             $0.leading.equalToSuperview()
-            $0.bottom.equalTo(diaryContentLabel.snp.top).offset(-10)
         }
         
+//        let paddingOfNaviWithContent = detail.topic.isEmpty ? 53 : 73 + randomSubjectView.frame.height
+//        let paddingContentWithContentView = calculateScrollViewHeightOffset(defaultHeight: 98,
+//                                                                            heightOfBottomView: 54,
+//                                                                            paddingOfNaviWithContent: paddingOfNaviWithContent,
+//                                                                            paddingOfContentWithDate: 20)
+//        $0.top.equalTo(randomSubjectView.snp.bottom).offset(convertByHeightRatio(20))
+//        $0.leading.trailing.equalTo(contentView).inset(convertByWidthRatio(30))
+//        $0.bottom.equalTo(contentView).offset(-paddingContentWithContentView)
+        
         diaryContentLabel.snp.makeConstraints {
+            $0.top.equalTo(randomSubjectView.snp.bottom).offset(20)
             $0.leading.trailing.equalToSuperview().inset(24)
             $0.bottom.equalTo(contentView).offset(-calculateScrollViewHeightOffset(defaultHeight: 52, heightOfBottomView: 59, paddingOfNaviWithContent: 192, paddingOfContentWithDate: 0))
         }
         
         dateLabel.snp.makeConstraints {
-            $0.top.equalTo(diaryContentLabel.snp.bottom)
+            $0.top.equalTo(diaryContentLabel.snp.bottom).offset(12)
             $0.trailing.equalToSuperview().inset(30)
         }
         
@@ -200,6 +236,30 @@ final class DetailOpenDiaryViewController: UIViewController {
         translateButton.snp.makeConstraints {
             $0.centerY.equalTo(likeButton)
             $0.trailing.equalToSuperview().inset(30)
+        }
+    }
+}
+
+// MARK: - Network
+
+extension DetailOpenDiaryViewController {
+    private func getDetailOpenDiaryAPI(diaryID: Int) {
+        DetailOpenDiaryAPI.shared.getDetailOpenDiaryAPI(param: diaryID) { response in
+            guard let detailOpenDiaryResponse = response?.data else { return }
+            self.diaryContentLabel.text = detailOpenDiaryResponse.content
+            self.topicNameLabel.isHidden = detailOpenDiaryResponse.category.isEmpty
+            self.randomSubjectView.configure(with: RandomSubjectViewModel(contentText: detailOpenDiaryResponse.topic, isHiddenRefreshButton: true))
+            self.likeCountLabel.text = "\(detailOpenDiaryResponse.likeCnt)"
+            self.nicknameLabel.text = detailOpenDiaryResponse.username
+            self.userInfoLabel.text = detailOpenDiaryResponse.bio
+//            hasLike
+        }
+    }
+    
+    private func postScrapOpenDiaryAPI(dirayID: Int, scrapText: String) {
+        ScrapOpenDiaryAPI.shared.postScrapOpenDiary(param: ScrapRequest(diaryID: diaryID ?? 0, paragraph: scrapText)) { response in
+            guard let responseData = response?.data else { return }
+            self.scrapId = responseData.scrapID
         }
     }
 }
@@ -229,5 +289,26 @@ extension DetailOpenDiaryViewController {
         diaryContentScrollView.isScrollEnabled = isEnoughToScroll
         
         return isEnoughToScroll ? defaultHeight : (heightOfScrollView - contentSize)
+    }
+}
+
+// MARK: - UIEditMenuInteractionDelegate
+
+extension DetailOpenDiaryViewController: UIEditMenuInteractionDelegate, UITextViewDelegate {
+    func textView(_ textView: UITextView, editMenuForTextIn range: NSRange, suggestedActions: [UIMenuElement]) -> UIMenu? {
+        var additionalActions: [UIMenuElement] = []
+
+        if textView.selectedRange.length > 0 {
+            let highlightAction = [UIAction(title: "Smeme 🧡") { _ in
+                if !(textView.selectedTextRange?.isEmpty)! {
+                    let selectedString = textView.text(in: textView.selectedTextRange!)
+                    guard let selectedString = selectedString else { return }
+                    self.postScrapOpenDiaryAPI(dirayID: 1, scrapText: selectedString)
+                }
+            }]
+            additionalActions.append(contentsOf: highlightAction)
+        }
+        
+        return UIMenu(children: additionalActions)
     }
 }

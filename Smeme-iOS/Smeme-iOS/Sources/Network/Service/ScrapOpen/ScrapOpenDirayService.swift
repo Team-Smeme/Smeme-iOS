@@ -1,34 +1,34 @@
 //
-//  PostDiaryService.swift
+//  ScrapsOpenDirayService.swift
 //  Smeme-iOS
 //
-//  Created by Joon Baek on 2023/01/11.
+//  Created by 황찬미 on 2023/01/12.
 //
 
 import Moya
 
-enum PostDiaryService {
-    case postDiary(param: PostDiaryRequest)
+enum ScrapOpenDirayService {
+    case scraps(param: ScrapRequest)
 }
 
-extension PostDiaryService: BaseTargetType {
+extension ScrapOpenDirayService: BaseTargetType {
     var path: String {
         switch self {
-        case .postDiary:
-            return URLConstant.postDiaryURL
+        case .scraps:
+            return URLConstant.scrapOpenDirayURL
         }
     }
     
     var method: Moya.Method {
         switch self {
-        case .postDiary:
+        case .scraps:
             return .post
         }
     }
     
     var task: Moya.Task {
         switch self {
-        case .postDiary(let param):
+        case .scraps(let param):
             return .requestJSONEncodable(param)
         }
     }

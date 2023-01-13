@@ -205,6 +205,10 @@ extension OpenDiaryViewController: UICollectionViewDelegate {
             } else {
                 getOpenDiarySelectList(param: indexPath.row - 1)
             }
+        } else if collectionView == diaryListCollectionView {
+            let detailOpenDiaryViewController = DetailOpenDiaryViewController()
+            detailOpenDiaryViewController.diaryID = openDiaryListArray[indexPath.row].diaryID
+            self.navigationController?.pushViewController(detailOpenDiaryViewController, animated: true)
         }
     }
 }
@@ -225,7 +229,6 @@ extension OpenDiaryViewController: UICollectionViewDataSource {
         if collectionView == topicCollectionView {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TopicCollectionViewCell.identifier, for: indexPath) as? TopicCollectionViewCell else { return UICollectionViewCell() }
             cell.setData(openDiaryCategoryArray[indexPath.item])
-            
             if indexPath.row == 0 {
                 cell.isSelected = true
                 collectionView.selectItem(at: indexPath, animated: false, scrollPosition: .init())

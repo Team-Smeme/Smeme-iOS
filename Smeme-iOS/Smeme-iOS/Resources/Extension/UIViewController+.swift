@@ -51,7 +51,7 @@ extension UIViewController {
             let safeAreaHeight = self.view.safeAreaInsets.bottom
             
             UIView.animate(withDuration: 1) {
-                customView.transform = UIScreen.main.hasNotch ? (isActive ? CGAffineTransform(translationX: 0, y: -(keyboardHeight - safeAreaHeight)) : .identity) : (isActive ? CGAffineTransform(translationX: 0, y: -keyboardHeight + 34) : .identity)
+                customView.transform = UIScreen.main.hasNotch ? (isActive ? CGAffineTransform(translationX: 0, y: -(keyboardHeight - safeAreaHeight)) : .identity) : (isActive ? CGAffineTransform(translationX: 0, y: -keyboardHeight) : .identity)
             }
         }
     }

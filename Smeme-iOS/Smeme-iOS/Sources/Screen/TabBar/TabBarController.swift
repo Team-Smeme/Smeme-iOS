@@ -9,11 +9,19 @@ import UIKit
 
 class TabBarController: UITabBarController {
 
-    // MARK: Life Cycle
+private lazy var defaultTabBarHeight = { tabBar.frame.size.height }()
+    
+    // MARK: - Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setTabBar()
+        setTabBarShadow()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        setTabBarHeight()
     }
 }
 
@@ -37,17 +45,17 @@ extension TabBarController {
                                    title: "",
                                  tabBarImg: Constant.Image.tabBarMyDiary,
                                    tabBarSelectedImg: Constant.Image.tabBarMyDiarySelected,
-                                   renderingMode: .alwaysTemplate)
+                                   renderingMode: .alwaysOriginal)
         let openDiary = makeTabBar(viewController: OpenDiaryViewController(),
                                        title: "",
                                        tabBarImg: Constant.Image.tabBarOpenDiary,
                                  tabBarSelectedImg: Constant.Image.tabBarOpenDiarySelected,
-                                 renderingMode: .alwaysTemplate)
+                                 renderingMode: .alwaysOriginal)
         let scrapStash = makeTabBar(viewController: ScrapStashViewController(),
                                      title: "",
                                      tabBarImg: Constant.Image.tabBarStash,
                                  tabBarSelectedImg: Constant.Image.tabBarStashSelected,
-                                 renderingMode: .alwaysTemplate)
+                                 renderingMode: .alwaysOriginal)
         
         let tabs = [myDiary, openDiary, scrapStash]
     
@@ -55,5 +63,45 @@ extension TabBarController {
         
         tabBar.backgroundColor = .white
         tabBar.tintColor = .primary
+    }
+    
+    private func setTabBarHeight() {
+        let newTabBarHeight = defaultTabBarHeight + convertByHeightRatio(34)
+
+        var newFrame = tabBar.frame
+        newFrame.size.height = newTabBarHeight
+        newFrame.origin.y = view.frame.size.height - newTabBarHeight
+
+        tabBar.frame = newFrame
+    }
+
+    private func setTabBarShadow() {
+        UITabBar.clearShadow()
+        tabBar.layer.applyShadow(color: .black, alpha: 0.15, x: 0, y: 3, blur: 14)
+    }
+}
+
+// MARK: - SetShadow
+
+extension CALayer {
+    func applyShadow(
+        color: UIColor = .black,
+        alpha: Float = 0.5,
+        x: CGFloat = 0,
+        y: CGFloat = 2,
+        blur: CGFloat = 4
+    ) {
+        shadowColor = color.cgColor
+        shadowOpacity = alpha
+        shadowOffset = CGSize(width: x, height: y)
+        shadowRadius = blur / 2.0
+    }
+}
+
+extension UITabBar {
+    static func clearShadow() {
+        UITabBar.appearance().shadowImage = UIImage()
+        UITabBar.appearance().backgroundImage = UIImage()
+        UITabBar.appearance().backgroundColor = UIColor.white
     }
 }
