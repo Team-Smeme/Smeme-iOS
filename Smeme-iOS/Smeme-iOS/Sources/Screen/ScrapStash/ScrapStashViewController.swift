@@ -37,9 +37,7 @@ final class ScrapStashViewController: UIViewController {
     private let headerView = UIView().then {
         $0.layer.cornerRadius = 30
         $0.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
-        $0.layer.shadowRadius = 18
-        $0.layer.shadowOpacity = 0.04
-        $0.layer.shadowOffset = CGSize(width: 0, height: 2)
+        $0.addShadow(shadowColor: .black, shadowOpacity: 0.04, shadowRadius: 18, offset: CGSize(width: 0, height: 2))
     }
     
     private let titleLabel = UILabel().then {
@@ -150,8 +148,11 @@ final class ScrapStashViewController: UIViewController {
         
         scrapedListCollectionView.snp.makeConstraints {
             $0.top.equalTo(headerView.snp.bottom)
-            $0.leading.trailing.bottom.equalToSuperview()
+            $0.leading.trailing.equalToSuperview()
+            $0.bottom.equalTo(view.safeAreaLayoutGuide).inset(30)
         }
+        
+        self.view.bringSubviewToFront(headerView)
     }
     
     private func registerCell() {

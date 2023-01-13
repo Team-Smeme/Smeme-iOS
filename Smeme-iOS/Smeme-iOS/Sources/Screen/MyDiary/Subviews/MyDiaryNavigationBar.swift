@@ -23,7 +23,7 @@ final class MyDiaryNavigationBar: UIView {
     // MARK: - UI Property
     
     private let logoImage = UIImageView().then {
-        $0.image = Constant.Image.logoSmeme
+        $0.image = Constant.Image.logoSmall
     }
     
     private lazy var profileButton = UIButton().then {
@@ -49,8 +49,6 @@ final class MyDiaryNavigationBar: UIView {
         logoImage.snp.makeConstraints {
             $0.centerY.equalToSuperview()
             $0.leading.equalToSuperview().inset(24)
-            $0.height.equalTo(21)
-            $0.width.equalTo(98)
         }
         
         profileButton.snp.makeConstraints {

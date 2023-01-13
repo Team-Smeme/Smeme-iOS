@@ -39,6 +39,7 @@ final class OpenDiaryViewController: UIViewController {
     private let headerView = UIView().then {
         $0.backgroundColor = .white
         $0.makeSelectedRoundCorners(cornerRadius: 30, maskedCorners: [.layerMinXMaxYCorner, .layerMaxXMaxYCorner])
+        $0.addShadow(shadowColor: .black, shadowOpacity: 0.04, shadowRadius: 18, offset: CGSize(width: 0, height: 2))
     }
     
     private let containerView = UIView().then {
@@ -103,9 +104,6 @@ final class OpenDiaryViewController: UIViewController {
         registerCell()
         setDelegate()
         getOpenDiaryCategoryAPI()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
         getOpenDiaryTotalListAPI()
     }
     
@@ -172,9 +170,11 @@ final class OpenDiaryViewController: UIViewController {
         
         diaryListCollectionView.snp.makeConstraints {
             $0.top.equalTo(headerView.snp.bottom)
-            $0.leading.trailing.bottom.equalToSuperview()
+            $0.leading.trailing.equalToSuperview()
+            $0.bottom.equalTo(view.safeAreaLayoutGuide).inset(30)
         }
         
+        self.view.bringSubviewToFront(headerView)
     }
     
     private func registerCell() {
