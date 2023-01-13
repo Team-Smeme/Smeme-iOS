@@ -106,6 +106,8 @@ final class StepTwoKoreanDiaryViewController: UIViewController {
         
         setBackgoundColor()
         setLayout()
+        
+        print("random: \(randomTopicId)")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -160,7 +162,7 @@ final class StepTwoKoreanDiaryViewController: UIViewController {
     }
     
     @objc private func hintButtonPresent() {
- 
+        
     }
     
     // MARK: - Custom Method
@@ -266,7 +268,7 @@ final class StepTwoKoreanDiaryViewController: UIViewController {
     }
     
     private func publicCheckBoxPresent() {
-        if publicCheckBox ?? true {
+        if publicCheckBox {
             publicButton.setImage(Constant.Image.btnPublicCheckBoxSelected, for: .normal)
         } else {
             publicButton.setImage(Constant.Image.btnPublicCheckBox, for: .normal)
@@ -284,6 +286,13 @@ final class StepTwoKoreanDiaryViewController: UIViewController {
     private func keyboardRemoveObserver() {
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    private func characterValidation() -> Bool {
+        while diaryTextView.text.getArrayAfterRegex(regex: "[a-zA-Z]").count > 9 {
+            return true
+        }
+        return false
     }
 }
 
@@ -309,10 +318,18 @@ extension StepTwoKoreanDiaryViewController: UITextViewDelegate {
             textView.tintColor = .clear
         } else {
             placeHolderLabel.isHidden = true
-            textView.textColor = .gray400
             textView.font = .body1
             textView.setLineSpacing()
             textView.tintColor = .primary
+            completeButton.isEnabled = false
+            
+            if characterValidation() == true {
+                completeButton.isEnabled = true
+                completeButton.setTitleColor(.smemeBlack, for: .normal)
+            } else {
+                completeButton.isEnabled = false
+                completeButton.setTitleColor(.gray400, for: .normal)
+            }
         }
     }
 }

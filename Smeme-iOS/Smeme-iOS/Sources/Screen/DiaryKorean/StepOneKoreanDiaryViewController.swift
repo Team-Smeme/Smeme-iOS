@@ -79,7 +79,7 @@ final class StepOneKoreanDiaryViewController: UIViewController {
         $0.setTextWithLineHeight(lineHeight: 17)
         $0.text = "TIP 정확한 힌트를 받고 싶다면? 문장을 정리해보세요!"
         $0.asColor(targetString: "TIP", color: .primary ?? UIColor())
-
+        
     }
     
     private let bottomView = UIView().then {
@@ -161,7 +161,7 @@ final class StepOneKoreanDiaryViewController: UIViewController {
     private func setData() {
         randomSubjectView.configure(with: RandomSubjectViewModel(contentText: randomSubject.content, isHiddenRefreshButton: true))
     }
-
+    
     private func setLayout() {
         view.addSubviews([naviView, tipLabel, diaryTextView, bottomView])
         
@@ -257,7 +257,6 @@ final class StepOneKoreanDiaryViewController: UIViewController {
                 $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-30)
                 $0.bottom.equalTo(bottomView.snp.top)
             }
-            
         } else {
             randomTopicButton.setImage(Constant.Image.btnRandomTopicCheckBox, for: .normal)
             
@@ -289,6 +288,13 @@ final class StepOneKoreanDiaryViewController: UIViewController {
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
+    
+    private func characterValidation() -> Bool {
+        while diaryTextView.text.getArrayAfterRegex(regex: "[가-핳]").count > 9 {
+            return true
+        }
+        return false
+    }
 }
 
 // MARK: - UITextViewDelegate
@@ -313,10 +319,18 @@ extension StepOneKoreanDiaryViewController: UITextViewDelegate {
             textView.tintColor = .clear
         } else {
             placeHolderLabel.isHidden = true
-            textView.textColor = .gray400
             textView.font = .body1
             textView.setLineSpacing()
             textView.tintColor = .primary
+            nextButton.isEnabled = false
+            
+            if characterValidation() == true {
+                nextButton.isEnabled = true
+                nextButton.setTitleColor(.smemeBlack, for: .normal)
+            } else {
+                nextButton.isEnabled = false
+                nextButton.setTitleColor(.gray400, for: .normal)
+            }
         }
     }
 }
