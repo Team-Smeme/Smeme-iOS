@@ -19,7 +19,7 @@ final class LikeBottomView: UIView {
     // MARK: - Property
     
     override var intrinsicContentSize: CGSize {
-        return CGSize(width: UIScreen.main.bounds.width, height: convertByHeightRatio(54))
+        return CGSize(width: UIScreen.main.bounds.width, height: convertByHeightRatio(64))
     }
     
     // MARK: - UI Property
