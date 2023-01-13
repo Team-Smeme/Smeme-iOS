@@ -107,6 +107,12 @@ final class StepTwoKoreanDiaryViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         randomCheckBoxPresent()
         publicCheckBoxPresent()
+        showKeyboard(textView: diaryTextView)
+        keyboardAddObserver()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        keyboardRemoveObserver()
     }
     
     // MARK: - @objc
@@ -117,6 +123,14 @@ final class StepTwoKoreanDiaryViewController: UIViewController {
     
     @objc func compleButtonDidTap() {
         changeMainRootViewController()
+    }
+    
+    @objc func keyboardWillShow(_ notification: Notification) {
+        handleKeyboardChanged(notification: notification, customView: bottomView, isActive: true)
+    }
+    
+    @objc func keyboardWillHide(_ notification: Notification) {
+        handleKeyboardChanged(notification: notification, customView: bottomView, isActive: false)
     }
     
     @objc func publicButtonDidTap() {
@@ -236,6 +250,19 @@ final class StepTwoKoreanDiaryViewController: UIViewController {
         } else {
             publicButton.setImage(Constant.Image.btnPublicCheckBox, for: .normal)
         }
+    }
+    
+    private func keyboardAddObserver() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow),
+                                               name: UIResponder.keyboardWillShowNotification, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide),
+                                               name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    private func keyboardRemoveObserver() {
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 }
 
