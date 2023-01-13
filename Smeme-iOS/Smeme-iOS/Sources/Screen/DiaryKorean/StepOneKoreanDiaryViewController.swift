@@ -15,10 +15,11 @@ final class StepOneKoreanDiaryViewController: UIViewController {
     // MARK: - Property
     
     var isTapped: Bool = true
-    
-    var id = 0
+    var isPublic: Bool = true
     
     var randomSubject = RandomSubjectResponse(id: 0, content: "")
+    var topicID: Int?
+    var diaryID: Int?
     
     // MARK: - UI Property
     
@@ -39,7 +40,7 @@ final class StepOneKoreanDiaryViewController: UIViewController {
     }
     
     private var randomSubjectView = RandomSubjectView().then {
-        $0.configure(with: RandomSubjectViewModel(contentText: "오늘부터 딱 일주일 후! 설레는 크리스마스네요. 일주일 전부터 세워보는 나의 크리스마스 계획은?", isHiddenRefreshButton: false))
+        $0.configure(with: RandomSubjectViewModel(contentText: "오늘부터 딱 일주일 후! 설레는 크리스마스네요. 일주일 전부터 세워보는 나의 크리스마스 계획은?", isHiddenRefreshButton: true))
     }
     
     private lazy var cancelButton = UIButton().then {
@@ -86,15 +87,15 @@ final class StepOneKoreanDiaryViewController: UIViewController {
         $0.addShadow(shadowColor: .black, shadowOpacity: 0.04, shadowRadius: 16, offset: CGSize(width: 0, height: -4.0))
     }
     
-    private lazy var randomTopicButton: UIImageView = {
-        let view = UIImageView(image: Constant.Image.btnRandomTopicCheckBoxDisabled)
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(topikBTNDidTap(_:)))
-        view.addGestureRecognizer(tapGesture)
-        view.isUserInteractionEnabled = true
-        return view
-    }()
+    private lazy var randomTopicButton = UIButton().then {
+        $0.setImage(Constant.Image.btnRandomTopicCheckBox, for: .normal)
+        $0.addTarget(self, action: #selector(randomTopicButtonDidTap), for: .touchUpInside)
+    }
     
-    private let publicButton = UIImageView(image: Constant.Image.btnPublicCheckBoxSelected)
+    private lazy var publicButton = UIButton().then {
+        $0.setImage(Constant.Image.btnPublicCheckBoxSelected, for: .normal)
+        $0.addTarget(self, action: #selector(publicButtonDidTap), for: .touchUpInside)
+    }
     
     // MARK: - Life Cycle
     
@@ -103,16 +104,21 @@ final class StepOneKoreanDiaryViewController: UIViewController {
         
         setBackgoundColor()
         setLayout()
-        
+        randomSubjectWithAPI()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        randomSubjectWithAPI()
+        showKeyboard(textView: diaryTextView)
+        keyboardAddObserver()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        keyboardRemoveObserver()
     }
     
     // MARK: - @objc
     
-    @objc func topikBTNDidTap(_ gesture: UITapGestureRecognizer) {
+    @objc func randomTopicButtonDidTap(_ gesture: UITapGestureRecognizer) {
         setRandomTopicButtonToggle()
     }
     
@@ -125,6 +131,24 @@ final class StepOneKoreanDiaryViewController: UIViewController {
         self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
     }
     
+    @objc func keyboardWillShow(_ notification: Notification) {
+        handleKeyboardChanged(notification: notification, customView: bottomView, isActive: true)
+    }
+    
+    @objc func keyboardWillHide(_ notification: Notification) {
+        handleKeyboardChanged(notification: notification, customView: bottomView, isActive: false)
+    }
+    
+    @objc func publicButtonDidTap() {
+        isPublic.toggle()
+        print(isPublic)
+        if isPublic {
+            publicButton.setImage(Constant.Image.btnPublicCheckBoxSelected, for: .normal)
+        } else {
+            publicButton.setImage(Constant.Image.btnPublicCheckBox, for: .normal)
+        }
+    }
+    
     // MARK: - Custom Method
     
     private func setBackgoundColor() {
@@ -132,7 +156,7 @@ final class StepOneKoreanDiaryViewController: UIViewController {
     }
     
     private func setData() {
-        randomSubjectView.configure(with: RandomSubjectViewModel(contentText: randomSubject.content, isHiddenRefreshButton: false))
+        randomSubjectView.configure(with: RandomSubjectViewModel(contentText: randomSubject.content, isHiddenRefreshButton: true))
     }
 
     private func setLayout() {
@@ -206,9 +230,10 @@ final class StepOneKoreanDiaryViewController: UIViewController {
     }
     
     private func setRandomTopicButtonToggle() {
+        topicID = 0
         isTapped.toggle()
         if isTapped {
-            randomTopicButton.image = Constant.Image.btnRandomTopicCheckBox
+            randomTopicButton.setImage(Constant.Image.btnRandomTopicCheckBoxSelected, for: .normal)
             naviView.snp.remakeConstraints {
                 $0.top.leading.trailing.equalTo(view.safeAreaLayoutGuide)
                 $0.height.equalTo(convertByHeightRatio(66))
@@ -224,7 +249,7 @@ final class StepOneKoreanDiaryViewController: UIViewController {
             randomSubjectView.removeFromSuperview()
 
         } else {
-            randomTopicButton.image = Constant.Image.btnRandomTopicCheckBoxSelected
+            randomTopicButton.setImage(Constant.Image.btnRandomTopicCheckBox, for: .normal)
             view.addSubview(randomSubjectView)
 
             randomSubjectView.snp.remakeConstraints {
@@ -239,6 +264,19 @@ final class StepOneKoreanDiaryViewController: UIViewController {
                 $0.bottom.equalTo(bottomView.snp.top)
             }
         }
+    }
+    
+    private func keyboardAddObserver() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow),
+                                               name: UIResponder.keyboardWillShowNotification, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide),
+                                               name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    private func keyboardRemoveObserver() {
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 }
 
@@ -277,8 +315,9 @@ extension StepOneKoreanDiaryViewController: UITextViewDelegate {
 extension StepOneKoreanDiaryViewController {
     func randomSubjectWithAPI () {
         RandomSubjectAPI.shared.getRandomSubject { response in
-            guard let randomSubjectData = response?.data else { return }
+            guard let randomSubjectData = response?.data else {return}
             self.randomSubject = randomSubjectData
+            self.topicID = self.randomSubject.id
             self.setData()
         }
     }

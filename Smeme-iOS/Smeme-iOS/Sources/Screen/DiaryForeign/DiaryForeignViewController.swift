@@ -40,7 +40,7 @@ final class DiaryForeignViewController: UIViewController {
     }
     
     private var randomSubjectView = RandomSubjectView().then {
-        $0.configure(with: RandomSubjectViewModel(contentText: "", isHiddenRefreshButton: false))
+        $0.configure(with: RandomSubjectViewModel(contentText: "", isHiddenRefreshButton: true))
     }
     
     private let bottomView = UIView().then {
@@ -76,7 +76,7 @@ final class DiaryForeignViewController: UIViewController {
     }
     
     private lazy var publicButton = UIButton().then {
-        $0.setImage(Constant.Image.btnPublicCheckBox, for: .normal)
+        $0.setImage(Constant.Image.btnPublicCheckBoxSelected, for: .normal)
         $0.addTarget(self, action: #selector(publicButtonDidTap), for: .touchUpInside)
     }
     
