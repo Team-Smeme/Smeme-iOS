@@ -19,7 +19,7 @@ final class StepTwoKoreanDiaryViewController: UIViewController {
     private let naviView = UIView()
     private let languageView = UIView()
     
-    private lazy var koreanDiaryTextView = UITextView().then {
+    var koreanDiaryTextView = UITextView().then {
         $0.font = .body1
         $0.textColor = .smemeBlack
         //            $0.delegate = self

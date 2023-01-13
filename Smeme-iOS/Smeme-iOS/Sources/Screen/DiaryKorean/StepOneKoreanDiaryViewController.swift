@@ -124,6 +124,7 @@ final class StepOneKoreanDiaryViewController: UIViewController {
     
     @objc func nextButtonDidTap() {
         let stepTwoKoreanDiaryViewController = StepTwoKoreanDiaryViewController()
+        stepTwoKoreanDiaryViewController.koreanDiaryTextView.text = diaryTextView.text
         self.navigationController?.pushViewController(stepTwoKoreanDiaryViewController, animated: true)
     }
     
