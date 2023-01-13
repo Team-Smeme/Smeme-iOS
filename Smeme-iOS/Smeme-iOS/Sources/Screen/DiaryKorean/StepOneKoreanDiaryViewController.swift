@@ -25,6 +25,7 @@ final class StepOneKoreanDiaryViewController: UIViewController {
     
     private let naviView = UIView()
     private let languageView = UIView()
+    private var randomSubjectView = RandomSubjectView()
     
     private lazy var diaryTextView = UITextView().then {
         $0.setLineSpacing()
@@ -154,7 +155,7 @@ final class StepOneKoreanDiaryViewController: UIViewController {
     }
     
     private func setData() {
-        randomSubjectView.configure(with: RandomSubjectViewModel(contentText: randomSubject.content, isHiddenRefreshButton: true))
+        randomSubjectView.configure(with: RandomSubjectViewModel(contentText: randomSubject.content, isHiddenRefreshButton: false))
     }
     
     private func setLayout() {
