@@ -1,6 +1,7 @@
 # 🍎 Smeme-iOS
 
-![KakaoTalk_Photo_2023-01-04-04-02-58](https://user-images.githubusercontent.com/86944161/210424661-b00f2023-5cfc-4e36-a6ce-2e5cc09e9ad1.png)
+![Frame 34339](https://user-images.githubusercontent.com/114599559/212286884-40d1f3cc-24dd-4446-bb57-1d888d62796f.jpg)
+
 
 <br>
 
