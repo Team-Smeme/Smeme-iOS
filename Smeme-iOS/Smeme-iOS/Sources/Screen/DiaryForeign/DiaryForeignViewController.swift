@@ -40,7 +40,7 @@ final class DiaryForeignViewController: UIViewController {
     }
     
     private var randomSubjectView = RandomSubjectView().then {
-        $0.configure(with: RandomSubjectViewModel(contentText: "오늘부터 딱 일주일 후! 설레는 크리스마스네요. 일주일 전부터 세워보는 나의 크리스마스 계획은?", isHiddenRefreshButton: false))
+        $0.configure(with: RandomSubjectViewModel(contentText: "", isHiddenRefreshButton: false))
     }
     
     private let bottomView = UIView().then {
@@ -71,7 +71,7 @@ final class DiaryForeignViewController: UIViewController {
     private let languageIcon = UIImageView(image: Constant.Image.icnArrowUnder)
     
     private lazy var randomTopicButton: UIImageView = {
-        let view = UIImageView(image: Constant.Image.btnRandomTopicCheckBoxDisabled)
+        let view = UIImageView(image: Constant.Image.btnRandomTopicCheckBox)
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(topikBTNDidTap(_:)))
         view.addGestureRecognizer(tapGesture)
         view.isUserInteractionEnabled = true
@@ -90,7 +90,6 @@ final class DiaryForeignViewController: UIViewController {
         
         setBackgoundColor()
         setLayout()
-        print(isPublic)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -212,9 +211,11 @@ final class DiaryForeignViewController: UIViewController {
     }
     
     private func setRandomTopicButtonToggle() {
+        topicID = 0
         isTapped.toggle()
         if isTapped {
             randomTopicButton.image = Constant.Image.btnRandomTopicCheckBox
+            
             naviView.snp.remakeConstraints {
                 $0.top.leading.trailing.equalTo(view.safeAreaLayoutGuide)
                 $0.height.equalTo(convertByHeightRatio(66))
@@ -311,8 +312,8 @@ extension DiaryForeignViewController {
     func postDiaryAPI() {
         PostDiaryAPI.shared.postDiary(param: PostDiaryRequest(content: diaryTextView.text,
                                                               targetLang: "en",
-                                                              topicID: self.topicID ?? 0,
-                                                              isPublic: false)) { response in
+                                                              topicId: self.topicID ?? 0,
+                                                              isPublic: isPublic)) { response in
             guard let postDiaryresponse = response?.data?.diaryID else { return }
             self.diaryID = postDiaryresponse
         }
