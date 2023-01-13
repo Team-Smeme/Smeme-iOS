@@ -291,7 +291,7 @@ extension DiaryForeignViewController {
             guard let randomSubjectData = response?.data else {return}
             self.randomSubject = randomSubjectData
             self.topicID = self.randomSubject.id
-//            self.setData()
+            self.setData()
         }
     }
     
