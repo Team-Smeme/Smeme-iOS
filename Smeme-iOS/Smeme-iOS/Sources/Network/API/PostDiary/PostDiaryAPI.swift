@@ -11,16 +11,14 @@ final class PostDiaryAPI {
     static let shared: PostDiaryAPI = PostDiaryAPI()
     private let postDiaryProvider = MoyaProvider<PostDiaryService>(plugins: [MoyaLoggingPlugin()])
     
-    private var postDiaryData: VoidType?
+    private var postDiaryData: GeneralResponse<PostDiaryResponse>?
     
-    func postDiary(completion: @escaping
-                   (VoidType?) -> Void) {
-        postDiaryProvider.request(.postDiary) { response in
+    func postDiary(param: PostDiaryRequest, completion: @escaping (GeneralResponse<PostDiaryResponse>?) -> Void) {
+        postDiaryProvider.request(.postDiary(param: param)) { response in
             switch response {
             case .success(let result):
                 do {
-                    self.postDiaryData = try
-                    result.map(VoidType.self)
+                    self.postDiaryData = try result.map(GeneralResponse<PostDiaryResponse>.self)
                     completion(self.postDiaryData)
                 } catch {
                     print(error)
