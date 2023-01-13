@@ -15,8 +15,7 @@ final class StepTwoKoreanDiaryViewController: UIViewController {
     // MARK: - Property
     
     var randomTopicCheckBox: Bool?
-    var publicCheckBox: Bool?
-    var isPublic: Bool = true
+    var publicCheckBox: Bool = true
     var koreanDiaryText: String?
     var isShowHint: Bool = false
     
@@ -151,12 +150,16 @@ final class StepTwoKoreanDiaryViewController: UIViewController {
     }
     
     @objc func publicButtonDidTap() {
-        isPublic.toggle()
-        if isPublic {
+        self.publicCheckBox.toggle()
+        if self.publicCheckBox {
             publicButton.setImage(Constant.Image.btnPublicCheckBoxSelected, for: .normal)
         } else {
             publicButton.setImage(Constant.Image.btnPublicCheckBox, for: .normal)
         }
+    }
+    
+    @objc private func hintButtonPresent() {
+ 
     }
     
     // MARK: - Custom Method
@@ -262,7 +265,7 @@ final class StepTwoKoreanDiaryViewController: UIViewController {
     }
     
     private func publicCheckBoxPresent() {
-        if randomTopicCheckBox ?? true {
+        if publicCheckBox ?? true {
             publicButton.setImage(Constant.Image.btnPublicCheckBoxSelected, for: .normal)
         } else {
             publicButton.setImage(Constant.Image.btnPublicCheckBox, for: .normal)
