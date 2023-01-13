@@ -26,6 +26,7 @@ struct URLConstant {
 
     static let totalMyDiaryListURL = "/users/diaries"
     static let detailMyDiaryListURL = "/users/diaries/"
+    static let deleteMyDiaryURL = "/diaries/"
     
     // MARK: - OpenDiary
     

@@ -18,8 +18,10 @@ extension MyDiaryService: BaseTargetType {
         switch self {
         case .totalMyDiary:
             return URLConstant.totalMyDiaryListURL
-        case .detailMyDiary(let diaryId), .deleteDiary(let diaryId):
+        case .detailMyDiary(let diaryId):
             return URLConstant.detailMyDiaryListURL + "\(diaryId)"
+        case  .deleteDiary(let diaryId):
+            return URLConstant.deleteMyDiaryURL + "\(diaryId)"
         }
     }
     
