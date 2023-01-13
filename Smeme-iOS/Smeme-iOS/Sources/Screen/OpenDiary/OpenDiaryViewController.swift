@@ -253,7 +253,7 @@ extension OpenDiaryViewController: UICollectionViewDelegateFlowLayout {
             return cellSize
         } else if collectionView == diaryListCollectionView {
             let cellWidth = convertByWidthRatio(315)
-            let cellHeight = convertByHeightRatio(161)
+            let cellHeight = 101 + convertByHeightRatio(60)
             return CGSize(width: cellWidth, height: cellHeight)
         }
         return CGSize()
