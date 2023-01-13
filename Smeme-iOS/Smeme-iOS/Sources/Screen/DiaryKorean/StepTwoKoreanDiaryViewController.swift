@@ -40,7 +40,7 @@ final class StepTwoKoreanDiaryViewController: UIViewController {
     }
     
     private let placeHolderLabel = UILabel().then {
-        $0.text = "최소 10자 이상의 외국어를 작성해 주세요"
+        $0.text = "한국어 일기를 외국어로 작성해 보세요!"
         $0.textColor = .gray400
         $0.font = .body1
         $0.setTextWithLineHeight(lineHeight: 21)

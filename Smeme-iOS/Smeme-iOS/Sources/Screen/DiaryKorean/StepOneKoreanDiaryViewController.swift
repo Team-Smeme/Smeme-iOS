@@ -33,19 +33,15 @@ final class StepOneKoreanDiaryViewController: UIViewController {
     }
     
     private let placeHolderLabel = UILabel().then {
-        $0.text = "최소 10자 이상의 외국어를 작성해 주세요"
+        $0.text = "이 곳에 10자 이상 작성해 주세요"
         $0.textColor = .gray400
         $0.font = .body1
         $0.setTextWithLineHeight(lineHeight: 21)
     }
     
-    private var randomSubjectView = RandomSubjectView().then {
-        $0.configure(with: RandomSubjectViewModel(contentText: "오늘부터 딱 일주일 후! 설레는 크리스마스네요. 일주일 전부터 세워보는 나의 크리스마스 계획은?", isHiddenRefreshButton: true))
-    }
-    
     private lazy var cancelButton = UIButton().then {
         $0.titleLabel?.font = .body1
-        $0.setTitleColor(.smemeBlack, for: .normal)
+        $0.setTitleColor(.gray400, for: .normal)
         $0.titleLabel?.setTextWithLineHeight(lineHeight: 21)
         $0.setTitle("취소", for: .normal)
         $0.addTarget(self, action: #selector(cancelButtonDidTap), for: .touchUpInside)
