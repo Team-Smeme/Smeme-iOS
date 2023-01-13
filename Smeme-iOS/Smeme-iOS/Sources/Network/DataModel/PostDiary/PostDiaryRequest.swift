@@ -10,12 +10,12 @@ import Foundation
 struct PostDiaryRequest: Codable {
     let content: String
     let targetLang: String
-    let topicID: Int
+    let topicId: Int
     let isPublic: Bool
 
     enum CodingKeys: String, CodingKey {
         case content, targetLang
-        case topicID = "topicId"
+        case topicId = "topicId"
         case isPublic
     }
 }

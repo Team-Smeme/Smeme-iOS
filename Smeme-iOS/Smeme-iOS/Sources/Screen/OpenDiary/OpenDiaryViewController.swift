@@ -173,7 +173,8 @@ final class OpenDiaryViewController: UIViewController {
         
         diaryListCollectionView.snp.makeConstraints {
             $0.top.equalTo(headerView.snp.bottom)
-            $0.leading.trailing.bottom.equalToSuperview()
+            $0.leading.trailing.equalToSuperview()
+            $0.bottom.equalTo(view.safeAreaLayoutGuide).inset(30)
         }
         
         self.view.bringSubviewToFront(headerView)
