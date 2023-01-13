@@ -20,9 +20,17 @@
 
 <br>
 
-## ☄️ Trouble Shooting (최종 과제 5번)
+## ☄️ 어려웠던 부분, 극복
 
-https://carnation-hearing-eb3.notion.site/2ec8494a5bf34f71b9f74a994ff17457
+<img width="1920" alt="Slide 16_9 - 128" src="https://user-images.githubusercontent.com/114599559/212320337-c3f5effe-c4a8-401f-b500-293874e60cd4.png">
+<img width="1920" alt="Slide 16_9 - 127" src="https://user-images.githubusercontent.com/114599559/212321104-5adc46ae-ae75-49f3-ace5-eebac721dcef.png">
+<img width="1920" alt="Slide 16_9 - 124" src="https://user-images.githubusercontent.com/114599559/212321128-8a7b0262-2beb-452a-9ad5-ef7481fea1fd.png">
+<img width="1920" alt="Slide 16_9 - 126" src="https://user-images.githubusercontent.com/114599559/212321139-014f5b72-d1a8-49bc-b6d0-976ccc0877a9.png">
+
+
+## 📁 Team Notion
+
+https://carnation-hearing-eb3.notion.site/a9988de49f6a45a2baafec7226dcee2c
 
 
 ## Library
