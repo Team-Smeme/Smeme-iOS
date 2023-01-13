@@ -36,7 +36,7 @@ final class MyDiaryDateBar: UIView {
     }
     
     private lazy var beforeButton = UIButton().then {
-        $0.setImage(Constant.Image.icnPageLeft, for: .normal)
+        $0.setImage(Constant.Image.icnPageLeftDisabled, for: .normal)
         $0.addTarget(self, action: #selector(touchLeftButton(_:)), for: .touchUpInside)
     }
     
