@@ -125,7 +125,8 @@ final class StepOneKoreanDiaryViewController: UIViewController {
     @objc func nextButtonDidTap() {
         let stepTwoKoreanDiaryViewController = StepTwoKoreanDiaryViewController()
         stepTwoKoreanDiaryViewController.koreanDiaryTextView.text = diaryTextView.text
-        stepTwoKoreanDiaryViewController.randomTopicCheckBox = isPublic
+        stepTwoKoreanDiaryViewController.randomTopicCheckBox = isRandomTopic
+        stepTwoKoreanDiaryViewController.publicCheckBox = isPublic
         self.navigationController?.pushViewController(stepTwoKoreanDiaryViewController, animated: true)
     }
     
@@ -143,7 +144,6 @@ final class StepOneKoreanDiaryViewController: UIViewController {
     
     @objc func publicButtonDidTap() {
         isPublic.toggle()
-        print(isPublic)
         if isPublic {
             publicButton.setImage(Constant.Image.btnPublicCheckBoxSelected, for: .normal)
         } else {

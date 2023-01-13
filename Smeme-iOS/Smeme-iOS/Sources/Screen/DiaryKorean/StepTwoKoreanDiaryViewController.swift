@@ -15,6 +15,8 @@ final class StepTwoKoreanDiaryViewController: UIViewController {
     // MARK: - Property
     
     var randomTopicCheckBox: Bool?
+    var publicCheckBox: Bool?
+    var isPublic: Bool = true
     
     // MARK: - UI Property
     
@@ -78,12 +80,14 @@ final class StepTwoKoreanDiaryViewController: UIViewController {
         $0.addShadow(shadowColor: .black, shadowOpacity: 0.04, shadowRadius: 16, offset: CGSize(width: 0, height: -4.0))
     }
     
-    private lazy var randomTopicButton = UIButton().then {
+    private let randomTopicButton = UIButton().then {
         $0.setImage(Constant.Image.btnRandomTopicCheckBox, for: .normal)
+        $0.isEnabled = false
     }
     
-    private let publicButton = UIButton().then {
-        $0.setImage(Constant.Image.btnPublicCheckBoxSelectedDisabled, for: .normal)
+    private lazy var publicButton = UIButton().then {
+        $0.setImage(Constant.Image.btnPublicCheckBoxSelected, for: .normal)
+        $0.addTarget(self, action: #selector(publicButtonDidTap), for: .touchUpInside)
     }
     
     private let hintButton = UIImageView(image: Constant.Image.btnTranslate)
@@ -99,7 +103,8 @@ final class StepTwoKoreanDiaryViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        checkBoxPresent()
+        randomCheckBoxPresent()
+        publicCheckBoxPresent()
     }
     
     // MARK: - @objc
@@ -110,6 +115,15 @@ final class StepTwoKoreanDiaryViewController: UIViewController {
     
     @objc func compleButtonDidTap() {
         changeMainRootViewController()
+    }
+    
+    @objc func publicButtonDidTap() {
+        isPublic.toggle()
+        if isPublic {
+            publicButton.setImage(Constant.Image.btnPublicCheckBoxSelected, for: .normal)
+        } else {
+            publicButton.setImage(Constant.Image.btnPublicCheckBox, for: .normal)
+        }
     }
     
     // MARK: - Custom Method
@@ -207,11 +221,19 @@ final class StepTwoKoreanDiaryViewController: UIViewController {
         }
     }
     
-    private func checkBoxPresent() {
+    private func randomCheckBoxPresent() {
         if randomTopicCheckBox ?? true {
             randomTopicButton.setImage(Constant.Image.btnRandomTopicCheckBoxSelectedDisable, for: .normal)
         } else {
             randomTopicButton.setImage(Constant.Image.btnRandomTopicCheckBoxDisabled, for: .normal)
+        }
+    }
+    
+    private func publicCheckBoxPresent() {
+        if randomTopicCheckBox ?? true {
+            publicButton.setImage(Constant.Image.btnPublicCheckBoxSelected, for: .normal)
+        } else {
+            publicButton.setImage(Constant.Image.btnPublicCheckBox, for: .normal)
         }
     }
 }
