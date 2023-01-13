@@ -14,7 +14,7 @@ final class StepTwoKoreanDiaryViewController: UIViewController {
     
     // MARK: - Property
     
-    var randomTopicCheckBox: Bool?
+    var randomTopicCheckBox: Bool = false
     var publicCheckBox: Bool = true
     var koreanDiaryText: String?
     var isShowHint: Bool = false
@@ -332,7 +332,7 @@ extension StepTwoKoreanDiaryViewController {
     func postDiaryAPI() {
         PostDiaryAPI.shared.postDiary(param: PostDiaryRequest(content: diaryTextView.text,
                                                               targetLang: "en",
-                                                              topicId: randomTopicId == 0 ? 0 : self.randomTopicId ?? 0,
+                                                              topicId: randomTopicCheckBox ? self.randomTopicId ?? 0 : 0,
                                                               isPublic: publicCheckBox)) { response in
             guard let postDiaryresponse = response?.data?.diaryID else { return }
             print(postDiaryresponse)

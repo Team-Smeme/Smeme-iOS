@@ -193,11 +193,12 @@ final class StepOneKoreanDiaryViewController: UIViewController {
         }
         
         languageLabel.snp.makeConstraints {
-            $0.centerY.leading.equalToSuperview()
+            $0.centerY.equalToSuperview()
+            $0.leading.equalTo(cancelButton.snp.trailing).offset(109)
         }
         
         stepLabel.snp.makeConstraints {
-            $0.centerX.equalToSuperview()
+            $0.centerX.equalTo(languageLabel)
             $0.top.equalTo(languageLabel.snp.bottom).offset(2)
         }
         
