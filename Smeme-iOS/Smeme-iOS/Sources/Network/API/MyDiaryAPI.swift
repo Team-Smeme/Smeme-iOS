@@ -14,7 +14,7 @@ final class MyDiaryAPI {
     
     private var myDiaryListData: GeneralResponse<MyDiaryListResponse>?
     private var myDiaryDetailData: GeneralResponse<MyDiaryDetailResponse>?
-    
+    private var deleteMyDiaryData: GeneralResponse<MyDiaryDetailResponse>?
     func totalMyDiaryList(completion: @escaping (GeneralResponse<MyDiaryListResponse>?) -> Void) {
         myDiaryProvider.request(.totalMyDiary) { response in
             switch response {
@@ -48,8 +48,18 @@ final class MyDiaryAPI {
     }
     
     func deleteMyDiaryList(diaryId: Int, completion: @escaping (GeneralResponse<MyDiaryDetailResponse>?) -> Void) {
-        myDiaryProvider.request(.deleteDiary(diaryId: diaryId)) { _ in
-            print("완료")
+        myDiaryProvider.request(.deleteDiary(diaryId: diaryId)) { response in
+            switch response {
+            case .success(let result):
+                do {
+                    self.deleteMyDiaryData = try result.map(GeneralResponse<MyDiaryDetailResponse>.self)
+                    completion(self.deleteMyDiaryData)
+                } catch {
+                    print(error)
+                }
+            case .failure(let err):
+                print(err)
+            }
         }
     }
 }
