@@ -125,7 +125,7 @@ final class StepOneKoreanDiaryViewController: UIViewController {
     @objc func nextButtonDidTap() {
         let stepTwoKoreanDiaryViewController = StepTwoKoreanDiaryViewController()
         stepTwoKoreanDiaryViewController.koreanDiaryTextView.text = diaryTextView.text
-        stepTwoKoreanDiaryViewController.pulickCheckBox = isPublic
+        stepTwoKoreanDiaryViewController.randomTopicCheckBox = isPublic
         self.navigationController?.pushViewController(stepTwoKoreanDiaryViewController, animated: true)
     }
     
@@ -255,6 +255,7 @@ final class StepOneKoreanDiaryViewController: UIViewController {
                 $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-30)
                 $0.bottom.equalTo(bottomView.snp.top)
             }
+            
         } else {
             randomTopicButton.setImage(Constant.Image.btnRandomTopicCheckBox, for: .normal)
             

@@ -14,6 +14,8 @@ final class StepTwoKoreanDiaryViewController: UIViewController {
     
     // MARK: - Property
     
+    var randomTopicCheckBox: Bool?
+    
     // MARK: - UI Property
     
     private let naviView = UIView()
@@ -76,15 +78,13 @@ final class StepTwoKoreanDiaryViewController: UIViewController {
         $0.addShadow(shadowColor: .black, shadowOpacity: 0.04, shadowRadius: 16, offset: CGSize(width: 0, height: -4.0))
     }
     
-    private lazy var randomTopicButton: UIImageView = {
-        let view = UIImageView(image: Constant.Image.btnRandomTopicCheckBoxDisabled)
-//        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(topikBTNDidTap())
-//        view.addGestureRecognizer(tapGesture)
-        view.isUserInteractionEnabled = true
-        return view
-    }()
+    private lazy var randomTopicButton = UIButton().then {
+        $0.setImage(Constant.Image.btnRandomTopicCheckBox, for: .normal)
+    }
     
-    private let publicButton = UIImageView(image: Constant.Image.btnPublicCheckBoxSelected)
+    private let publicButton = UIButton().then {
+        $0.setImage(Constant.Image.btnPublicCheckBoxSelectedDisabled, for: .normal)
+    }
     
     private let hintButton = UIImageView(image: Constant.Image.btnTranslate)
     
@@ -96,6 +96,10 @@ final class StepTwoKoreanDiaryViewController: UIViewController {
         setBackgoundColor()
         setLayout()
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        checkBoxPresent()
     }
     
     // MARK: - @objc
@@ -200,6 +204,14 @@ final class StepTwoKoreanDiaryViewController: UIViewController {
         hintButton.snp.makeConstraints {
             $0.top.equalToSuperview().offset(12)
             $0.leading.equalToSuperview().offset(22)
+        }
+    }
+    
+    private func checkBoxPresent() {
+        if randomTopicCheckBox ?? true {
+            randomTopicButton.setImage(Constant.Image.btnRandomTopicCheckBoxSelectedDisable, for: .normal)
+        } else {
+            randomTopicButton.setImage(Constant.Image.btnRandomTopicCheckBoxDisabled, for: .normal)
         }
     }
 }
