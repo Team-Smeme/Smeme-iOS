@@ -87,8 +87,8 @@ final class DetailMyDiaryViewController: UIViewController {
     }
     
     private func setData() {
-        publicLabel.isHidden = myDiaryDetail.isPublic
-        categoryLabel.text = myDiaryDetail.category
+        publicLabel.isHidden = !myDiaryDetail.isPublic
+        categoryLabel.text = (myDiaryDetail.category.isEmpty) ? "일상" : myDiaryDetail.category
         contentLabel.text = myDiaryDetail.content + " (\(myDiaryDetail.content.count))"
         contentLabel.setTextWithLineHeight(lineHeight: 21)
         dateLabel.text = myDiaryDetail.createdAt.getFormattedDate(format: "yyyy년 MM월 dd일 HH:mm")
