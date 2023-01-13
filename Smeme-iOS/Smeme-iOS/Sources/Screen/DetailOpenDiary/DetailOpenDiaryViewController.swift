@@ -252,6 +252,7 @@ extension DetailOpenDiaryViewController {
             self.likeCountLabel.text = "\(detailOpenDiaryResponse.likeCnt)"
             self.nicknameLabel.text = detailOpenDiaryResponse.username
             self.userInfoLabel.text = detailOpenDiaryResponse.bio
+            self.randomSubjectView.isHidden = detailOpenDiaryResponse.topic.isEmpty
 //            hasLike
         }
     }
