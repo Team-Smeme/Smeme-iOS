@@ -45,4 +45,8 @@ enum URLConstant {
 
     static let scrapStashListURL = "/scraps"
     static let scrapDeleteURL = "/scraps/"
+    
+    // MARK: - Papago
+    
+    static let papagoURL = "/v1/papago/n2mt"
 }

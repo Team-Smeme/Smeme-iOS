@@ -14,11 +14,12 @@ final class StepOneKoreanDiaryViewController: UIViewController {
     
     // MARK: - Property
     
-    var isTapped: Bool = true
-    
-    var id = 0
+    var isRandomTopic: Bool = false
+    var isPublic: Bool = true
     
     var randomSubject = RandomSubjectResponse(id: 0, content: "")
+    var topicID: Int?
+    var diaryID: Int?
     
     // MARK: - UI Property
     
@@ -39,7 +40,7 @@ final class StepOneKoreanDiaryViewController: UIViewController {
     }
     
     private var randomSubjectView = RandomSubjectView().then {
-        $0.configure(with: RandomSubjectViewModel(contentText: "오늘부터 딱 일주일 후! 설레는 크리스마스네요. 일주일 전부터 세워보는 나의 크리스마스 계획은?", isHiddenRefreshButton: false))
+        $0.configure(with: RandomSubjectViewModel(contentText: "오늘부터 딱 일주일 후! 설레는 크리스마스네요. 일주일 전부터 세워보는 나의 크리스마스 계획은?", isHiddenRefreshButton: true))
     }
     
     private lazy var cancelButton = UIButton().then {
@@ -86,15 +87,15 @@ final class StepOneKoreanDiaryViewController: UIViewController {
         $0.addShadow(shadowColor: .black, shadowOpacity: 0.04, shadowRadius: 16, offset: CGSize(width: 0, height: -4.0))
     }
     
-    private lazy var randomTopicButton: UIImageView = {
-        let view = UIImageView(image: Constant.Image.btnRandomTopicCheckBoxDisabled)
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(topikBTNDidTap(_:)))
-        view.addGestureRecognizer(tapGesture)
-        view.isUserInteractionEnabled = true
-        return view
-    }()
+    private lazy var randomTopicButton = UIButton().then {
+        $0.setImage(Constant.Image.btnRandomTopicCheckBox, for: .normal)
+        $0.addTarget(self, action: #selector(randomTopicButtonDidTap), for: .touchUpInside)
+    }
     
-    private let publicButton = UIImageView(image: Constant.Image.btnPublicCheckBoxSelected)
+    private lazy var publicButton = UIButton().then {
+        $0.setImage(Constant.Image.btnPublicCheckBoxSelected, for: .normal)
+        $0.addTarget(self, action: #selector(publicButtonDidTap), for: .touchUpInside)
+    }
     
     // MARK: - Life Cycle
     
@@ -103,26 +104,52 @@ final class StepOneKoreanDiaryViewController: UIViewController {
         
         setBackgoundColor()
         setLayout()
-        
+        randomSubjectWithAPI()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        randomSubjectWithAPI()
+        showKeyboard(textView: diaryTextView)
+        keyboardAddObserver()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        keyboardRemoveObserver()
     }
     
     // MARK: - @objc
     
-    @objc func topikBTNDidTap(_ gesture: UITapGestureRecognizer) {
+    @objc func randomTopicButtonDidTap(_ gesture: UITapGestureRecognizer) {
         setRandomTopicButtonToggle()
     }
     
     @objc func nextButtonDidTap() {
         let stepTwoKoreanDiaryViewController = StepTwoKoreanDiaryViewController()
+        stepTwoKoreanDiaryViewController.koreanDiaryTextView.text = diaryTextView.text
+        stepTwoKoreanDiaryViewController.randomTopicCheckBox = isRandomTopic
+        stepTwoKoreanDiaryViewController.publicCheckBox = isPublic
+        stepTwoKoreanDiaryViewController.randomTopicId = topicID
         self.navigationController?.pushViewController(stepTwoKoreanDiaryViewController, animated: true)
     }
     
     @objc func cancelButtonDidTap() {
         self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
+    }
+    
+    @objc func keyboardWillShow(_ notification: Notification) {
+        handleKeyboardChanged(notification: notification, customView: bottomView, isActive: true)
+    }
+    
+    @objc func keyboardWillHide(_ notification: Notification) {
+        handleKeyboardChanged(notification: notification, customView: bottomView, isActive: false)
+    }
+    
+    @objc func publicButtonDidTap() {
+        isPublic.toggle()
+        if isPublic {
+            publicButton.setImage(Constant.Image.btnPublicCheckBoxSelected, for: .normal)
+        } else {
+            publicButton.setImage(Constant.Image.btnPublicCheckBox, for: .normal)
+        }
     }
     
     // MARK: - Custom Method
@@ -132,7 +159,7 @@ final class StepOneKoreanDiaryViewController: UIViewController {
     }
     
     private func setData() {
-        randomSubjectView.configure(with: RandomSubjectViewModel(contentText: randomSubject.content, isHiddenRefreshButton: false))
+        randomSubjectView.configure(with: RandomSubjectViewModel(contentText: randomSubject.content, isHiddenRefreshButton: true))
     }
 
     private func setLayout() {
@@ -180,7 +207,7 @@ final class StepOneKoreanDiaryViewController: UIViewController {
         }
         
         diaryTextView.snp.makeConstraints {
-            $0.top.equalTo(tipLabel.snp.bottom).offset(10)
+            $0.top.equalTo(tipLabel.snp.bottom).offset(7)
             $0.leading.trailing.equalToSuperview().inset(24)
             $0.bottom.equalToSuperview()
         }
@@ -206,39 +233,60 @@ final class StepOneKoreanDiaryViewController: UIViewController {
     }
     
     private func setRandomTopicButtonToggle() {
-        isTapped.toggle()
-        if isTapped {
-            randomTopicButton.image = Constant.Image.btnRandomTopicCheckBox
-            naviView.snp.remakeConstraints {
-                $0.top.leading.trailing.equalTo(view.safeAreaLayoutGuide)
-                $0.height.equalTo(convertByHeightRatio(66))
-            }
-
-            diaryTextView.snp.remakeConstraints {
-                $0.top.equalTo(naviView.snp.bottom).offset(9)
-                $0.leading.trailing.equalTo(view.safeAreaLayoutGuide).offset(30)
-                $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-30)
-                $0.bottom.equalTo(bottomView.snp.top)
-            }
-
-            randomSubjectView.removeFromSuperview()
-
-        } else {
-            randomTopicButton.image = Constant.Image.btnRandomTopicCheckBoxSelected
+        topicID = 0
+        isRandomTopic.toggle()
+        if isRandomTopic {
+            randomTopicButton.setImage(Constant.Image.btnRandomTopicCheckBoxSelected, for: .normal)
+            
             view.addSubview(randomSubjectView)
-
+            
+            languageView.snp.remakeConstraints {
+                $0.centerY.equalToSuperview()
+                $0.leading.equalTo(languageLabel.snp.trailing).offset(6)
+            }
+            
             randomSubjectView.snp.remakeConstraints {
                 $0.top.equalTo(naviView.snp.bottom)
                 $0.leading.equalToSuperview()
             }
-
+            
             diaryTextView.snp.remakeConstraints {
                 $0.top.equalTo(randomSubjectView.snp.bottom).offset(9)
                 $0.leading.trailing.equalTo(view.safeAreaLayoutGuide).offset(30)
                 $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-30)
                 $0.bottom.equalTo(bottomView.snp.top)
             }
+            
+        } else {
+            randomTopicButton.setImage(Constant.Image.btnRandomTopicCheckBox, for: .normal)
+            
+            naviView.snp.remakeConstraints {
+                $0.top.leading.trailing.equalTo(view.safeAreaLayoutGuide)
+                $0.height.equalTo(convertByHeightRatio(66))
+            }
+            
+            diaryTextView.snp.remakeConstraints {
+                $0.top.equalTo(naviView.snp.bottom).offset(9)
+                $0.leading.trailing.equalTo(view.safeAreaLayoutGuide).offset(30)
+                $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-30)
+                $0.bottom.equalTo(bottomView.snp.top)
+            }
+            
+            randomSubjectView.removeFromSuperview()
         }
+    }
+    
+    private func keyboardAddObserver() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow),
+                                               name: UIResponder.keyboardWillShowNotification, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide),
+                                               name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    private func keyboardRemoveObserver() {
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 }
 
@@ -277,8 +325,9 @@ extension StepOneKoreanDiaryViewController: UITextViewDelegate {
 extension StepOneKoreanDiaryViewController {
     func randomSubjectWithAPI () {
         RandomSubjectAPI.shared.getRandomSubject { response in
-            guard let randomSubjectData = response?.data else { return }
+            guard let randomSubjectData = response?.data else {return}
             self.randomSubject = randomSubjectData
+            self.topicID = self.randomSubject.id
             self.setData()
         }
     }
