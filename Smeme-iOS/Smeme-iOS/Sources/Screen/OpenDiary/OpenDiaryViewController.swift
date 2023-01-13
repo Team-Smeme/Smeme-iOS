@@ -39,6 +39,7 @@ final class OpenDiaryViewController: UIViewController {
     private let headerView = UIView().then {
         $0.backgroundColor = .white
         $0.makeSelectedRoundCorners(cornerRadius: 30, maskedCorners: [.layerMinXMaxYCorner, .layerMaxXMaxYCorner])
+        $0.addShadow(shadowColor: .black, shadowOpacity: 0.04, shadowRadius: 18, offset: CGSize(width: 0, height: 2))
     }
     
     private let containerView = UIView().then {
@@ -175,6 +176,7 @@ final class OpenDiaryViewController: UIViewController {
             $0.leading.trailing.bottom.equalToSuperview()
         }
         
+        self.view.bringSubviewToFront(headerView)
     }
     
     private func registerCell() {
