@@ -12,10 +12,4 @@ struct PostDiaryRequest: Codable {
     let targetLang: String
     let topicId: Int
     let isPublic: Bool
-
-    enum CodingKeys: String, CodingKey {
-        case content, targetLang
-        case topicId = "topicId"
-        case isPublic
-    }
 }
