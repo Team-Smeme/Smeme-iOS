@@ -104,9 +104,6 @@ final class OpenDiaryViewController: UIViewController {
         registerCell()
         setDelegate()
         getOpenDiaryCategoryAPI()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
         getOpenDiaryTotalListAPI()
     }
     
