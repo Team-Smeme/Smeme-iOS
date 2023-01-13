@@ -45,8 +45,7 @@ extension PapagoService: TargetType {
         }
     }
     
-    var headers: [String : String]? {
+    var headers: [String: String]? {
         return APIConstant.papagoNaverClientId
     }
 }
-

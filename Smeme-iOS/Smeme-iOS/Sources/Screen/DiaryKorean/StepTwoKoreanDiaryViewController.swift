@@ -17,6 +17,8 @@ final class StepTwoKoreanDiaryViewController: UIViewController {
     var randomTopicCheckBox: Bool?
     var publicCheckBox: Bool?
     var isPublic: Bool = true
+    var koreanDiaryText: String?
+    var isShowHint: Bool = false
     
     // MARK: - UI Property
     
@@ -92,7 +94,10 @@ final class StepTwoKoreanDiaryViewController: UIViewController {
         $0.addTarget(self, action: #selector(publicButtonDidTap), for: .touchUpInside)
     }
     
-    private let hintButton = UIImageView(image: Constant.Image.btnTranslate)
+    private lazy var hintButton = UIButton().then {
+        $0.setImage(Constant.Image.btnTranslate, for: .normal)
+        $0.addTarget(self, action: #selector(hintButtonDidTap), for: .touchUpInside)
+    }
     
     // MARK: - Life Cycle
     
@@ -131,6 +136,18 @@ final class StepTwoKoreanDiaryViewController: UIViewController {
     
     @objc func keyboardWillHide(_ notification: Notification) {
         handleKeyboardChanged(notification: notification, customView: bottomView, isActive: false)
+    }
+    
+    @objc func hintButtonDidTap() {
+        isShowHint.toggle() // true
+        print(isShowHint)
+        if isShowHint {
+            hintButton.setImage(Constant.Image.btnTranslateSelected, for: .normal)
+            postPapagoAPI(diaryText: koreanDiaryTextView.text)
+        } else {
+            hintButton.setImage(Constant.Image.btnTranslate, for: .normal)
+            koreanDiaryTextView.text = koreanDiaryText
+        }
     }
     
     @objc func publicButtonDidTap() {
@@ -292,6 +309,19 @@ extension StepTwoKoreanDiaryViewController: UITextViewDelegate {
             textView.font = .body1
             textView.setLineSpacing()
             textView.tintColor = .primary
+        }
+    }
+}
+
+// MARK: - Network
+
+extension StepTwoKoreanDiaryViewController {
+    func postPapagoAPI(diaryText: String) {
+        PapagoAPI.shared.postDiary(param: diaryText) { response in
+            guard let response = response else { return }
+            self.koreanDiaryText = self.koreanDiaryTextView.text
+            self.koreanDiaryTextView.text.removeAll()
+            self.koreanDiaryTextView.text = response.message.result.translatedText
         }
     }
 }
