@@ -138,6 +138,23 @@ final class MyDiaryViewController: UIViewController {
         myDiaryCollectionView.delegate = self
         myDiaryCollectionView.dataSource = self
     }
+    
+    private func setDummyLabel(_ text: String) -> CGFloat {
+        let dummyLabel = UILabel().then {
+            $0.text = text
+            $0.font = .body1
+            $0.numberOfLines = 0
+            $0.sizeToFit()
+            $0.setTextWithLineHeight(lineHeight: 21)
+        }
+        
+        dummyLabel.frame = CGRect(x: 0,
+                                  y: 0,
+                                  width: 275,
+                                  height: dummyLabel.calculateContentHeight(lineHeight: 21))
+        
+        return dummyLabel.calculateContentHeight(lineHeight: 21)
+    }
 }
 
 // MARK: - UICollectionViewDelegate
@@ -171,7 +188,12 @@ extension MyDiaryViewController: UICollectionViewDataSource {
 
 extension MyDiaryViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let cellSize = CGSize(width: convertByWidthRatio(315), height: convertByHeightRatio(434))
+        let dateLabelHeight: CGFloat = 17
+        let paddingInCell = convertByHeightRatio(26 + 26 + 8)
+        let contentText = diaryList[indexPath.row].content + " (\(diaryList[indexPath.row].content.count))"
+        let labelHeight = setDummyLabel(limitTextCount(diaryText: contentText, limitNumber: 600))
+        let expectedCellHeight = paddingInCell + labelHeight + dateLabelHeight
+        let cellSize = CGSize(width: convertByWidthRatio(315), height: expectedCellHeight)
         return cellSize
     }
     

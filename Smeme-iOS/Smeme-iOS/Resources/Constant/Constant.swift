@@ -7,6 +7,6 @@
 
 import Foundation
 
-struct Constant {
+enum Constant {
     // extension 해서 사용
 }

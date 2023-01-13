@@ -1,11 +1,12 @@
 # 🍎 Smeme-iOS
 
-![KakaoTalk_Photo_2023-01-04-04-02-58](https://user-images.githubusercontent.com/86944161/210424661-b00f2023-5cfc-4e36-a6ce-2e5cc09e9ad1.png)
+![Frame 34339](https://user-images.githubusercontent.com/114599559/212286884-40d1f3cc-24dd-4446-bb57-1d888d62796f.jpg)
+
 
 <br>
 
 ## 🖍 Project
-> 일기로 시작하는 외국어 훈련, 외국어 학습 서비스 Smeme
+#### 내 일기에 스미는 외국어 일기 서비스, Smeme
 
 <br>
 
@@ -15,6 +16,7 @@
 |:------:|:---:|:---:|:-----:|
 |![KakaoTalk_Photo_2023-01-04-04-18-16](https://user-images.githubusercontent.com/86944161/210426110-082abcde-f8f2-4d7a-b437-4c6c3fca9792.png)|![KakaoTalk_Photo_2023-01-04-04-19-45](https://user-images.githubusercontent.com/86944161/210426306-3bb00033-54f5-413f-84b9-a5728f274800.png)|![KakaoTalk_Photo_2023-01-04-23-17-04](https://user-images.githubusercontent.com/86944161/210574669-30a1eef6-a318-47f1-97c3-7ee8b693a010.png)|![KakaoTalk_Photo_2023-01-04-04-23-27](https://user-images.githubusercontent.com/86944161/210426983-4c04e865-4c25-41f0-9500-373e2b591c2a.png)|
 |불꽃 카리스마 리드|군필 공주님|터키 출신 개발자|미성년자|
+| **초기 세팅** <br> - Color, Font Custom <br> - Keyboard 높이에 따른 동적 뷰 메서드 구현 <br><br> **소셜 로그인** <br> - Kakao Social Login API <br><br> **오픈 일기 게시판 뷰** <br> - UICollectionView <br><br> **오픈 일기 게시판 상세 뷰**<br> - 동적 UIScrollView <br> - UIEditMenuInteraction | **스크랩 보관함 뷰** <br> - 텍스트 양에 따라 CollectionViewCell 레이아웃 동적으로 구현 <br> - Alert 뷰 구현 <br><br> **마이스밈 뷰(마이페이지)** <br> - 컨테이너 뷰를 활용한 AutoLayout <br><br> **스플래시 뷰** <br> - Lottie 이용 그래픽 뷰 구현 <br><br> **토스트 메세지** <br> - UIView 와 Animation을 활용해 커스텀 후 함수화 | **외국어 일기 작성 뷰** <br> **, 한국어 일기 작성 뷰** <br><br> - 파파고 번역 Open API 연결 <br> - 문자열 정규식을 통한 버튼 활성화 <br> - keyboard 감지 시 bottomView 동적 구현 <br> - Constraint Layout을 적용한 동적 뷰 구현 | **회원가입 뷰** <br> - textField와 button을 포함한 커스텀 뷰 <br><br> **내 일기 뷰(메인)** <br> - 날짜 표시 뷰 Custom <br> - UICollectionView <br><br> **내 일기 상세 뷰** <br> - ScrollView <br> - Floating Action Button <br> - ScrollView 내 contentView 동적 계산 함수화 <br><br> **디자인 시스템** <br> - RandomSubjectView |
 
 <br>
 
@@ -38,9 +40,6 @@
    
 `Moya` : URLSession을 추상화한 Alamofire를 다시 추상화해서, Network Layer를 템플릿화하여 재사용성을 높이고, 개발자는 request와 response에만 신경 쓰도록 도와주는 라이브러리   
 → 모듈화된 통신 코드로, 서버 통신을 깔끔하고 편리하게 하기 위해 사용     
-   
-`RxSwift` : 관찰 가능한 시퀀스를 사용하여 비동기식 및 이벤트 기반 프로그램을 구성하기 위한 라이브러리   
-→ 쉽고 편리하게 비동기 이벤트 처리를 하기 위해 사용   
    
 </div>
 </details>
@@ -108,9 +107,7 @@ Pull Request는 `기능`별로 올리며, 나머지 `팀원의 한 명 이상의
 <div markdown="1">
 
     - 🗂️ Resources
-
-      - Protocol : 중복되는 코드들을 Protocol로 구현 후 관리
-    
+   
       - DesignSystem : Button, TextField 등의 UI Component를 관리하는 디자인 시스템
     
       - Extension : 기존의 클래스, 구조체, 열거형 타입에 새로운 기능 추가
@@ -141,7 +138,21 @@ Pull Request는 `기능`별로 올리며, 나머지 `팀원의 한 명 이상의
         
       - Screen
     
-          - 기본적으로 MVC 폴더 구조를 사용하지만, 특정 뷰는 MVVM 폴더를 사용합니다.
-
+          - MVC 폴더 구조를 사용합니다.
 </div>
 </details>
+
+<br>
+
+## 📁 Team Notion
+
+[스밈 아요 노션 보러가기 🥴](https://carnation-hearing-eb3.notion.site/a9988de49f6a45a2baafec7226dcee2c)
+
+<br>
+
+## ☄️ 어려웠던 부분, 극복
+
+<img width="1920" alt="Slide 16_9 - 128" src="https://user-images.githubusercontent.com/114599559/212320337-c3f5effe-c4a8-401f-b500-293874e60cd4.png">
+<img width="1920" alt="Slide 16_9 - 127" src="https://user-images.githubusercontent.com/114599559/212321104-5adc46ae-ae75-49f3-ace5-eebac721dcef.png">
+<img width="1920" alt="Slide 16_9 - 124" src="https://user-images.githubusercontent.com/114599559/212321128-8a7b0262-2beb-452a-9ad5-ef7481fea1fd.png">
+<img width="1920" alt="Slide 16_9 - 126" src="https://user-images.githubusercontent.com/114599559/212321139-014f5b72-d1a8-49bc-b6d0-976ccc0877a9.png">

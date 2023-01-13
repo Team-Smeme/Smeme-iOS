@@ -17,9 +17,8 @@ final class DetailOpenDiaryViewController: UIViewController {
     var editMenuInteraction: UIEditMenuInteraction?
     var scrapText: String?
     var scrapId: Int?
-    var detailOpenDiaryList: DetailOpenDiaryResponse?
-    
-    var diaryID: Int?
+    var detailOpenDiaryList = DetailOpenDiaryResponse(diaryID: 0, content: "", category: "", topic: "", likeCnt: 0, createdAt: "", userID: 0, username: "", bio: "", hasLike: false)
+    var diaryID: Int = 0
     
     // MARK: - UI Property
     
@@ -56,6 +55,10 @@ final class DetailOpenDiaryViewController: UIViewController {
         $0.font = .caption1
         $0.textColor = .gray600
         $0.setTextWithLineHeight(lineHeight: 14)
+    }
+    
+    private let borderLineView = UIView().then {
+        $0.backgroundColor = .gray100
     }
     
     private let randomSubjectView = RandomSubjectView().then {
@@ -111,13 +114,12 @@ final class DetailOpenDiaryViewController: UIViewController {
         super.viewDidLoad()
         
         setBackgroundColor()
-        setLayout()
         setTabbarHidden()
         setTextViewDelegate()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        getDetailOpenDiaryAPI(diaryID: diaryID ?? 0)
+        getDetailOpenDiaryAPI(diaryID: diaryID)
     }
     
     // MARK: - @objc
@@ -141,11 +143,22 @@ final class DetailOpenDiaryViewController: UIViewController {
         diaryContentLabel.delegate = self
     }
     
+    private func setData() {
+        diaryContentLabel.text = detailOpenDiaryList.content
+        topicNameLabel.text = (detailOpenDiaryList.category.isEmpty) ? "일상" : detailOpenDiaryList.category
+        randomSubjectView.configure(with: RandomSubjectViewModel(contentText: detailOpenDiaryList.topic, isHiddenRefreshButton: true))
+        likeCountLabel.text = "\(detailOpenDiaryList.likeCnt)"
+        nicknameLabel.text = detailOpenDiaryList.username
+        userInfoLabel.text = detailOpenDiaryList.bio
+        randomSubjectView.isHidden = detailOpenDiaryList.topic.isEmpty
+        borderLineView.isHidden = !detailOpenDiaryList.topic.isEmpty
+    }
+    
     private func setLayout() {
         view.addSubviews([headerView, diaryContentScrollView, bottomView])
         headerView.addSubview(backButton)
         diaryContentScrollView.addSubview(contentView)
-        contentView.addSubviews([topicView, nicknameLabel, userInfoLabel, randomSubjectView, diaryContentLabel, dateLabel])
+        contentView.addSubviews([topicView, nicknameLabel, userInfoLabel, borderLineView, randomSubjectView, diaryContentLabel, dateLabel])
         topicView.addSubview(topicNameLabel)
         bottomView.addSubviews([likeButton, likeCountLabel, translateButton])
         
@@ -185,37 +198,47 @@ final class DetailOpenDiaryViewController: UIViewController {
         }
         
         nicknameLabel.snp.makeConstraints {
+            $0.top.equalTo(topicView.snp.bottom).offset(14)
             $0.leading.equalToSuperview().inset(30)
+            $0.height.equalTo(17)
         }
         
         userInfoLabel.snp.makeConstraints {
             $0.top.equalTo(nicknameLabel.snp.bottom).offset(4)
-            $0.leading.equalTo(nicknameLabel)
+            $0.leading.equalToSuperview().inset(30)
+        }
+        
+        borderLineView.snp.makeConstraints {
+            detailOpenDiaryList.bio.isEmpty
+            ? $0.top.equalTo(nicknameLabel.snp.bottom).offset(18)
+            : $0.top.equalTo(nicknameLabel.snp.bottom).offset(38)
+            $0.height.equalTo(1)
+            $0.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(18)
         }
         
         randomSubjectView.snp.makeConstraints {
-            $0.top.equalTo(userInfoLabel.snp.bottom).offset(20)
+            $0.top.equalTo(topicView.snp.bottom).offset(69)
             $0.leading.equalToSuperview()
         }
         
-//        let paddingOfNaviWithContent = detail.topic.isEmpty ? 53 : 73 + randomSubjectView.frame.height
-//        let paddingContentWithContentView = calculateScrollViewHeightOffset(defaultHeight: 98,
-//                                                                            heightOfBottomView: 54,
-//                                                                            paddingOfNaviWithContent: paddingOfNaviWithContent,
-//                                                                            paddingOfContentWithDate: 20)
-//        $0.top.equalTo(randomSubjectView.snp.bottom).offset(convertByHeightRatio(20))
-//        $0.leading.trailing.equalTo(contentView).inset(convertByWidthRatio(30))
-//        $0.bottom.equalTo(contentView).offset(-paddingContentWithContentView)
-        
+        let paddingOfNaviWithContent = detailOpenDiaryList.topic.isEmpty
+        ? 122
+        : 122 + randomSubjectView.frame.height
+        let paddingOfContentWithContentView = calculateScrollViewHeightOffset(defaultHeight: 52,
+                                                                              heightOfBottomView: convertByHeightRatio(59),
+                                                                              paddingOfNaviWithContent: paddingOfNaviWithContent,
+                                                                              paddingOfContentWithDate: 12)
         diaryContentLabel.snp.makeConstraints {
-            $0.top.equalTo(randomSubjectView.snp.bottom).offset(20)
-            $0.leading.trailing.equalToSuperview().inset(24)
-            $0.bottom.equalTo(contentView).offset(-calculateScrollViewHeightOffset(defaultHeight: 52, heightOfBottomView: 59, paddingOfNaviWithContent: 192, paddingOfContentWithDate: 0))
+            detailOpenDiaryList.topic.isEmpty
+            ? $0.top.equalTo(borderLineView.snp.bottom).offset(convertByHeightRatio(20))
+            : $0.top.equalTo(randomSubjectView.snp.bottom).offset(20)
+            $0.leading.trailing.equalTo(contentView).inset(24)
+            $0.bottom.equalTo(contentView).offset(-paddingOfContentWithContentView)
         }
-        
+
         dateLabel.snp.makeConstraints {
             $0.top.equalTo(diaryContentLabel.snp.bottom).offset(12)
-            $0.trailing.equalToSuperview().inset(30)
+            $0.trailing.equalTo(contentView).inset(30)
         }
         
         bottomView.snp.makeConstraints {
@@ -246,18 +269,15 @@ extension DetailOpenDiaryViewController {
     private func getDetailOpenDiaryAPI(diaryID: Int) {
         DetailOpenDiaryAPI.shared.getDetailOpenDiaryAPI(param: diaryID) { response in
             guard let detailOpenDiaryResponse = response?.data else { return }
-            self.diaryContentLabel.text = detailOpenDiaryResponse.content
-            self.topicNameLabel.isHidden = detailOpenDiaryResponse.category.isEmpty
-            self.randomSubjectView.configure(with: RandomSubjectViewModel(contentText: detailOpenDiaryResponse.topic, isHiddenRefreshButton: true))
-            self.likeCountLabel.text = "\(detailOpenDiaryResponse.likeCnt)"
-            self.nicknameLabel.text = detailOpenDiaryResponse.username
-            self.userInfoLabel.text = detailOpenDiaryResponse.bio
+            self.detailOpenDiaryList = detailOpenDiaryResponse
+            self.setData()
 //            hasLike
+            self.setLayout()
         }
     }
     
     private func postScrapOpenDiaryAPI(dirayID: Int, scrapText: String) {
-        ScrapOpenDiaryAPI.shared.postScrapOpenDiary(param: ScrapRequest(diaryID: diaryID ?? 0, paragraph: scrapText)) { response in
+        ScrapOpenDiaryAPI.shared.postScrapOpenDiary(param: ScrapRequest(diaryID: diaryID, paragraph: scrapText)) { response in
             guard let responseData = response?.data else { return }
             self.scrapId = responseData.scrapID
         }

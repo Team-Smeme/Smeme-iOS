@@ -57,20 +57,20 @@ final class MyDiaryCollectionViewCell: UICollectionViewCell {
         addSubviews([timeLabel, contentLabel])
         
         contentLabel.snp.makeConstraints {
-            $0.top.equalTo(timeLabel.snp.bottom).offset(8)
+            $0.top.equalTo(timeLabel.snp.bottom).offset(convertByHeightRatio(8))
             $0.centerX.equalToSuperview()
             $0.width.equalTo(275)
         }
     
         timeLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(26)
+            $0.top.equalToSuperview().inset(convertByHeightRatio(26))
             $0.leading.equalTo(contentLabel)
         }
     }
     
     func setData(content: String, time: String) {
         contentLabel.text = limitTextCount(diaryText: content, limitNumber: 600) + " (\(content.count))"
-        timeLabel.text = time.getFormattedDate(format: "HH:mm")
+        timeLabel.text = time.utcToLocale(dateFormat: "HH:mm")
         contentLabel.setTextWithLineHeight(lineHeight: 21)
         timeLabel.setTextWithLineHeight(lineHeight: 17)
     }

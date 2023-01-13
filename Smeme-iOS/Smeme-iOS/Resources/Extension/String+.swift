@@ -41,5 +41,15 @@ extension String {
             print("invalid regex: \(error.localizedDescription)")
             return []
         }
+
+    func utcToLocale(dateFormat: String) -> String {
+        let dfFormat = DateFormatter()
+        dfFormat.dateFormat = "yyyy-MM-dd HH:mm"
+        dfFormat.timeZone = TimeZone(abbreviation: "UTC")
+        let dtUtcDate = dfFormat.date(from: self)
+        
+        dfFormat.timeZone = TimeZone.current
+        dfFormat.dateFormat = dateFormat
+        return dfFormat.string(from: dtUtcDate!)
     }
 }

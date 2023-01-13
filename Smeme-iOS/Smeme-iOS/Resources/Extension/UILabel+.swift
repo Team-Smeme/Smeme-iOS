@@ -27,7 +27,7 @@ extension UILabel {
         }
     }
     
-    /// UILabel의 line height 적용 메서드
+    /// UILabel의 line 수 길이 구하는 함수
     func countCurrentLines() -> CGFloat {
         guard let text = self.text as NSString? else { return 0 }
         guard let font = self.font              else { return 0 }

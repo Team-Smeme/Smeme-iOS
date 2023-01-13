@@ -8,11 +8,12 @@
 import UIKit
 
 extension Constant {
-    struct Image {
+    enum Image {
         
         // MARK: - Login
         
         static let logoSmeme = UIImage(named: "logoSmeme")!
+        static let logoSmall = UIImage(named: "logoSmall")!
         
         static let btnKakaoLogin = UIImage(named: "btnKakaoLogin")!
         static let btnWelcome = UIImage(named: "btnWelcome")!
