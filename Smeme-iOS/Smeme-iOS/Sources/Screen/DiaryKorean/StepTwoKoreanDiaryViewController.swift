@@ -18,6 +18,7 @@ final class StepTwoKoreanDiaryViewController: UIViewController {
     var publicCheckBox: Bool = true
     var koreanDiaryText: String?
     var isShowHint: Bool = false
+    var randomTopicId: Int?
     
     // MARK: - UI Property
     
@@ -105,7 +106,6 @@ final class StepTwoKoreanDiaryViewController: UIViewController {
         
         setBackgoundColor()
         setLayout()
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -126,6 +126,7 @@ final class StepTwoKoreanDiaryViewController: UIViewController {
     }
     
     @objc func compleButtonDidTap() {
+        postDiaryAPI()
         changeMainRootViewController()
     }
     
@@ -325,6 +326,16 @@ extension StepTwoKoreanDiaryViewController {
             self.koreanDiaryText = self.koreanDiaryTextView.text
             self.koreanDiaryTextView.text.removeAll()
             self.koreanDiaryTextView.text = response.message.result.translatedText
+        }
+    }
+    
+    func postDiaryAPI() {
+        PostDiaryAPI.shared.postDiary(param: PostDiaryRequest(content: diaryTextView.text,
+                                                              targetLang: "en",
+                                                              topicId: randomTopicId == 0 ? 0 : self.randomTopicId ?? 0,
+                                                              isPublic: publicCheckBox)) { response in
+            guard let postDiaryresponse = response?.data?.diaryID else { return }
+            print(postDiaryresponse)
         }
     }
 }

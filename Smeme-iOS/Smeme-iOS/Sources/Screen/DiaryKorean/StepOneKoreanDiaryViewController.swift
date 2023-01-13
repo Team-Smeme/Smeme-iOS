@@ -127,6 +127,7 @@ final class StepOneKoreanDiaryViewController: UIViewController {
         stepTwoKoreanDiaryViewController.koreanDiaryTextView.text = diaryTextView.text
         stepTwoKoreanDiaryViewController.randomTopicCheckBox = isRandomTopic
         stepTwoKoreanDiaryViewController.publicCheckBox = isPublic
+        stepTwoKoreanDiaryViewController.randomTopicId = topicID
         self.navigationController?.pushViewController(stepTwoKoreanDiaryViewController, animated: true)
     }
     
