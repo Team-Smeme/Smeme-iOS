@@ -104,7 +104,6 @@ final class StepOneKoreanDiaryViewController: UIViewController {
         
         setBackgoundColor()
         setLayout()
-        randomSubjectWithAPI()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -238,6 +237,7 @@ final class StepOneKoreanDiaryViewController: UIViewController {
         isRandomTopic.toggle()
         if isRandomTopic {
             randomTopicButton.setImage(Constant.Image.btnRandomTopicCheckBoxSelected, for: .normal)
+            randomSubjectWithAPI()
             
             view.addSubview(randomSubjectView)
             

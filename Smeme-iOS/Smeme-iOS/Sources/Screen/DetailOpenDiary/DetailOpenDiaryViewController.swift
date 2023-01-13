@@ -319,7 +319,7 @@ extension DetailOpenDiaryViewController: UIEditMenuInteractionDelegate, UITextVi
         var additionalActions: [UIMenuElement] = []
 
         if textView.selectedRange.length > 0 {
-            let highlightAction = [UIAction(title: "Smeme 🧡") { _ in
+            let highlightAction = [UIAction(title: "스크랩 🧡") { _ in
                 if !(textView.selectedTextRange?.isEmpty)! {
                     let selectedString = textView.text(in: textView.selectedTextRange!)
                     guard let selectedString = selectedString else { return }
