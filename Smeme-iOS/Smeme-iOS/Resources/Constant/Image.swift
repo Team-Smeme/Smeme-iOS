@@ -8,7 +8,7 @@
 import UIKit
 
 extension Constant {
-    struct Image {
+    enum Image {
         
         // MARK: - Login
         

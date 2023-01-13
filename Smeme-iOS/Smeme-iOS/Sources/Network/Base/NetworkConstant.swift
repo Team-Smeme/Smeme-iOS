@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct NetworkConstant {
+enum NetworkConstant {
     static let noTokenHeader = ["Content-Type": "application/json"]
     static let hasTokenHeader = ["Content-Type": "application/json",
                                  "Authorization": APIConstant.bearerToken]
