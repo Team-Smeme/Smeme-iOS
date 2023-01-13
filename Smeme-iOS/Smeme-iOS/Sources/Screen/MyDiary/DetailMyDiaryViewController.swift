@@ -87,8 +87,8 @@ final class DetailMyDiaryViewController: UIViewController {
     }
     
     private func setData() {
-        publicLabel.isHidden = myDiaryDetail.isPublic
-        categoryLabel.text = myDiaryDetail.category
+        publicLabel.isHidden = !myDiaryDetail.isPublic
+        categoryLabel.text = (myDiaryDetail.category.isEmpty) ? "일상" : myDiaryDetail.category
         contentLabel.text = myDiaryDetail.content + " (\(myDiaryDetail.content.count))"
         contentLabel.setTextWithLineHeight(lineHeight: 21)
         dateLabel.text = myDiaryDetail.createdAt.getFormattedDate(format: "yyyy년 MM월 dd일 HH:mm")
@@ -112,7 +112,6 @@ final class DetailMyDiaryViewController: UIViewController {
             $0.top.leading.trailing.bottom.equalTo(contentScrollView.contentLayoutGuide)
             $0.width.equalTo(contentScrollView.frameLayoutGuide)
             $0.height.equalTo(contentScrollView.frameLayoutGuide).priority(.low)
-            $0.height.greaterThanOrEqualTo(view.snp.height).priority(.low)
         }
         
         backButton.snp.makeConstraints {
@@ -147,12 +146,14 @@ final class DetailMyDiaryViewController: UIViewController {
         }
         
         contentLabel.snp.makeConstraints {
-            let paddingOfNaviWithContent = myDiaryDetail.topic.isEmpty ? 53 : 73 + randomSubjectView.frame.height
+            let paddingOfNaviWithContent = myDiaryDetail.topic.isEmpty ? 53 : (73 + randomSubjectView.frame.height)
             let paddingContentWithContentView = calculateScrollViewHeightOffset(defaultHeight: 98,
                                                                                 heightOfBottomView: 54,
                                                                                 paddingOfNaviWithContent: paddingOfNaviWithContent,
                                                                                 paddingOfContentWithDate: 20)
-            $0.top.equalTo(randomSubjectView.snp.bottom).offset(convertByHeightRatio(20))
+            myDiaryDetail.topic.isEmpty
+            ? $0.top.equalTo(categoryBackgroundView.snp.bottom).offset(convertByHeightRatio(20))
+            : $0.top.equalTo(randomSubjectView.snp.bottom).offset(convertByHeightRatio(20))
             $0.leading.trailing.equalTo(contentView).inset(convertByWidthRatio(30))
             $0.bottom.equalTo(contentView).offset(-paddingContentWithContentView)
         }
@@ -190,7 +191,6 @@ final class DetailMyDiaryViewController: UIViewController {
         let contentSize: CGFloat = paddingOfNaviWithContent + paddingOfContentWithDate + expectedLabelSize + heightOfDateLabel
         let isEnoughToScroll: Bool = contentSize > heightOfScrollView
         contentScrollView.isScrollEnabled = isEnoughToScroll
-        
         return isEnoughToScroll ? defaultHeight : (heightOfScrollView - contentSize)
     }
     
