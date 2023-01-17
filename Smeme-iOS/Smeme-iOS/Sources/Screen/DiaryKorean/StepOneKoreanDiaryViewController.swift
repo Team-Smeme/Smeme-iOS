@@ -50,10 +50,11 @@ final class StepOneKoreanDiaryViewController: UIViewController {
     
     private lazy var nextButton = UIButton().then {
         $0.titleLabel?.font = .body1
-        $0.setTitleColor(.smemeBlack, for: .normal)
+        $0.setTitleColor(.gray400, for: .normal)
         $0.titleLabel?.setTextWithLineHeight(lineHeight: 21)
         $0.setTitle("다음", for: .normal)
         $0.addTarget(self, action: #selector(nextButtonDidTap), for: .touchUpInside)
+        $0.isEnabled = false
     }
     
     private let languageLabel = UILabel().then {
@@ -325,7 +326,6 @@ extension StepOneKoreanDiaryViewController: UITextViewDelegate {
                 nextButton.isEnabled = true
                 nextButton.setTitleColor(.smemeBlack, for: .normal)
             } else {
-                nextButton.isEnabled = false
                 nextButton.setTitleColor(.gray400, for: .normal)
             }
         }
