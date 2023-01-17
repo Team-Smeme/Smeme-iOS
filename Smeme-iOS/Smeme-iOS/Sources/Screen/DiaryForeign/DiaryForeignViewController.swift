@@ -57,9 +57,10 @@ final class DiaryForeignViewController: UIViewController {
     
     private lazy var completeButton = UIButton().then {
         $0.titleLabel?.font = .body1
-        $0.setTitleColor(.smemeBlack, for: .normal)
+        $0.setTitleColor(.gray400, for: .normal)
         $0.setTitle("완료", for: .normal)
         $0.addTarget(self, action: #selector(completionButtonDidTap), for: .touchUpInside)
+        $0.isEnabled = false
     }
     
     private let languageLabel = UILabel().then {
@@ -303,7 +304,6 @@ extension DiaryForeignViewController: UITextViewDelegate {
                 completeButton.isEnabled = true
                 completeButton.setTitleColor(.smemeBlack, for: .normal)
             } else {
-                completeButton.isEnabled = false
                 completeButton.setTitleColor(.gray400, for: .normal)
             }
         }
