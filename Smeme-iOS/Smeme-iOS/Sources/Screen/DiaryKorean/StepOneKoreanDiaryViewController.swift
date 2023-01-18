@@ -25,6 +25,7 @@ final class StepOneKoreanDiaryViewController: UIViewController {
     
     private let naviView = UIView()
     private let languageView = UIView()
+    private var randomSubjectView = RandomSubjectView()
     
     private lazy var diaryTextView = UITextView().then {
         $0.setLineSpacing()
@@ -33,19 +34,15 @@ final class StepOneKoreanDiaryViewController: UIViewController {
     }
     
     private let placeHolderLabel = UILabel().then {
-        $0.text = "최소 10자 이상의 외국어를 작성해 주세요"
+        $0.text = "이 곳에 10자 이상 작성해 주세요"
         $0.textColor = .gray400
         $0.font = .body1
         $0.setTextWithLineHeight(lineHeight: 21)
     }
     
-    private var randomSubjectView = RandomSubjectView().then {
-        $0.configure(with: RandomSubjectViewModel(contentText: "오늘부터 딱 일주일 후! 설레는 크리스마스네요. 일주일 전부터 세워보는 나의 크리스마스 계획은?", isHiddenRefreshButton: true))
-    }
-    
     private lazy var cancelButton = UIButton().then {
         $0.titleLabel?.font = .body1
-        $0.setTitleColor(.smemeBlack, for: .normal)
+        $0.setTitleColor(.gray400, for: .normal)
         $0.titleLabel?.setTextWithLineHeight(lineHeight: 21)
         $0.setTitle("취소", for: .normal)
         $0.addTarget(self, action: #selector(cancelButtonDidTap), for: .touchUpInside)
@@ -53,10 +50,11 @@ final class StepOneKoreanDiaryViewController: UIViewController {
     
     private lazy var nextButton = UIButton().then {
         $0.titleLabel?.font = .body1
-        $0.setTitleColor(.smemeBlack, for: .normal)
+        $0.setTitleColor(.gray400, for: .normal)
         $0.titleLabel?.setTextWithLineHeight(lineHeight: 21)
         $0.setTitle("다음", for: .normal)
         $0.addTarget(self, action: #selector(nextButtonDidTap), for: .touchUpInside)
+        $0.isEnabled = false
     }
     
     private let languageLabel = UILabel().then {
@@ -158,7 +156,7 @@ final class StepOneKoreanDiaryViewController: UIViewController {
     }
     
     private func setData() {
-        randomSubjectView.configure(with: RandomSubjectViewModel(contentText: randomSubject.content, isHiddenRefreshButton: true))
+        randomSubjectView.configure(with: RandomSubjectViewModel(contentText: randomSubject.content, isHiddenRefreshButton: false))
     }
     
     private func setLayout() {
@@ -290,7 +288,7 @@ final class StepOneKoreanDiaryViewController: UIViewController {
     }
     
     private func characterValidation() -> Bool {
-        while diaryTextView.text.getArrayAfterRegex(regex: "[가-핳]").count > 9 {
+        while diaryTextView.text.getArrayAfterRegex(regex: "[가-핳ㄱ-ㅎㅏ-ㅣ]").count > 9 {
             return true
         }
         return false
@@ -328,7 +326,6 @@ extension StepOneKoreanDiaryViewController: UITextViewDelegate {
                 nextButton.isEnabled = true
                 nextButton.setTitleColor(.smemeBlack, for: .normal)
             } else {
-                nextButton.isEnabled = false
                 nextButton.setTitleColor(.gray400, for: .normal)
             }
         }
