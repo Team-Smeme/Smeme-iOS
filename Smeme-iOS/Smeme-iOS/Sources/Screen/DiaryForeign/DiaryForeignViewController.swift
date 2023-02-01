@@ -23,7 +23,14 @@ final class DiaryForeignViewController: UIViewController {
     
     // MARK: - UI Property
     
-    private let naviView = UIView()
+    private var naviView = UIStackView().then {
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.axis = .horizontal
+        $0.alignment = .center
+        $0.distribution = .fill
+        $0.spacing = 100
+    }
+    
     private let languageView = UIView()
     
     private lazy var diaryTextView = UITextView().then {
@@ -146,31 +153,19 @@ final class DiaryForeignViewController: UIViewController {
         view.addSubviews([naviView, randomSubjectView, diaryTextView, bottomView])
         diaryTextView.addSubview(placeHolderLabel)
         
-        naviView.addSubviews([cancelButton, languageView, completeButton])
+        naviView.addArrangedSubview(cancelButton)
+        naviView.addArrangedSubview(languageView)
+        naviView.addArrangedSubview(completeButton)
+
         languageView.addSubviews([languageLabel, languageIcon])
         
         bottomView.addSubviews([randomTopicButton, publicButton])
         
         naviView.snp.makeConstraints {
-            $0.top.leading.trailing.equalTo(view.safeAreaLayoutGuide)
+            $0.top.equalTo(view.safeAreaLayoutGuide)
+            $0.leading.equalTo(view.safeAreaLayoutGuide).offset(30)
+            $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-30)
             $0.height.equalTo(convertByHeightRatio(66))
-        }
-        
-        cancelButton.snp.makeConstraints {
-            $0.centerY.equalToSuperview()
-            $0.leading.equalToSuperview().offset(30)
-        }
-        
-        languageView.snp.makeConstraints {
-            $0.centerX.equalToSuperview()
-            $0.top.bottom.equalTo(cancelButton)
-            $0.leading.equalTo(languageLabel)
-            $0.trailing.equalTo(languageIcon)
-        }
-        
-        completeButton.snp.makeConstraints {
-            $0.centerY.equalToSuperview()
-            $0.trailing.equalToSuperview().offset(-30)
         }
         
         languageLabel.snp.makeConstraints {
