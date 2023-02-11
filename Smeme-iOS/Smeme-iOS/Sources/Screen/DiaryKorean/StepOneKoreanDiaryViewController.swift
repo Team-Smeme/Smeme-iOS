@@ -24,8 +24,13 @@ final class StepOneKoreanDiaryViewController: UIViewController {
     // MARK: - UI Property
     
     private let naviView = UIView()
-    private let languageView = UIView()
     private var randomSubjectView = RandomSubjectView()
+    
+    private let languageStackView = UIStackView().then {
+        $0.alignment = .center
+        $0.distribution = .fill
+        $0.spacing = 4
+    }
     
     private lazy var diaryTextView = UITextView().then {
         $0.setLineSpacing()
