@@ -27,6 +27,7 @@ final class StepOneKoreanDiaryViewController: UIViewController {
     private var randomSubjectView = RandomSubjectView()
     
     private let languageStackView = UIStackView().then {
+        $0.axis = .vertical
         $0.alignment = .center
         $0.distribution = .fill
         $0.spacing = 4
@@ -167,9 +168,13 @@ final class StepOneKoreanDiaryViewController: UIViewController {
     private func setLayout() {
         view.addSubviews([naviView, tipLabel, diaryTextView, bottomView])
         
-        naviView.addSubviews([cancelButton, languageView, nextButton])
+        naviView.addSubviews([cancelButton, languageStackView, nextButton])
         diaryTextView.addSubview(placeHolderLabel)
-        languageView.addSubviews([languageLabel, stepLabel])
+        
+        [languageLabel, stepLabel].forEach {
+            languageStackView.addArrangedSubview($0)
+        }
+        
         bottomView.addSubviews([randomTopicButton, publicButton])
         
         naviView.snp.makeConstraints {
@@ -182,7 +187,7 @@ final class StepOneKoreanDiaryViewController: UIViewController {
             $0.leading.equalToSuperview().offset(30)
         }
         
-        languageView.snp.makeConstraints {
+        languageStackView.snp.makeConstraints {
             $0.centerX.equalToSuperview()
             $0.top.bottom.equalTo(nextButton)
             $0.leading.equalTo(languageLabel)
@@ -192,16 +197,6 @@ final class StepOneKoreanDiaryViewController: UIViewController {
         nextButton.snp.makeConstraints {
             $0.centerY.equalToSuperview()
             $0.trailing.equalToSuperview().offset(-30)
-        }
-        
-        languageLabel.snp.makeConstraints {
-            $0.centerY.equalToSuperview()
-            $0.leading.equalTo(cancelButton.snp.trailing).offset(109)
-        }
-        
-        stepLabel.snp.makeConstraints {
-            $0.centerX.equalTo(languageLabel)
-            $0.top.equalTo(languageLabel.snp.bottom).offset(2)
         }
         
         tipLabel.snp.makeConstraints {
@@ -244,7 +239,7 @@ final class StepOneKoreanDiaryViewController: UIViewController {
             
             view.addSubview(randomSubjectView)
             
-            languageView.snp.remakeConstraints {
+            languageStackView.snp.remakeConstraints {
                 $0.centerY.equalToSuperview()
                 $0.leading.equalTo(languageLabel.snp.trailing).offset(6)
             }
