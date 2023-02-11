@@ -25,7 +25,10 @@ final class StepOneKoreanDiaryViewController: UIViewController {
     
     private let naviView = UIView()
     private let languageView = UIView()
-    private var randomSubjectView = RandomSubjectView()
+    
+    private var randomSubjectView = RandomSubjectView().then {
+        $0.configure(with: RandomSubjectViewModel(contentText: "", isHiddenRefreshButton: true))
+    }
     
     private lazy var diaryTextView = UITextView().then {
         $0.setLineSpacing()
@@ -102,6 +105,7 @@ final class StepOneKoreanDiaryViewController: UIViewController {
         
         setBackgoundColor()
         setLayout()
+        randomSubjectWithAPI()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -156,7 +160,7 @@ final class StepOneKoreanDiaryViewController: UIViewController {
     }
     
     private func setData() {
-        randomSubjectView.configure(with: RandomSubjectViewModel(contentText: randomSubject.content, isHiddenRefreshButton: false))
+        randomSubjectView.configure(with: RandomSubjectViewModel(contentText: randomSubject.content, isHiddenRefreshButton: true))
     }
     
     private func setLayout() {
@@ -231,11 +235,9 @@ final class StepOneKoreanDiaryViewController: UIViewController {
     }
     
     private func setRandomTopicButtonToggle() {
-        topicID = 0
         isRandomTopic.toggle()
         if isRandomTopic {
             randomTopicButton.setImage(Constant.Image.btnRandomTopicCheckBoxSelected, for: .normal)
-            randomSubjectWithAPI()
             
             view.addSubview(randomSubjectView)
             
@@ -256,6 +258,7 @@ final class StepOneKoreanDiaryViewController: UIViewController {
                 $0.bottom.equalTo(bottomView.snp.top)
             }
         } else {
+            topicID = 0
             randomTopicButton.setImage(Constant.Image.btnRandomTopicCheckBox, for: .normal)
             
             naviView.snp.remakeConstraints {
