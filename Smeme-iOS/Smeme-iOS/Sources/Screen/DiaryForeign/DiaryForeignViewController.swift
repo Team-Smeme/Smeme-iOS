@@ -24,7 +24,11 @@ final class DiaryForeignViewController: UIViewController {
     // MARK: - UI Property
     
     private let naviView = UIView()
-    private let languageView = UIView()
+    private let languageStackView = UIStackView().then {
+        $0.alignment = .center
+        $0.distribution = .fill
+        $0.spacing = 4
+    }
     
     private lazy var diaryTextView = UITextView().then {
         $0.setLineSpacing()
