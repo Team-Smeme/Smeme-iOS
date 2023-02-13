@@ -24,7 +24,11 @@ final class DiaryForeignViewController: UIViewController {
     // MARK: - UI Property
     
     private let naviView = UIView()
-    private let languageView = UIView()
+    private let languageStackView = UIStackView().then {
+        $0.alignment = .center
+        $0.distribution = .fill
+        $0.spacing = 4
+    }
     
     private lazy var diaryTextView = UITextView().then {
         $0.setLineSpacing()
@@ -146,8 +150,10 @@ final class DiaryForeignViewController: UIViewController {
         view.addSubviews([naviView, randomSubjectView, diaryTextView, bottomView])
         diaryTextView.addSubview(placeHolderLabel)
         
-        naviView.addSubviews([cancelButton, languageView, completeButton])
-        languageView.addSubviews([languageLabel, languageIcon])
+        naviView.addSubviews([cancelButton, languageStackView, languageIcon, completeButton])
+        [languageLabel, languageIcon].forEach {
+            languageStackView.addArrangedSubview($0)
+        }
         
         bottomView.addSubviews([randomTopicButton, publicButton])
         
@@ -161,25 +167,13 @@ final class DiaryForeignViewController: UIViewController {
             $0.leading.equalToSuperview().offset(30)
         }
         
-        languageView.snp.makeConstraints {
-            $0.centerX.equalToSuperview()
-            $0.top.bottom.equalTo(cancelButton)
-            $0.leading.equalTo(languageLabel)
-            $0.trailing.equalTo(languageIcon)
+        languageStackView.snp.makeConstraints {
+            $0.center.equalToSuperview()
         }
         
         completeButton.snp.makeConstraints {
             $0.centerY.equalToSuperview()
             $0.trailing.equalToSuperview().offset(-30)
-        }
-        
-        languageLabel.snp.makeConstraints {
-            $0.centerY.leading.equalToSuperview()
-        }
-        
-        languageIcon.snp.makeConstraints {
-            $0.centerY.equalToSuperview()
-            $0.leading.equalTo(languageLabel.snp.trailing).offset(6)
         }
         
         diaryTextView.snp.makeConstraints {
@@ -215,13 +209,8 @@ final class DiaryForeignViewController: UIViewController {
             
             view.addSubview(randomSubjectView)
             
-            languageIcon.snp.remakeConstraints {
-                $0.centerY.equalToSuperview()
-                $0.leading.equalTo(languageLabel.snp.trailing).offset(6)
-            }
-            
             randomSubjectView.snp.remakeConstraints {
-                $0.top.equalTo(naviView.snp.bottom)
+                $0.top.equalTo(naviView.snp.bottom).offset(10)
                 $0.leading.equalToSuperview()
             }
             

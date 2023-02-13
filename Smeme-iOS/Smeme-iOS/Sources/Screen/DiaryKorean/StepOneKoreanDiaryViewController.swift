@@ -24,7 +24,13 @@ final class StepOneKoreanDiaryViewController: UIViewController {
     // MARK: - UI Property
     
     private let naviView = UIView()
-    private let languageView = UIView()
+    
+    private let languageStackView = UIStackView().then {
+        $0.axis = .vertical
+        $0.alignment = .center
+        $0.distribution = .fill
+        $0.spacing = 4
+    }
     
     private var randomSubjectView = RandomSubjectView().then {
         $0.configure(with: RandomSubjectViewModel(contentText: "", isHiddenRefreshButton: true))
@@ -166,9 +172,13 @@ final class StepOneKoreanDiaryViewController: UIViewController {
     private func setLayout() {
         view.addSubviews([naviView, tipLabel, diaryTextView, bottomView])
         
-        naviView.addSubviews([cancelButton, languageView, nextButton])
+        naviView.addSubviews([cancelButton, languageStackView, nextButton])
         diaryTextView.addSubview(placeHolderLabel)
-        languageView.addSubviews([languageLabel, stepLabel])
+        
+        [languageLabel, stepLabel].forEach {
+            languageStackView.addArrangedSubview($0)
+        }
+        
         bottomView.addSubviews([randomTopicButton, publicButton])
         
         naviView.snp.makeConstraints {
@@ -181,26 +191,14 @@ final class StepOneKoreanDiaryViewController: UIViewController {
             $0.leading.equalToSuperview().offset(30)
         }
         
-        languageView.snp.makeConstraints {
+        languageStackView.snp.makeConstraints {
+            $0.top.equalTo(cancelButton)
             $0.centerX.equalToSuperview()
-            $0.top.bottom.equalTo(nextButton)
-            $0.leading.equalTo(languageLabel)
-            $0.trailing.equalTo(languageLabel)
         }
         
         nextButton.snp.makeConstraints {
             $0.centerY.equalToSuperview()
             $0.trailing.equalToSuperview().offset(-30)
-        }
-        
-        languageLabel.snp.makeConstraints {
-            $0.centerY.equalToSuperview()
-            $0.leading.equalTo(cancelButton.snp.trailing).offset(109)
-        }
-        
-        stepLabel.snp.makeConstraints {
-            $0.centerX.equalTo(languageLabel)
-            $0.top.equalTo(languageLabel.snp.bottom).offset(2)
         }
         
         tipLabel.snp.makeConstraints {
@@ -241,18 +239,18 @@ final class StepOneKoreanDiaryViewController: UIViewController {
             
             view.addSubview(randomSubjectView)
             
-            languageView.snp.remakeConstraints {
-                $0.centerY.equalToSuperview()
-                $0.leading.equalTo(languageLabel.snp.trailing).offset(6)
-            }
-            
             randomSubjectView.snp.remakeConstraints {
-                $0.top.equalTo(naviView.snp.bottom)
+                $0.top.equalTo(naviView.snp.bottom).offset(10)
                 $0.leading.equalToSuperview()
             }
             
+            tipLabel.snp.remakeConstraints {
+                $0.top.equalTo(randomSubjectView.snp.bottom).offset(20)
+                $0.leading.equalToSuperview().offset(30)
+            }
+            
             diaryTextView.snp.remakeConstraints {
-                $0.top.equalTo(randomSubjectView.snp.bottom).offset(9)
+                $0.top.equalTo(tipLabel.snp.bottom).offset(9)
                 $0.leading.trailing.equalTo(view.safeAreaLayoutGuide).offset(30)
                 $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-30)
                 $0.bottom.equalTo(bottomView.snp.top)
@@ -266,8 +264,13 @@ final class StepOneKoreanDiaryViewController: UIViewController {
                 $0.height.equalTo(convertByHeightRatio(66))
             }
             
+            tipLabel.snp.remakeConstraints {
+                $0.top.equalTo(naviView.snp.bottom).offset(20)
+                $0.leading.equalToSuperview().offset(30)
+            }
+            
             diaryTextView.snp.remakeConstraints {
-                $0.top.equalTo(naviView.snp.bottom).offset(9)
+                $0.top.equalTo(randomSubjectView.snp.bottom).offset(9)
                 $0.leading.trailing.equalTo(view.safeAreaLayoutGuide).offset(30)
                 $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-30)
                 $0.bottom.equalTo(bottomView.snp.top)
