@@ -188,10 +188,8 @@ final class StepOneKoreanDiaryViewController: UIViewController {
         }
         
         languageStackView.snp.makeConstraints {
+            $0.top.equalTo(cancelButton)
             $0.centerX.equalToSuperview()
-            $0.top.bottom.equalTo(nextButton)
-            $0.leading.equalTo(languageLabel)
-            $0.trailing.equalTo(languageLabel)
         }
         
         nextButton.snp.makeConstraints {
