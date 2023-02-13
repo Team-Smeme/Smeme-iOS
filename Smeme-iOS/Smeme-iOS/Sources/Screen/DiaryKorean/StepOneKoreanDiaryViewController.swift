@@ -24,8 +24,6 @@ final class StepOneKoreanDiaryViewController: UIViewController {
     // MARK: - UI Property
     
     private let naviView = UIView()
-    private let languageView = UIView()
-    private var randomSubjectView = RandomSubjectView()
     
     private let languageStackView = UIStackView().then {
         $0.axis = .vertical
