@@ -23,7 +23,12 @@ final class StepTwoKoreanDiaryViewController: UIViewController {
     // MARK: - UI Property
     
     private let naviView = UIView()
-    private let languageView = UIView()
+    
+    private let languageStackView = UIStackView().then {
+        $0.alignment = .center
+        $0.distribution = .fill
+        $0.spacing = 4
+    }
     
     var koreanDiaryTextView = UITextView().then {
         $0.setLineSpacing()
@@ -172,9 +177,13 @@ final class StepTwoKoreanDiaryViewController: UIViewController {
     private func setLayout() {
         view.addSubviews([naviView, koreanDiaryTextView, grayUnderlineView, diaryTextView, bottomView])
         
-        naviView.addSubviews([backButton, languageView, completeButton])
+        naviView.addSubviews([backButton, languageStackView, stepLabel, completeButton])
         diaryTextView.addSubview(placeHolderLabel)
-        languageView.addSubviews([languageLabel, languageIcon, stepLabel])
+        
+        [languageLabel, languageIcon].forEach {
+            languageStackView.addArrangedSubview($0)
+        }
+        
         bottomView.addSubviews([randomTopicButton, publicButton, hintButton])
         
         naviView.snp.makeConstraints {
@@ -187,31 +196,19 @@ final class StepTwoKoreanDiaryViewController: UIViewController {
             $0.leading.equalToSuperview().offset(18)
         }
         
-        languageView.snp.makeConstraints {
+        languageStackView.snp.makeConstraints {
+            $0.centerY.equalToSuperview()
+            $0.leading.equalTo(backButton.snp.trailing).offset(95)
+        }
+        
+        stepLabel.snp.makeConstraints {
+            $0.top.equalTo(languageStackView.snp.bottom).offset(2)
             $0.centerX.equalToSuperview()
-            $0.top.bottom.equalTo(backButton)
-            $0.leading.equalTo(languageLabel)
-            $0.trailing.equalTo(languageIcon)
         }
         
         completeButton.snp.makeConstraints {
             $0.centerY.equalToSuperview()
             $0.trailing.equalToSuperview().offset(-30)
-        }
-        
-        languageLabel.snp.makeConstraints {
-            $0.centerY.equalToSuperview()
-            $0.leading.equalTo(backButton.snp.trailing).offset(95)
-        }
-        
-        languageIcon.snp.makeConstraints {
-            $0.centerY.equalToSuperview()
-            $0.leading.equalTo(languageLabel.snp.trailing).offset(4)
-        }
-        
-        stepLabel.snp.makeConstraints {
-            $0.top.equalTo(languageLabel.snp.bottom).offset(2)
-            $0.leading.equalTo(backButton.snp.trailing).offset(105)
         }
         
         koreanDiaryTextView.snp.makeConstraints {
