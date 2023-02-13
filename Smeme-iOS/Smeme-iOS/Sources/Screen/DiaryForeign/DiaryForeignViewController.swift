@@ -150,8 +150,7 @@ final class DiaryForeignViewController: UIViewController {
         view.addSubviews([naviView, randomSubjectView, diaryTextView, bottomView])
         diaryTextView.addSubview(placeHolderLabel)
         
-        naviView.addSubviews([cancelButton, languageStackView, completeButton])
-//        languageStackView.addSubviews([languageLabel, languageIcon])
+        naviView.addSubviews([cancelButton, languageStackView, languageIcon, completeButton])
         [languageLabel, languageIcon].forEach {
             languageStackView.addArrangedSubview($0)
         }
@@ -169,10 +168,7 @@ final class DiaryForeignViewController: UIViewController {
         }
         
         languageStackView.snp.makeConstraints {
-            $0.centerX.equalToSuperview()
-            $0.top.bottom.equalTo(cancelButton)
-            $0.leading.equalTo(languageLabel)
-            $0.trailing.equalTo(languageIcon)
+            $0.center.equalToSuperview()
         }
         
         completeButton.snp.makeConstraints {
