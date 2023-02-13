@@ -209,13 +209,8 @@ final class DiaryForeignViewController: UIViewController {
             
             view.addSubview(randomSubjectView)
             
-            languageIcon.snp.remakeConstraints {
-                $0.centerY.equalToSuperview()
-                $0.leading.equalTo(languageLabel.snp.trailing).offset(6)
-            }
-            
             randomSubjectView.snp.remakeConstraints {
-                $0.top.equalTo(naviView.snp.bottom)
+                $0.top.equalTo(naviView.snp.bottom).offset(10)
                 $0.leading.equalToSuperview()
             }
             
