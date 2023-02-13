@@ -241,18 +241,18 @@ final class StepOneKoreanDiaryViewController: UIViewController {
             
             view.addSubview(randomSubjectView)
             
-            languageStackView.snp.remakeConstraints {
-                $0.centerY.equalToSuperview()
-                $0.leading.equalTo(languageLabel.snp.trailing).offset(6)
-            }
-            
             randomSubjectView.snp.remakeConstraints {
-                $0.top.equalTo(naviView.snp.bottom)
+                $0.top.equalTo(naviView.snp.bottom).offset(10)
                 $0.leading.equalToSuperview()
             }
             
+            tipLabel.snp.remakeConstraints {
+                $0.top.equalTo(randomSubjectView.snp.bottom).offset(20)
+                $0.leading.equalToSuperview().offset(30)
+            }
+            
             diaryTextView.snp.remakeConstraints {
-                $0.top.equalTo(randomSubjectView.snp.bottom).offset(9)
+                $0.top.equalTo(tipLabel.snp.bottom).offset(9)
                 $0.leading.trailing.equalTo(view.safeAreaLayoutGuide).offset(30)
                 $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-30)
                 $0.bottom.equalTo(bottomView.snp.top)
@@ -266,8 +266,13 @@ final class StepOneKoreanDiaryViewController: UIViewController {
                 $0.height.equalTo(convertByHeightRatio(66))
             }
             
+            tipLabel.snp.remakeConstraints {
+                $0.top.equalTo(naviView.snp.bottom).offset(20)
+                $0.leading.equalToSuperview().offset(30)
+            }
+            
             diaryTextView.snp.remakeConstraints {
-                $0.top.equalTo(naviView.snp.bottom).offset(9)
+                $0.top.equalTo(randomSubjectView.snp.bottom).offset(9)
                 $0.leading.trailing.equalTo(view.safeAreaLayoutGuide).offset(30)
                 $0.trailing.equalTo(view.safeAreaLayoutGuide).offset(-30)
                 $0.bottom.equalTo(bottomView.snp.top)
