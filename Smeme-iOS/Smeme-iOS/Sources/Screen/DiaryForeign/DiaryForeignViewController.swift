@@ -203,7 +203,6 @@ final class DiaryForeignViewController: UIViewController {
     }
     
     private func setRandomTopicButtonToggle() {
-        topicID = 0
         isRandomTopic.toggle()
         if isRandomTopic {
             randomTopicButton.setImage(Constant.Image.btnRandomTopicCheckBoxSelected, for: .normal)
@@ -228,6 +227,7 @@ final class DiaryForeignViewController: UIViewController {
             }
             
         } else {
+            topicID = 0
             randomTopicButton.setImage(Constant.Image.btnRandomTopicCheckBox, for: .normal)
             
             naviView.snp.remakeConstraints {
